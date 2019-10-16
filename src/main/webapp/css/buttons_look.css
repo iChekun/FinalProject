@@ -1,0 +1,114 @@
+/*a {*/
+/*    font-weight: 700;*/
+/*    color: black;*/
+/*    text-decoration: none;*/
+/*    padding: .8em 1em calc(.8em + 3px);*/
+/*    border-radius: 50%;*/
+/*    !*background: rgb(64, 199, 129);*!*/
+/*    !*box-shadow: 0 -3px rgb(53, 167, 110) inset;*!*/
+/*    background: #1f90bb;*/
+/*    box-shadow: 0 -3px #1f90bb inset;*/
+/*    transition: 0.2s;*/
+
+/*}*/
+
+/*a:hover {*/
+/*    !*background: rgb(13, 1, 4);*!*/
+/*    background: #23527c;*/
+/*    !*background: white;*!*/
+/*}*/
+
+/*a:active {*/
+/*    background: rgb(13, 1, 4);*/
+/*    box-shadow: 0 3px rgb(13, 1, 4) inset;*/
+/*}*/
+
+
+
+
+a {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    padding: 12px 40px;
+    /*margin: 10px 20px;*/
+    border-radius: 30px;
+    background-image: linear-gradient(45deg, #6ab1d7 0%, #33d9de 50%, #002878 100%);
+    background-position: 100% 0;
+    background-size: 200% 200%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    box-shadow: 0 16px 32px 0 rgba(0,40,120,.35);
+    transition: .5s;
+}
+a:hover {
+    box-shadow: 0 0 0 0 rgba(0,40,120,0);
+    background-position: 0 0;
+}
+
+
+/**for table baton*/
+/*.shadow-btn {*/
+/*    position: relative;*/
+/*    padding: 15px 40px;*/
+/*    margin: 0 20px;*/
+/*    background: #fff9ef;*/
+/*    font-family: 'Montserrat Alternates', sans-serif;*/
+/*    color: #fe7660;*/
+/*    text-transform: lowercase;*/
+/*    border: 2px solid #052464;*/
+/*    font-size: 16px;*/
+/*    font-weight: 600;*/
+/*    outline: none;*/
+/*    cursor: pointer;*/
+/*}*/
+/*.btn-inner {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*}*/
+/*.text {*/
+/*    line-height: 1;*/
+/*    transform: translateX(0px);*/
+/*    transition: .3s cubic-bezier(.86,0,.07,1);*/
+/*}*/
+/*.btn-inner i {*/
+/*    margin-left: 5px;*/
+/*    font-size: 14px;*/
+/*    transition: transform .3s cubic-bezier(.86,0,.07,1), opacity .3s;*/
+/*}*/
+/*.shadow  {*/
+/*    position: absolute;*/
+/*    top: 9px;*/
+/*    left: 9px;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background: #98dfd7;*/
+/*    z-index: -1;*/
+/*    transition: .3s ease;*/
+/*    transform: translate3d(0,0,0);*/
+/*}*/
+/*.shadow-btn:hover .text {*/
+/*    transform:translateX(8px);*/
+/*}*/
+/*.shadow-btn:hover i {*/
+/*    transform: translateX(100%);*/
+/*    opacity: 0;*/
+/*}*/
+/*.shadow-btn:hover .shadow {*/
+/*    transform: translate3d(3px,3px,0);*/
+/*}*/
+
+
+.table_button{
+    width: 20%;
+    background-image: linear-gradient(45deg, #6ab1d7 0%, #33d9de 50%, #002878 100%);
+    border: 0;
+    padding: 0;
+}
+
+.table_button button::-moz-focus-inner
+{
+    border: 0;
+}

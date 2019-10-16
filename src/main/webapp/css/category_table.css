@@ -1,0 +1,53 @@
+/*margin отступ от каждого элемента  padding отступ вокруг элемента*/
+
+
+
+
+.left_bar_menu_cabinet_style aside a {
+
+    width: 85%;
+    font-weight: 700;
+    float: left;
+
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 2px;
+    background: #1f90bb;
+    box-shadow: 0 -3px #1f90bb inset;
+}
+
+
+.left_bar_menu_cabinet_style aside a:hover {
+    /*background: rgb(13, 1, 4);*/
+    /*!*background: white;*!*/
+    color: #23527c;
+    text-decoration: none;
+}
+
+
+.left_bar_menu_cabinet_style aside a:active, a:hover, a:focus {
+    /*background: rgb(13, 1, 4);*/
+    /*box-shadow: 0 3px rgb(13, 1, 4) inset;*/
+    outline: 0 none;
+    text-decoration: none;
+}
+
+
+.category_buttons button {
+    margin-bottom: 2%;
+    margin-left: 5%;
+    background-color: #1f90bb;
+    border: 3px solid rgb(0, 0, 0);
+    color: black;
+    font-family: 'Varela Round', sans-serif;
+    font-size: .85em;
+    padding: .55em .9em;
+    transition: all 400ms ease;
+}
+
+.category_buttons button:hover {
+    background-color: #1f90bb;
+    color: black;
+    cursor: pointer;
+}

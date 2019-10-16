@@ -1,0 +1,63 @@
+
+body {
+    background: lightblue url(../pictures/background.png) fixed;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+#main-wrap > div {
+    min-height: 450px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1024px; /*максимальная ширина может иметь другое значение*/
+}
+
+
+/* layout */
+#main-wrap {
+    /* overflow to handle inner floating block */
+    overflow: hidden;
+    padding-top: 10px;
+    padding-left: 0.4%;
+}
+
+#sidebar {
+    float: left;
+    width: 18%;
+}
+
+#content-wrap {
+    float: right;
+    width: 81%;
+}
+
+
+hr {
+    background-color: black; /* Цвет линии */
+    height: 1px; /* Толщина линии */
+    border: 1px ridge black;
+    border-radius: 2px;
+}
+
+
+.basket {
+    width: 15%;
+    margin-top: -4%;
+    /*margin-right: 10%;*/
+    min-height: 60px; /* Минимальная высота */
+    float: right;
+    /*background: url(../pictures/basket_icon.png) no-repeat 50% 50%; !* Параметры фона *!*/
+}
+
+.basket a img {
+    border: none;
+}

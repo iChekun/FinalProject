@@ -1,0 +1,8 @@
+.new-select-style-locale select {
+    background: transparent;
+    font-size: 17px;
+    border: 3px solid green;
+    width: 130px;
+    margin-left: 5%;
+    margin-top: 4%;
+}

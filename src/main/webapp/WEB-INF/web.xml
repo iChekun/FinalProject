@@ -1,0 +1,202 @@
+<web-app>
+    <display-name>final project</display-name>
+
+    <context-param>
+        <param-name>db.driver</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.url</param-name>
+        <param-value>jdbc:mysql://localhost/online_store?serverTimezone=Europe/Moscow&amp;useSSL=false</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.user</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.password</param-name>
+        <param-value>1111</param-value>
+    </context-param>
+
+
+    <filter>
+        <filter-name>encodingfilter</filter-name>
+        <filter-class>by.epam.chekun.controller.filter.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingfilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <session-config>
+        <session-timeout>5</session-timeout>
+    </session-config>
+
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <location>/WEB-INF/error_page.jsp</location>
+    </error-page>
+
+    <servlet>
+        <servlet-name>main</servlet-name>
+        <jsp-file>/WEB-INF/main.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>main</servlet-name>
+        <url-pattern>/main</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>index</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>index</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>signUp</servlet-name>
+        <jsp-file>/WEB-INF/signUp.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>signUp</servlet-name>
+        <url-pattern>/signUp</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>personal_cabinet</servlet-name>
+        <jsp-file>/WEB-INF/personal_cabinet.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>personal_cabinet</servlet-name>
+        <url-pattern>/personal_cabinet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>users_table</servlet-name>
+        <jsp-file>/WEB-INF/users_table.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>users_table</servlet-name>
+        <url-pattern>/users_table</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>product_table</servlet-name>
+        <jsp-file>/WEB-INF/product_table.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>product_table</servlet-name>
+        <url-pattern>/product_table</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>work_with_product</servlet-name>
+        <jsp-file>/WEB-INF/work_with_product.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>work_with_product</servlet-name>
+        <url-pattern>/work_with_product</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>category_table</servlet-name>
+        <jsp-file>/WEB-INF/category_table.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>category_table</servlet-name>
+        <url-pattern>/category_table</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>work_with_category</servlet-name>
+        <jsp-file>/WEB-INF/work_with_category.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>work_with_category</servlet-name>
+        <url-pattern>/work_with_category</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>brand_table</servlet-name>
+        <jsp-file>/WEB-INF/brand_table.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>brand_table</servlet-name>
+        <url-pattern>/brand_table</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>work_with_brand</servlet-name>
+        <jsp-file>/WEB-INF/work_with_brand.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>work_with_brand</servlet-name>
+        <url-pattern>/work_with_brand</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>payment_method_table</servlet-name>
+        <jsp-file>/WEB-INF/payment_method_table.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>payment_method_table</servlet-name>
+        <url-pattern>/payment_method_table</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>user_basket</servlet-name>
+        <jsp-file>/WEB-INF/user_basket.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user_basket</servlet-name>
+        <url-pattern>/user_basket</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>customer_product_table</servlet-name>
+        <jsp-file>/WEB-INF/customer_product_table.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>customer_product_table</servlet-name>
+        <url-pattern>/customer_product_table</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>orders_history</servlet-name>
+        <jsp-file>/WEB-INF/orders_history.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>orders_history</servlet-name>
+        <url-pattern>/orders_history</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>order_detail</servlet-name>
+        <jsp-file>/WEB-INF/order_detail.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>order_detail</servlet-name>
+        <url-pattern>/order_detail</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>

@@ -1,0 +1,161 @@
+.buy_product {
+    margin-top: 49%;
+    margin-right: -10%;
+    float: right;
+}
+
+/*.buy_product button{*/
+
+/*}*/
+
+/*.button input,*/
+/*.button input:focus {*/
+/*    font-size: 15px;*/
+/*    padding: 1% 1%;*/
+/*    float: right;*/
+/*    outline-width: 0;*/
+/*    background-color: white;*/
+/*}*/
+
+
+/*.button button,*/
+/*.button button:focus {*/
+/*    font-size: 15px;*/
+/*    padding: 3% 3%;*/
+/*    float: right;*/
+/*    outline-width: 0;*/
+/*    background-color: white;*/
+
+/*}*/
+
+/*.button,*/
+/*.button::before,*/
+/*.button::after,*/
+/*.button span,*/
+/*.button span::before,*/
+/*.button span::after {*/
+/*    float: right;*/
+/*    right: -5%;*/
+/*    bottom: -20%;*/
+/*    -webkit-transition: all ease .5s;*/
+/*    transition: all ease .5s;*/
+/*}*/
+
+/*.button {*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*    padding: 0.3em;*/
+/*    margin: 1em;*/
+/*    border: solid 1px;*/
+/*    text-transform: uppercase;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.button:hover {*/
+/*    box-shadow: 0 0 5em .5em rgba(50, 50, 150, 0.5);*/
+/*}*/
+
+/*.button span {*/
+/*    display: inline-block;*/
+/*    width: 100%;*/
+/*    padding: 0.6em 2em;*/
+/*}*/
+
+/*.button:hover span {*/
+/*    background-color: #fff;*/
+/*    width: 15%;*/
+/*    color: #112;*/
+/*}*/
+
+/*.button::before,*/
+/*.button::after,*/
+/*.button span::before,*/
+/*.button span::after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    border: 1px;*/
+/*    width: 15%;*/
+/*}*/
+
+/*.button::before,*/
+/*.button span::before {*/
+/*    border-style: solid none;*/
+/*}*/
+
+/*.button::before,*/
+/*.button span::after {*/
+/*    left: 0;*/
+/*    top: -0.4em;*/
+/*    width: 100%;*/
+/*    height: calc(100% + 0.8em);*/
+/*}*/
+
+/*.button::after,*/
+/*.button span::after {*/
+/*    border-style: none solid;*/
+/*}*/
+
+/*.button::after,*/
+/*.button span::before {*/
+/*    top: 0;*/
+/*    left: -0.4em;*/
+/*    height: 100%;*/
+/*    width: calc(100% + 0.8em);*/
+/*}*/
+
+/*.button:hover::after,*/
+/*.button:hover span::after {*/
+/*    -webkit-transform: scaleY(0);*/
+/*    transform: scaleY(0);*/
+/*}*/
+
+/*.button:hover::before,*/
+/*.button:hover span::before {*/
+/*    -webkit-transform: scaleX(0);*/
+/*    transform: scaleX(0);*/
+/*}*/
+
+/*.button:hover span::after,*/
+/*.button:hover span::before {*/
+/*    opacity: 0;*/
+/*}*/
+
+
+.btn {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 30px 0 40px;
+    margin: 0 20px;
+    background: linear-gradient(-135deg, #00E5FE, #4463FE);
+    box-shadow: 0 15px 65px #4753FF;
+    border-width: 0;
+    border-radius: 50px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 14px;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn:before {
+    /*content: "\f067";*/
+    content: "+";
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    font-family: FontAwesome;
+    color: white;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background: transparent;
+    transition: .3s ease-in-out;
+}
+
+.btn:hover:before {
+    background: white;
+    color: #24D8F7;
+}

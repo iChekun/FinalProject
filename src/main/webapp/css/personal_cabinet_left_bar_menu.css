@@ -1,0 +1,85 @@
+
+.left_bar_menu_cabinet_style {
+    padding-top: 1%;
+    padding-bottom: 15%;
+    padding-left: 7%;
+
+    font-size: 24px;
+    font-style: normal;
+    /*font-weight: bolder;*/
+    text-decoration: underline black;
+    text-align: center;
+}
+
+.left_bar_menu_cabinet_style fieldset {
+    background-color: #e0c8ff;
+    width: 65%;
+    margin-left: 15%;
+    font-size: 20px;
+    padding: 5px 2px 5px 5px;
+}
+
+.left_bar_menu_cabinet_style aside {
+    float: left;
+    width: 164px;
+    margin: 12px 0px 0px 0px;
+
+    /*padding: 0px;*/
+    /*border-right: thin dashed #2446ff;*/
+    /*background-color: #ff0000;*/
+
+    padding-top: 15px;
+}
+
+
+/*margin отступ от каждого элемента  padding отступ вокруг элемента*/
+
+.left_bar_menu_cabinet_style aside a {
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+
+.left_bar_menu_cabinet_style aside ul {
+    list-style-type: none;
+    padding: 0px;
+}
+
+.left_bar_menu_cabinet_style aside ul li {
+    padding-top: 25%;
+}
+
+.left_bar_menu_cabinet_style aside ul li a {
+    display: block;
+    /*background: #000;*/
+    color: black;
+    /*padding: 5px 10px 5px 10px;*/
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 5px 10px 20px 20px;
+}
+
+/********************************************/
+/* work with store*/
+
+
+
+
+.Schedule ul li {
+    display: none;
+    margin-top: -16%;
+}
+
+.Schedule:hover > ul {
+    position: absolute;
+    top: 30%;
+    left: 14%;
+    /*background: white;*/
+    display: block;
+}
+
+.Schedule:hover > ul li {
+    position: relative;
+    /*background: white;*/
+    display: block;
+}

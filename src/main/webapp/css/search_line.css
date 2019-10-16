@@ -1,0 +1,31 @@
+
+.search {
+    width: 50%;
+    margin-left: 10%;
+    margin-top: 2%;
+    min-height: 30px; /* Минимальная высота */
+    /*border: 2px solid black;*/
+}
+
+.search input[type="search"] {
+    text-align: center;
+    color: black;
+    outline: none; /* Убираем свечение в Chrome и Safari */
+    -webkit-appearance: none; /* Убираем рамку в Chrome и Safari */
+    width: 88%;
+    height: 30px;
+    vertical-align: middle; /* Выравнивание по середине */
+    border: 2px solid black;
+    border-radius: 5px;
+    background: #F9F0DA;
+}
+
+
+.search input[type="submit"] {
+    width: 60px; /* Ширина кнопки */
+    height: 30px; /* Высота кнопки */
+    border: none; /* Убираем рамку */
+    float: right;
+    background: url(../pictures/search.png) no-repeat 50% 50%; /* Параметры фона */
+    /*background: #4195fc;*/
+}

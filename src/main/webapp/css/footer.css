@@ -1,0 +1,97 @@
+#footer {
+    margin-top: 5px;
+    min-height: 100px;
+}
+
+#footer table {
+    margin-top: 1%;
+    margin-left: 2%;
+    border: 0px solid black;
+    width: 96%;
+    height: 50%;
+
+    border-spacing: 8px 2px;
+    border-collapse: collapse;
+
+    text-align: center;
+}
+
+#footer table td {
+    border: 0px solid black;
+    width: 15%;
+    height: 70px;
+    padding: 6px;
+    margin-left: 5px;
+    margin-bottom: 2px;
+    margin-right: 2px;
+}
+
+#footer table th {
+    text-align: left;
+}
+
+.contacts_info {
+    text-align: left;
+}
+
+.contacts_info img {
+    /*float: left;*/
+}
+
+
+.contacts_info a {
+    /*float: right;*/
+    font-weight: 100;
+    color: black;
+    text-decoration: none;
+    border-radius: 1px;
+    background: none;
+    box-shadow: none;
+    transition: 0.2s;
+}
+
+.contacts_info a:hover {
+    background: wheat;
+}
+
+.contacts_info a:active {
+    background: wheat;
+    box-shadow: 0 1px wheat inset;
+}
+
+
+.end_page {
+    float: right;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 2%;
+    min-height: 20px;
+
+
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+
+.end_page a {
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 3px;
+    background: none;
+    box-shadow: none;
+    transition: 0.2s;
+}
+
+.end_page a:hover {
+    background: wheat;
+}
+
+.end_page a:active {
+    background: wheat;
+    box-shadow: 0 3px wheat inset;
+}
+
+
+

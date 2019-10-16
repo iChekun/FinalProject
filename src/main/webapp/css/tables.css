@@ -1,0 +1,57 @@
+
+.table_line {
+    float: left;
+    color: black;
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+
+    border-bottom: 1px solid darkblue;
+    font-weight: normal;
+    padding-bottom: 5px;
+    width: 100%;
+}
+
+.table_outer {
+    border: 1px solid black;
+    border-spacing: 2px;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table_inner {
+    width: 100%;
+    border-spacing: 0 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    padding: 1px;
+    border: 1px solid black;
+}
+
+.start_table {
+
+}
+
+.start_table th {
+    padding: 10px 20px;
+    background: #56433D;
+    color: #F9C941;
+    border-right: 2px solid;
+    font-size: 0.9em;
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+
+    /*z-index: 5;*//*В коменте тк не получилось добавить наложение*/
+}
+
+.start_table td {
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+    border-top: 2px solid #56433D;
+    border-bottom: 2px solid #56433D;
+    border-right: 2px solid #56433D;
+}
