@@ -41,7 +41,7 @@
         <div class="new-select-style-locale">
             <form style="display: inline; margin-left: 20px">
                 <div class="new-select-style-locale" style="margin-right: -22%;margin-top: -1.8%;">
-                    <input type="hidden" name="action" value="adminWorkWithUsers"/>
+                    <input type="hidden" name="action" value="viewUsersTable"/>
                     <label for="locale"></label>
                     <select id="locale" name="locale" onchange="submit()">
                         <option value="en_EN" ${locale == 'en_EN' ? 'selected' : ''}>English</option>
@@ -200,9 +200,6 @@
                                                         <input style=" float: left;"
                                                                class="radio" type="radio"
                                                                name="userForAction" value="${user.userId}">
-
-                                                        <input type="hidden"
-                                                               name="userForAction" value="${user.userId}">
                                                     </label>
 
                                                 </td>
@@ -239,10 +236,10 @@
                 <div class="category_buttons">
 
 
-                    <button type="submit" name="action" value="changeBanStatus">
+                    <button type="submit" name="action" value="updateBanStatus">
                         <strong>
                             <%--                            <fmt:message key=""/>--%>
-                            change bun status
+                            change ban status
                         </strong>
                     </button>
 

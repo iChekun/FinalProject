@@ -56,11 +56,11 @@
 
         <nav>
             <ul class="header" style="margin-right: -23%; margin-top: 3%">
-                <li>
+
                 <li><a href="mainWindow?action=viewProductTable">
                     <fmt:message key="label.view_product_table"/> </a>
                 </li>
-                </li>
+
             </ul>
         </nav>
     </div>

@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        order detail
+        <fmt:message key="label.order.detail"/>
     </title>
 
     <link rel="stylesheet" href="css/main.css" type="text/css"/>
@@ -44,7 +44,7 @@
         <div class="new-select-style-locale">
             <form style="display: inline; margin-left: 20px">
                 <div class="new-select-style-locale" style="margin-left: 340px; margin-top: -25px; ">
-                    <input type="hidden" name="action" value="viewOrdersHistory"/>
+                    <input type="hidden" name="action" value="ViewOrderDetail"/>
                     <label for="locale"></label>
                     <select id="locale" name="locale" onchange="submit()">
                         <option value="en_EN" ${locale == 'en_EN' ? 'selected' : ''}>English</option>
@@ -59,7 +59,7 @@
 
                 <li>
                     <a href="mainWindow?action=viewOrdersHistory">
-                        Назад
+                        <fmt:message key="label.view_buy_history"/>
                     </a>
                 </li>
 
@@ -86,21 +86,17 @@
                             <div style="height:472px; overflow:auto; width: 100%;">
                                 <table class="table_inner">
                                     <tr>
-                                        <%--                                            <th width="7%"><fmt:message key="table.chooseForAction"/></th>--%>
-                                        <%--                                            <th><fmt:message key="categoriesTable.name"/></th>--%>
-                                        <%--                                            <th><fmt:message key="categoriesTable.description"/></th>--%>
-                                        <%--                                            <th><fmt:message key="categoriesTable.image"/></th>--%>
-                                        <th>Дата покупки</th>
-                                        <th>Стоимость</th>
-                                        <th>Способ оплаты</th>
-                                        <th>Статус заказа</th>
+                                        <th><fmt:message key="label.buy_date"/></th>
+                                        <th><fmt:message key="label.cost"/></th>
+                                        <th><fmt:message key="label.payment_type"/></th>
+                                        <th><fmt:message key="label.order_status"/></th>
 
-                                        <th>Category name</th>
-                                        <th>Brand name</th>
-                                        <th>Product name</th>
-                                        <th>Description</th>
-                                        <th>Picture</th>
-                                        <th>Cost</th>
+                                        <th><fmt:message key="label.text.category_name"/></th>
+                                        <th><fmt:message key="label.text.brand_name"/></th>
+                                        <th><fmt:message key="label.text.product_name"/></th>
+                                        <th><fmt:message key="label.text.product_description"/></th>
+                                        <th><fmt:message key="label.text.product_image_path"/></th>
+                                        <th><fmt:message key="label.text.product_cost"/></th>
                                     </tr>
                                     <c:forEach varStatus="count" items="${productOrders}" var="productOrder">
                                         <tr>

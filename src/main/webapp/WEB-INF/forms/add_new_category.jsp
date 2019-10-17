@@ -27,24 +27,24 @@
         <div class="login-wrapper">
             <div class="login-content" id="loginTarget">
                 <a class="close">x</a>
-                <h3>Добавление новой категории</h3>
+                <h3><fmt:message key="label.action.add_new_category"/> </h3>
 
                 <form enctype="multipart/form-data" method="post" action="mainWindow">
 
 
-                    <label for="categoryName">Enter category name</label>
+                    <label for="categoryName"><fmt:message key="categoriesTable.name"/></label>
                     <input id="categoryName"
                            required type="text" placeholder="name"
                            name="categoryName">
 
 
-                    <label for="categoryDescription">Enter category description</label>
+                    <label for="categoryDescription"><fmt:message key="label.text.category_description"/></label>
                     <input id="categoryDescription"
                            required type="text" placeholder="description"
                            name="categoryDescription">
 
 
-                    <label for="categoryImagePath">Enter image path</label>
+                    <label for="categoryImagePath"><fmt:message key="label.text.category_image_path"/></label>
                     <input id="categoryImagePath"
                            type="text" placeholder="description"
                            name="categoryImagePath">
@@ -52,7 +52,7 @@
 
                     <button type="submit" name="action" value="addNewCategory">
                         <strong>
-                            Сохранить
+                            <fmt:message key="button.message.save"/>
                         </strong>
                     </button>
                 </form>

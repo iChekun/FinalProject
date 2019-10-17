@@ -32,7 +32,7 @@ public interface UserRepository extends CrudRepository<User> {
 
     void updateBanStatus(String userId) throws UserDAOException;
 
-    void updateUserStatus(String userId, int userStatusId) throws UserDAOException;
+    void updateUserStatus(String userId) throws UserDAOException;
 
     void updatePassword(String userId, String newEncodedPass) throws UserDAOException;
 

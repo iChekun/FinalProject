@@ -8,6 +8,7 @@ import by.epam.chekun.dao.exception.user.UsedLoginException;
 import by.epam.chekun.dao.exception.user.UserDAOException;
 import by.epam.chekun.dao.mapper.UserRowMapper;
 import by.epam.chekun.domain.entity.user.User;
+import by.epam.chekun.domain.entity.user.UserStatus;
 
 import java.util.List;
 
@@ -100,15 +101,28 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
     @Override
     public void updateBanStatus(String userId) throws UserDAOException {
         try {
-            jdbcTemplate.update(UPDATE_BAN_STATUS, userId);
+            final User user = getEntityById(userId);
+            final boolean banned = !user.getBanned();
+            //
+            jdbcTemplate.update(UPDATE_BAN_STATUS, banned, userId);
         } catch (JdbcTemplateException e) {
             throw new UserDAOException(e);
         }
     }
 
     @Override
-    public void updateUserStatus(String userId, int userStatusId) throws UserDAOException {
+    public void updateUserStatus(String userId) throws UserDAOException {
+        try {
+            final User user = getEntityById(userId);
+            final int statusId = user.getUserStatus().getUserStatusId() == UserStatus.ADMIN.getUserStatusId() ?
+                    UserStatus.CUSTOMER.getUserStatusId() :
+                    UserStatus.ADMIN.getUserStatusId();
 
+            //
+            jdbcTemplate.update(UPDATE_USER_STATUS, statusId, userId);
+        } catch (JdbcTemplateException e) {
+            throw new UserDAOException(e);
+        }
     }
 
     @Override

@@ -19,7 +19,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        buy history
+        <fmt:message key="label.buy_history"/>
     </title>
 
     <link rel="stylesheet" href="css/main.css" type="text/css"/>
@@ -88,7 +88,7 @@
 
     <div class="user_table_look">
         <div class="table_line">
-            <caption>${user.name}, это ваша история покупок</caption>
+            <caption>${user.name}, <fmt:message key="label.its_your_buy_history"/></caption>
         </div>
 
         <form action="mainWindow" method="post">
@@ -99,16 +99,12 @@
                             <div style="height:472px; overflow:auto; width: 100%;">
                                 <table class="table_inner">
                                     <tr>
-                                        <%--                                            <th width="7%"><fmt:message key="table.chooseForAction"/></th>--%>
-                                        <%--                                            <th><fmt:message key="categoriesTable.name"/></th>--%>
-                                        <%--                                            <th><fmt:message key="categoriesTable.description"/></th>--%>
-                                        <%--                                            <th><fmt:message key="categoriesTable.image"/></th>--%>
                                         <th width="2%">№</th>
-                                        <th width="9%">Подробнее</th>
-                                        <th>Дата покупки</th>
-                                        <th>Стоимость</th>
-                                        <th>Способ оплаты</th>
-                                        <th>Статус заказа</th>
+                                        <th width="9%"><fmt:message key="label.view_more"/></th>
+                                        <th><fmt:message key="label.buy_date"/></th>
+                                        <th><fmt:message key="label.cost"/></th>
+                                        <th><fmt:message key="label.payment_type"/></th>
+                                        <th><fmt:message key="label.order_status"/></th>
                                     </tr>
                                     <c:forEach varStatus="count" items="${orders}" var="order">
                                         <tr>
@@ -117,7 +113,7 @@
                                                 <label style="width: 50px; float: left;">
                                                     <input type="hidden" name="orderId" value="${order.orderId}">
                                                     <input type="hidden" name="action" value="ViewOrderDetail">
-                                                    <input type="submit" value="подробнее">
+                                                    <input type="submit" value="<fmt:message key="label.view_more"/>">
 
                                                 </label>
 

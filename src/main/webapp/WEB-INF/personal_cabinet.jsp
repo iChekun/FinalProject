@@ -92,7 +92,7 @@
                 <ul>
                     <li>
                         <fieldset>
-                            Меню
+                            <fmt:message key="table.message.title.menu"/>
                         </fieldset>
                     </li>
 
@@ -100,20 +100,20 @@
 
                         <li class="Schedule">
                             <a href="" style="margin-left: 7%;" onclick="return false">
-                                work with<br> store
+                                <fmt:message key="label.action.personal_cabinet.work_with_store"/>
                             </a>
                             <ul>
                                 <li><a href="mainWindow?action=viewCategoriesTable">
-                                    View categories table</a>
+                                    <fmt:message key="label.view_category_table"/></a>
                                 </li>
                                 <li><a href="mainWindow?action=viewBrandsTable">
-                                    View brands table</a>
+                                    <fmt:message key="label.view_brand_table"/></a>
                                 </li>
                                 <li><a href="mainWindow?action=viewPaymentsMethodTable">
-                                    view Payments Method Table</a>
+                                    <fmt:message key="label.view_payment_method_table"/></a>
                                 </li>
                                 <li><a href="mainWindow?action=viewProductTable">
-                                    view products table</a>
+                                    <fmt:message key="label.view_product_table"/></a>
                                 </li>
                             </ul>
                         <li>
@@ -127,20 +127,19 @@
 
                     <li>
                         <a href="mainWindow?action=viewUserBasket">
-                            view user basket
+                            <fmt:message key="label.view_user_basket"/>
                         </a>
                     </li>
 
                     <li>
                         <a href="mainWindow?action=viewOrdersHistory">
-                            история покупок
+                            <fmt:message key="label.view_buy_history"/>
                         </a>
                     </li>
 
                     <li>
-                        <!-- тту сделать всплывающее окно-->
                         <a href="" class="overlayLink">
-                            change password
+                            <fmt:message key="label.change_password"/>
                         </a>
                     </li>
                 </ul>
@@ -317,8 +316,7 @@
                         <input type="hidden" name="contactsId" value="${user.contacts.contactsId}">
                         <button type="submit" name="action" value="editUser">
                             <strong>
-<%--                                <fmt:message key="table.message.save"/>--%>
-                                сохранить изменения
+                                <fmt:message key="button.message.save"/>
                             </strong>
                         </button>
                     </p>
@@ -330,7 +328,6 @@
         </div>
     </div>
 </div>
-
 
 
 <hr>

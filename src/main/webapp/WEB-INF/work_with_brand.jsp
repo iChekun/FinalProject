@@ -44,7 +44,7 @@
         <div class="new-select-style-locale">
             <form style="display: inline; margin-left: 60px;">
                 <div class="new-select-style-locale" style="margin-left: 340px; margin-top: -25px; ">
-                    <input type="hidden" name="action" value="signUpWindow">
+                    <input type="hidden" name="action" value="viewEditBrand">
                     <label for="locale"></label>
                     <select id="locale" name="locale" onchange="submit()">
                         <option value="en_EN" ${locale == 'en_EN' ? 'selected' : ''}>English</option>
@@ -58,7 +58,7 @@
             <ul class="header" style="margin-right: -23%; margin-top: 3%">
                 <li>
                 <li><a href="mainWindow?action=viewBrandsTable">
-                    View brands table</a>
+                <fmt:message key="label.view_brand_table"/></a>
                 </li>
                 </li>
             </ul>
@@ -71,21 +71,21 @@
 <div id="main-wrap">
     <div class="user_table_look" style="padding: 10% 5%">
         <strong style="margin-left: 10%;margin-bottom: 15%;font-size: 145%;text-decoration: underline;">
-            Work with brand
+            <fmt:message key="title.brand.work_with_brand"/>
         </strong>
         <form enctype="multipart/form-data" method="post" action="mainWindow">
 
-            <label style="font-size: 100%; font-weight: bold;" for="brandNameInput">Enter name</label>
+            <label style="font-size: 100%; font-weight: bold;" for="brandNameInput"><fmt:message key="label.text.brand_name"/></label>
             <input id="brandNameInput"
                    required type="text" placeholder="name" name="brandName" value="${brand.name}">
 
             <br>
-            <label style="font-size: 100%; font-weight: bold;" for="brandDescriptionInput">Enter description</label>
+            <label style="font-size: 100%; font-weight: bold;" for="brandDescriptionInput"><fmt:message key="label.text.brand_description"/></label>
             <input id="brandDescriptionInput"
                    required type="text" placeholder="description" name="brandDescription" value="${brand.description}">
 
             <br>
-            <label style="font-size: 100%; font-weight: bold;" for="brandImagePathInput">Enter image path</label>
+            <label style="font-size: 100%; font-weight: bold;" for="brandImagePathInput"><fmt:message key="label.text.brand_image_path"/></label>
             <input id="brandImagePathInput"
                    type="text" placeholder="description" name="brandImagePath" value="${brand.imagePath}">
 
@@ -95,13 +95,13 @@
 
                 <input type="hidden" name="brandId" value="${brand.brandId}">
                 <button type="submit" name="action" value="editBrand">
-                    <strong><fmt:message key="button.message.save"/></strong>
+                    <strong><fmt:message key="label.change"/></strong>
                 </button>
 
                 <p style="margin-left: 15%;margin-top: -3.4%;">
                     <button type="submit" name="action" value="deleteBrand">
                         <strong>
-                            Удалить бренд
+                            <fmt:message key="label.delete"/>
                         </strong>
                     </button>
                 </p>

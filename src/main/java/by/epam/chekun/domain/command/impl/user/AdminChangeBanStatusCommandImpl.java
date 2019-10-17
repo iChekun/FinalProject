@@ -29,15 +29,11 @@ public class AdminChangeBanStatusCommandImpl implements Command {
     public String execute() throws CommandException {
         try {
             final String userIdForAction = String.valueOf(request.getParameter(USER_FOR_ACTION_IN_USERS_TABLE));
-            System.out.println(userIdForAction);
             userService.changeBanStatus(userIdForAction);
-//            request.setAttribute(USER_ID_FOR_ACTION_IN_USERS_TABLE, userIdForAction);
             request.removeAttribute(USER_ID_FOR_ACTION_IN_USERS_TABLE);
         } catch (ServiceException ex) {
-            ex.printStackTrace();
             throw new CommandException(ex);
         }
-//        final String path = new ViewUsersTableCommandImpl(request, response).execute();
         return USERS_TABLE_PAGE;
     }
 }

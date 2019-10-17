@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        category table
+        <fmt:message key="label.text.category_table"/>
     </title>
 
     <link rel="stylesheet" href="css/main.css" type="text/css"/>
@@ -92,19 +92,13 @@
                 <ul>
                     <li>
                         <fieldset>
-                            Меню
+                            <fmt:message key="table.message.title.menu"/>
                         </fieldset>
                     </li>
                     <li>
                         <a href="" class="overlayLink">
-                            Добавить<br> новую категорию
+                            <fmt:message key="label.action.add_new_category"/>
                         </a>
-
-
-                        <%--                            <input type="button" value="buy" onclick="change_on_bought()" id="buy_button"--%>
-                        <%--                                   name="buy">--%>
-
-                        <%--                            <label> ${buy_button}</label>--%>
                     </li>
                     <li>
                         <a href="">
@@ -125,7 +119,7 @@
                 <caption><fmt:message key="categoriesTable.caption"/></caption>
             </div>
 
-            <form action="mainWindow" method="post">
+            <form action="mainWindow" method="get">
                 <div class="start_table">
                     <table class="table_outer">
                         <tr>
@@ -148,7 +142,7 @@
                                                     <button class="shadow-btn"
                                                             type="submit" name="categoryId" value="${category.categoryId}">
                                                         <span class="table_button">
-                                                            Перейти
+                                                             <fmt:message key="label.view_more"/>
                                                         </span>
                                                     </button>
                                                 </td>

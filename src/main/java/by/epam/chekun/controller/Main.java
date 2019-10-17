@@ -1,5 +1,7 @@
 package by.epam.chekun.controller;
 
+import java.util.Formatter;
+
 public class Main {
     private static final String URL = "jdbc:mysql://localhost/online_store?serverTimezone=Europe/Moscow&useSSL=false";
     private static final String USER = "root";
@@ -25,11 +27,12 @@ public class Main {
 //        }
 
 
-        for (int i = 2; i < 10; i = (i++) + i--, i++) {
-            System.out.println(--i);
+
+
         }
 
-    }
 
 
 }
+
+

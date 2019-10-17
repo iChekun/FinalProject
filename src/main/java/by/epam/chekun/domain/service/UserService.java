@@ -17,7 +17,7 @@ public interface UserService {
 
     void changeBanStatus(String userId) throws ServiceException;
 
-    void changeUserStatus(String userId, int userStatusId) throws ServiceException;
+    void changeUserStatus(String userId) throws ServiceException;
 
     void update(String userId, int userStatusId, boolean banned,
                 String login,

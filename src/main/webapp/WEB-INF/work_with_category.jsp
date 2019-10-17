@@ -76,7 +76,7 @@
 
 
         <strong style="margin-left: 10%;margin-bottom: 15%;font-size: 145%;text-decoration: underline;">
-            <fmt:message key="title_category_work_with_category"/>
+            <fmt:message key="title.category.work_with_category"/>
         </strong>
         <form enctype="multipart/form-data" method="post" action="mainWindow">
 

@@ -110,7 +110,7 @@
                 </li>
                 <li class="Schedule_left_bar_menu_main">
                     <a href="" style="margin-left: 7%;" onclick="return false">
-                        categories
+                        <fmt:message key="label.main.categories"/>
                     </a>
                     <ul>
                         <c:forEach items="${categories}" var="category">
@@ -127,7 +127,7 @@
 
                 <li>
                     <a href="mainWindow?action=viewCustomerProductTable" style="margin-left: 7%;">
-                        product table<br>to customer
+                        <fmt:message key="label.main.product_table_to_customer"/>
                     </a>
                 </li>
 
@@ -135,26 +135,26 @@
         </aside>
     </div>
 
-<div id="content-wrap">
+    <div id="content-wrap">
 
-    <form action="" method="post">
-        <div class="search">
-            <input type="search" placeholder="Поиск по каталогу">
-            <input type="submit" value="">
-        </div>
-    </form>
+        <form action="" method="post">
+            <div class="search">
+                <input type="search" placeholder="Поиск по каталогу">
+                <input type="submit" value="">
+            </div>
+        </form>
 
-    <!-- корзина -->
-    <c:if test="${sessionScope.userId != null && sessionScope.userStatusId != null}">
-        <div class="basket">
-            <a href="mainWindow?action=viewUserBasket">
-                корзина
-            </a>
-        </div>
-    </c:if>
+        <!-- корзина -->
+        <c:if test="${sessionScope.userId != null && sessionScope.userStatusId != null}">
+            <div class="basket">
+                <a href="mainWindow?action=viewUserBasket">
+                    <fmt:message key="label.view_user_basket"/>
+                </a>
+            </div>
+        </c:if>
 
 
-</div>
+    </div>
 
 </div>
 

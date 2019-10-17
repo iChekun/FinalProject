@@ -24,7 +24,6 @@ import by.epam.chekun.domain.command.impl.user.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.UnsupportedEncodingException;
 
 import static by.epam.chekun.domain.configuration.JspActionCommand.*;
 
@@ -70,6 +69,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ViewUsersTableCommandImpl(request, response);
             case CHANGE_BAN_STATUS_COMMAND:
                 return new AdminChangeBanStatusCommandImpl(request, response);
+            case "changeUserStatus":
+                return new AdminChangeUserStatusCommandImpl(request, response);
             case VIEW_USERS_TABLE_SORTED_COMMAND:
                 return new ViewUsersTableSortedCommandImpl(request, response);
             case EDIT_USER_COMMAND:
@@ -163,7 +164,6 @@ public class CommandFactoryImpl implements CommandFactory {
 
         throw new CommandException("No command with name " + actionName);
     }
-
 
 
 }

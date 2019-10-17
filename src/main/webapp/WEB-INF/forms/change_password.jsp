@@ -16,10 +16,10 @@
 <html>
 <head>
     <title>Title</title>
-<%--    <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet'--%>
-<%--          type='text/css'>--%>
-<%--    <script src="http://code.jquery.com/jquery-latest.min.js"></script>--%>
-<%--    <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>--%>
+    <%--    <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet'--%>
+    <%--          type='text/css'>--%>
+    <%--    <script src="http://code.jquery.com/jquery-latest.min.js"></script>--%>
+    <%--    <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>--%>
     <script src="js/alert.js"></script>
 </head>
 <body>
@@ -29,7 +29,7 @@
         <div class="login-wrapper">
             <div class="login-content" id="loginTarget">
                 <a class="close">x</a>
-                <h3>Смена пароля</h3>
+                <h3><fmt:message key="label.change_password"/></h3>
 
                 <form method="post" action="mainWindow">
                     <label for="curPass">

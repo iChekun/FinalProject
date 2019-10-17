@@ -45,7 +45,7 @@ final class UserSqlUtil {
 
     static final String UPDATE_BAN_STATUS = "UPDATE Users SET banned=? WHERE UserId=?";
 
-    static final String UPDATE_USER_STATUS = "UPDATE users SET StatusId ? WHERE UserId=?";
+    static final String UPDATE_USER_STATUS = "UPDATE users SET userStatusId=?  WHERE userId=? ";
 
     static final String GET_ALL_USERS_SORTED_BY_SURNAME_ASC =
             "SELECT " +

@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        product table
+        <fmt:message key="label.customer_product_table"/>
     </title>
 
     <link rel="stylesheet" href="css/main.css" type="text/css"/>
@@ -69,7 +69,7 @@
                 <c:if test="${userId!=null}">
                     <li>
                         <a href="mainWindow?action=viewUserBasket">
-                            show user basket
+                            <fmt:message key="label.view_user_basket"/>
                         </a>
                     </li>
                 </c:if>
@@ -99,7 +99,7 @@
                             </fieldset>
                         </li>
                         <li>
-                            <label for="category">Product category</label>
+                            <label for="category">  <fmt:message key="label.text.product_category"/></label>
                             <select id="category" name="categoryId">
                                 <c:forEach items="${categories}" var="order">
                                     <option value="${order.categoryId}"
@@ -110,7 +110,7 @@
                             </select>
                         </li>
                         <li>
-                            <label>Product brand</label>
+                            <label>  <fmt:message key="label.text.product_brand"/></label>
                             <c:forEach items="${brands}" var="brand">
                                 <%--                                <option value="${brand.brandId}"--%>
                                 <%--                                        <c:if test="${brand.brandId == currentBrandId}">selected</c:if>>--%>
@@ -194,7 +194,7 @@
                                     <button class="btn" type="submit"
                                             name="productForAction"
                                             value="${product.productId}">
-                                        В корзину
+                                        <fmt:message key="label.customer_product_table.put_in_basket"/>
                                     </button>
                                     <input type="hidden" name="action" value="addProductToBasket">
                                 </p>

@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        category table
+        <fmt:message key="label.text.brand_table"/>
     </title>
 
     <link rel="stylesheet" href="css/main.css" type="text/css"/>
@@ -93,13 +93,13 @@
                 <ul>
                     <li>
                         <fieldset>
-                            Меню
+                            <fmt:message key="table.message.title.menu"/>
                         </fieldset>
                     </li>
                     <li>
                         <a href="" class="overlayLink"
                            data-action="login-form.html">
-                            Добавить<br> новый бренд
+                            <fmt:message key="label.action.add_new_brand"/>
                         </a>
                     </li>
                     <li>
@@ -118,8 +118,7 @@
         <div class="user_table_look">
             <div class="table_line">
                 <caption>
-                    <%--                    <fmt:message key="bra"/>--%>
-                    brands table
+                    <fmt:message key="label.text.brand_table"/>
                 </caption>
             </div>
 
@@ -148,7 +147,7 @@
                                                             type="submit" name="brandForAction"
                                                             value="${brand.brandId}">
                                                         <span class="table_button">
-                                                            Перейти
+                                                             <fmt:message key="label.view_more"/>
                                                         </span>
                                                     </button>
                                                 </td>
@@ -183,21 +182,21 @@
         <div class="login-wrapper">
             <div class="login-content" id="loginTarget">
                 <a class="close">x</a>
-                <h3>Добавление новой категории</h3>
+                <h3> <fmt:message key="label.action.add_new_brand"/></h3>
 
                 <form enctype="multipart/form-data" method="post" action="mainWindow">
 
-                    <label for="brandNameInput">Enter name</label>
+                    <label for="brandNameInput"> <fmt:message key="label.text.brand_name"/></label>
                     <input id="brandNameInput"
                            required type="text" placeholder="name" name="brandName">
 
 
-                    <label for="brandDescriptionInput">Enter description</label>
+                    <label for="brandDescriptionInput"> <fmt:message key="label.text.brand_description"/></label>
                     <input id="brandDescriptionInput"
                            required type="text" placeholder="description" name="brandDescription">
 
 
-                    <label for="brandImagePathInput">Enter image path</label>
+                    <label for="brandImagePathInput"> <fmt:message key="label.text.brand_image_path"/></label>
                     <input id="brandImagePathInput"
                            type="text" placeholder="description" name="brandImagePath">
 

@@ -144,9 +144,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeUserStatus(final String userId, final int userStatusId) throws ServiceException {
+    public void changeUserStatus(final String userId) throws ServiceException {
         try {
-            userRepository.updateUserStatus(userId, userStatusId);
+            userRepository.updateUserStatus(userId);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }

@@ -78,12 +78,12 @@
                 </li>
                 <li>
                     <a href="mainWindow?action=viewCustomerProductTable">
-                        View product table
+                        <fmt:message key="label.view_product_table"/>
                     </a>
                 </li>
                 <li>
                     <a href="mainWindow?action=main">
-                        view main page
+                        <fmt:message key="label.view_main_page"/>
                     </a>
                 </li>
 
@@ -103,11 +103,11 @@
                 <ul>
                     <li>
                         <fieldset>
-                            Меню
+                            <fmt:message key="table.message.title.menu"/>
                         </fieldset>
                     </li>
                     <a href="" class="overlayLink">
-                        Сделать заказ
+                        <fmt:message key="label.order.make_order"/>
                     </a>
                     </li>
                 </ul>
@@ -119,8 +119,7 @@
         <div class="user_table_look">
             <div class="table_line">
                 <caption>
-                    <!--<fmt:message key="title.register"/>-->
-                    Продукты в корзине
+                    <fmt:message key="label.order.product_in_basket"/>
                 </caption>
             </div>
 
@@ -133,12 +132,12 @@
                                     <table class="table_inner">
                                         <tr>
                                             <th width="7%">Choose for action</th>
-                                            <th>Category name</th>
-                                            <th>Brand name</th>
-                                            <th>Product name</th>
-                                            <th>Description</th>
-                                            <th>Picture</th>
-                                            <th>Cost</th>
+                                            <th> <fmt:message key="label.text.category_name"/></th>
+                                            <th> <fmt:message key="label.text.brand_name"/></th>
+                                            <th> <fmt:message key="label.text.product_name"/></th>
+                                            <th> <fmt:message key="label.text.product_description"/></th>
+                                            <th> <fmt:message key="label.text.product_image_path"/></th>
+                                            <th> <fmt:message key="label.text.product_cost"/></th>
                                         </tr>
                                         <c:forEach items="${productsInBasket}" var="product">
                                             <tr>
@@ -174,7 +173,7 @@
                         <tr>
                             <td>
                                 <strong style="float:left;font-size: 18px;text-decoration: underline">
-                                    full cost
+                                    <fmt:message key="label.order.full_cost"/>
                                 </strong>
                             </td>
                             <td style="text-align: center; font-weight: bold;">
@@ -190,8 +189,7 @@
                         <p>
                             <button type="submit" name="action" value="deleteProductFromBasket">
                                 <strong>
-                                    Удалить продукт из корзины
-                                    <!--                                       <fmt:message key="table.message.save"/>-->
+                                    <fmt:message key="label.order.delete_product_from_basket"/>
                                 </strong>
                             </button>
 
@@ -209,11 +207,11 @@
             <div class="login-content" id="loginTarget">
                 <a class="close">x</a>
 
-                <h3>Сделать заказ</h3>
+                <h3> <fmt:message key="label.order.make_order"/></h3>
 
                 <form enctype="multipart/form-data" method="post" action="mainWindow">
 
-                    <label for="paymentMethodName">Выберите способ оплаты</label>
+                    <label for="paymentMethodName"> <fmt:message key="label.payment_method.choose_payment"/></label>
 
                     <select id="paymentMethodName" name="paymentMethodId">
                         <c:forEach items="${paymentMethods}" var="paymentMethod">
@@ -225,7 +223,7 @@
 
 
                     <button type="submit" name="action" value="addNewOrder">
-                        <strong>Заказать</strong>
+                        <strong> <fmt:message key="label.confirm"/></strong>
                     </button>
                     <c:if test="${orderMessage != null}">
                         <script>

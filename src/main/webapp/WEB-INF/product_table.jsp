@@ -21,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        product table
+        <fmt:message key="label.text.product_table"/>
     </title>
 
     <link rel="stylesheet" href="css/main.css" type="text/css"/>
@@ -101,13 +101,13 @@
                 <ul>
                     <li>
                         <fieldset>
-                            Меню
+                            <fmt:message key="table.message.title.menu"/>
                         </fieldset>
                     </li>
                     <li>
                         <a href="" class="overlayLink"
                            data-action="login-form.html">
-                            Добавить<br>новый продукт
+                            <fmt:message key="label.action.product_table.add_new_product"/>
                         </a>
                     </li>
                     <li>
@@ -126,12 +126,11 @@
         <div class="user_table_look">
             <div class="table_line">
                 <caption>
-                    <!--                    <fmt:message key="title.register"/>-->
-                    Таблица продуктов
+                    <fmt:message key="label.text.product_table"/>
                 </caption>
             </div>
 
-            <form action="mainWindow" method="post">
+            <form action="mainWindow" method="get">
                 <div class="start_table">
                     <table class="table_outer">
                         <tr>
@@ -140,12 +139,12 @@
                                     <table class="table_inner">
                                         <tr>
                                             <th width="7%">Choose for action</th>
-                                            <th>Category name</th>
-                                            <th>Brand name</th>
-                                            <th>Product name</th>
-                                            <th>Description</th>
-                                            <th>Picture</th>
-                                            <th>Cost</th>
+                                            <th><fmt:message key="label.text.product_category"/></th>
+                                            <th><fmt:message key="label.text.product_brand"/></th>
+                                            <th><fmt:message key="label.text.product_name"/></th>
+                                            <th><fmt:message key="label.text.product_description"/></th>
+                                            <th><fmt:message key="label.text.product_image_path"/></th>
+                                            <th><fmt:message key="label.text.product_cost"/></th>
                                         </tr>
                                         <c:forEach items="${products}" var="product">
                                             <tr>
@@ -196,46 +195,48 @@
         <div class="login-wrapper">
             <div class="login-content" id="loginTarget">
                 <a class="close">x</a>
-                <h3>Добавление продукта</h3>
+                <h3> <fmt:message key="label.action.product_table.add_new_product"/></h3>
 
                 <form enctype="multipart/form-data" method="post" action="mainWindow">
 
-                    <label for="category">Product category</label>
+                    <label for="category"> <fmt:message key="label.text.product_category"/></label>
                     <select id="category" name="categoryId">
                         <option disabled selected value> -- select an option --</option>
                         <c:forEach items="${categories}" var="order">
                             <option value="${order.categoryId}">${order.name}</option>
                         </c:forEach>
+                        <option value><fmt:message key="label.select.none"/></option>
                     </select>
 
 
-                    <label for="brand">Product brand</label>
+                    <label for="brand"> <fmt:message key="label.text.product_brand"/></label>
                     <select id="brand" name="brandId">
                         <option disabled selected value> -- select an option --</option>
                         <c:forEach items="${brands}" var="brand">
                             <option value="${brand.brandId}">${brand.name}</option>
                         </c:forEach>
+                        <option value><fmt:message key="label.select.none"/></option>
                     </select>
 
 
-                    <label for="productName">Product name</label>
+                    <label for="productName"> <fmt:message key="label.text.product_name"/></label>
                     <input id="productName" type="text" required name="productName" value=""/>
 
 
-                    <label for="productDescription">Product description</label>
+                    <label for="productDescription"> <fmt:message key="label.text.product_description"/></label>
                     <input id="productDescription" type="text" required name="productDescription" value=""/>
 
 
-                    <label for="productImagePath">Product image path</label>
+                    <label for="productImagePath"> <fmt:message key="label.text.product_image_path"/></label>
                     <input id="productImagePath" type="text" name="productImagePath" value=""/>
 
 
-                    <label for="productCost">Product cost</label>
+                    <label for="productCost"> <fmt:message key="label.text.product_cost"/></label>
                     <input id="productCost" type="number" min="1" step="any" required name="productCost" value=""/>
 
 
                     <button type="submit" name="action" value="addNewProduct">
-                        <strong>Добавить</strong>
+                        <strong> <fmt:message key="label.confirm"/></strong>
                     </button>
                 </form>
             </div>

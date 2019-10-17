@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        category table
+        <fmt:message key="label.payment_method_table"/>
     </title>
 
     <link rel="stylesheet" href="css/main.css" type="text/css"/>
@@ -51,7 +51,7 @@
         <div class="new-select-style-locale">
             <form style="display: inline; margin-left: 20px">
                 <div class="new-select-style-locale" style="margin-left: 340px; margin-top: -25px; ">
-                    <input type="hidden" name="action" value="viewCategoriesTable"/>
+                    <input type="hidden" name="action" value="viewPaymentsMethodTable"/>
                     <label for="locale"></label>
                     <select id="locale" name="locale" onchange="submit()">
                         <option value="en_EN" ${locale == 'en_EN' ? 'selected' : ''}>English</option>
@@ -91,13 +91,13 @@
                 <ul>
                     <li>
                         <fieldset>
-                            Меню
+                            <fmt:message key="table.message.title.menu"/>
                         </fieldset>
                     </li>
                     <li>
                         <a href="" class="overlayLink"
                            data-action="login-form.html">
-                            Добавить<br> новый способ<br>оплаты
+                            <fmt:message key="label.payment_method.add_new_payment_method"/>
                         </a>
                     </li>
                 </ul>
@@ -120,7 +120,7 @@
                                     <table class="table_inner">
                                         <tr>
                                             <th width="7%"><fmt:message key="table.chooseForAction"/></th>
-                                            <th>Name</th>
+                                            <th> <fmt:message key="label.payment_method_name"/></th>
                                         </tr>
                                         <c:forEach items="${paymentMethods}" var="paymentMethod">
                                             <tr>
@@ -150,7 +150,7 @@
                         <p>
                             <button type="submit" name="action" value="deletePaymentMethod">
                                 <strong>
-                                    удалить способ оплаты
+                                    <fmt:message key="label.delete"/>
                                 </strong>
                             </button>
                         </p>
@@ -166,11 +166,11 @@
         <div class="login-wrapper">
             <div class="login-content" id="loginTarget">
                 <a class="close">x</a>
-                <h3>Добавление нового способа оплаты</h3>
+                <h3> <fmt:message key="label.payment_method.add_new_payment_method"/></h3>
 
                 <form enctype="multipart/form-data" method="post" action="mainWindow">
 
-                    <label for="paymentMethodName">Enter name</label>
+                    <label for="paymentMethodName"> <fmt:message key="label.payment_method_name"/></label>
                     <input id="paymentMethodName"
                            required type="text" placeholder="name" name="paymentMethodName">
 
