@@ -44,7 +44,7 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        encoding(req, resp);
+
         final String action = req.getParameter(JspActionCommand.ACTION_TYPE);
         System.out.println("DO POST command name  " + action);
 
@@ -63,13 +63,5 @@ public class Controller extends HttpServlet {
     }
 
 
-    private void encoding(final HttpServletRequest servletRequest,
-                          final HttpServletResponse servletResponse) throws UnsupportedEncodingException {
-
-        System.out.println("here");
-//        servletRequest.setCharacterEncoding("windows-1251");
-//        servletResponse.setCharacterEncoding("windows-1251");
-//        servletResponse.setContentType("text/html");
-    }
 
 }
