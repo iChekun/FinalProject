@@ -35,6 +35,9 @@ public class ViewProductsTableCommandImpl implements Command {
 
     @Override
     public String execute() throws CommandException {
+
+        HttpSession session = request.getSession();
+
         try {
             final List<Category> categories = categoryService.getAll();
             request.setAttribute(CATEGORY_LIST, categories);
@@ -45,7 +48,8 @@ public class ViewProductsTableCommandImpl implements Command {
         try {
             final List<Brand> brands = brandService.getAll();
             request.setAttribute(BRAND_LIST, brands);
-        } catch (ServiceException e) { }
+        } catch (ServiceException e) {
+        }
 
         try {
             final List<Product> products = productService.getAll();
@@ -53,6 +57,12 @@ public class ViewProductsTableCommandImpl implements Command {
             request.setAttribute(PRODUCT_LIST, products);
         } catch (ServiceException e) {
 //            throw new CommandException(e);
+        }
+
+        if (session.getAttribute("errorMessageProduct") != null) {
+            String error = String.valueOf(session.getAttribute("errorMessageProduct"));
+            request.setAttribute("errorMessage", error);
+            session.removeAttribute("errorMessageProduct");
         }
         return PRODUCT_TABLE_PAGE;
     }

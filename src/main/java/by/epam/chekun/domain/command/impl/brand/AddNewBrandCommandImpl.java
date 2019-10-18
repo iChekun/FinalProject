@@ -38,7 +38,7 @@ public class AddNewBrandCommandImpl implements Command {
             brandService.add(brandName, brandDescription, brandImagePath);
 
         } catch (InvalidBrandInformationException e) {
-            session.setAttribute("errorMessage", "message.brand_invalid_info");
+            session.setAttribute("errorMessageBrand", "message.brand_invalid_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

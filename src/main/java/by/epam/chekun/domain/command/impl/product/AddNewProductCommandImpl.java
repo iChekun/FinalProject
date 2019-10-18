@@ -42,7 +42,7 @@ public class AddNewProductCommandImpl implements Command {
             service.add(productName, productDescription, productImagePath, productCost,
                     categoryId, brandId);
         } catch (InvalidProductInformationException e) {
-            session.setAttribute("errorMessage", "message.invalid_product_info");
+            session.setAttribute("errorMessageProduct", "message.invalid_product_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

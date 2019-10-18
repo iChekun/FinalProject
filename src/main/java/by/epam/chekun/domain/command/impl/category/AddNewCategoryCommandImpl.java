@@ -36,7 +36,7 @@ public class AddNewCategoryCommandImpl implements Command {
             categoryService.add(categoryName, categoryDescription, categoryImagePath);
 
         } catch (InvalidCategoryInformationException e) {
-            session.setAttribute("errorMessage", "message.category_invalid_info");
+            session.setAttribute("brandErrorMessage", "message.category_invalid_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

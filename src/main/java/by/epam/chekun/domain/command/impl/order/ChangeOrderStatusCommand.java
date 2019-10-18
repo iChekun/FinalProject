@@ -34,7 +34,7 @@ public class ChangeOrderStatusCommand implements Command {
             throw new CommandException(e);
         }
 
-        //session.setAttribute("redirectToCommand", "viewUserBasket");
+        session.setAttribute("redirectToCommand", "viewOrdersHistory");
 
         return "order_detail";
     }

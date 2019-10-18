@@ -33,14 +33,14 @@ public class JdbcTemplate implements JdbcOperations {
     @Override
     public boolean queryForObject(String sql, Object... argc) throws JdbcTemplateException {
         return this.query(
-                new JdbcTemplate.SimplePreparedStatementCreator(sql),
+                new SimplePreparedStatementCreator(sql),
                 this.newArgPreparedStatementSetter(argc));
     }
 
 
     @Override
     public int update(String sql, Object... argc) throws JdbcTemplateException {
-        return this.update(new JdbcTemplate.SimplePreparedStatementCreator(sql),
+        return this.update(new SimplePreparedStatementCreator(sql),
                 this.newArgPreparedStatementSetter(argc));
     }
 
@@ -48,7 +48,7 @@ public class JdbcTemplate implements JdbcOperations {
     @Override
     public <T> List<T> query(String sql, RowMapper<T> rowMapper, Object... argc) throws JdbcTemplateException {
         return (List<T>) (this.query(
-                new JdbcTemplate.SimplePreparedStatementCreator(sql),
+                new SimplePreparedStatementCreator(sql),
                 new RowMapperResultSetExtractor<>(rowMapper),
                 this.newArgPreparedStatementSetter(argc)));
     }
@@ -58,7 +58,7 @@ public class JdbcTemplate implements JdbcOperations {
     }
 
     private <T> T query(String sql, PreparedStatementSetter pss, ResultSetExtractor<T> rse) throws JdbcTemplateException {
-        return this.query(new JdbcTemplate.SimplePreparedStatementCreator(sql), pss, rse);
+        return this.query(new SimplePreparedStatementCreator(sql), pss, rse);
     }
 
 
@@ -88,7 +88,7 @@ public class JdbcTemplate implements JdbcOperations {
     @Override
     public <T> List<T> query(String sql, RowMapper<T> rowMapper) throws JdbcTemplateException {
         return (List<T>) (this.query(
-                new JdbcTemplate.SimplePreparedStatementCreator(sql),
+                new SimplePreparedStatementCreator(sql),
                 new RowMapperResultSetExtractor<>(rowMapper)));
     }
 
@@ -133,7 +133,7 @@ public class JdbcTemplate implements JdbcOperations {
 
     private <T> T execute(PreparedStatementCreator psc, PreparedStatementCallBack<T> action) throws JdbcTemplateException {
 
-        ProxyConnection proxyConnection = JdbcTemplate.ConnectionCreator.getProxyConnection();
+        ProxyConnection proxyConnection = ConnectionCreator.getProxyConnection();
         ConnectionWrapper connectionWrapper = proxyConnection.getConnectionWrapper();
         PreparedStatement ps = null;
 

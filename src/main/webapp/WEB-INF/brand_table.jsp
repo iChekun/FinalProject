@@ -6,7 +6,7 @@
        scope="session"/>
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="text"/>
-<%--<c:import url="WEB-INF/forms/add_new_brand.jsp"/>--%>
+<c:import url="WEB-INF/forms/add_new_brand.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
 <!DOCTYPE html>
 <html lang="en">
@@ -15,15 +15,6 @@
     <title>
         <fmt:message key="label.text.brand_table"/>
     </title>
-
-
-
-    <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet'
-          type='text/css'>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>
-    <script src="js/signIn.js"></script>
-
 
     <link rel="stylesheet" href="css/main.css" type="text/css"/>
     <link rel="stylesheet" href="css/personal_cabinet_left_bar_menu.css" type="text/css"/>
@@ -169,38 +160,6 @@
                     <div class="table_line"></div>
                 </div>
             </form>
-        </div>
-    </div>
-</div>
-<div class="promt_window">
-    <div class="overlay" style="display: none;z-index: 1;">
-        <div class="login-wrapper">
-            <div class="login-content" id="loginTarget">
-                <a class="close">x</a>
-                <h3><fmt:message key="label.action.add_new_brand"/></h3>
-
-                <form enctype="multipart/form-data" method="post" action="mainWindow">
-
-                    <label for="brandNameInput"> <fmt:message key="label.text.brand_name"/></label>
-                    <input id="brandNameInput"
-                           required type="text" placeholder="name" name="brandName">
-
-
-                    <label for="brandDescriptionInput"> <fmt:message key="label.text.brand_description"/></label>
-                    <input id="brandDescriptionInput"
-                           required type="text" placeholder="description" name="brandDescription">
-
-
-                    <label for="brandImagePathInput"> <fmt:message key="label.text.brand_image_path"/></label>
-                    <input id="brandImagePathInput"
-                           type="text" placeholder="description" name="brandImagePath">
-
-
-                    <button type="submit" name="action" value="addNewBrand">
-                        <strong><fmt:message key="button.message.save"/></strong>
-                    </button>
-                </form>
-            </div>
         </div>
     </div>
 </div>

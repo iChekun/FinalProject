@@ -9,11 +9,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter(urlPatterns = {"/main",
+        "/users_table", "/signUp", "/personal_cabinet",
         "/work_with_category", "/category_table",
         "/work_with_brand", "/brand_table",
         "/work_with_product", "/product_table",
         "/payment_method_table",
-        "/user_basket", "/customer_product_table"})
+        "/user_basket", "/customer_product_table",
+        "/orders_history", "/order_detail"})
 public class PageRedirectSecurityFilter implements Filter {
 
     public void init(FilterConfig fConfig) throws ServletException {

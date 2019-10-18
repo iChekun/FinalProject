@@ -28,5 +28,5 @@ public interface OrderRepository extends CrudRepository<Order> {
 
     List<ProductOrder> getAllProductsFromOrder(String orderId) throws OrderDAOException;
 
-    boolean updateOrderStatus(String orderId,String orderStatusId) throws OrderDAOException;
+    boolean updateOrderStatus(String orderId, String orderStatusId) throws OrderDAOException;
 }

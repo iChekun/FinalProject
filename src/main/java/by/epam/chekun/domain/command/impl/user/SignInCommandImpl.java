@@ -58,7 +58,7 @@ public class SignInCommandImpl implements Command {
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-
+//        session.setAttribute("redirectToCommand", "main");
 
         return MAIN_PAGE;
     }

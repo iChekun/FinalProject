@@ -56,10 +56,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new SignUpCommandImpl(request, response);
             case SIGN_IN_COMMAND:
                 return new SignInCommandImpl(request, response);
-            case "updatePassword":
+            case "changePassword":
                 return new ChangePasswordUserCommandImpl(request, response);
-            case "viewChangePassword":
-                return new ViewChangePasswordCommandImpl();
             case LOGOUT_COMMAND:
                 return new LogoutCommandImpl(request, response);
             case VIEW_MAIN_PAGE_COMMAND:

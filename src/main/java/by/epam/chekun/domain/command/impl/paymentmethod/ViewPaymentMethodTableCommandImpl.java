@@ -28,10 +28,16 @@ public class ViewPaymentMethodTableCommandImpl implements Command {
 
     @Override
     public String execute() throws CommandException {
-
+        HttpSession session = request.getSession();
         try {
             List<PaymentMethod> paymentMethods = paymentMethodService.getAll();
             request.setAttribute(PAYMENT_METHODS_LIST, paymentMethods);
+
+            if (session.getAttribute("errorMessagePaymentMethod") != null) {
+                String error = String.valueOf(session.getAttribute("errorMessagePaymentMethod"));
+                request.setAttribute("errorMessage", error);
+                session.removeAttribute("errorMessagePaymentMethod");
+            }
         } catch (PaymentMethodServiceException e) {
             throw new CommandException(e);
         }

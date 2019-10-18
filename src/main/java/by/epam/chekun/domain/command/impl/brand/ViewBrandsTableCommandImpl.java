@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.BRAND_LIST;
-import static by.epam.chekun.domain.configuration.JspFilePass.BRAND_TABLE_PAGE;
 
 public class ViewBrandsTableCommandImpl implements Command {
     private HttpServletRequest request;
@@ -27,10 +26,16 @@ public class ViewBrandsTableCommandImpl implements Command {
 
     @Override
     public String execute() throws CommandException {
-
+        HttpSession session = request.getSession();
         try {
             List<Brand> brands = brandService.getAll();
             request.setAttribute(BRAND_LIST, brands);
+
+            if (session.getAttribute("errorMessageBrand") != null) {
+                String error = String.valueOf(session.getAttribute("errorMessageBrand"));
+                request.setAttribute("errorMessage", error);
+                session.removeAttribute("errorMessageBrand");
+            }
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
