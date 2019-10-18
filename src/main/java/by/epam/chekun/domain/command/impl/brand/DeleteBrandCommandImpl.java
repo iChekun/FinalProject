@@ -8,6 +8,7 @@ import by.epam.chekun.domain.service.manager.ServiceManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.BRAND_ID;
 
@@ -25,13 +26,14 @@ public class DeleteBrandCommandImpl implements Command {
     @Override
     public String execute() throws CommandException {
         final String brandId = request.getParameter(BRAND_ID);
-
+        final HttpSession session = request.getSession();
         try {
             brandService.delete(brandId);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-        //return new ViewBrandsTableCommandImpl(request, response).execute();
+
+        session.setAttribute("redirectToCommand", "viewBrandsTable");
         return "brand_table";
     }
 }

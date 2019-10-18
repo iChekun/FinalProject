@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.USER_ID;
 import static by.epam.chekun.domain.configuration.JspFilePass.CUSTOMER_PRODUCT_PAGE;
-import static by.epam.chekun.domain.configuration.JspFilePass.USER_BASKET_PAGE;
 
 public class AddProductToBasketCommandImpl implements Command {
 
@@ -33,23 +32,17 @@ public class AddProductToBasketCommandImpl implements Command {
 
         if (!(userId == null || userId.equals("null"))) {
             String productId = request.getParameter("productForAction");
-            String productId2 = String.valueOf(session.getAttribute("productForAction"));
-
-            System.out.println(userId);
-            System.out.println(productId);
-            System.out.println(productId2);
-
 
             try {
                 basketService.addProductToBasket(userId, productId);
-
             } catch (ServiceException e) {
                 throw new CommandException(e);
             }
         } else {
-            session.setAttribute("addProductMessage", "message.need_to_signIn_or_signUp");
+            session.setAttribute("errorMessage", "message.need_to_signIn_or_signUp");
         }
-        //final String path = new ViewCustomerProductTableCommandImpl(request, response).execute();
+
+        session.setAttribute("redirectToCommand", "viewCustomerProductTable");
         return CUSTOMER_PRODUCT_PAGE;
     }
 }

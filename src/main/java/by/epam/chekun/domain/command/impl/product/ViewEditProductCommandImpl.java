@@ -13,7 +13,6 @@ import by.epam.chekun.domain.service.manager.ServiceManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.BRAND_LIST;
@@ -41,19 +40,6 @@ public class ViewEditProductCommandImpl implements Command {
         final String productId = request.getParameter("productForAction");
 
 
-//        try {
-//            final String currentCategoryId = productService.getProductCategoryId(productId);
-//            session.setAttribute("currentCategoryId", currentCategoryId);
-//        } catch (ServiceException e) {
-//
-//        }
-//
-//        try {
-//            final String currentBrandId = productService.getProductBrandId(productId);
-//            session.setAttribute("currentBrandId", currentBrandId);
-//        } catch (ServiceException e) {
-//        }
-
         try {
 
 
@@ -64,6 +50,7 @@ public class ViewEditProductCommandImpl implements Command {
             final List<Brand> brands = brandService.getAll();
             //3
 
+            System.out.println(product.getCategory().getCategoryId());
 
             request.setAttribute(CATEGORY_LIST, categories);
             request.setAttribute(BRAND_LIST, brands);

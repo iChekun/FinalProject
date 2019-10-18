@@ -28,17 +28,12 @@ public class ViewBrandsTableCommandImpl implements Command {
     @Override
     public String execute() throws CommandException {
 
-        System.out.println("here");
         try {
-            final HttpSession session = request.getSession();
-
             List<Brand> brands = brandService.getAll();
             request.setAttribute(BRAND_LIST, brands);
-
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-
         return "brand_table";
     }
 }

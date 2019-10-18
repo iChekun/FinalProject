@@ -8,49 +8,43 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/main", "/personal_cabinet", "/category_table", "/work_with_category",
-        "/add_category"})
+@WebFilter(urlPatterns = {"/main",
+        "/work_with_category", "/category_table",
+        "/work_with_brand", "/brand_table",
+        "/work_with_product", "/product_table",
+        "/payment_method_table",
+        "/user_basket", "/customer_product_table"})
 public class PageRedirectSecurityFilter implements Filter {
-    private String indexPath;
 
     public void init(FilterConfig fConfig) throws ServletException {
-//        indexPath = fConfig.getInitParameter("INDEX_PATH");
     }
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-
-        System.out.println("page re s f ");
-
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-
-        String path = request.getRequestURI();
-
-        String command = request.getParameter("action");
-
-        System.out.println("received path   " + path);
-        System.out.println("received command : " + command);
-        System.out.println(request.getContextPath());
         HttpSession session = request.getSession();
 
 
+        String path = request.getRequestURI();
 
-        if (session.getAttribute("userStatusId") == null && !path.endsWith("main")) {
+        System.out.println(path);
+        System.out.println(session.getAttribute("redirectToCommand"));
+        System.out.println(session.getAttribute("userStatusId"));
+        System.out.println(session.getAttribute("userId"));
+
+        if (session.getAttribute("userStatusId") == null
+                && session.getAttribute("errorMessage") == null) {
             System.out.println("redirect to index");
             response.sendRedirect("index");
         } else if (session.getAttribute("userStatusId") != null
-                && !path.endsWith("index")
-                && !path.endsWith("main")) {
-            System.out.println("redirect to main");
-            response.sendRedirect("main");}
+                && session.getAttribute("errorMessage") == null) {
 
-//        } else if (session.getAttribute("userStatusId") != null
-//                && path.endsWith("add_category")) {
-//
-//            System.out.println("cat table");
-//            response.sendRedirect(request.getContextPath() +"/category_table");
-//        }
+            String redirectTo = request.getContextPath() + "/mainWindow?action="
+                    + session.getAttribute("redirectToCommand");
 
+            System.out.println("redirect to:  " + redirectTo);
+            response.sendRedirect(redirectTo);
+        }
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

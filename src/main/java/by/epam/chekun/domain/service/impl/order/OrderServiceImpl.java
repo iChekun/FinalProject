@@ -101,5 +101,27 @@ public class OrderServiceImpl implements OrderService {
             throw new OrderServiceException(e);
         }
     }
+
+
+    @Override
+    public void updateOrderStatus(String orderId, String currentOrderStatusId) throws ServiceException {
+
+        final String orderStatusId = currentOrderStatusId.equals("1") ? "2" : "1";
+
+        try {
+            orderRepository.updateOrderStatus(orderId, orderStatusId);
+        } catch (OrderDAOException e) {
+            throw new OrderServiceException(e);
+        }
+    }
+
+    @Override
+    public Order getOrderById(String orderId) throws ServiceException {
+        try {
+            return orderRepository.getEntityById(orderId);
+        } catch (OrderDAOException e) {
+            throw new OrderServiceException(e);
+        }
+    }
 }
 

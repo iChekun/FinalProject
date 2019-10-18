@@ -37,14 +37,14 @@ public class EditBrandCommandImpl implements Command {
 
         try {
             brandService.update(brandId, brandName, brandDescription, brandImagePath);
+            session.setAttribute("redirectToCommand", "viewBrandsTable");
         } catch (InvalidBrandInformationException e) {
-            session.setAttribute("workWithBrandMessage", "message.brand_invalid_info");
+            session.setAttribute("errorMessage", "message.brand_invalid_info");
+            session.setAttribute("redirectToCommand","viewEditBrand");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
 
-
-//        return new ViewBrandsTableCommandImpl(request, response).execute();
         return "brand_table";
     }
 }

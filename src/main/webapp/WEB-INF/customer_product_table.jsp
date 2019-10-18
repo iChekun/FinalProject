@@ -15,7 +15,8 @@
     </title>
 
     <link rel="stylesheet" href="css/main.css" type="text/css"/>
-    <link rel="stylesheet" href="css/personal_cabinet_left_bar_menu.css" type="text/css"/>
+    <link rel="stylesheet" href="css/left_side_bar.css" type="text/css"/>
+
     <link rel="stylesheet" href="css/category_table.css" type="text/css"/>
     <link rel="stylesheet" href="css/header.css" type="text/css"/>
     <link rel="stylesheet" href="css/footer.css" type="text/css"/>
@@ -88,66 +89,66 @@
 
 <div id="main-wrap">
 
-    <div id="sidebar">
-        <div class="left_bar_menu_cabinet_style">
-            <form action="mainWindow" method="get">
-                <aside>
-                    <ul>
-                        <li>
-                            <fieldset>
-                                <fmt:message key="table.message.title.menu"/>
-                            </fieldset>
-                        </li>
-                        <li>
-                            <label for="category">  <fmt:message key="label.text.product_category"/></label>
+
+    <form action="mainWindow" method="get">
+        <div id="sidebar">
+            <aside>
+                <ul>
+                    <li class="catalog_name_style">
+                        <fieldset>
+                            <img style="float: left;"
+                                 src="pictures/calatog.png" height="50" width="50" alt="catalog"/>
+                            Каталог товаров
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset style="padding: 7px;">
+                            <label for="category"> <fmt:message key="label.text.product_category"/></label>
+                            <br><br>
                             <select id="category" name="categoryId">
-                                <c:forEach items="${categories}" var="order">
-                                    <option value="${order.categoryId}"
-                                            <c:if test="${order.categoryId == currentCategoryId}">selected</c:if>>
-                                            ${order.name}
+                                <c:forEach items="${categories}" var="category">
+                                    <option value="${category.categoryId}"
+                                            <c:if test="${category.categoryId == currentCategoryId}">selected</c:if>>
+                                            ${category.name}
                                     </option>
                                 </c:forEach>
                             </select>
-                        </li>
-                        <li>
-                            <label>  <fmt:message key="label.text.product_brand"/></label>
-                            <c:forEach items="${brands}" var="brand">
-                                <%--                                <option value="${brand.brandId}"--%>
-                                <%--                                        <c:if test="${brand.brandId == currentBrandId}">selected</c:if>>--%>
-                                <%--                                        ${brand.name}</option>--%>
+                        </fieldset>
+                    </li>
+                    <li style="margin-top:25px;">
+                        <fieldset style="padding: 7px;">
+                            <label for="brand"><fmt:message key="label.text.product_brand"/></label>
+                            <br><br>
+                            <select id="brand" name="brandId">
+                                <c:forEach items="${brands}" var="brand">
+                                    <option value="${brand.brandId}"
+                                            <c:if test="${brand.brandId == currentBrandId}">selected</c:if>>
+                                            ${brand.name}</option>
+                                </c:forEach>
+                            </select>
+                        </fieldset>
+                    </li>
+                    <%--                    <li>--%>
+                    <%--                        3. скролл по цене--%>
+                    <%--                    </li>--%>
 
-                                <p><input type="checkbox" name="brandId" value="${brand.brandId}">${brand.name}</p>
-                            </c:forEach>
+                    <li>
+                        <p style="margin-top: 25px;">
+                            <button type="submit" name="action"
+                                    style="height: 30px;padding: 2px; margin: 5px; text-aling:center;"
+                                    value="viewCustomerProductTableWithBrandAndCategory">
+                                <strong>
+                                    показать
+                                </strong>
+                            </button>
+                        </p>
 
+                    </li>
+                </ul>
+            </aside>
 
-                            <%--                            <label for="brand">Product brand</label>--%>
-                            <%--                            <select id="brand" name="brandId">--%>
-                            <%--                                <c:forEach items="${brands}" var="brand">--%>
-                            <%--                                    <option value="${brand.brandId}"--%>
-                            <%--                                            <c:if test="${brand.brandId == currentBrandId}">selected</c:if>>--%>
-                            <%--                                            ${brand.name}</option>--%>
-                            <%--                                </c:forEach>--%>
-                            <%--                            </select>--%>
-                        </li>
-                        <li>
-                            3. скролл по цене
-                        </li>
-
-                        <li>
-                            <p>
-                                <button type="submit" name="action"
-                                        value="viewCustomerProductTableWithBrandAndCategory">
-                                    <strong>
-                                        показать
-                                    </strong>
-                                </button>
-                            </p>
-                        </li>
-                    </ul>
-                </aside>
-            </form>
         </div>
-    </div>
+    </form>
     <div id="content-wrap">
 
         <div class="customer_product_table">
@@ -216,16 +217,16 @@
                     </c:forEach>
 
                 </table>
-                <c:if test="${addProductMessage !=null}">
+                <c:if test="${errorMessage !=null}">
                     <script>
-                        showAlertMessage("<fmt:message key="${addProductMessage}"/>");
+                        showAlertMessage("<fmt:message key="${errorMessage}"/>");
                     </script>
                 </c:if>
             </form>
             <div class="table_line"></div>
         </div>
     </div>
-    <c:remove var="addProductMessage"/>
+    <c:remove var="errorMessage"/>
 </div>
 
 
@@ -244,25 +245,56 @@
                     <br>
                     Обработка заказов
                     с 8 до 22 без выходных
-                    <br>
-                    <img src="pictures/contacts_mobile/velcom.jpg" alt="телефон" width="40" height="40">
+                    <br><br>
+                    <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
 
                     <br>
 
-                    <img src="pictures/contacts_mobile/mts.png" alt="телефон" width="40" height="40">
+                    <img src="pictures/mts.png" alt="телефон" width="40" height="40">
                     <a>8029-313-60-52 </a>
                     <br>
-                    <img src="pictures/contacts_mobile/viber.jpg" alt="телефон" width="40" height="40">
+                    <img src="pictures/viber.jpg" alt="телефон" width="40" height="40">
                     <a>8029-313-60-52 </a>
                 </div>
             </td>
 
             <td>
-                <a href=""> Ифно</a>
+                <div class="payment_method_info">
+                    <strong>Оплата при получении</strong>
+                    <br><br>
+                    <p><strong style="text-decoration: underline;">Наличный расчет</strong> <br></p>
+                    <div class="text_indent">
+                        Вы можете рассчитаться наличными денежными средствами при доставке товара курьером,
+                        <br> а также при получении заказа в пункте самовывоза в г. Минске.
+                    </div>
+
+                    <br>
+
+                    <strong style="text-decoration: underline;">Пластиковой картой через терминал</strong>
+                    <br><br>
+                    <div class="text_indent">
+                        Расчет банковской картой с использованием мобильного терминала возможен при доставке товара
+                        курьером по г. Минск и при получении товара в пункте самовывоза в г. Минске.
+
+                    </div>
+
+                </div>
             </td>
 
-            <td>инфо</td>
+            <td>
+                <div class="store_info">
+                    <strong>
+                        Спасибо что зашли на наш сайт!
+                    </strong>
+                    <br><br>
+                    У нас есть огромнейший склад на более чем 100_000 товаров!
+                    <br><br>
+                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <br><br><br>
+                    Приятных Вам покупок!
+                </div>
+            </td>
         </tr>
     </table>
 

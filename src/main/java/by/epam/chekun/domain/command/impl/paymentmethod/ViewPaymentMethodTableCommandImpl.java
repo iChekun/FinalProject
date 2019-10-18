@@ -30,11 +30,8 @@ public class ViewPaymentMethodTableCommandImpl implements Command {
     public String execute() throws CommandException {
 
         try {
-            HttpSession httpSession = request.getSession();
             List<PaymentMethod> paymentMethods = paymentMethodService.getAll();
-
             request.setAttribute(PAYMENT_METHODS_LIST, paymentMethods);
-
         } catch (PaymentMethodServiceException e) {
             throw new CommandException(e);
         }

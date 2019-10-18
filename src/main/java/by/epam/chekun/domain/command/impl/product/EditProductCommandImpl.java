@@ -43,13 +43,14 @@ public class EditProductCommandImpl implements Command {
         try {
             productService.update(productId, productName, productDescription, productImagePath, productCost,
                     categoryId, brandId);
+            session.setAttribute("redirectToCommand", "viewProductTable");
         } catch (InvalidProductInformationException ex) {
-            session.setAttribute("workWithProductMessage", "message.invalid_product_info");
-            return "work_with_product";
+            session.setAttribute("errorMessage", "message.invalid_product_info");
+            session.setAttribute("redirectToCommand", "viewEditProduct");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-//        return new ViewProductsTableCommandImpl(request, response).execute();
+
         return PRODUCT_TABLE_PAGE;
     }
 }

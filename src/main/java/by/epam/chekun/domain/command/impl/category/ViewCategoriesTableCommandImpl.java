@@ -9,7 +9,6 @@ import by.epam.chekun.domain.service.manager.ServiceManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.CATEGORY_LIST;
@@ -29,10 +28,8 @@ public class ViewCategoriesTableCommandImpl implements Command {
     public String execute() throws CommandException {
 
         try {
-            final HttpSession session = request.getSession();
             final List<Category> categories = categoryService.getAll();
-            session.setAttribute(CATEGORY_LIST, categories);
-
+            request.setAttribute(CATEGORY_LIST, categories);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

@@ -35,7 +35,6 @@ public class ViewCustomerProductTableCommandImpl implements Command {
     @Override
     public String execute() throws CommandException {
         try {
-            HttpSession session = request.getSession();
             //1
             final List<Product> products = productService.getAll();
             //2
@@ -45,8 +44,8 @@ public class ViewCustomerProductTableCommandImpl implements Command {
             request.setAttribute(CATEGORY_LIST, categories);
             request.setAttribute(BRAND_LIST, brands);
             request.setAttribute(PRODUCT_LIST, products);
+
         } catch (ServiceException e) {
-            System.out.println(e.getMessage());
             throw new CommandException(e);
         }
 

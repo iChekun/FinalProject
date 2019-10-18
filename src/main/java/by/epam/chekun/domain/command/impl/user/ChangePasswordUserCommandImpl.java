@@ -38,16 +38,18 @@ public class ChangePasswordUserCommandImpl implements Command {
         try {
             service.changePassword(userId, currentPassword, newPassword, confirmedPassword);
 
-            session.setAttribute("changePassMessage", "message.invalid_password");
+            session.setAttribute("errorMessage", "message.invalid_password");
         } catch (InvalidUserInformationException e) {
-            session.setAttribute("changePassMessage", "message.password_dont_math");
+            session.setAttribute("errorMessage", "message.password_dont_math");
             //user dont match
         } catch (InvalidPasswordException e) {
-            session.setAttribute("changePassMessage", "message.invalid_password");
+            session.setAttribute("errorMessage", "message.invalid_password");
             //invalid passwors
         } catch (ServiceException e) {
             throw new CommandException();
         }
+
+        session.setAttribute("redirectToCommand", "viewUserCabinet");
         return USER_PERSONAL_CABINET_PAGE;
     }
 }

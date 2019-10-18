@@ -235,9 +235,9 @@
             <div class="submit-button input-bottom">
 
 
-                <c:if test="${signUpMessage !=null}">-->
+                <c:if test="${errorMessage !=null}">
                     <script>
-                        showAlertMessage("<fmt:message key="${signUpMessage}"/>");
+                        showAlertMessage("<fmt:message key="${errorMessage}"/>");
                     </script>
                 </c:if>
 
@@ -255,7 +255,7 @@
 
     </div>
 
-    <c:remove var="signUpMessage"/>
+    <c:remove var="errorMessage"/>
 
 </div>
 
@@ -274,7 +274,7 @@
                     <br>
                     Обработка заказов
                     с 8 до 22 без выходных
-                    <br>
+                    <br><br>
                     <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
 
@@ -289,10 +289,41 @@
             </td>
 
             <td>
-                <a href=""> Ифно</a>
+                <div class="payment_method_info">
+                    <strong>Оплата при получении</strong>
+                    <br><br>
+                    <p><strong style="text-decoration: underline;">Наличный расчет</strong> <br></p>
+                    <div class="text_indent">
+                        Вы можете рассчитаться наличными денежными средствами при доставке товара курьером,
+                        <br> а также при получении заказа в пункте самовывоза в г. Минске.
+                    </div>
+
+                    <br>
+
+                    <strong style="text-decoration: underline;">Пластиковой картой через терминал</strong>
+                    <br><br>
+                    <div class="text_indent">
+                        Расчет банковской картой с использованием мобильного терминала возможен при доставке товара
+                        курьером по г. Минск и при получении товара в пункте самовывоза в г. Минске.
+
+                    </div>
+
+                </div>
             </td>
 
-            <td>инфо</td>
+            <td>
+                <div class="store_info">
+                    <strong>
+                        Спасибо что зашли на наш сайт!
+                    </strong>
+                    <br><br>
+                    У нас есть огромнейший склад на более чем 100_000 товаров!
+                    <br><br>
+                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <br><br><br>
+                    Приятных Вам покупок!
+                </div>
+            </td>
         </tr>
     </table>
 

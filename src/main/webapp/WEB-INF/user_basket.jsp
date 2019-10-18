@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=windows-1251;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="locale"
        value="${not empty param.locale ? param.locale : not empty locale ? locale : pageContext.request.locale}"
        scope="session"/>
@@ -45,6 +46,7 @@
     <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>
     <script src="js/signIn.js"></script>
     <script src="js/alert.js"></script>
+    <script src="js/alert.js"></script>
 </head>
 <body>
 
@@ -76,11 +78,11 @@
                         <fmt:message key="button.personal_cabinet"/>
                     </a>
                 </li>
-                <li>
-                    <a href="mainWindow?action=viewCustomerProductTable">
-                        <fmt:message key="label.view_product_table"/>
-                    </a>
-                </li>
+                <%--                <li>--%>
+                <%--                    <a href="mainWindow?action=viewCustomerProductTable">--%>
+                <%--                        <fmt:message key="label.view_product_table"/>--%>
+                <%--                    </a>--%>
+                <%--                </li>--%>
                 <li>
                     <a href="mainWindow?action=main">
                         <fmt:message key="label.view_main_page"/>
@@ -106,7 +108,7 @@
                             <fmt:message key="table.message.title.menu"/>
                         </fieldset>
                     </li>
-                    <a href="" class="overlayLink">
+                    <a href="" class="overlayLink" style="margin-top: 50px;">
                         <fmt:message key="label.order.make_order"/>
                     </a>
                     </li>
@@ -132,12 +134,12 @@
                                     <table class="table_inner">
                                         <tr>
                                             <th width="7%">Choose for action</th>
-                                            <th> <fmt:message key="label.text.category_name"/></th>
-                                            <th> <fmt:message key="label.text.brand_name"/></th>
-                                            <th> <fmt:message key="label.text.product_name"/></th>
-                                            <th> <fmt:message key="label.text.product_description"/></th>
-                                            <th> <fmt:message key="label.text.product_image_path"/></th>
-                                            <th> <fmt:message key="label.text.product_cost"/></th>
+                                            <th><fmt:message key="label.text.category_name"/></th>
+                                            <th><fmt:message key="label.text.brand_name"/></th>
+                                            <th><fmt:message key="label.text.product_name"/></th>
+                                            <th><fmt:message key="label.text.product_description"/></th>
+                                            <th><fmt:message key="label.text.product_image_path"/></th>
+                                            <th><fmt:message key="label.text.product_cost"/></th>
                                         </tr>
                                         <c:forEach items="${productsInBasket}" var="product">
                                             <tr>
@@ -196,6 +198,13 @@
                         </p>
 
                     </div>
+                    <c:if test="${errorMessage == null}">
+                        <c:if test="${fn:length(productsInBasket) le 0}">
+                            <script>
+                                showAlertMessage("<fmt:message key="${empty_basket}"/>");
+                            </script>
+                        </c:if>
+                    </c:if>
                 </div>
             </form>
         </div>
@@ -207,7 +216,7 @@
             <div class="login-content" id="loginTarget">
                 <a class="close">x</a>
 
-                <h3> <fmt:message key="label.order.make_order"/></h3>
+                <h3><fmt:message key="label.order.make_order"/></h3>
 
                 <form enctype="multipart/form-data" method="post" action="mainWindow">
 
@@ -225,18 +234,17 @@
                     <button type="submit" name="action" value="addNewOrder">
                         <strong> <fmt:message key="label.confirm"/></strong>
                     </button>
-                    <c:if test="${orderMessage != null}">
-                        <script>
-                            showAlertMessage("<fmt:message key="${orderMessage}"/>");
-                        </script>
-                    </c:if>
                 </form>
             </div>
         </div>
     </div>
-    <c:remove var="orderMessage"/>
 </div>
-
+<c:if test="${errorMessage != null}">
+    <script>
+        showAlertMessage("<fmt:message key="${errorMessage}"/>");
+    </script>
+</c:if>
+<c:remove var="errorMessage"/>
 
 <hr>
 <div id="footer">
@@ -253,7 +261,7 @@
                     <br>
                     Обработка заказов
                     с 8 до 22 без выходных
-                    <br>
+                    <br><br>
                     <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
 
@@ -268,10 +276,41 @@
             </td>
 
             <td>
-                <a href=""> Ифно</a>
+                <div class="payment_method_info">
+                    <strong>Оплата при получении</strong>
+                    <br><br>
+                    <p><strong style="text-decoration: underline;">Наличный расчет</strong> <br></p>
+                    <div class="text_indent">
+                        Вы можете рассчитаться наличными денежными средствами при доставке товара курьером,
+                        <br> а также при получении заказа в пункте самовывоза в г. Минске.
+                    </div>
+
+                    <br>
+
+                    <strong style="text-decoration: underline;">Пластиковой картой через терминал</strong>
+                    <br><br>
+                    <div class="text_indent">
+                        Расчет банковской картой с использованием мобильного терминала возможен при доставке товара
+                        курьером по г. Минск и при получении товара в пункте самовывоза в г. Минске.
+
+                    </div>
+
+                </div>
             </td>
 
-            <td>инфо</td>
+            <td>
+                <div class="store_info">
+                    <strong>
+                        Спасибо что зашли на наш сайт!
+                    </strong>
+                    <br><br>
+                    У нас есть огромнейший склад на более чем 100_000 товаров!
+                    <br><br>
+                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <br><br><br>
+                    Приятных Вам покупок!
+                </div>
+            </td>
         </tr>
     </table>
 

@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="css/locale_look.css" type="text/css"/>
     <link rel="stylesheet" href="css/logo_style.css" type="text/css"/>
     <link rel="stylesheet" href="css/main_left_bar.css" type="text/css"/>
+    <link rel="stylesheet" href="css/slider_main.css" type="text/css"/>
+    <link rel="stylesheet" href="css/running_text_main.css" type="text/css"/>
 
     <link rel="icon" href="pictures/logotip.jpg" type="image/x-icon">
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
@@ -33,6 +35,9 @@
 
     <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>
     <script src="js/signIn.js"></script>
+
+
+    <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">--%>
 </head>
 <body>
 
@@ -96,25 +101,27 @@
 <hr>
 
 
-<div id="main-wrap">
+<div id="main-wrap" style="min-height: 660px;margin-top: 50px;">
 
     <div id="sidebar">
         <aside>
             <ul>
-                <li class="catalog_name_style">
-                    <fieldset>
-                        <img style="float: left;"
-                             src="pictures/calatog.png" height="50" width="50" alt="catalog"/>
-                        Каталог товаров
-                    </fieldset>
-                </li>
+                <%--                <li class="catalog_name_style">--%>
+                <%--                    <fieldset>--%>
+                <%--                        <img style="float: left;"--%>
+                <%--                             src="pictures/calatog.png" height="50" width="50" alt="catalog"/>--%>
+                <%--                        Каталог товаров--%>
+                <%--                    </fieldset>--%>
+                <%--                </li>--%>
                 <li class="Schedule_left_bar_menu_main">
-                    <a href="" style="margin-left: 7%;" onclick="return false">
-                        <fmt:message key="label.main.categories"/>
+                    <a href=""
+                       style="margin-top: 160px;margin-left: 7%; height: 50px; text-align: center; padding: 5px 5px; "
+                       onclick="return false">
+                        <br> <fmt:message key="label.main.categories"/>
                     </a>
                     <ul>
                         <c:forEach items="${categories}" var="category">
-                            <li style="margin-left: 2%;">
+                            <li style="margin-left: 5%;">
                                 <a
                                         href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=${category.categoryId}">
                                         ${category.name}
@@ -124,25 +131,27 @@
 
                     </ul>
 
-
                 <li>
-                    <a href="mainWindow?action=viewCustomerProductTable" style="margin-left: 7%;">
-                        <fmt:message key="label.main.product_table_to_customer"/>
+                    <a href="mainWindow?action=viewCustomerProductTable"
+                       style="margin-left: 7%;height: 60px; text-align: center;margin-top: 5px; padding: 5px 5px;">
+                        <br> <fmt:message key="label.main.product_table_to_customer"/>
                     </a>
                 </li>
 
             </ul>
+
+
         </aside>
     </div>
 
     <div id="content-wrap">
 
-        <form action="" method="post">
-            <div class="search">
-                <input type="search" placeholder="Поиск по каталогу">
-                <input type="submit" value="">
-            </div>
-        </form>
+        <%--        <form action="" method="post">--%>
+        <%--            <div class="search">--%>
+        <%--                <input type="search" placeholder="Поиск по каталогу">--%>
+        <%--                <input type="submit" value="">--%>
+        <%--            </div>--%>
+        <%--        </form>--%>
 
         <!-- корзина -->
         <c:if test="${sessionScope.userId != null && sessionScope.userStatusId != null}">
@@ -153,8 +162,72 @@
             </div>
         </c:if>
 
+        <div class="sectors">
 
+            <div class="sector_first_line">
+                <fieldset>
+                    <div class="slider">
+                        <input class="slider__nav" type="radio" name="slider" title="slide1" checked="checked"/>
+                        <input class="slider__nav" type="radio" name="slider" title="slide2"/>
+                        <input class="slider__nav" type="radio" name="slider" title="slide3"/>
+                        <input class="slider__nav" type="radio" name="slider" title="slide4"/>
+                        <div class="slider__inner">
+                            <div class="slider__contents"><i class="slider__image fa fa-codepen"></i>
+                                <h2 class="slider__caption">Online store</h2>
+                                <p class="slider__txt">Thank you for visiting our store page!<br>We have a wide range of
+                                    products! See for yourself!
+                                </p>
+                            </div>
+                            <div class="slider__contents"><i class="slider__image fa fa-mobile"></i>
+                                <h2 class="slider__caption">Mobile</h2>
+                                <p class="slider__txt">
+                                    See the catalog of mobile phones. We have many brands for every taste and budget!
+                                </p>
+                            </div>
+                            <div class="slider__contents"><i class="slider__image fa fa-television"></i>
+                                <h2 class="slider__caption">television</h2>
+                                <p class="slider__txt">
+                                    We have a huge number of TVs! All kinds of diagonals, colors and prices!
+                                </p>
+                            </div>
+                            <div class="slider__contents"><i class="slider__image fa fa-cutlery"></i>
+                                <h2 class="slider__caption">Animal food</h2>
+                                <p class="slider__txt">
+                                    See the catalog of products for animals! You will be pleasantly surprised!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+
+            <div class="sector_second_line_1">
+                <a href="">
+                    <img src="pictures/product/animals/adversting_phones.jpg" height="200" width="300"
+                         alt="tv"/>
+                </a>
+            </div>
+
+
+            <div class="sector_second_line_2">
+                <a href="">
+                    <img src="pictures/product/animals/adversing_tv.jpg" height="200" width="300"
+                         alt="tv"/>
+                </a>
+            </div>
+
+
+            <div class="sector_second_line_3">
+                <a href="">
+                    <img src="pictures/product/animals/dog_food_adversting.jpg" height="200" width="200"
+                         alt="animal food"/>
+                </a>
+            </div>
+
+        </div>
     </div>
+    <h1 class="marquee"><span>Welcome!</span></h1>
 
 </div>
 
@@ -188,10 +261,41 @@
             </td>
 
             <td>
-                <%--                <a href=""> Ифно</a>--%>
+                <div class="payment_method_info">
+                    <strong>Оплата при получении</strong>
+                    <br><br>
+                    <p><strong style="text-decoration: underline;">Наличный расчет</strong> <br></p>
+                    <div class="text_indent">
+                        Вы можете рассчитаться наличными денежными средствами при доставке товара курьером,
+                        <br> а также при получении заказа в пункте самовывоза в г. Минске.
+                    </div>
+
+                    <br>
+
+                    <strong style="text-decoration: underline;">Пластиковой картой через терминал</strong>
+                    <br><br>
+                    <div class="text_indent">
+                        Расчет банковской картой с использованием мобильного терминала возможен при доставке товара
+                        курьером по г. Минск и при получении товара в пункте самовывоза в г. Минске.
+
+                    </div>
+
+                </div>
             </td>
 
-            <td>инфо</td>
+            <td>
+                <div class="store_info">
+                    <strong>
+                        Спасибо что зашли на наш сайт!
+                    </strong>
+                    <br><br>
+                    У нас есть огромнейший склад на более чем 100_000 товаров!
+                    <br><br>
+                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <br><br><br>
+                    Приятных Вам покупок!
+                </div>
+            </td>
         </tr>
     </table>
 

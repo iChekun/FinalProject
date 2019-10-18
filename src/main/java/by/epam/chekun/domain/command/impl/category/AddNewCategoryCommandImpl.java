@@ -34,14 +34,15 @@ public class AddNewCategoryCommandImpl implements Command {
 
         try {
             categoryService.add(categoryName, categoryDescription, categoryImagePath);
+
         } catch (InvalidCategoryInformationException e) {
-            session.setAttribute("workWithCategoryMessage", "message.category_invalid_info");
+            session.setAttribute("errorMessage", "message.category_invalid_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-        // String path = new ViewCategoriesTableCommandImpl(request, response).execute();
 
-        System.out.println(request.getContextPath());
-        return "add_category";
+        session.setAttribute("redirectToCommand", "viewCategoriesTable");
+        return "category_table";
+
     }
 }

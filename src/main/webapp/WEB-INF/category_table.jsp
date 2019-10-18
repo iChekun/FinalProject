@@ -31,12 +31,7 @@
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
 
-    <%--    <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet'--%>
-    <%--          type='text/css'>--%>
-    <%--    <script src="http://code.jquery.com/jquery-latest.min.js"></script>--%>
-    <%--    <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>--%>
-    <%--    <script src="js/signIn.js"></script>--%>
-    <script src="js/change_text.js"></script>
+    <script src="js/alert.js"></script>
 </head>
 <body>
 
@@ -75,8 +70,6 @@
                         <fmt:message key="button.personal_cabinet"/>
                     </a>
                 </li>
-
-
             </ul>
         </nav>
     </div>
@@ -85,7 +78,6 @@
 
 
 <div id="main-wrap">
-
     <div id="sidebar">
         <div class="left_bar_menu_cabinet_style">
             <aside>
@@ -169,7 +161,12 @@
         </div>
     </div>
 </div>
-
+<c:if test="${errorMessage !=null}">
+    <script>
+        showAlertMessage("<fmt:message key="${errorMessage}"/>");
+    </script>
+</c:if>
+<c:remove var="errorMessage"/>
 <hr>
 <div id="footer">
     <table>
@@ -185,7 +182,7 @@
                     <br>
                     Обработка заказов
                     с 8 до 22 без выходных
-                    <br>
+                    <br><br>
                     <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
 
@@ -200,10 +197,41 @@
             </td>
 
             <td>
-                <a href=""> Ифно</a>
+                <div class="payment_method_info">
+                    <strong>Оплата при получении</strong>
+                    <br><br>
+                    <p><strong style="text-decoration: underline;">Наличный расчет</strong> <br></p>
+                    <div class="text_indent">
+                        Вы можете рассчитаться наличными денежными средствами при доставке товара курьером,
+                        <br> а также при получении заказа в пункте самовывоза в г. Минске.
+                    </div>
+
+                    <br>
+
+                    <strong style="text-decoration: underline;">Пластиковой картой через терминал</strong>
+                    <br><br>
+                    <div class="text_indent">
+                        Расчет банковской картой с использованием мобильного терминала возможен при доставке товара
+                        курьером по г. Минск и при получении товара в пункте самовывоза в г. Минске.
+
+                    </div>
+
+                </div>
             </td>
 
-            <td>инфо</td>
+            <td>
+                <div class="store_info">
+                    <strong>
+                        Спасибо что зашли на наш сайт!
+                    </strong>
+                    <br><br>
+                    У нас есть огромнейший склад на более чем 100_000 товаров!
+                    <br><br>
+                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <br><br><br>
+                    Приятных Вам покупок!
+                </div>
+            </td>
         </tr>
     </table>
 
@@ -212,6 +240,5 @@
         &copy 2019 Online store. All Rights Reserved | Design by&nbsp; <a href="">Ilya Chekun</a>
     </div>
 </div>
-<c:remove var="categories"/>
 </body>
 </html>

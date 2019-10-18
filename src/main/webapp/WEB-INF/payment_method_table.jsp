@@ -36,7 +36,7 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>
     <script src="js/signIn.js"></script>
-
+    <script src="js/alert.js"></script>
 </head>
 <body>
 
@@ -95,8 +95,7 @@
                         </fieldset>
                     </li>
                     <li>
-                        <a href="" class="overlayLink"
-                           data-action="login-form.html">
+                        <a href="" class="overlayLink">
                             <fmt:message key="label.payment_method.add_new_payment_method"/>
                         </a>
                     </li>
@@ -120,7 +119,7 @@
                                     <table class="table_inner">
                                         <tr>
                                             <th width="7%"><fmt:message key="table.chooseForAction"/></th>
-                                            <th> <fmt:message key="label.payment_method_name"/></th>
+                                            <th><fmt:message key="label.payment_method_name"/></th>
                                         </tr>
                                         <c:forEach items="${paymentMethods}" var="paymentMethod">
                                             <tr>
@@ -166,7 +165,7 @@
         <div class="login-wrapper">
             <div class="login-content" id="loginTarget">
                 <a class="close">x</a>
-                <h3> <fmt:message key="label.payment_method.add_new_payment_method"/></h3>
+                <h3><fmt:message key="label.payment_method.add_new_payment_method"/></h3>
 
                 <form enctype="multipart/form-data" method="post" action="mainWindow">
 
@@ -183,7 +182,12 @@
     </div>
 </div>
 
-
+<c:if test="${errorMessage !=null}">
+    <script>
+        showAlertMessage("<fmt:message key="${errorMessage}"/>");
+    </script>
+</c:if>
+<c:remove var="errorMessage"/>
 <hr>
 <div id="footer">
     <table>
@@ -199,7 +203,7 @@
                     <br>
                     Обработка заказов
                     с 8 до 22 без выходных
-                    <br>
+                    <br><br>
                     <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
 
@@ -214,10 +218,41 @@
             </td>
 
             <td>
-                <a href=""> Ифно</a>
+                <div class="payment_method_info">
+                    <strong>Оплата при получении</strong>
+                    <br><br>
+                    <p><strong style="text-decoration: underline;">Наличный расчет</strong> <br></p>
+                    <div class="text_indent">
+                        Вы можете рассчитаться наличными денежными средствами при доставке товара курьером,
+                        <br> а также при получении заказа в пункте самовывоза в г. Минске.
+                    </div>
+
+                    <br>
+
+                    <strong style="text-decoration: underline;">Пластиковой картой через терминал</strong>
+                    <br><br>
+                    <div class="text_indent">
+                        Расчет банковской картой с использованием мобильного терминала возможен при доставке товара
+                        курьером по г. Минск и при получении товара в пункте самовывоза в г. Минске.
+
+                    </div>
+
+                </div>
             </td>
 
-            <td>инфо</td>
+            <td>
+                <div class="store_info">
+                    <strong>
+                        Спасибо что зашли на наш сайт!
+                    </strong>
+                    <br><br>
+                    У нас есть огромнейший склад на более чем 100_000 товаров!
+                    <br><br>
+                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <br><br><br>
+                    Приятных Вам покупок!
+                </div>
+            </td>
         </tr>
     </table>
 

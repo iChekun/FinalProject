@@ -10,6 +10,7 @@ import by.epam.chekun.domain.command.impl.basket.ViewUserBasketCommandImpl;
 import by.epam.chekun.domain.command.impl.brand.*;
 import by.epam.chekun.domain.command.impl.category.*;
 import by.epam.chekun.domain.command.impl.order.AddNewOrderCommandImpl;
+import by.epam.chekun.domain.command.impl.order.ChangeOrderStatusCommand;
 import by.epam.chekun.domain.command.impl.order.ViewOrderDetailCommandImpl;
 import by.epam.chekun.domain.command.impl.order.ViewOrdersHistoryCommandImpl;
 import by.epam.chekun.domain.command.impl.paymentmethod.AddNewPaymentMethodCommandImpl;
@@ -95,8 +96,6 @@ public class CommandFactoryImpl implements CommandFactory {
 
 
             ///////////////////////////////////////////////////////////////////////////
-            case VIEW_PRODUCTS_TABLE_COMMAND:
-                return new ViewProductsTableCommandImpl(request, response);
             case VIEW_BRANDS_TABLE_COMMAND:
                 return new ViewBrandsTableCommandImpl(request, response);
             case "viewEditBrand":
@@ -110,6 +109,8 @@ public class CommandFactoryImpl implements CommandFactory {
             ///////////////////////////////////////////////////////////////////////////
 
             ///////////////////////////////////////////////////////////////////////////
+            case VIEW_PRODUCTS_TABLE_COMMAND:
+                return new ViewProductsTableCommandImpl(request, response);
             case VIEW_ADD_NEW_PRODUCT_COMMAND:
                 return new ViewAddNewProductCommandImpl(request, response);
             case ADD_NEW_PRODUCT_COMMAND:
@@ -154,6 +155,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ViewOrdersHistoryCommandImpl(request, response);
             case "ViewOrderDetail":
                 return new ViewOrderDetailCommandImpl(request, response);
+            case "changeOrderStatus":
+                return new ChangeOrderStatusCommand(request, response);
             ///////////////////////////////////////////////////////////////////////////
 
             case "viewCustomerProductTable":

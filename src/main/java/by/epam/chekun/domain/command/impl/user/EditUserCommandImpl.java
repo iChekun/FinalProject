@@ -66,15 +66,16 @@ public class EditUserCommandImpl implements Command {
             request.setAttribute(USER_OBJECT, user);
             request.setAttribute(USER_STATUS_ID, user.getUserStatus().getUserStatusId());
 
-            session.setAttribute("editPersonalInfoMessage", "message.successful_registration");
+            session.setAttribute("errorMessage", "message.successful_registration");
         } catch (InvalidLoginException ex) {
-            session.setAttribute("editPersonalInfoMessage", "message.invalid_username");
+            session.setAttribute("errorMessage", "message.invalid_username");
         } catch (InvalidEmailException ex) {
-            session.setAttribute("editPersonalInfoMessage", "message.invalid_email");
+            session.setAttribute("errorMessage", "message.invalid_email");
         } catch (ServiceException e) {
-            session.setAttribute("editPersonalInfoMessage", "message.invalid_info");
+            session.setAttribute("errorMessage", "message.invalid_info");
         }
 
+        session.setAttribute("redirectToCommand", "viewUserCabinet");
         return USER_PERSONAL_CABINET_PAGE;
     }
 }

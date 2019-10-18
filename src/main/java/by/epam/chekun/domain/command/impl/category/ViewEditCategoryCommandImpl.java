@@ -26,13 +26,12 @@ public class ViewEditCategoryCommandImpl implements Command {
     @Override
     public String execute() throws CommandException {
 
-        HttpSession session = request.getSession();
 
         final String categoryId = request.getParameter(CATEGORY_ID);
 
         try {
             Category category = categoryService.getById(categoryId);
-            session.setAttribute("category", category);
+            request.setAttribute("category", category);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

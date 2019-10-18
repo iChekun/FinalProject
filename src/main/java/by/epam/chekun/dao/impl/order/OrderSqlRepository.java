@@ -21,7 +21,11 @@ public class OrderSqlRepository extends InitializerRepository implements OrderRe
 
     @Override
     public Order getEntityById(String id) throws OrderDAOException {
-        return null;
+        try {
+            return jdbcTemplate.queryForObject(GET_ORDER_BY_ID, new OrderRowMapper(), id);
+        } catch (JdbcTemplateException e) {
+            throw new OrderDAOException(e);
+        }
     }
 
     @Override
@@ -106,6 +110,17 @@ public class OrderSqlRepository extends InitializerRepository implements OrderRe
             final List<ProductOrder> productOrders = jdbcTemplate.query(GET_ALL_PRODUCT_FROM_ORDER,
                     new ProductOrderRowMapper(), orderId);
             return productOrders;
+        } catch (JdbcTemplateException e) {
+            throw new OrderDAOException(e);
+        }
+    }
+
+
+    @Override
+    public boolean updateOrderStatus(String orderId, String orderStatusId) throws OrderDAOException {
+        try {
+            jdbcTemplate.update(UPDATE_ORDER_STATUS, orderStatusId, orderId);
+            return true;
         } catch (JdbcTemplateException e) {
             throw new OrderDAOException(e);
         }

@@ -27,6 +27,7 @@
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
 
+
 </head>
 <body>
 
@@ -89,42 +90,43 @@
                     <li>
                         <form action="mainWindow" method="get">
 
-                            <fieldset style="margin-left: -2%;margin-top: 10px;">
-                                <div class="category_buttons">
-                                    <button type="submit" name="action" value="viewUsersTableSorted">
-                                        view table sorted
-                                    </button>
-                                </div>
 
-                                <label style="margin-top: 5%; float: left;">
-                                    <select name="sortBy" style="background: greenyellow; color: black;">
-                                        <option value="bySurname" <c:if test="${sortBy == 'bySurname'}">selected</c:if>>
-                                            <fmt:message key="userstable.sortTypeBySurname"/>
-                                        </option>
-                                        <option value="byBirthDate"
-                                                <c:if test="${sortBy == 'byBirthDate'}">selected</c:if>>
-                                            <fmt:message key="userstable.sortTypeByBirthDate"/>
-                                        </option>
-                                        <option value="ByName" <c:if test="${sortBy == 'ByName'}">selected</c:if>>
-                                            <fmt:message key="userstable.sortTypeByName"/>
-                                        </option>
-                                    </select>
-                                </label>
+                            <button type="submit" name="action" value="viewUsersTableSorted">
+                                view table sorted
+                            </button>
 
-                                <label style="float: left;margin-top: 5%;">
-                                    <select name="sortType">
-                                        <option value="ASC"
-                                                <c:if test="${sortType == 'ASC'}">selected</c:if>>
-                                            ASC
-                                        </option>
-                                        <option value="DESC"
-                                                <c:if test="${sortType == 'DESC'}">selected</c:if>>
-                                            DESC
-                                        </option>
-                                    </select>
-                                </label>
 
-                            </fieldset>
+                            <label style="margin-top: 5%; float: left;">
+
+                                <select name="sortBy" style="background: greenyellow; color: black;">
+                                    <option value="bySurname" <c:if test="${sortBy == 'bySurname'}">selected</c:if>>
+                                        <fmt:message key="userstable.sortTypeBySurname"/>
+                                    </option>
+                                    <option value="byBirthDate"
+                                            <c:if test="${sortBy == 'byBirthDate'}">selected</c:if>>
+                                        <fmt:message key="userstable.sortTypeByBirthDate"/>
+                                    </option>
+                                    <option value="ByName" <c:if test="${sortBy == 'ByName'}">selected</c:if>>
+                                        <fmt:message key="userstable.sortTypeByName"/>
+                                    </option>
+                                </select>
+
+                            </label>
+
+                            <label style="float: left;margin-top: 5%;">
+                                <select name="sortType">
+                                    <option value="ASC"
+                                            <c:if test="${sortType == 'ASC'}">selected</c:if>>
+                                        ASC
+                                    </option>
+                                    <option value="DESC"
+                                            <c:if test="${sortType == 'DESC'}">selected</c:if>>
+                                        DESC
+                                    </option>
+                                </select>
+                            </label>
+
+
                         </form>
                     </li>
 
@@ -201,7 +203,6 @@
                                                                class="radio" type="radio"
                                                                name="userForAction" value="${user.userId}">
                                                     </label>
-
                                                 </td>
                                                 <td>
                                                     <c:if test="${user.userStatus.userStatusId == 1}">
@@ -272,25 +273,56 @@
                     <br>
                     Обработка заказов
                     с 8 до 22 без выходных
-                    <br>
-                    <img src="../pictures/velcom.jpg" alt="телефон" width="40" height="40">
+                    <br><br>
+                    <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
 
                     <br>
 
-                    <img src="../pictures/mts.png" alt="телефон" width="40" height="40">
+                    <img src="pictures/mts.png" alt="телефон" width="40" height="40">
                     <a>8029-313-60-52 </a>
                     <br>
-                    <img src="../pictures/viber.jpg" alt="телефон" width="40" height="40">
+                    <img src="pictures/viber.jpg" alt="телефон" width="40" height="40">
                     <a>8029-313-60-52 </a>
                 </div>
             </td>
 
             <td>
-                <a href=""> Ифно</a>
+                <div class="payment_method_info">
+                    <strong>Оплата при получении</strong>
+                    <br><br>
+                    <p><strong style="text-decoration: underline;">Наличный расчет</strong> <br></p>
+                    <div class="text_indent">
+                        Вы можете рассчитаться наличными денежными средствами при доставке товара курьером,
+                        <br> а также при получении заказа в пункте самовывоза в г. Минске.
+                    </div>
+
+                    <br>
+
+                    <strong style="text-decoration: underline;">Пластиковой картой через терминал</strong>
+                    <br><br>
+                    <div class="text_indent">
+                        Расчет банковской картой с использованием мобильного терминала возможен при доставке товара
+                        курьером по г. Минск и при получении товара в пункте самовывоза в г. Минске.
+
+                    </div>
+
+                </div>
             </td>
 
-            <td>инфо</td>
+            <td>
+                <div class="store_info">
+                    <strong>
+                        Спасибо что зашли на наш сайт!
+                    </strong>
+                    <br><br>
+                    У нас есть огромнейший склад на более чем 100_000 товаров!
+                    <br><br>
+                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <br><br><br>
+                    Приятных Вам покупок!
+                </div>
+            </td>
         </tr>
     </table>
 

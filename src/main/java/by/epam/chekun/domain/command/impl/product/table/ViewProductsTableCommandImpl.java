@@ -35,23 +35,22 @@ public class ViewProductsTableCommandImpl implements Command {
 
     @Override
     public String execute() throws CommandException {
-        final HttpSession session = request.getSession();
         try {
             final List<Category> categories = categoryService.getAll();
-            session.setAttribute(CATEGORY_LIST, categories);
+            request.setAttribute(CATEGORY_LIST, categories);
         } catch (ServiceException e) {
         }
 
         //2
         try {
             final List<Brand> brands = brandService.getAll();
-            session.setAttribute(BRAND_LIST, brands);
+            request.setAttribute(BRAND_LIST, brands);
         } catch (ServiceException e) { }
 
         try {
             final List<Product> products = productService.getAll();
 
-            session.setAttribute(PRODUCT_LIST, products);
+            request.setAttribute(PRODUCT_LIST, products);
         } catch (ServiceException e) {
 //            throw new CommandException(e);
         }

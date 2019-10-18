@@ -1,8 +1,8 @@
-package by.epam.chekun.domain.command.impl.category;
+package by.epam.chekun.domain.command.impl.order;
 
 import by.epam.chekun.domain.command.Command;
 import by.epam.chekun.domain.command.exception.CommandException;
-import by.epam.chekun.domain.service.CategoryService;
+import by.epam.chekun.domain.service.OrderService;
 import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.manager.ServiceManager;
 
@@ -10,16 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.CATEGORY_ID;
-import static by.epam.chekun.domain.configuration.JspFilePass.CATEGORY_TABLE_PAGE;
-
-public class DeleteCategoryCommandImpl implements Command {
+public class ChangeOrderStatusCommand implements Command {
 
     private HttpServletRequest request;
     private HttpServletResponse response;
-    private CategoryService categoryService = ServiceManager.getInstance().getCategoryService();
+    private OrderService orderService = ServiceManager.getInstance().getOrderService();
 
-    public DeleteCategoryCommandImpl(HttpServletRequest request, HttpServletResponse response) {
+
+    public ChangeOrderStatusCommand(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
     }
@@ -27,16 +25,17 @@ public class DeleteCategoryCommandImpl implements Command {
 
     @Override
     public String execute() throws CommandException {
-
-        final String categoryId = request.getParameter(CATEGORY_ID);
+        final String orderId = request.getParameter("orderId");
+        final String currentOrderStatusId = request.getParameter("currentOrderStatusId");
         final HttpSession session = request.getSession();
         try {
-            categoryService.delete(categoryId);
+            orderService.updateOrderStatus(orderId, currentOrderStatusId);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
 
-        session.setAttribute("redirectToCommand", "viewCategoriesTable");
-        return CATEGORY_TABLE_PAGE;
+        //session.setAttribute("redirectToCommand", "viewUserBasket");
+
+        return "order_detail";
     }
 }

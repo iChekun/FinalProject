@@ -54,17 +54,18 @@ public class SignUpCommandImpl implements Command {
                     email, phoneNumber,
                     country, city, street, houseNumber, apartmentNumber);
 
-            session.setAttribute("signUpMessage", "message.successful_registration");
+            session.setAttribute("errorMessage", "message.successful_registration");
+            session.setAttribute("redirectToCommand", "main");
         } catch (InvalidLoginException ex) {
-            session.setAttribute("signUpMessage", "message.invalid_username");
+            session.setAttribute("errorMessage", "message.invalid_username");
         } catch (InvalidEmailException ex) {
-            session.setAttribute("signUpMessage", "message.invalid_email");
+            session.setAttribute("errorMessage", "message.invalid_email");
         } catch (InvalidUserInformationException ex) {
-            session.setAttribute("signUpMessage", "message.invalid_info");
+            session.setAttribute("errorMessage", "message.invalid_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-
+        session.setAttribute("redirectToCommand", "signUpWindow");
         return SIGN_UP_PAGE;
     }
 }

@@ -58,12 +58,12 @@
             </div>
         </div>
     </div>
-    <c:if test="${changePassMessage !=null}">
+    <c:if test="${errorMessage !=null}">
         <script>
-            showAlertMessage("<fmt:message key="${changePassMessage}"/>");
+            showAlertMessage("<fmt:message key="${errorMessage}"/>");
         </script>
     </c:if>
-    <c:remove var="changePassMessage"/>
+    <c:remove var="errorMessage"/>
 </div>
 
 </body>

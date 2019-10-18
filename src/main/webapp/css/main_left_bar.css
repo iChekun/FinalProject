@@ -1,5 +1,6 @@
 
 .left_bar_menu_main {
+
     padding-top: 1%;
     padding-bottom: 15%;
     padding-left: 7%;
@@ -63,8 +64,6 @@
 /* work with store*/
 
 
-
-
 .Schedule_left_bar_menu_main ul li {
     display: none;
     margin-top: -16%;
@@ -72,7 +71,7 @@
 
 .Schedule_left_bar_menu_main:hover > ul {
     position: absolute;
-    top: 35%;
+    top: 55%;
     left: 13.5%;
     /*background: white;*/
     display: block;
@@ -82,4 +81,6 @@
     position: relative;
     /*background: white;*/
     display: block;
+    width: 145%;
+    text-align: center;
 }

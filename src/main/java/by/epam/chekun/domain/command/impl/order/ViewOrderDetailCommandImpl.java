@@ -2,6 +2,7 @@ package by.epam.chekun.domain.command.impl.order;
 
 import by.epam.chekun.domain.command.Command;
 import by.epam.chekun.domain.command.exception.CommandException;
+import by.epam.chekun.domain.entity.order.Order;
 import by.epam.chekun.domain.entity.order.ProductOrder;
 import by.epam.chekun.domain.service.OrderService;
 import by.epam.chekun.domain.service.exception.ServiceException;
@@ -9,7 +10,6 @@ import by.epam.chekun.domain.service.manager.ServiceManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class ViewOrderDetailCommandImpl implements Command {
@@ -26,16 +26,17 @@ public class ViewOrderDetailCommandImpl implements Command {
 
     @Override
     public String execute() throws CommandException {
-        HttpSession session = request.getSession();
 
         final String orderId = request.getParameter("orderId");
-        System.out.println(orderId);
-
 
         try {
             final List<ProductOrder> productOrders = orderService.getAllProductsFromOrder(orderId);
+            final Order order = orderService.getOrderById(orderId);
 
+            request.setAttribute("orderId", orderId);
+            request.setAttribute("currentOrderStatusId", order.getOrderStatus().getOrderStatusId());
             request.setAttribute("productOrders", productOrders);
+
         } catch (ServiceException e) {
             System.out.println(e.getMessage());
             throw new CommandException(e);

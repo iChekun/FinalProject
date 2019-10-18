@@ -34,12 +34,13 @@ public class AddNewPaymentMethodCommandImpl implements Command {
         try {
             paymentMethodService.addNewPaymentMethod(paymentMethodName);
         } catch (InvalidPaymentMethodInformationException e) {
-            session.setAttribute("addPaymentMethodMessage", "message.invalid_payment_method_info");
+            session.setAttribute("errorMessage", "message.invalid_payment_method_info");
         } catch (PaymentMethodServiceException e) {
             throw new CommandException(e);
         }
 
-       // String path = new ViewPaymentMethodTableCommandImpl(request, response).execute();
+        session.setAttribute("redirectToCommand", "viewPaymentsMethodTable");
+
         return PAYMENT_METHOD_TABLE_PAGE;
     }
 }

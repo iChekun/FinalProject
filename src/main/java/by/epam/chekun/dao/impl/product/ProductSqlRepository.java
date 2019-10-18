@@ -113,9 +113,6 @@ public class ProductSqlRepository extends InitializerRepository implements Produ
     @Override
     public boolean updateProductCategory(String productId, String categoryId) throws ProductDAOException {
         try {
-            System.out.println(categoryId);
-            System.out.println(productId);
-
             jdbcTemplate.update(UPDATE_PRODUCT_CATEGORY, categoryId, productId);
             return true;
         } catch (JdbcTemplateException e) {

@@ -50,11 +50,11 @@ public class SignInCommandImpl implements Command {
             Basket basket = basketService.getBasket(user.getUserId());
 
             session.setAttribute("basketId", basket.getBasketId());
-            session.setAttribute("signInMessage", "message.successful_login");
+            session.setAttribute("errorMessage", "message.successful_login");
         } catch (BannedUserServiceException ex) {
-            session.setAttribute("signInMessage", "message.user_is_banned");
+            session.setAttribute("errorMessage", "message.user_is_banned");
         } catch (InvalidUserInformationException ex) {
-            session.setAttribute("signInMessage", "message.invalid_sign_parameters");
+            session.setAttribute("errorMessage", "message.invalid_sign_parameters");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

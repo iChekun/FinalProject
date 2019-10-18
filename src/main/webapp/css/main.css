@@ -51,7 +51,7 @@ hr {
 
 .basket {
     width: 15%;
-    margin-top: -4%;
+    margin-top: 1%;
     /*margin-right: 10%;*/
     min-height: 60px; /* Минимальная высота */
     float: right;
@@ -60,4 +60,66 @@ hr {
 
 .basket a img {
     border: none;
+}
+
+.sectors a {
+
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    padding: 12px 40px;
+    /*margin: 10px 20px;*/
+    border-radius: 30px;
+    background-image: none;
+    background-position: 100% 0;
+    background-size: 100% 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: none;
+    transition: .5s;
+}
+
+
+.sector_first_line {
+    /*background-color: black;*/
+    width: 800px;
+    height: 250px;
+    margin-left: 5%;
+}
+
+.sector_first_line fieldset {
+    width: 100%;
+
+}
+
+.sector_second_line_1 {
+    float: left;
+    margin-left: -3%;
+    margin-top: 3%;
+    margin-bottom: 6%;
+    /*background-color: black;*/
+    width: 200px;
+    height: 200px;
+}
+
+
+.sector_second_line_2 {
+    float: left;
+    margin-left: 15%;
+    margin-top: 3%;
+    margin-bottom: 6%;
+    /*background-color: black;*/
+    width: 250px;
+    height: 200px;
+}
+
+.sector_second_line_3 {
+    float: left;
+    margin-left: 10%;
+    margin-top: 3%;
+    margin-bottom: 6%;
+    /*background-color: black;*/
+    width: 200px;
+    height: 200px;
 }

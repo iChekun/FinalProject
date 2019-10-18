@@ -55,6 +55,10 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public void update(String brandId, String name,
                        String description, String imagePath) throws ServiceException {
+        if (!brandValidator.validate(name, description)) {
+            throw new InvalidBrandInformationException("Invalid info!");
+        }
+
         try {
 
             Brand brand = new BrandBuilderImpl(brandId)

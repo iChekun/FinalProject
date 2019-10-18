@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_BRANDS_TABLE_COMMAND;
 
 public class AddNewBrandCommandImpl implements Command {
 
@@ -37,15 +38,13 @@ public class AddNewBrandCommandImpl implements Command {
             brandService.add(brandName, brandDescription, brandImagePath);
 
         } catch (InvalidBrandInformationException e) {
-            session.setAttribute("workWithBrandMessage", "message.brand_invalid_info");
-//            return "work_with_brand";
+            session.setAttribute("errorMessage", "message.brand_invalid_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-//       return new ViewBrandsTableCommandImpl(request, response).execute();
 
+        session.setAttribute("redirectToCommand", "viewBrandsTable");
 
         return "brand_table";
-        //return "brand_table";
     }
 }

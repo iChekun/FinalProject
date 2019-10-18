@@ -6,7 +6,7 @@
        scope="session"/>
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="text"/>
-
+<%--<c:import url="WEB-INF/forms/add_new_brand.jsp"/>--%>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +15,15 @@
     <title>
         <fmt:message key="label.text.brand_table"/>
     </title>
+
+
+
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet'
+          type='text/css'>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>
+    <script src="js/signIn.js"></script>
+
 
     <link rel="stylesheet" href="css/main.css" type="text/css"/>
     <link rel="stylesheet" href="css/personal_cabinet_left_bar_menu.css" type="text/css"/>
@@ -30,14 +39,7 @@
     <link rel="icon" href="pictures/logotip.jpg" type="image/x-icon">
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
-
-    <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet'
-          type='text/css'>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>
-
-    <script src="js/brand.js"></script>
-
+    <script src="js/alert.js"></script>
 </head>
 <body>
 
@@ -76,8 +78,6 @@
                         <fmt:message key="button.personal_cabinet"/>
                     </a>
                 </li>
-
-
             </ul>
         </nav>
     </div>
@@ -97,8 +97,7 @@
                         </fieldset>
                     </li>
                     <li>
-                        <a href="" class="overlayLink"
-                           data-action="login-form.html">
+                        <a href="" class="overlayLink">
                             <fmt:message key="label.action.add_new_brand"/>
                         </a>
                     </li>
@@ -113,6 +112,7 @@
             </aside>
         </div>
     </div>
+
     <div id="content-wrap">
 
         <div class="user_table_look">
@@ -134,7 +134,6 @@
                                             <th><fmt:message key="categoriesTable.name"/></th>
                                             <th><fmt:message key="categoriesTable.description"/></th>
                                             <th><fmt:message key="categoriesTable.image"/></th>
-
                                         </tr>
                                         <c:forEach items="${brands}" var="brand">
                                             <tr>
@@ -167,22 +166,18 @@
                             </td>
                         </tr>
                     </table>
-
                     <div class="table_line"></div>
-
-
                 </div>
             </form>
         </div>
     </div>
 </div>
-
 <div class="promt_window">
-    <div class="overlay" style="display: none;">
+    <div class="overlay" style="display: none;z-index: 1;">
         <div class="login-wrapper">
             <div class="login-content" id="loginTarget">
                 <a class="close">x</a>
-                <h3> <fmt:message key="label.action.add_new_brand"/></h3>
+                <h3><fmt:message key="label.action.add_new_brand"/></h3>
 
                 <form enctype="multipart/form-data" method="post" action="mainWindow">
 
@@ -208,9 +203,16 @@
             </div>
         </div>
     </div>
-
 </div>
 
+
+
+<c:if test="${errorMessage !=null}">
+    <script>
+        showAlertMessage("<fmt:message key="${errorMessage}"/>");
+    </script>
+</c:if>
+<c:remove var="errorMessage"/>
 
 <hr>
 <div id="footer">
@@ -227,7 +229,7 @@
                     <br>
                     Обработка заказов
                     с 8 до 22 без выходных
-                    <br>
+                    <br><br>
                     <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
 
@@ -242,10 +244,41 @@
             </td>
 
             <td>
-                <a href=""> Ифно</a>
+                <div class="payment_method_info">
+                    <strong>Оплата при получении</strong>
+                    <br><br>
+                    <p><strong style="text-decoration: underline;">Наличный расчет</strong> <br></p>
+                    <div class="text_indent">
+                        Вы можете рассчитаться наличными денежными средствами при доставке товара курьером,
+                        <br> а также при получении заказа в пункте самовывоза в г. Минске.
+                    </div>
+
+                    <br>
+
+                    <strong style="text-decoration: underline;">Пластиковой картой через терминал</strong>
+                    <br><br>
+                    <div class="text_indent">
+                        Расчет банковской картой с использованием мобильного терминала возможен при доставке товара
+                        курьером по г. Минск и при получении товара в пункте самовывоза в г. Минске.
+
+                    </div>
+
+                </div>
             </td>
 
-            <td>инфо</td>
+            <td>
+                <div class="store_info">
+                    <strong>
+                        Спасибо что зашли на наш сайт!
+                    </strong>
+                    <br><br>
+                    У нас есть огромнейший склад на более чем 100_000 товаров!
+                    <br><br>
+                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <br><br><br>
+                    Приятных Вам покупок!
+                </div>
+            </td>
         </tr>
     </table>
 
@@ -254,7 +287,6 @@
         &copy 2019 Online store. All Rights Reserved | Design by&nbsp; <a href="">Ilya Chekun</a>
     </div>
 </div>
-<c:remove var="brandId"/>
 </body>
 </html>
 

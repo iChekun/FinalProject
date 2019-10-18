@@ -40,22 +40,20 @@ public class AddNewOrderCommandImpl implements Command {
                 final String paymentMethodId = request.getParameter(PAYMENT_METHOD_ID);
                 //
 
-                System.out.println("bas  " + basketId);
                 //
                 orderService.add(userId, paymentMethodId, basketId);
 
 
-                session.setAttribute("orderMessage", "order.message.sessusful");
+                session.setAttribute("errorMessage", "order.message.sessusful");
             } else {
-                session.setAttribute("orderMessage", "order.message.buy_something");
+                session.setAttribute("errorMessage", "order.message.buy_something");
             }
         } catch (ServiceException e) {
-            e.printStackTrace();
-            session.setAttribute("orderMessage", "order.message.bad");
+            session.setAttribute("errorMessage", "order.message.bad");
         }
 
 
-//        return new ViewUserBasketCommandImpl(request, response).execute();
+        session.setAttribute("redirectToCommand", "viewUserBasket");
         return USER_BASKET_PAGE;
     }
 }

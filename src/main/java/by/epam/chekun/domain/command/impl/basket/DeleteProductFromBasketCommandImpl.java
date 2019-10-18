@@ -37,7 +37,7 @@ public class DeleteProductFromBasketCommandImpl implements Command {
             System.out.println(e.getMessage());
         }
 
-        //     final String path = new ViewUserBasketCommandImpl(request, response).execute();
+        session.setAttribute("redirectToCommand", "viewUserBasket");
         return USER_BASKET_PAGE;
     }
 }

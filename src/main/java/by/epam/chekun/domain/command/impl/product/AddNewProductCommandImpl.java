@@ -42,12 +42,12 @@ public class AddNewProductCommandImpl implements Command {
             service.add(productName, productDescription, productImagePath, productCost,
                     categoryId, brandId);
         } catch (InvalidProductInformationException e) {
-            session.setAttribute("workWithProductMessage", "message.invalid_product_info");
-            return "work_with_product";
+            session.setAttribute("errorMessage", "message.invalid_product_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-       // String path = new ViewProductsTableCommandImpl(request, response).execute();
+
+        session.setAttribute("redirectToCommand", "viewProductTable");
         return PRODUCT_TABLE_PAGE;
     }
 }

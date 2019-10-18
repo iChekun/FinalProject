@@ -17,12 +17,11 @@
 <html>
 <head>
     <script src="js/alert.js"></script>
-
 </head>
 <body>
 
 <div class="promt_window">
-    <div class="overlay" style="display: none;">
+    <div class="overlay" style="display: none;z-index: 10;">
         <div class="login-wrapper">
             <div class="login-content" id="loginTarget">
                 <a class="close">x</a>
@@ -50,13 +49,13 @@
         </div>
     </div>
 
-    <c:if test="${signInMessage !=null}">
+    <c:if test="${errorMessage !=null}">
         <script>
-            showAlertMessage("<fmt:message key="${signInMessage}"/>");
+            showAlertMessage("<fmt:message key="${errorMessage}"/>");
         </script>
     </c:if>
 </div>
 
-<c:remove var="signInMessage"/>
+<c:remove var="errorMessage"/>
 </body>
 </html>
