@@ -6,6 +6,8 @@ public final class BeanFieldJsp {
     }
 
     //////////////////////////////
+    public static final String ALLOWED = "allowed";
+
     public static final String ERROR_TO_JSP = "errorMessage";
     public static final String ERROR_TO_JSP_PASSWORD = "errorMessagePassword";
     public static final String ERROR_TO_JSP_BRAND = "errorMessageBrand";

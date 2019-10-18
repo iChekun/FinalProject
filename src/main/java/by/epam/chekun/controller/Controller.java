@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.ALLOWED;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.REDIRECT_COMMAND;
+
 
 @WebServlet("/mainWindow")
 @MultipartConfig
@@ -26,38 +29,55 @@ public class Controller extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        final String action = req.getParameter(JspActionCommand.ACTION_TYPE);
-        logger.info("DO_GET command name " + action);
 
-        final CommandFactory commandFactory = CommandFactoryImpl.getInstance();
+        final boolean allowed = (boolean) req.getAttribute(ALLOWED);
 
-        try {
-            final Command command = commandFactory.createCommand(action, req, resp);
-            final String path = command.execute();
-            req.getRequestDispatcher(path).forward(req, resp);
-        } catch (CommandException e) {
-            logger.error(e);
-            resp.sendRedirect(JspFilePass.ERROR_PAGE);
+        if (allowed) {
+            final String action = req.getParameter(JspActionCommand.ACTION_TYPE);
+            logger.info("DO_GET command name " + action);
+
+            final CommandFactory commandFactory = CommandFactoryImpl.getInstance();
+
+            try {
+                final Command command = commandFactory.createCommand(action, req, resp);
+                final String path = command.execute();
+
+                req.getRequestDispatcher(path).forward(req, resp);
+
+            } catch (CommandException e) {
+                logger.error(e);
+                resp.sendRedirect(JspFilePass.ERROR_PAGE);
+            }
+        } else {
+            final String redirectTo = (String) req.getAttribute(REDIRECT_COMMAND);
+            resp.sendRedirect(redirectTo);
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        final String action = req.getParameter(JspActionCommand.ACTION_TYPE);
-        logger.info("DO POST command name  " + action);
+        final boolean allowed = (boolean) req.getAttribute(ALLOWED);
 
-        final CommandFactory commandFactory = CommandFactoryImpl.getInstance();
+        if (allowed) {
+            final String action = req.getParameter(JspActionCommand.ACTION_TYPE);
+            logger.info("DO POST command name  " + action);
 
-        try {
-            final Command command = commandFactory.createCommand(action, req, resp);
-            final String path = command.execute();
+            final CommandFactory commandFactory = CommandFactoryImpl.getInstance();
 
-            resp.sendRedirect(path);
+            try {
+                final Command command = commandFactory.createCommand(action, req, resp);
+                final String path = command.execute();
 
-        } catch (CommandException e) {
-            logger.error(e);
-            resp.sendRedirect(JspFilePass.ERROR_PAGE);
+                resp.sendRedirect(path);
+
+            } catch (CommandException e) {
+                logger.error(e);
+                resp.sendRedirect(JspFilePass.ERROR_PAGE);
+            }
+        } else {
+            final String redirectTo = (String) req.getAttribute(REDIRECT_COMMAND);
+            resp.sendRedirect(redirectTo);
         }
     }
 

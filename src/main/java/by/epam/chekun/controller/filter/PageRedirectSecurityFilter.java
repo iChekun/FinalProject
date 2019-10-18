@@ -11,7 +11,8 @@ import java.io.IOException;
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
 import static by.epam.chekun.domain.configuration.JspFilePass.*;
 
-@WebFilter(urlPatterns = {"/main",
+//"/main",
+@WebFilter(urlPatterns = {
         "/users_table", "/signUp", "/personal_cabinet",
         "/work_with_category", "/category_table",
         "/work_with_brand", "/brand_table",

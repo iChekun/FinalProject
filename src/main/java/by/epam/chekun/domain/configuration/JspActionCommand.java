@@ -53,7 +53,6 @@ public final class JspActionCommand {
     /////////////////////////////////////////////////////////////
     //PRODUCT
     public static final String VIEW_PRODUCTS_TABLE_COMMAND = "viewProductTable";
-    public static final String VIEW_ADD_NEW_PRODUCT_COMMAND = "viewAddNewProduct";
     public static final String ADD_NEW_PRODUCT_COMMAND = "addNewProduct";
     public static final String DELETE_PRODUCT_COMMAND = "deleteProduct";
     public static final String VIEW_EDIT_PRODUCT_COMMAND = "viewEditProduct";

@@ -54,8 +54,9 @@
             showAlertMessage("<fmt:message key="${errorMessage}"/>");
         </script>
     </c:if>
+    <c:remove var="errorMessage"/>
 </div>
 
-<c:remove var="errorMessage"/>
+
 </body>
 </html>

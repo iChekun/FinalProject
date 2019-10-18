@@ -231,6 +231,13 @@
 
 </div>
 
+<c:if test="${message !=null}">
+    <script>
+        showAlertMessage("<fmt:message key="${message}"/>");
+    </script>
+</c:if>
+<c:remove var="message"/>
+
 <hr>
 <div id="footer">
     <table>
