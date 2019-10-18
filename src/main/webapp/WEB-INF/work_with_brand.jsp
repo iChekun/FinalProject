@@ -82,7 +82,7 @@
             <br>
             <label style="font-size: 100%; font-weight: bold;" for="brandDescriptionInput"><fmt:message key="label.text.brand_description"/></label>
             <input id="brandDescriptionInput"
-                   required type="text" placeholder="description" name="brandDescription" value="${brand.description}">
+                    type="text" placeholder="description" name="brandDescription" value="${brand.description}">
 
             <br>
             <label style="font-size: 100%; font-weight: bold;" for="brandImagePathInput"><fmt:message key="label.text.brand_image_path"/></label>

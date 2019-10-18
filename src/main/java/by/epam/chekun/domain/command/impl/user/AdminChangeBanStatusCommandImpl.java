@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import static by.epam.chekun.domain.configuration.JspActionCommand.USER_FOR_ACTION_IN_USERS_TABLE;
-import static by.epam.chekun.domain.configuration.JspActionCommand.USER_ID_FOR_ACTION_IN_USERS_TABLE;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_USERS_TABLE_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.USERS_TABLE_PAGE;
 
 public class AdminChangeBanStatusCommandImpl implements Command {
@@ -37,7 +37,7 @@ public class AdminChangeBanStatusCommandImpl implements Command {
             throw new CommandException(ex);
         }
 
-        session.setAttribute("redirectToCommand", "viewUsersTable");
+        session.setAttribute(REDIRECT_COMMAND, VIEW_USERS_TABLE_COMMAND);
         return USERS_TABLE_PAGE;
     }
 }

@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.BRAND_ID;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.REDIRECT_COMMAND;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_BRANDS_TABLE_COMMAND;
+import static by.epam.chekun.domain.configuration.JspFilePass.BRAND_TABLE_PAGE;
 
 public class DeleteBrandCommandImpl implements Command {
 
@@ -33,7 +36,7 @@ public class DeleteBrandCommandImpl implements Command {
             throw new CommandException(e);
         }
 
-        session.setAttribute("redirectToCommand", "viewBrandsTable");
-        return "brand_table";
+        session.setAttribute(REDIRECT_COMMAND, VIEW_BRANDS_TABLE_COMMAND);
+        return BRAND_TABLE_PAGE;
     }
 }

@@ -10,6 +10,10 @@ import by.epam.chekun.domain.service.manager.ServiceManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.BRAND_FOR_ACTION;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.BRAND_OBJECT;
+import static by.epam.chekun.domain.configuration.JspFilePass.WORK_WITH_BRAND_PAGE;
+
 public class ViewEditBrandCommandImpl implements Command {
 
 
@@ -26,15 +30,15 @@ public class ViewEditBrandCommandImpl implements Command {
     @Override
     public String execute() throws CommandException {
 
-        String brandId2 = request.getParameter("brandForAction");
+        String brandId2 = request.getParameter(BRAND_FOR_ACTION);
 
         try {
             Brand brand = brandService.getById(brandId2);
-            request.setAttribute("brand", brand);
+            request.setAttribute(BRAND_OBJECT, brand);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
 
-        return "work_with_brand";
+        return WORK_WITH_BRAND_PAGE;
     }
 }

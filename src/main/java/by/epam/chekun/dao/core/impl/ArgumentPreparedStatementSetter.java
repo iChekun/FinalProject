@@ -17,7 +17,6 @@ public class ArgumentPreparedStatementSetter implements PreparedStatementSetter 
 
     @Override
     public void setValues(PreparedStatement ps) throws SQLException {
-
         if (this.argc != null) {
             for (int i = 0; i < this.argc.length; i++) {
                 Object arg = this.argc[i];
@@ -32,7 +31,7 @@ public class ArgumentPreparedStatementSetter implements PreparedStatementSetter 
 
 
     private void set(PreparedStatement ps, int parameterPosition, Object argValue) throws SQLException {
-        if (argValue instanceof String || argValue == null) {
+        if (argValue instanceof String) {
             ps.setString(parameterPosition, (String) argValue);
         } else if (argValue instanceof Integer) {
             ps.setInt(parameterPosition, (Integer) argValue);
@@ -44,15 +43,14 @@ public class ArgumentPreparedStatementSetter implements PreparedStatementSetter 
             ps.setTimestamp(parameterPosition, (Timestamp) argValue);
         } else if (argValue instanceof Long) {
             ps.setLong(parameterPosition, (Long) argValue);
+        } else if (argValue == null) {
+            final int sqlTypeToUse = getColumnSqlDataType(ps, parameterPosition);
+            ps.setNull(parameterPosition, sqlTypeToUse);
         }
-//        else if (argValue == null) {
-////            Integer sqlTypeToUse = ps.getParameterMetaData().getParameterType(parameterPosition);
-////            ps.setNull(parameterPosition, 12);
-//            ps.setString(parameterPosition, argValue);
-//        }
     }
 
-    boolean isString(Class<?> inValueType) {
-        return CharSequence.class.isAssignableFrom(inValueType);//|| StringWriter.class.isAssignableFrom(inValueType);
+    private int getColumnSqlDataType(PreparedStatement ps, int parameterPosition) throws SQLException {
+        return ps.getParameterMetaData().getParameterType(parameterPosition);
     }
+
 }

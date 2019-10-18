@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.CATEGORY_ID;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.REDIRECT_COMMAND;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_CATEGORIES_TABLE_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.CATEGORY_TABLE_PAGE;
 
 public class DeleteCategoryCommandImpl implements Command {
@@ -36,7 +38,7 @@ public class DeleteCategoryCommandImpl implements Command {
             throw new CommandException(e);
         }
 
-        session.setAttribute("redirectToCommand", "viewCategoriesTable");
+        session.setAttribute(REDIRECT_COMMAND, VIEW_CATEGORIES_TABLE_COMMAND);
         return CATEGORY_TABLE_PAGE;
     }
 }

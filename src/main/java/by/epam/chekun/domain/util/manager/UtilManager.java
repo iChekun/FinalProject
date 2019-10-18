@@ -1,7 +1,7 @@
 package by.epam.chekun.domain.util.manager;
 
 import by.epam.chekun.domain.util.hasher.PasswordHashKeeper;
-import by.epam.chekun.domain.util.hasher.PasswordHashKeeperImpl;
+import by.epam.chekun.domain.util.hasher.impl.PasswordHashKeeperImpl;
 import by.epam.chekun.domain.util.validator.brand.BrandValidator;
 import by.epam.chekun.domain.util.validator.brand.impl.BrandValidatorImpl;
 import by.epam.chekun.domain.util.validator.category.CategoryValidator;

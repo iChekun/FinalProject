@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.ORDER_ID;
+import static by.epam.chekun.domain.configuration.JspFilePass.ORDER_DETAIL_PAGE;
+
 public class ViewOrderDetailCommandImpl implements Command {
 
     private HttpServletRequest request;
@@ -27,7 +30,7 @@ public class ViewOrderDetailCommandImpl implements Command {
     @Override
     public String execute() throws CommandException {
 
-        final String orderId = request.getParameter("orderId");
+        final String orderId = request.getParameter(ORDER_ID);
 
         try {
             final List<ProductOrder> productOrders = orderService.getAllProductsFromOrder(orderId);
@@ -38,10 +41,9 @@ public class ViewOrderDetailCommandImpl implements Command {
             request.setAttribute("productOrders", productOrders);
 
         } catch (ServiceException e) {
-            System.out.println(e.getMessage());
             throw new CommandException(e);
         }
 
-        return "order_detail";
+        return ORDER_DETAIL_PAGE;
     }
 }

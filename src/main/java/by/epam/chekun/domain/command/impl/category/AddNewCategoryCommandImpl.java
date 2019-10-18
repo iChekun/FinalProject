@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_CATEGORIES_TABLE_COMMAND;
+import static by.epam.chekun.domain.configuration.JspFilePass.CATEGORY_TABLE_PAGE;
 
 public class AddNewCategoryCommandImpl implements Command {
 
@@ -36,13 +38,13 @@ public class AddNewCategoryCommandImpl implements Command {
             categoryService.add(categoryName, categoryDescription, categoryImagePath);
 
         } catch (InvalidCategoryInformationException e) {
-            session.setAttribute("brandErrorMessage", "message.category_invalid_info");
+            session.setAttribute(ERROR_TO_JSP, "message.category_invalid_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
 
-        session.setAttribute("redirectToCommand", "viewCategoriesTable");
-        return "category_table";
+        session.setAttribute(REDIRECT_COMMAND, VIEW_CATEGORIES_TABLE_COMMAND);
+        return CATEGORY_TABLE_PAGE;
 
     }
 }

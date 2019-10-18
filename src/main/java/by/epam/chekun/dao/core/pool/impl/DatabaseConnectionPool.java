@@ -4,6 +4,8 @@ package by.epam.chekun.dao.core.pool.impl;
 import by.epam.chekun.dao.core.pool.ConnectionPool;
 import by.epam.chekun.dao.core.pool.connection.ProxyConnection;
 import by.epam.chekun.dao.core.pool.exception.CannotGetJdbcConnectionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,20 +15,17 @@ import java.util.concurrent.BlockingQueue;
 
 public class DatabaseConnectionPool implements ConnectionPool {
 
+    private static final Logger logger = LogManager.getLogger(DatabaseConnectionPool.class);
+
     private static DatabaseConnectionPool instance = new DatabaseConnectionPool();
 
     public static DatabaseConnectionPool getInstance() {
         return instance;
     }
 
-    private DatabaseConnectionPool() {
-    }
+    private DatabaseConnectionPool() { }
 
     /************************************************************************/
-//    private static final String URL = "jdbc:mysql://localhost/online_store?serverTimezone=Europe/Moscow&useSSL=false";
-//    private static final String USER = "root";
-//    private static final String PASSWORD = "1111";
-//    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     private BlockingQueue<ProxyConnection> availableConnections;
     private BlockingQueue<ProxyConnection> usedConnections;
@@ -45,6 +44,7 @@ public class DatabaseConnectionPool implements ConnectionPool {
             }
 
         } catch (ClassNotFoundException | SQLException e) {
+            logger.fatal(e);
             throw new CannotGetJdbcConnectionException(e);
         }
     }
@@ -53,7 +53,7 @@ public class DatabaseConnectionPool implements ConnectionPool {
     private static Connection createConnection(final String url,
                                                final String user,
                                                final String password)
-            throws SQLException {
+                                               throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }
 
@@ -63,7 +63,7 @@ public class DatabaseConnectionPool implements ConnectionPool {
     }
 
     private ProxyConnection doGetConnection() {
-        System.out.println("\n\n POOL FREE SIZE = " + availableConnections.size());
+        logger.info("\nPOOL FREE SIZE = " + availableConnections.size());
         ProxyConnection proxyConnection = null;
         try {
             proxyConnection = availableConnections.take();

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.PAYMENT_METHOD_ID;
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.USER_ID;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_USER_BASKET_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.USER_BASKET_PAGE;
 
 public class AddNewOrderCommandImpl implements Command {
@@ -31,7 +31,7 @@ public class AddNewOrderCommandImpl implements Command {
         HttpSession session = request.getSession();
 
         try {
-            final String basketId = String.valueOf(session.getAttribute("basketId"));
+            final String basketId = String.valueOf(session.getAttribute(BASKET_ID));
 
             if (basketService.getProductCountInBasket(basketId) > 0) {
                 final String userId = String.valueOf(session.getAttribute(USER_ID));
@@ -44,16 +44,15 @@ public class AddNewOrderCommandImpl implements Command {
                 orderService.add(userId, paymentMethodId, basketId);
 
 
-                session.setAttribute("errorMessage", "order.message.sessusful");
+                session.setAttribute(ERROR_TO_JSP, "order.message.sessusful");
             } else {
-                session.setAttribute("errorMessage", "order.message.buy_something");
+                session.setAttribute(ERROR_TO_JSP, "order.message.buy_something");
             }
         } catch (ServiceException e) {
-            session.setAttribute("errorMessage", "order.message.bad");
+            session.setAttribute(ERROR_TO_JSP, "order.message.bad");
         }
 
-
-        session.setAttribute("redirectToCommand", "viewUserBasket");
+        session.setAttribute(REDIRECT_COMMAND, VIEW_USER_BASKET_COMMAND);
         return USER_BASKET_PAGE;
     }
 }

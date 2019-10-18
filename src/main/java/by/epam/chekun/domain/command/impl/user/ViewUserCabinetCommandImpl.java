@@ -40,16 +40,14 @@ public class ViewUserCabinetCommandImpl implements Command {
             request.setAttribute(USER_STATUS_ID, user.getUserStatus().getUserStatusId());
             request.setAttribute(USER_BIRTH_DATE, user.getBirthDateStringFormat());
 
-            if (session.getAttribute("errorMessagePassword") != null) {
-                String error = String.valueOf(session.getAttribute("errorMessagePassword"));
-                request.setAttribute("errorMessage", error);
-                session.removeAttribute("errorMessagePassword");
+            if (session.getAttribute(ERROR_TO_JSP_PASSWORD) != null) {
+                String error = String.valueOf(session.getAttribute(ERROR_TO_JSP_PASSWORD));
+                request.setAttribute(ERROR_TO_JSP, error);
+                session.removeAttribute(ERROR_TO_JSP_PASSWORD);
             }
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-
-//        session.setAttribute("redirectToCommand", "viewUserCabinet");
 
         return USER_PERSONAL_CABINET_PAGE;
 

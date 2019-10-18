@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.USER_ID;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_CUSTOMER_PRODUCT_TABLE_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.CUSTOMER_PRODUCT_PAGE;
 
 public class AddProductToBasketCommandImpl implements Command {
@@ -31,7 +32,7 @@ public class AddProductToBasketCommandImpl implements Command {
         String userId = String.valueOf(session.getAttribute(USER_ID));
 
         if (!(userId == null || userId.equals("null"))) {
-            String productId = request.getParameter("productForAction");
+            String productId = request.getParameter(PRODUCT_FOR_ACTION);
 
             try {
                 basketService.addProductToBasket(userId, productId);
@@ -39,10 +40,10 @@ public class AddProductToBasketCommandImpl implements Command {
                 throw new CommandException(e);
             }
         } else {
-            session.setAttribute("errorMessage", "message.need_to_signIn_or_signUp");
+            session.setAttribute(ERROR_TO_JSP, "message.need_to_signIn_or_signUp");
         }
 
-        session.setAttribute("redirectToCommand", "viewCustomerProductTable");
+        session.setAttribute(REDIRECT_COMMAND, VIEW_CUSTOMER_PRODUCT_TABLE_COMMAND);
         return CUSTOMER_PRODUCT_PAGE;
     }
 }

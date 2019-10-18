@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.BRAND_LIST;
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.CATEGORY_LIST;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspFilePass.WORK_WITH_PRODUCT_PAGE;
 
 public class ViewEditProductCommandImpl implements Command {
 
@@ -35,13 +35,9 @@ public class ViewEditProductCommandImpl implements Command {
     @Override
     public String execute() throws CommandException {
 
-//        HttpSession session = request.getSession();
-
-        final String productId = request.getParameter("productForAction");
-
+        final String productId = request.getParameter(PRODUCT_FOR_ACTION);
 
         try {
-
 
             final Product product = productService.getById(productId);
             //1
@@ -55,7 +51,7 @@ public class ViewEditProductCommandImpl implements Command {
             request.setAttribute(CATEGORY_LIST, categories);
             request.setAttribute(BRAND_LIST, brands);
 
-            request.setAttribute("product", product);
+            request.setAttribute(PRODUCT_OBJECT, product);
             request.setAttribute("currentCategoryId", product.getCategory().getCategoryId());
             request.setAttribute("currentBrandId", product.getBrand().getBrandId());
 
@@ -63,6 +59,6 @@ public class ViewEditProductCommandImpl implements Command {
             throw new CommandException(e);
         }
 
-        return "work_with_product";
+        return WORK_WITH_PRODUCT_PAGE;
     }
 }

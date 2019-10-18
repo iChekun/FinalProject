@@ -23,7 +23,7 @@ public class AppListener implements ServletContextListener {
         final String user = servletContext.getInitParameter(USER);
         final String password = servletContext.getInitParameter(PASSWORD);
         //
-        DatabaseConnectionPool pool = DatabaseConnectionPool.getInstance();
+        final DatabaseConnectionPool pool = DatabaseConnectionPool.getInstance();
         pool.init(driver, url, user, password);
     }
 

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.PAYMENT_METHODS_LIST;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
 import static by.epam.chekun.domain.configuration.JspFilePass.PAYMENT_METHOD_TABLE_PAGE;
 
 public class ViewPaymentMethodTableCommandImpl implements Command {
@@ -33,10 +33,10 @@ public class ViewPaymentMethodTableCommandImpl implements Command {
             List<PaymentMethod> paymentMethods = paymentMethodService.getAll();
             request.setAttribute(PAYMENT_METHODS_LIST, paymentMethods);
 
-            if (session.getAttribute("errorMessagePaymentMethod") != null) {
-                String error = String.valueOf(session.getAttribute("errorMessagePaymentMethod"));
-                request.setAttribute("errorMessage", error);
-                session.removeAttribute("errorMessagePaymentMethod");
+            if (session.getAttribute(ERROR_TO_JSP_PAYMENT_METHOD) != null) {
+                String error = String.valueOf(session.getAttribute(ERROR_TO_JSP_PAYMENT_METHOD));
+                request.setAttribute(ERROR_TO_JSP, error);
+                session.removeAttribute(ERROR_TO_JSP_PAYMENT_METHOD);
             }
         } catch (PaymentMethodServiceException e) {
             throw new CommandException(e);

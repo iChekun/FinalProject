@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspFilePass.*;
+
 @WebFilter(urlPatterns = {"/main",
         "/users_table", "/signUp", "/personal_cabinet",
         "/work_with_category", "/category_table",
@@ -16,7 +19,16 @@ import java.io.IOException;
         "/payment_method_table",
         "/user_basket", "/customer_product_table",
         "/orders_history", "/order_detail"})
+//@WebFilter(urlPatterns = {MAIN_PAGE,
+//        USERS_TABLE_PAGE, SIGN_UP_PAGE, USER_PERSONAL_CABINET_PAGE,
+//        WORK_WITH_CATEGORY_PAGE, CATEGORY_TABLE_PAGE,
+//        WORK_WITH_BRAND_PAGE, BRAND_TABLE_PAGE,
+//        WORK_WITH_PRODUCT_PAGE, PRODUCT_TABLE_PAGE,
+//        PAYMENT_METHOD_TABLE_PAGE,
+//        USER_BASKET_PAGE, CUSTOMER_PRODUCT_PAGE,
+//        ORDERS_HISTORY_PAGE, ORDER_DETAIL_PAGE})
 public class PageRedirectSecurityFilter implements Filter {
+    private static final String PATH_TO_CONTROLLER_WITH_ACTION = "/mainWindow?action=";
 
     public void init(FilterConfig fConfig) throws ServletException {
     }
@@ -26,25 +38,14 @@ public class PageRedirectSecurityFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
 
+        if (session.getAttribute(USER_STATUS_ID) == null
+                && session.getAttribute(ERROR_TO_JSP) == null) {
+            response.sendRedirect(INDEX_PAGE);
+        } else if (session.getAttribute(USER_STATUS_ID) != null
+                && session.getAttribute(ERROR_TO_JSP) == null) {
 
-        String path = request.getRequestURI();
-
-        System.out.println(path);
-        System.out.println(session.getAttribute("redirectToCommand"));
-        System.out.println(session.getAttribute("userStatusId"));
-        System.out.println(session.getAttribute("userId"));
-
-        if (session.getAttribute("userStatusId") == null
-                && session.getAttribute("errorMessage") == null) {
-            System.out.println("redirect to index");
-            response.sendRedirect("index");
-        } else if (session.getAttribute("userStatusId") != null
-                && session.getAttribute("errorMessage") == null) {
-
-            String redirectTo = request.getContextPath() + "/mainWindow?action="
-                    + session.getAttribute("redirectToCommand");
-
-            System.out.println("redirect to:  " + redirectTo);
+            String redirectTo = request.getContextPath() +
+                    PATH_TO_CONTROLLER_WITH_ACTION + session.getAttribute(REDIRECT_COMMAND);
             response.sendRedirect(redirectTo);
         }
         filterChain.doFilter(servletRequest, servletResponse);

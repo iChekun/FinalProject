@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_EDIT_PRODUCT_COMMAND;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_PRODUCTS_TABLE_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.PRODUCT_TABLE_PAGE;
 
 public class EditProductCommandImpl implements Command {
@@ -43,10 +45,10 @@ public class EditProductCommandImpl implements Command {
         try {
             productService.update(productId, productName, productDescription, productImagePath, productCost,
                     categoryId, brandId);
-            session.setAttribute("redirectToCommand", "viewProductTable");
+            session.setAttribute(REDIRECT_COMMAND, VIEW_PRODUCTS_TABLE_COMMAND);
         } catch (InvalidProductInformationException ex) {
-            session.setAttribute("errorMessage", "message.invalid_product_info");
-            session.setAttribute("redirectToCommand", "viewEditProduct");
+            session.setAttribute(ERROR_TO_JSP, "message.invalid_product_info");
+            session.setAttribute(REDIRECT_COMMAND, VIEW_EDIT_PRODUCT_COMMAND);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
 
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.USER_OBJECT;
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.USER_STATUS_ID;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_USER_CABINET_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.USER_PERSONAL_CABINET_PAGE;
 
 public class EditUserCommandImpl implements Command {
@@ -66,16 +66,16 @@ public class EditUserCommandImpl implements Command {
             request.setAttribute(USER_OBJECT, user);
             request.setAttribute(USER_STATUS_ID, user.getUserStatus().getUserStatusId());
 
-            session.setAttribute("errorMessage", "message.successful_registration");
+            session.setAttribute(ERROR_TO_JSP, "message.successful_registration");
         } catch (InvalidLoginException ex) {
-            session.setAttribute("errorMessage", "message.invalid_username");
+            session.setAttribute(ERROR_TO_JSP, "message.invalid_username");
         } catch (InvalidEmailException ex) {
-            session.setAttribute("errorMessage", "message.invalid_email");
+            session.setAttribute(ERROR_TO_JSP, "message.invalid_email");
         } catch (ServiceException e) {
-            session.setAttribute("errorMessage", "message.invalid_info");
+            session.setAttribute(ERROR_TO_JSP, "message.invalid_info");
         }
 
-        session.setAttribute("redirectToCommand", "viewUserCabinet");
+        session.setAttribute(REDIRECT_COMMAND, VIEW_USER_CABINET_COMMAND);
         return USER_PERSONAL_CABINET_PAGE;
     }
 }

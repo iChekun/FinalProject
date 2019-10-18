@@ -2,7 +2,6 @@ package by.epam.chekun.domain.command.impl.product;
 
 import by.epam.chekun.domain.command.Command;
 import by.epam.chekun.domain.command.exception.CommandException;
-import by.epam.chekun.domain.command.impl.product.table.ViewProductsTableCommandImpl;
 import by.epam.chekun.domain.service.ProductService;
 import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.exception.product.InvalidProductInformationException;
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_PRODUCTS_TABLE_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.PRODUCT_TABLE_PAGE;
 
 public class AddNewProductCommandImpl implements Command {
@@ -42,12 +42,12 @@ public class AddNewProductCommandImpl implements Command {
             service.add(productName, productDescription, productImagePath, productCost,
                     categoryId, brandId);
         } catch (InvalidProductInformationException e) {
-            session.setAttribute("errorMessageProduct", "message.invalid_product_info");
+            session.setAttribute(ERROR_TO_JSP_PRODUCT, "message.invalid_product_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
 
-        session.setAttribute("redirectToCommand", "viewProductTable");
+        session.setAttribute(REDIRECT_COMMAND, VIEW_PRODUCTS_TABLE_COMMAND);
         return PRODUCT_TABLE_PAGE;
     }
 }

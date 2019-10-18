@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.USER_ID;
+import static by.epam.chekun.domain.configuration.JspFilePass.ORDERS_HISTORY_PAGE;
 
 public class ViewOrdersHistoryCommandImpl implements Command {
 
@@ -41,6 +42,6 @@ public class ViewOrdersHistoryCommandImpl implements Command {
             System.out.println(e.getMessage());
         }
 
-        return "orders_history";
+        return ORDERS_HISTORY_PAGE;
     }
 }

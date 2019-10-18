@@ -43,7 +43,7 @@ final class BasketSqlUtil {
                     "  left join brands b on b.brandId = pb.brandId" +
                     "  WHERE bas.userId = ? ";
 
-//    static final String DELETE_PRODUCT_FROM_BASKET =
+//    static final String DELETE_PRODUCT_FROM_BASKET_COMMAND =
 //            "DELETE FROM productsbasket WHERE basketId=? AND productId=?";
 
     static final String DELETE_PRODUCT_FROM_BASKET =

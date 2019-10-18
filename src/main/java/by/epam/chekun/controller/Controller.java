@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 
 @WebServlet("/mainWindow")
@@ -28,7 +27,7 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final String action = req.getParameter(JspActionCommand.ACTION_TYPE);
-        System.out.println("DO_GET command name " + action);
+        logger.info("DO_GET command name " + action);
 
         final CommandFactory commandFactory = CommandFactoryImpl.getInstance();
 
@@ -37,7 +36,7 @@ public class Controller extends HttpServlet {
             final String path = command.execute();
             req.getRequestDispatcher(path).forward(req, resp);
         } catch (CommandException e) {
-            e.printStackTrace();
+            logger.error(e);
             resp.sendRedirect(JspFilePass.ERROR_PAGE);
         }
     }
@@ -46,7 +45,7 @@ public class Controller extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         final String action = req.getParameter(JspActionCommand.ACTION_TYPE);
-        System.out.println("DO POST command name  " + action);
+        logger.info("DO POST command name  " + action);
 
         final CommandFactory commandFactory = CommandFactoryImpl.getInstance();
 
@@ -57,11 +56,10 @@ public class Controller extends HttpServlet {
             resp.sendRedirect(path);
 
         } catch (CommandException e) {
-            e.printStackTrace();
+            logger.error(e);
             resp.sendRedirect(JspFilePass.ERROR_PAGE);
         }
     }
-
 
 
 }

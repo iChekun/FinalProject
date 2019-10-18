@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.PAYMENT_METHOD_NAME;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_PAYMENT_METHOD_TABLE_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.PAYMENT_METHOD_TABLE_PAGE;
 
 public class AddNewPaymentMethodCommandImpl implements Command {
@@ -34,12 +35,12 @@ public class AddNewPaymentMethodCommandImpl implements Command {
         try {
             paymentMethodService.addNewPaymentMethod(paymentMethodName);
         } catch (InvalidPaymentMethodInformationException e) {
-            session.setAttribute("errorMessagePaymentMethod", "message.invalid_payment_method_info");
+            session.setAttribute(ERROR_TO_JSP_PAYMENT_METHOD, "message.invalid_payment_method_info");
         } catch (PaymentMethodServiceException e) {
             throw new CommandException(e);
         }
 
-        session.setAttribute("redirectToCommand", "viewPaymentsMethodTable");
+        session.setAttribute(REDIRECT_COMMAND, VIEW_PAYMENT_METHOD_TABLE_COMMAND);
 
         return PAYMENT_METHOD_TABLE_PAGE;
     }

@@ -1,4 +1,9 @@
-package by.epam.chekun.domain.util.hasher;
+package by.epam.chekun.domain.util.hasher.impl;
+
+import by.epam.chekun.domain.util.hasher.PasswordHashKeeper;
+import by.epam.chekun.domain.util.hasher.exception.PasswordHashKeeperRuntimeException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -16,20 +21,26 @@ public class PasswordHashKeeperImpl implements PasswordHashKeeper {
      * Salt is generated on base of login (because login is unchangeable),
      * then password is encoded and returned.
      *
-     * @param login user's login.
+     * @param login    user's login.
      * @param password user's password.
      * @return encoded password.
      */
     public String generateHash(String login, String password) {
-        byte[] salt = login.getBytes();
-        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+        final byte[] salt = login.getBytes();
+        final KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, ITERATION_COUNT, KEY_LENGTH);
+
         try {
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            SecretKeyFactory factory = SecretKeyFactory.getInstance(KEY_PATTERN);
             byte[] encoded = factory.generateSecret(spec).getEncoded();
             return new String(encoded, UTF_8);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-
+            logger.error(e);
+            throw new PasswordHashKeeperRuntimeException(e);
         }
-        throw new RuntimeException();
     }
+
+    private static final Logger logger = LogManager.getLogger(PasswordHashKeeperImpl.class);
+    private static final String KEY_PATTERN = "PBKDF2WithHmacSHA1";
+    private static final int ITERATION_COUNT = 65536;
+    private static final int KEY_LENGTH = 128;
 }

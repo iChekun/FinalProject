@@ -39,7 +39,7 @@
 
                     <label for="brandDescriptionInput"> <fmt:message key="label.text.brand_description"/></label>
                     <input id="brandDescriptionInput"
-                           required type="text" placeholder="description" name="brandDescription">
+                            type="text" placeholder="description" name="brandDescription">
 
 
                     <label for="brandImagePathInput"> <fmt:message key="label.text.brand_image_path"/></label>

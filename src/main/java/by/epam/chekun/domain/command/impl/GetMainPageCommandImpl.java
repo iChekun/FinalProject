@@ -28,7 +28,6 @@ public class GetMainPageCommandImpl implements Command {
 
     @Override
     public String execute() throws CommandException {
-        System.out.println("here");
         try {
             final HttpSession session = request.getSession();
             final List<Category> categories = categoryService.getAll();

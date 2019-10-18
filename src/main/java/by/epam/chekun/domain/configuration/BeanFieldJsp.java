@@ -5,6 +5,19 @@ public final class BeanFieldJsp {
 
     }
 
+    //////////////////////////////
+    public static final String ERROR_TO_JSP = "errorMessage";
+    public static final String ERROR_TO_JSP_PASSWORD = "errorMessagePassword";
+    public static final String ERROR_TO_JSP_BRAND = "errorMessageBrand";
+    public static final String ERROR_TO_JSP_PRODUCT = "errorMessageProduct";
+    public static final String ERROR_TO_JSP_PAYMENT_METHOD = "errorMessagePaymentMethod";
+    public static final String REDIRECT_COMMAND = "redirectToCommand";
+
+
+    public static final String USER_FOR_ACTION_IN_USERS_TABLE = "userForAction";
+    public static final String USER_ID_FOR_ACTION_IN_USERS_TABLE = "workUserId";
+    public static final String PRODUCT_FOR_ACTION = "productForAction";
+    public static final String BRAND_FOR_ACTION = "brandForAction";
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     //USER
     public static final String USER_OBJECT = "user";
@@ -27,6 +40,10 @@ public final class BeanFieldJsp {
     public static final String USER_CONTACTS_ADDRESS_STREET = "street";
     public static final String USER_CONTACTS_ADDRESS_HOUSE_NUMBER = "houseNumber";
     public static final String USER_CONTACTS_ADDRESS_USER_APARTMENT_NUMBER = "apartmentNumber";
+
+    public static final String USER_CURRENT_PASSWORD = "currentPassword";
+    public static final String USER_NEW_PASSWORD = "newPassword";
+    public static final String USER_CONFIRMED_NEW_PASSWORD = "confirmedPassword";
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     //product
     public static final String PRODUCT_OBJECT = "product";
@@ -65,8 +82,11 @@ public final class BeanFieldJsp {
     public static final String PAYMENT_METHODS_LIST = "paymentMethods";
 
     public static final String PAYMENT_METHOD_ID = "paymentMethodId";
+    public static final String PAYMENT_METHOD_FOR_ACTION = "paymentMethodIdForAction";
 
     public static final String PAYMENT_METHOD_NAME = "paymentMethodName";
-
+    //ORDER
+    public static final String ORDER_ID = "orderId";
+    public static final String CURRENT_ORDER_STATUS_ID = "currentOrderStatusId";
 
 }

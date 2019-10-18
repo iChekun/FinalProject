@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_ORDERS_HISTORY_COMMAND;
+import static by.epam.chekun.domain.configuration.JspFilePass.ORDER_DETAIL_PAGE;
+
 public class ChangeOrderStatusCommand implements Command {
 
     private HttpServletRequest request;
@@ -25,17 +29,16 @@ public class ChangeOrderStatusCommand implements Command {
 
     @Override
     public String execute() throws CommandException {
-        final String orderId = request.getParameter("orderId");
-        final String currentOrderStatusId = request.getParameter("currentOrderStatusId");
+        final String orderId = request.getParameter(ORDER_ID);
+        final String currentOrderStatusId = request.getParameter(CURRENT_ORDER_STATUS_ID);
         final HttpSession session = request.getSession();
         try {
             orderService.updateOrderStatus(orderId, currentOrderStatusId);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
+        session.setAttribute(REDIRECT_COMMAND, VIEW_ORDERS_HISTORY_COMMAND);
 
-        session.setAttribute("redirectToCommand", "viewOrdersHistory");
-
-        return "order_detail";
+        return ORDER_DETAIL_PAGE;
     }
 }

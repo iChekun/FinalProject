@@ -95,7 +95,7 @@
                             <c:if test="${brand.brandId == currentBrandId}">selected</c:if>>
                             ${brand.name}</option>
                 </c:forEach>
-                <option value>None</option>
+                <option value><fmt:message key="label.select.none"/></option>
             </select>
 
             <br>

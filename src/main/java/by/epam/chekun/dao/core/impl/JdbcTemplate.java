@@ -13,10 +13,6 @@ import java.util.List;
 
 public class JdbcTemplate implements JdbcOperations {
 
-    private PreparedStatementSetter newArgPreparedStatementSetter(Object[] argc) {
-        return new ArgumentPreparedStatementSetter(argc);
-    }
-
     @Override
     public <T> T queryForObject(String sql, RowMapper<T> rowMapper, Object... argc) throws JdbcTemplateException {
         List<T> results = this.query(sql, rowMapper, argc);
@@ -173,21 +169,6 @@ public class JdbcTemplate implements JdbcOperations {
 
     private int update(PreparedStatementCreator psc,
                        PreparedStatementSetter pss) throws JdbcTemplateException {
-//        int updatedCount;
-//        try (ProxyConnection proxyConnection = util.getConnection();
-//             ConnectionWrapper connectionWrapper = proxyConnection.getConnectionWrapper();
-//             PreparedStatement statement = psc.createPreparedStatement(connectionWrapper);) {
-//
-//            if (pss != null) {
-//                pss.setValues(statement);
-//            }
-//
-//            updatedCount = statement.executeUpdate();
-//
-//        } catch (SQLException e) {
-//            throw new JdbcTemplateException(e);
-//        }
-//        return updatedCount;
         return this.execute(psc, (preparedStatement) -> {
             if (pss != null) {
                 pss.setValues(preparedStatement);
@@ -230,9 +211,12 @@ public class JdbcTemplate implements JdbcOperations {
         private ConnectionCreator() {
         }
     }
-/**
- * cделать execute
- * сделать в нем без try with reosursse
- * сделать
- */
+
+
+
+    private PreparedStatementSetter newArgPreparedStatementSetter(Object[] argc) {
+        return new ArgumentPreparedStatementSetter(argc);
+    }
+
+
 }

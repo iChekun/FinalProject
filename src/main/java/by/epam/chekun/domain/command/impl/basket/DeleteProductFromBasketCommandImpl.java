@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_USER_BASKET_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.USER_BASKET_PAGE;
 
 public class DeleteProductFromBasketCommandImpl implements Command {
@@ -27,17 +29,16 @@ public class DeleteProductFromBasketCommandImpl implements Command {
     public String execute() throws CommandException {
         HttpSession session = request.getSession();
 
-        //final String userId = String.valueOf(session.getAttribute(USER_ID));
-        final String basketId = String.valueOf(session.getAttribute("basketId"));
-        final String productId = request.getParameter("productForAction");
+        final String basketId = String.valueOf(session.getAttribute(BASKET_ID));
+        final String productId = request.getParameter(PRODUCT_FOR_ACTION);
 
         try {
             basketService.deleteProductFromBasket(basketId, productId);
         } catch (ServiceException e) {
-            System.out.println(e.getMessage());
+            throw new CommandException(e);
         }
 
-        session.setAttribute("redirectToCommand", "viewUserBasket");
+        session.setAttribute(REDIRECT_COMMAND, VIEW_USER_BASKET_COMMAND);
         return USER_BASKET_PAGE;
     }
 }

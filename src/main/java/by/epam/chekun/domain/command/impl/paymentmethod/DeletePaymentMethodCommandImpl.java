@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.PAYMENT_METHOD_FOR_ACTION;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.REDIRECT_COMMAND;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_PAYMENT_METHOD_TABLE_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.PAYMENT_METHOD_TABLE_PAGE;
 
 public class DeletePaymentMethodCommandImpl implements Command {
@@ -27,7 +30,7 @@ public class DeletePaymentMethodCommandImpl implements Command {
     @Override
     public String execute() throws CommandException {
         final HttpSession session = request.getSession();
-        final String paymentMethodId = request.getParameter("paymentMethodIdForAction");
+        final String paymentMethodId = request.getParameter(PAYMENT_METHOD_FOR_ACTION);
 
         try {
             paymentMethodService.deletePaymentMethod(paymentMethodId);
@@ -35,7 +38,7 @@ public class DeletePaymentMethodCommandImpl implements Command {
             throw new CommandException(e);
         }
 
-        session.setAttribute("redirectToCommand", "viewPaymentsMethodTable");
+        session.setAttribute(REDIRECT_COMMAND, VIEW_PAYMENT_METHOD_TABLE_COMMAND);
         return PAYMENT_METHOD_TABLE_PAGE;
     }
 }

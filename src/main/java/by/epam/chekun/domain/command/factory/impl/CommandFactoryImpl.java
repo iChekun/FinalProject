@@ -48,15 +48,13 @@ public class CommandFactoryImpl implements CommandFactory {
             throws CommandException {
 
         switch (actionName) {
-//            case VIEW_SIGN_IN_WINDOW_COMMAND:
-//                return new ViewSignInCommand();
             case VIEW_SIGN_UP_WINDOW_COMMAND:
                 return new SignUpWindowCommandImpl(request, response);
             case SIGN_UP_COMMAND:
                 return new SignUpCommandImpl(request, response);
             case SIGN_IN_COMMAND:
                 return new SignInCommandImpl(request, response);
-            case "changePassword":
+            case CHANGE_PASSWORD_COMMAND:
                 return new ChangePasswordUserCommandImpl(request, response);
             case LOGOUT_COMMAND:
                 return new LogoutCommandImpl(request, response);
@@ -68,7 +66,7 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ViewUsersTableCommandImpl(request, response);
             case CHANGE_BAN_STATUS_COMMAND:
                 return new AdminChangeBanStatusCommandImpl(request, response);
-            case "changeUserStatus":
+            case CHANGE_USER_STATUS_COMMAND:
                 return new AdminChangeUserStatusCommandImpl(request, response);
             case VIEW_USERS_TABLE_SORTED_COMMAND:
                 return new ViewUsersTableSortedCommandImpl(request, response);
@@ -76,19 +74,16 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new EditUserCommandImpl(request, response);
 
 
-//            case VIEW_ADD_NEW_CATEGORY_COMMAND:
-//                return new ViewAddNewCategoryCommandImpl();
-
             ///////////////////////////////////////////////////////////////////////////
             case ADD_NEW_CATEGORY_COMMAND:
                 return new AddNewCategoryCommandImpl(request, response);
             case VIEW_CATEGORIES_TABLE_COMMAND:
                 return new ViewCategoriesTableCommandImpl(request, response);
-            case "editCategory":
+            case EDIT_CATEGORY_COMMAND:
                 return new EditCategoryCommandImpl(request, response);
-            case "viewEditCategory":
+            case VIEW_EDIT_CATEGORY_COMMAND:
                 return new ViewEditCategoryCommandImpl(request, response);
-            case "deleteCategory":
+            case DELETE_CATEGORY_COMMAND:
                 return new DeleteCategoryCommandImpl(request, response);
             ///////////////////////////////////////////////////////////////////////////
 
@@ -96,70 +91,66 @@ public class CommandFactoryImpl implements CommandFactory {
             ///////////////////////////////////////////////////////////////////////////
             case VIEW_BRANDS_TABLE_COMMAND:
                 return new ViewBrandsTableCommandImpl(request, response);
-            case "viewEditBrand":
+            case VIEW_EDIT_BRAND_COMMAND:
                 return new ViewEditBrandCommandImpl(request, response);
-            case "editBrand":
+            case EDIT_BRAND_COMMAND:
                 return new EditBrandCommandImpl(request, response);
-            case "addNewBrand":
+            case ADD_NEW_BRAND_COMMAND:
                 return new AddNewBrandCommandImpl(request, response);
-            case "deleteBrand":
+            case DELETE_BRAND_COMMAND:
                 return new DeleteBrandCommandImpl(request, response);
             ///////////////////////////////////////////////////////////////////////////
 
             ///////////////////////////////////////////////////////////////////////////
             case VIEW_PRODUCTS_TABLE_COMMAND:
                 return new ViewProductsTableCommandImpl(request, response);
-            case VIEW_ADD_NEW_PRODUCT_COMMAND:
-                return new ViewAddNewProductCommandImpl(request, response);
             case ADD_NEW_PRODUCT_COMMAND:
                 return new AddNewProductCommandImpl(request, response);
             case DELETE_PRODUCT_COMMAND:
                 return new DeleteProductCommandImpl(request, response);
-            case "viewEditProduct":
+            case VIEW_EDIT_PRODUCT_COMMAND:
                 return new ViewEditProductCommandImpl(request, response);
-            case "editProduct":
+            case EDIT_PRODUCT_COMMAND:
                 return new EditProductCommandImpl(request, response);
             ///////////////////////////////////////////////////////////////////////////
-//
-//            case "viewProductsWith"
-            case "viewCustomerProductTableWithBrandAndCategory":
+
+
+            case VIEW_CUSTOMER_PRODUCT_TABLE_WITH_CATEGORY_AND_BRAND_COMMAND:
                 return new ViewProductsWithCategoryAndBrandCommandImpl(request, response);
 
             ///////////////////////////////////////////////////////////////////////////
-            case ADD_PRODUCT_TO_BASKET:
+            case ADD_PRODUCT_TO_BASKET_COMMAND:
                 return new AddProductToBasketCommandImpl(request, response);
             case VIEW_USER_BASKET_COMMAND:
                 return new ViewUserBasketCommandImpl(request, response);
-            case "deleteProductFromBasket":
+            case DELETE_PRODUCT_FROM_BASKET_COMMAND:
                 return new DeleteProductFromBasketCommandImpl(request, response);
 
             ///////////////////////////////////////////////////////////////////////////
 
             case VIEW_PAYMENT_METHOD_TABLE_COMMAND:
                 return new ViewPaymentMethodTableCommandImpl(request, response);
-//            case VIEW_ADD_NEW_PAYMENT_METHOD_COMMAND:
-//                return new ViewAddNewPaymentMethodCommandImpl();
             case ADD_NEW_PAYMENT_METHOD_COMMAND:
                 return new AddNewPaymentMethodCommandImpl(request, response);
-            case "deletePaymentMethod":
+            case DELETE_PAYMENT_METHOD_COMMAND:
                 return new DeletePaymentMethodCommandImpl(request, response);
 
             ///////////////////////////////////////////////////////////////////////////
 
             ///////////////////////////////////////////////////////////////////////////
-            case "addNewOrder":
+            case ADD_NEW_ORDER_COMMAND:
                 return new AddNewOrderCommandImpl(request, response);
-            case "viewOrdersHistory":
+            case VIEW_ORDERS_HISTORY_COMMAND:
                 return new ViewOrdersHistoryCommandImpl(request, response);
-            case "ViewOrderDetail":
+            case VIEW_ORDER_DETAIL_COMMAND:
                 return new ViewOrderDetailCommandImpl(request, response);
-            case "changeOrderStatus":
+            case CHANGE_ORDER_STATUS_COMMAND:
                 return new ChangeOrderStatusCommand(request, response);
             ///////////////////////////////////////////////////////////////////////////
 
-            case "viewCustomerProductTable":
+            case VIEW_CUSTOMER_PRODUCT_TABLE_COMMAND:
                 return new ViewCustomerProductTableCommandImpl(request, response);
-            case "ViewCustomerProductTableWithCategory":
+            case VIEW_CUSTOMER_PRODUCT_TABLE_WITH_CATEGORY_COMMAND:
                 return new ViewProductsWithCategoryCommandImpl(request, response);
         }
 

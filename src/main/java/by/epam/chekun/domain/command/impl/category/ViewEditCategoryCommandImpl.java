@@ -9,9 +9,10 @@ import by.epam.chekun.domain.service.manager.ServiceManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.CATEGORY_ID;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.CATEGORY_OBJECT;
+import static by.epam.chekun.domain.configuration.JspFilePass.WORK_WITH_CATEGORY_PAGE;
 
 public class ViewEditCategoryCommandImpl implements Command {
     private HttpServletRequest request;
@@ -31,12 +32,10 @@ public class ViewEditCategoryCommandImpl implements Command {
 
         try {
             Category category = categoryService.getById(categoryId);
-            request.setAttribute("category", category);
+            request.setAttribute(CATEGORY_OBJECT, category);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
-
-
-        return "work_with_category";
+        return WORK_WITH_CATEGORY_PAGE;
     }
 }

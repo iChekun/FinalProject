@@ -59,10 +59,10 @@ public class ViewProductsTableCommandImpl implements Command {
 //            throw new CommandException(e);
         }
 
-        if (session.getAttribute("errorMessageProduct") != null) {
+        if (session.getAttribute(ERROR_TO_JSP_PRODUCT) != null) {
             String error = String.valueOf(session.getAttribute("errorMessageProduct"));
-            request.setAttribute("errorMessage", error);
-            session.removeAttribute("errorMessageProduct");
+            request.setAttribute(ERROR_TO_JSP, error);
+            session.removeAttribute(ERROR_TO_JSP_PRODUCT);
         }
         return PRODUCT_TABLE_PAGE;
     }
