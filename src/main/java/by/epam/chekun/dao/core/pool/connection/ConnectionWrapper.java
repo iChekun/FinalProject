@@ -6,6 +6,13 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
+
+/**
+ * Wrapper under {@code java.sql.Connection}
+ * Has only one new method {@code realClose}
+ * that doing close logic.
+ * Base method close is clear now.
+ */
 public class ConnectionWrapper implements Connection {
 
     private Connection connection;

@@ -19,7 +19,7 @@
         <img src="pictures/404.png" alt=""/>
         <p>
             <a href="mainWindow?action=main">
-                Go back too main page
+                Go back to main page
             </a>
         </p>
     </div>

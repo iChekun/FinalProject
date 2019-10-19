@@ -334,17 +334,16 @@
 <div id="footer">
     <table>
         <tr style="text-decoration: underline;">
-            <th>Телефоны для связи</th>
-            <th>Условия оплаты</th>
-            <th> О магазине</th>
+            <th><fmt:message key="footer.phone_for_call"/></th>
+            <th><fmt:message key="footer.terms_of_payment"/></th>
+            <th><fmt:message key="footer.about_shop"/></th>
         </tr>
 
         <tr>
             <td>
                 <div class="contacts_info">
                     <br>
-                    Обработка заказов
-                    с 8 до 22 без выходных
+                    <fmt:message key="footer.order_processing"/>
                     <br><br>
                     <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
@@ -361,22 +360,20 @@
 
             <td>
                 <div class="payment_method_info">
-                    <strong>Оплата при получении</strong>
+                    <strong> <fmt:message key="footer.payment.pay_receipt"/></strong>
                     <br><br>
-                    <p><strong style="text-decoration: underline;">Наличный расчет</strong> <br></p>
+                    <p><strong style="text-decoration: underline;"> <fmt:message key="footer.payment_cash"/></strong>
+                        <br></p>
                     <div class="text_indent">
-                        Вы можете рассчитаться наличными денежными средствами при доставке товара курьером,
-                        <br> а также при получении заказа в пункте самовывоза в г. Минске.
+                        <fmt:message key="footer.payment_text_cash"/>
                     </div>
 
                     <br>
 
-                    <strong style="text-decoration: underline;">Пластиковой картой через терминал</strong>
+                    <strong style="text-decoration: underline;"> <fmt:message key="footer.payment_card"/></strong>
                     <br><br>
                     <div class="text_indent">
-                        Расчет банковской картой с использованием мобильного терминала возможен при доставке товара
-                        курьером по г. Минск и при получении товара в пункте самовывоза в г. Минске.
-
+                        <fmt:message key="footer.payment_text_card"/>
                     </div>
 
                 </div>
@@ -385,14 +382,14 @@
             <td>
                 <div class="store_info">
                     <strong>
-                        Спасибо что зашли на наш сайт!
+                        <fmt:message key="footer.store_info.thanks_for_visit"/>
                     </strong>
                     <br><br>
-                    У нас есть огромнейший склад на более чем 100_000 товаров!
+                    <fmt:message key="footer.store_info.about_storage"/>
                     <br><br>
                     <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
                     <br><br><br>
-                    Приятных Вам покупок!
+                    <fmt:message key="footer.store_info.with_goodluck"/>
                 </div>
             </td>
         </tr>

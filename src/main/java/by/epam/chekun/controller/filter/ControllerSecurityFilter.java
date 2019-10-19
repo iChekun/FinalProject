@@ -63,7 +63,7 @@ public class ControllerSecurityFilter implements Filter {
             }
 
             if (!(boolean) request.getAttribute(ALLOWED)) {
-                session.setAttribute("message", "message.not_allowed");
+                session.setAttribute(SECURITY_MESSAGE, "message.not_allowed");
             }
         }
 

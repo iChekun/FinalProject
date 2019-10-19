@@ -5,6 +5,13 @@ import by.epam.chekun.dao.core.exception.JdbcTemplateException;
 
 import java.util.List;
 
+/**
+ * Base interface with GRUD operations and query to information storage
+ *
+ * @see by.epam.chekun.dao.core.impl.JdbcTemplate
+ * @see RowMapper
+ * @see JdbcTemplateException
+ */
 public interface JdbcOperations {
 
     int update(String sql, Object... argc) throws JdbcTemplateException;

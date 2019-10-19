@@ -6,6 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
+/**
+ * Class using for set arguments in statement.
+ *
+ * @see PreparedStatementSetter
+ */
 public class ArgumentPreparedStatementSetter implements PreparedStatementSetter {
 
     private final Object[] argc;
@@ -15,6 +20,12 @@ public class ArgumentPreparedStatementSetter implements PreparedStatementSetter 
         this.argc = argc;
     }
 
+    /**
+     * Method using cycle for and run by object array
+     * and set arguments in statement.
+     *
+     * @param ps statement to work
+     */
     @Override
     public void setValues(PreparedStatement ps) throws SQLException {
         if (this.argc != null) {
@@ -49,6 +60,11 @@ public class ArgumentPreparedStatementSetter implements PreparedStatementSetter 
         }
     }
 
+    /**
+     * if value null ,we cant check it type, and cant set it in statement.
+     * According with this using this function, that using statement metadata and
+     * set null in parameter with correct type.
+     */
     private int getColumnSqlDataType(PreparedStatement ps, int parameterPosition) throws SQLException {
         return ps.getParameterMetaData().getParameterType(parameterPosition);
     }

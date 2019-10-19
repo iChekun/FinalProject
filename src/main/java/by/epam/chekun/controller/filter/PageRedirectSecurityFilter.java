@@ -11,23 +11,22 @@ import java.io.IOException;
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
 import static by.epam.chekun.domain.configuration.JspFilePass.*;
 
-//"/main",
+
 @WebFilter(urlPatterns = {
-        "/users_table", "/signUp", "/personal_cabinet",
-        "/work_with_category", "/category_table",
-        "/work_with_brand", "/brand_table",
-        "/work_with_product", "/product_table",
-        "/payment_method_table",
-        "/user_basket", "/customer_product_table",
-        "/orders_history", "/order_detail"})
-//@WebFilter(urlPatterns = {MAIN_PAGE,
-//        USERS_TABLE_PAGE, SIGN_UP_PAGE, USER_PERSONAL_CABINET_PAGE,
-//        WORK_WITH_CATEGORY_PAGE, CATEGORY_TABLE_PAGE,
-//        WORK_WITH_BRAND_PAGE, BRAND_TABLE_PAGE,
-//        WORK_WITH_PRODUCT_PAGE, PRODUCT_TABLE_PAGE,
-//        PAYMENT_METHOD_TABLE_PAGE,
-//        USER_BASKET_PAGE, CUSTOMER_PRODUCT_PAGE,
-//        ORDERS_HISTORY_PAGE, ORDER_DETAIL_PAGE})
+        SLASH + USERS_TABLE_PAGE,
+        SLASH + SIGN_UP_PAGE,
+        SLASH + USER_PERSONAL_CABINET_PAGE,
+        SLASH + WORK_WITH_CATEGORY_PAGE,
+        SLASH + CATEGORY_TABLE_PAGE,
+        SLASH + WORK_WITH_BRAND_PAGE,
+        SLASH + BRAND_TABLE_PAGE,
+        SLASH + WORK_WITH_PRODUCT_PAGE,
+        SLASH + PRODUCT_TABLE_PAGE,
+        SLASH + PAYMENT_METHOD_TABLE_PAGE,
+        SLASH + USER_BASKET_PAGE,
+        SLASH + CUSTOMER_PRODUCT_PAGE,
+        SLASH + ORDERS_HISTORY_PAGE,
+        SLASH + ORDER_DETAIL_PAGE})
 public class PageRedirectSecurityFilter implements Filter {
     private static final String PATH_TO_CONTROLLER_WITH_ACTION = "/mainWindow?action=";
 

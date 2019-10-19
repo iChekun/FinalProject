@@ -1,9 +1,13 @@
 package by.epam.chekun.domain.configuration;
 
+/**
+ * final class with all commands from jsp
+ */
 public final class JspActionCommand {
     private JspActionCommand() {
 
     }
+    ////////////////////////////////////////////////////
 
     public static final String ACTION_TYPE = "action";
 

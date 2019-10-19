@@ -58,10 +58,8 @@ public final class DAOManager {
         return userRepository;
     }
 
-
     public ContactsRepository getContactsRepository() {
         return contactsRepository;
     }
-
 
 }

@@ -34,7 +34,7 @@ public class PasswordHashKeeperImpl implements PasswordHashKeeper {
             byte[] encoded = factory.generateSecret(spec).getEncoded();
             return new String(encoded, UTF_8);
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            logger.error(e);
+            logger.fatal(e);
             throw new PasswordHashKeeperRuntimeException(e);
         }
     }

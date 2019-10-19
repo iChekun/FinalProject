@@ -23,21 +23,23 @@ public class DatabaseConnectionPool implements ConnectionPool {
         return instance;
     }
 
-    private DatabaseConnectionPool() { }
+    private DatabaseConnectionPool() {
+    }
 
     /************************************************************************/
 
     private BlockingQueue<ProxyConnection> availableConnections;
     private BlockingQueue<ProxyConnection> usedConnections;
-    private static final int INITIAL_SIZE = 15;
+    private static final int INITIAL_POOL_SIZE = 15;
 
     public void init(final String driver, final String url, final String user, final String password) {
         try {
             Class.forName(driver);
-            availableConnections = new ArrayBlockingQueue<>(INITIAL_SIZE);
-            usedConnections = new ArrayBlockingQueue<>(INITIAL_SIZE);
 
-            for (int i = 0; i < INITIAL_SIZE; i++) {
+            availableConnections = new ArrayBlockingQueue<>(INITIAL_POOL_SIZE);
+            usedConnections = new ArrayBlockingQueue<>(INITIAL_POOL_SIZE);
+
+            for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
                 Connection connection = createConnection(url, user, password);
                 ProxyConnection proxyConnection = new ProxyConnection(connection);
                 availableConnections.add(proxyConnection);
@@ -69,6 +71,7 @@ public class DatabaseConnectionPool implements ConnectionPool {
             proxyConnection = availableConnections.take();
             usedConnections.add(proxyConnection);
         } catch (InterruptedException ex) {
+            logger.error(ex);
             throw new CannotGetJdbcConnectionException(ex);
         }
         return proxyConnection;

@@ -1,9 +1,14 @@
 package by.epam.chekun.domain.configuration;
 
+/**
+ * final class with all jsp file paths
+ */
 public final class JspFilePass {
     private JspFilePass() {
     }
+    //////////////////////////////////////////////
 
+    public static final String SLASH = "/";
 
     public static final String INDEX_PAGE = "index";
 

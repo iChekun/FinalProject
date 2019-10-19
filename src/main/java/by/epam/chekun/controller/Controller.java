@@ -27,6 +27,11 @@ public class Controller extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(Controller.class);
 
+
+    // комментарции
+    // забыл пароль
+    // ссылки на мейн чтобы сразу отправлялся запрос по категории
+    // заполнить данными
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

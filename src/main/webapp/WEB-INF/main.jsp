@@ -173,27 +173,27 @@
                         <input class="slider__nav" type="radio" name="slider" title="slide4"/>
                         <div class="slider__inner">
                             <div class="slider__contents"><i class="slider__image fa fa-codepen"></i>
-                                <h2 class="slider__caption">Online store</h2>
-                                <p class="slider__txt">Thank you for visiting our store page!<br>We have a wide range of
-                                    products! See for yourself!
+                                <h2 class="slider__caption"> <fmt:message key="main.base.first.online_store"/></h2>
+                                <p class="slider__txt">
+                                    <fmt:message key="main.base.text.first_text"/>
                                 </p>
                             </div>
                             <div class="slider__contents"><i class="slider__image fa fa-mobile"></i>
-                                <h2 class="slider__caption">Mobile</h2>
+                                <h2 class="slider__caption"> <fmt:message key="main.base.second.mobile"/></h2>
                                 <p class="slider__txt">
-                                    See the catalog of mobile phones. We have many brands for every taste and budget!
+                                    <fmt:message key="main.base.text.second_text"/>
                                 </p>
                             </div>
                             <div class="slider__contents"><i class="slider__image fa fa-television"></i>
-                                <h2 class="slider__caption">television</h2>
+                                <h2 class="slider__caption"> <fmt:message key="main.base.third.television"/></h2>
                                 <p class="slider__txt">
-                                    We have a huge number of TVs! All kinds of diagonals, colors and prices!
+                                    <fmt:message key="main.base.text.third_text"/>
                                 </p>
                             </div>
                             <div class="slider__contents"><i class="slider__image fa fa-cutlery"></i>
-                                <h2 class="slider__caption">Animal food</h2>
+                                <h2 class="slider__caption"> <fmt:message key="main.base.fourth.animal_food"/></h2>
                                 <p class="slider__txt">
-                                    See the catalog of products for animals! You will be pleasantly surprised!
+                                    <fmt:message key="main.base.text.fourth_text"/>
                                 </p>
                             </div>
                         </div>
@@ -227,7 +227,7 @@
 
         </div>
     </div>
-    <h1 class="marquee"><span>Welcome!</span></h1>
+    <h1 class="marquee"><span><fmt:message key="message.running.welcome"/></span></h1>
 
 </div>
 
@@ -242,17 +242,16 @@
 <div id="footer">
     <table>
         <tr style="text-decoration: underline;">
-            <th>Телефоны для связи</th>
-            <th>Условия оплаты</th>
-            <th> О магазине</th>
+            <th><fmt:message key="footer.phone_for_call"/></th>
+            <th><fmt:message key="footer.terms_of_payment"/></th>
+            <th><fmt:message key="footer.about_shop"/></th>
         </tr>
 
         <tr>
             <td>
                 <div class="contacts_info">
                     <br>
-                    Обработка заказов
-                    с 8 до 22 без выходных
+                    <fmt:message key="footer.order_processing"/>
                     <br><br>
                     <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
@@ -269,22 +268,20 @@
 
             <td>
                 <div class="payment_method_info">
-                    <strong>Оплата при получении</strong>
+                    <strong> <fmt:message key="footer.payment.pay_receipt"/></strong>
                     <br><br>
-                    <p><strong style="text-decoration: underline;">Наличный расчет</strong> <br></p>
+                    <p><strong style="text-decoration: underline;"> <fmt:message key="footer.payment_cash"/></strong>
+                        <br></p>
                     <div class="text_indent">
-                        Вы можете рассчитаться наличными денежными средствами при доставке товара курьером,
-                        <br> а также при получении заказа в пункте самовывоза в г. Минске.
+                        <fmt:message key="footer.payment_text_cash"/>
                     </div>
 
                     <br>
 
-                    <strong style="text-decoration: underline;">Пластиковой картой через терминал</strong>
+                    <strong style="text-decoration: underline;"> <fmt:message key="footer.payment_card"/></strong>
                     <br><br>
                     <div class="text_indent">
-                        Расчет банковской картой с использованием мобильного терминала возможен при доставке товара
-                        курьером по г. Минск и при получении товара в пункте самовывоза в г. Минске.
-
+                        <fmt:message key="footer.payment_text_card"/>
                     </div>
 
                 </div>
@@ -293,14 +290,14 @@
             <td>
                 <div class="store_info">
                     <strong>
-                        Спасибо что зашли на наш сайт!
+                        <fmt:message key="footer.store_info.thanks_for_visit"/>
                     </strong>
                     <br><br>
-                    У нас есть огромнейший склад на более чем 100_000 товаров!
+                    <fmt:message key="footer.store_info.about_storage"/>
                     <br><br>
                     <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
                     <br><br><br>
-                    Приятных Вам покупок!
+                    <fmt:message key="footer.store_info.with_goodluck"/>
                 </div>
             </td>
         </tr>

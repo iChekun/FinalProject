@@ -8,6 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class realise ResultSetExtractor
+ * and doing extract logic from ResultSet
+ *
+ * @param <T>
+ */
 public class RowMapperResultSetExtractor<T> implements ResultSetExtractor<List<T>> {
 
     private final RowMapper<T> rowMapper;

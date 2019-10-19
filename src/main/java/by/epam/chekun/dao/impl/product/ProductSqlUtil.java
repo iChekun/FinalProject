@@ -26,19 +26,6 @@ final class ProductSqlUtil {
                     "    categories c ON c.categoryId = pc.categoryId" +
                     " where p.productId = ?";
 
-//    static final String GET_ALL_PRODUCTS =
-//            " SELECT p.productId, p.name, p.description, p.imagePath, p.cost, " +
-//                    " b.brandId,   b.name, b.description,  b.imagePath,  " +
-//                    " c.categoryId, c.name, c.description, c.imagePath " +
-//                    " FROM products p " +
-//                    "        INNER JOIN " +
-//                    "    productbrands pb ON pb.productId = p.productId " +
-//                    "        INNER JOIN " +
-//                    "    productсategories pc ON pc.productId = p.productId " +
-//                    "        INNER JOIN " +
-//                    "    brands b ON b.brandId = pb.brandId " +
-//                    "        INNER JOIN " +
-//                    "    categories c ON c.categoryId = pc.categoryId ";
 
     static final String GET_ALL_PRODUCTS =
             "SELECT  " +
@@ -156,8 +143,7 @@ final class ProductSqlUtil {
                     " select p.productId, null from products p " +
                     " where p.name = ? ";
 
-//            "insert IGNORE  into productсategories " +
-//            "(productId,categoryId) values(?,?)";
+
 
 
     static final String UPDATE_PRODUCT_CATEGORY =
@@ -177,8 +163,7 @@ final class ProductSqlUtil {
                     " select p.productId, b.brandId  from products p ,brands b " +
                     " where p.name = ? " +
                     " and b.brandId =?; ";
-//            "insert IGNORE into productbrands " +
-//            "(productId,brandId) values(?,?)";
+
 
     static final String UPDATE_PRODUCT_BRAND =
             " UPDATE productbrands SET brandId = ? WHERE productId = ? ";

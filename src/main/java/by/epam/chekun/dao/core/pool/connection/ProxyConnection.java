@@ -1,15 +1,16 @@
 package by.epam.chekun.dao.core.pool.connection;
 
 
-
-
 import by.epam.chekun.dao.core.pool.ConnectionPool;
 import by.epam.chekun.dao.core.pool.impl.DatabaseConnectionPool;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ProxyConnection implements AutoCloseable {
+    private static final Logger logger = LogManager.getLogger(ProxyConnection.class);
     private ConnectionWrapper connectionWrapper;
 
     private ConnectionPool pool = DatabaseConnectionPool.getInstance();
@@ -33,6 +34,8 @@ public class ProxyConnection implements AutoCloseable {
     public void destroy() {
         try {
             this.connectionWrapper.realClose();
-        } catch (SQLException ignore) { /*NOP*/}
+        } catch (SQLException ex) {
+            logger.error(ex);
+        }
     }
 }
