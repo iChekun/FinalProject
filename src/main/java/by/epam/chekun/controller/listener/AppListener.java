@@ -1,4 +1,4 @@
-package by.epam.chekun.controller;
+package by.epam.chekun.controller.listener;
 
 
 import by.epam.chekun.dao.core.pool.impl.DatabaseConnectionPool;

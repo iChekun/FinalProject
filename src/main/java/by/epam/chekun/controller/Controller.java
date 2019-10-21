@@ -32,6 +32,12 @@ public class Controller extends HttpServlet {
     // забыл пароль
     // ссылки на мейн чтобы сразу отправлялся запрос по категории
     // заполнить данными
+
+
+    //  1. заполнить базу данных данными
+    //  2. сделать прямые ссылки с запрсоом на категории:
+    //          * телефоны  * телевизоры      * корм для собак
+    //
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
