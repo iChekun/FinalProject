@@ -29,18 +29,14 @@ public class AddProductToBasketCommandImpl implements Command {
     public String execute() throws CommandException {
 
         HttpSession session = request.getSession();
-        String userId = String.valueOf(session.getAttribute(USER_ID));
+        final String userId = String.valueOf(session.getAttribute(USER_ID));
 
-        if (!(userId == null || userId.equals("null"))) {
-            String productId = request.getParameter(PRODUCT_FOR_ACTION);
+        String productId = request.getParameter(PRODUCT_FOR_ACTION);
 
-            try {
-                basketService.addProductToBasket(userId, productId);
-            } catch (ServiceException e) {
-                throw new CommandException(e);
-            }
-        } else {
-            session.setAttribute(ERROR_TO_JSP, "message.need_to_signIn_or_signUp");
+        try {
+            basketService.addProductToBasket(userId, productId);
+        } catch (ServiceException e) {
+            throw new CommandException(e);
         }
 
         session.setAttribute(REDIRECT_COMMAND, VIEW_CUSTOMER_PRODUCT_TABLE_COMMAND);

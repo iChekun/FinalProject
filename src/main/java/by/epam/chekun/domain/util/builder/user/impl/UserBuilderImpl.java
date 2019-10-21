@@ -5,7 +5,6 @@ import by.epam.chekun.domain.entity.user.User;
 import by.epam.chekun.domain.entity.user.UserStatus;
 import by.epam.chekun.domain.util.builder.user.UserBuilder;
 
-
 import java.sql.Timestamp;
 
 public class UserBuilderImpl implements UserBuilder {
@@ -15,7 +14,7 @@ public class UserBuilderImpl implements UserBuilder {
     private Contacts contacts;
 
     private String login;
-    private String password = "";
+    private String password;
 
     private String name;
     private String surname;
@@ -84,8 +83,45 @@ public class UserBuilderImpl implements UserBuilder {
 
     @Override
     public User build() {
-        User user = new User(userId, contacts,
+        final User user = new User(userId, contacts,
                 login, password, name, surname, userStatus, birthDate, banned);
         return user;
+    }
+
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public Contacts getContacts() {
+        return contacts;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public UserStatus getUserStatus() {
+        return userStatus;
+    }
+
+    public boolean isBanned() {
+        return banned;
+    }
+
+    public Timestamp getBirthDate() {
+        return birthDate;
     }
 }

@@ -201,7 +201,7 @@
                     <c:if test="${errorMessage == null}">
                         <c:if test="${fn:length(productsInBasket) le 0}">
                             <script>
-                                showAlertMessage("<fmt:message key="${empty_basket}"/>");
+                                showAlertMessage("<fmt:message key="message.empty_basket"/>");
                             </script>
                         </c:if>
                     </c:if>

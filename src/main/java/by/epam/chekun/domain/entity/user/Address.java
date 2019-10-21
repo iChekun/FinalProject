@@ -80,4 +80,15 @@ public class Address implements Serializable {
     public int hashCode() {
         return Objects.hash(country, city, street, houseNumber, apartmentNumber);
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", houseNumber=" + houseNumber +
+                ", apartmentNumber=" + apartmentNumber +
+                '}';
+    }
 }

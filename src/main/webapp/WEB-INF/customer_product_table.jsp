@@ -106,12 +106,14 @@
                             <label for="category"> <fmt:message key="label.text.product_category"/></label>
                             <br><br>
                             <select id="category" name="categoryId">
+                                <option disabled selected value> -- select an option --</option>
                                 <c:forEach items="${categories}" var="category">
                                     <option value="${category.categoryId}"
                                             <c:if test="${category.categoryId == currentCategoryId}">selected</c:if>>
                                             ${category.name}
                                     </option>
                                 </c:forEach>
+                                <option value><fmt:message key="label.select.none"/></option>
                             </select>
                         </fieldset>
                     </li>
@@ -120,13 +122,18 @@
                             <label for="brand"><fmt:message key="label.text.product_brand"/></label>
                             <br><br>
                             <select id="brand" name="brandId">
+                                <option disabled selected value> -- select an option --</option>
                                 <c:forEach items="${brands}" var="brand">
                                     <option value="${brand.brandId}"
                                             <c:if test="${brand.brandId == currentBrandId}">selected</c:if>>
                                             ${brand.name}</option>
                                 </c:forEach>
+
+                                <option value><fmt:message key="label.select.none"/></option>
+
                             </select>
                         </fieldset>
+                        ${currentBrandId}
                     </li>
                     <%--                    <li>--%>
                     <%--                        3. скролл по цене--%>
@@ -199,18 +206,6 @@
                                     </button>
                                     <input type="hidden" name="action" value="addProductToBasket">
                                 </p>
-                                    <%--                                <p class="buy_product">--%>
-                                    <%--                                <div class="button">--%>
-                                    <%--                            <span>--%>
-
-                                    <%--                                <button--%>
-                                    <%--                                        type="submit" name="productForAction" value="${product.productId}">--%>
-                                    <%--                                    buy--%>
-                                    <%--                                </button>--%>
-
-                                    <%--                                <input type="hidden" name="action" value="addProductToBasket">--%>
-
-                                    <%--                            </span></div>--%>
 
                             </div>
                         </td>
@@ -228,6 +223,7 @@
     </div>
     <c:remove var="errorMessage"/>
 </div>
+
 
 
 <hr>

@@ -137,4 +137,19 @@ public class User implements Serializable {
     public int hashCode() {
         return Objects.hash(userId, contacts, login, password, name, surname, userStatus, birthDate, banned);
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "userId='" + userId + '\'' +
+                ", contacts=" + contacts +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", userStatus=" + userStatus +
+                ", birthDate=" + birthDate +
+                ", banned=" + banned +
+                '}';
+    }
 }

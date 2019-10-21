@@ -16,6 +16,11 @@
 
 <html>
 <head>
+    <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet'
+          type='text/css'>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>
+    <script src="js/signIn.js"></script>
     <script src="js/alert.js"></script>
 </head>
 <body>

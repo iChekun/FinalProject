@@ -28,13 +28,8 @@
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
 
-    <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet'
-          type='text/css'>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="js/alert.js"></script>
-
-    <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>
-    <script src="js/signIn.js"></script>
+    <%--    <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>--%>
+    <%--    <script src="js/signIn.js"></script>--%>
 
 
     <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">--%>
@@ -173,25 +168,25 @@
                         <input class="slider__nav" type="radio" name="slider" title="slide4"/>
                         <div class="slider__inner">
                             <div class="slider__contents"><i class="slider__image fa fa-codepen"></i>
-                                <h2 class="slider__caption"> <fmt:message key="main.base.first.online_store"/></h2>
+                                <h2 class="slider__caption"><fmt:message key="main.base.first.online_store"/></h2>
                                 <p class="slider__txt">
                                     <fmt:message key="main.base.text.first_text"/>
                                 </p>
                             </div>
                             <div class="slider__contents"><i class="slider__image fa fa-mobile"></i>
-                                <h2 class="slider__caption"> <fmt:message key="main.base.second.mobile"/></h2>
+                                <h2 class="slider__caption"><fmt:message key="main.base.second.mobile"/></h2>
                                 <p class="slider__txt">
                                     <fmt:message key="main.base.text.second_text"/>
                                 </p>
                             </div>
                             <div class="slider__contents"><i class="slider__image fa fa-television"></i>
-                                <h2 class="slider__caption"> <fmt:message key="main.base.third.television"/></h2>
+                                <h2 class="slider__caption"><fmt:message key="main.base.third.television"/></h2>
                                 <p class="slider__txt">
                                     <fmt:message key="main.base.text.third_text"/>
                                 </p>
                             </div>
                             <div class="slider__contents"><i class="slider__image fa fa-cutlery"></i>
-                                <h2 class="slider__caption"> <fmt:message key="main.base.fourth.animal_food"/></h2>
+                                <h2 class="slider__caption"><fmt:message key="main.base.fourth.animal_food"/></h2>
                                 <p class="slider__txt">
                                     <fmt:message key="main.base.text.fourth_text"/>
                                 </p>
@@ -203,7 +198,7 @@
 
 
             <div class="sector_second_line_1">
-                <a href="">
+                <a href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=2">
                     <img src="pictures/product/animals/adversting_phones.jpg" height="200" width="300"
                          alt="tv"/>
                 </a>
@@ -211,7 +206,7 @@
 
 
             <div class="sector_second_line_2">
-                <a href="">
+                <a href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=1">
                     <img src="pictures/product/animals/adversing_tv.jpg" height="200" width="300"
                          alt="tv"/>
                 </a>
@@ -219,7 +214,7 @@
 
 
             <div class="sector_second_line_3">
-                <a href="">
+                <a href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=">
                     <img src="pictures/product/animals/dog_food_adversting.jpg" height="200" width="200"
                          alt="animal food"/>
                 </a>

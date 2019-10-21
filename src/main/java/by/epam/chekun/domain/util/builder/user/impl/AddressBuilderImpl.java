@@ -49,4 +49,24 @@ public class AddressBuilderImpl implements AddressBuilder {
         Address address = new Address(country, city, street, houseNumber, apartmentNumber);
         return address;
     }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public int getHouseNumber() {
+        return houseNumber;
+    }
+
+    public int getApartmentNumber() {
+        return apartmentNumber;
+    }
 }

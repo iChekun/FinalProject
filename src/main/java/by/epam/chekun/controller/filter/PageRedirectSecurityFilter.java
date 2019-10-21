@@ -13,6 +13,7 @@ import static by.epam.chekun.domain.configuration.JspFilePass.*;
 
 
 @WebFilter(urlPatterns = {
+        SLASH + MAIN_PAGE,
         SLASH + USERS_TABLE_PAGE,
         SLASH + SIGN_UP_PAGE,
         SLASH + USER_PERSONAL_CABINET_PAGE,

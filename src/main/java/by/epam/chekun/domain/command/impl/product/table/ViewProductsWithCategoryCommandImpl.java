@@ -35,21 +35,21 @@ public class ViewProductsWithCategoryCommandImpl implements Command {
     public String execute() throws CommandException {
 
         try {
-            HttpSession session = request.getSession();
             //1
             final String categoryId = request.getParameter("categoryId");
-            System.out.println(categoryId);
             final List<Product> products = productService.getAllByCategory(categoryId);
             final List<Category> categories = categoryService.getAll();
             //2
             final List<Brand> brands = brandService.getAll();
             //3
-            products.forEach(System.out::println);
+
+            request.setAttribute("currentBrandId", null);
+            request.setAttribute("currentCategoryId", categoryId);
             request.setAttribute(CATEGORY_LIST, categories);
             request.setAttribute(BRAND_LIST, brands);
             request.setAttribute(PRODUCT_LIST, products);
         } catch (ServiceException e) {
-            System.out.println(e.getMessage());
+
         }
 
         return CUSTOMER_PRODUCT_PAGE;

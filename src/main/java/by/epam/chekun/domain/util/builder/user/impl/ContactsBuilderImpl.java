@@ -42,4 +42,20 @@ public class ContactsBuilderImpl implements ContactsBuilder {
         Contacts contacts = new Contacts(contactsId, address, email, phoneNumber);
         return contacts;
     }
+
+    public String getContactsId() {
+        return contactsId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
 }

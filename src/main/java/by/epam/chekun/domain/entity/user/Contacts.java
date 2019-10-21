@@ -5,10 +5,10 @@ import java.util.Objects;
 
 public class Contacts implements Serializable {
 
-    private  String contactsId;
-    private  String email;
-    private  long phoneNumber;
-    private  Address address;
+    private String contactsId;
+    private String email;
+    private long phoneNumber;
+    private Address address;
 
     public Contacts() {
     }
@@ -66,5 +66,15 @@ public class Contacts implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(contactsId, email, phoneNumber, address);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "contactsId='" + contactsId + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", address=" + address +
+                '}';
     }
 }
