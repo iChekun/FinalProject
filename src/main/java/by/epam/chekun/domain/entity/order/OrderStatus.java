@@ -44,4 +44,12 @@ public class OrderStatus implements Serializable {
     public int hashCode() {
         return Objects.hash(orderStatusId, name);
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "orderStatusId='" + orderStatusId + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

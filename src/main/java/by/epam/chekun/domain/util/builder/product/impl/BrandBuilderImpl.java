@@ -42,4 +42,21 @@ public class BrandBuilderImpl implements BrandBuilder {
         final Brand brand = new Brand(brandId, name, description, imagePath);
         return brand;
     }
+
+
+    public String getBrandId() {
+        return brandId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
 }

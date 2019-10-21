@@ -45,4 +45,13 @@ public class PaymentMethod implements Serializable {
     public int hashCode() {
         return Objects.hash(paymentMethodId, name);
     }
+
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "paymentMethodId='" + paymentMethodId + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

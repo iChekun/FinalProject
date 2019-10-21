@@ -107,4 +107,17 @@ public class Product implements Serializable {
     public int hashCode() {
         return Objects.hash(productId, category, brand, name, description, imagePath, cost);
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "productId='" + productId + '\'' +
+                ", category=" + category +
+                ", brand=" + brand +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                ", cost=" + cost +
+                '}';
+    }
 }

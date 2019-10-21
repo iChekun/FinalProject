@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 
 public class OrderBuilderImpl implements OrderBuilder {
 
-
     private String orderId;
     private OrderStatus orderStatus;
 
@@ -64,5 +63,29 @@ public class OrderBuilderImpl implements OrderBuilder {
         final Order order = new Order(orderId, user, paymentMethod, orderStatus,
                 orderDate, cost);
         return order;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public Timestamp getOrderDate() {
+        return orderDate;
+    }
+
+    public double getCost() {
+        return cost;
     }
 }

@@ -69,4 +69,15 @@ public class Brand implements Serializable {
     public int hashCode() {
         return Objects.hash(brandId, name, description, imagePath);
     }
+
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "brandId='" + brandId + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                '}';
+    }
 }

@@ -28,4 +28,12 @@ public class BasketBuilderImpl implements BasketBuilder {
         final Basket basket = new Basket(basketId, userId);
         return basket;
     }
+
+    public String getBasketId() {
+        return basketId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
 }

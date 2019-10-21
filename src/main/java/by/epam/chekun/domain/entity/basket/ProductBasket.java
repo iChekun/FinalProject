@@ -46,4 +46,12 @@ public class ProductBasket implements Serializable {
     public int hashCode() {
         return Objects.hash(basket, product);
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "basket=" + basket +
+                ", product=" + product +
+                '}';
+    }
 }

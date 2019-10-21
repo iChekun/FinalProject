@@ -28,4 +28,13 @@ public class PaymentMethodBuilderImpl implements PaymentMethodBuilder {
         final PaymentMethod paymentMethod = new PaymentMethod(paymentMethodId, name);
         return paymentMethod;
     }
+
+
+    public String getPaymentMethodId() {
+        return paymentMethodId;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

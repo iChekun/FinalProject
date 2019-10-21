@@ -8,9 +8,7 @@ public class OrderStatusBuilderImpl implements OrderStatusBuilder {
     private String name;
     private String orderStatusId;
 
-    public OrderStatusBuilderImpl() {
-
-    }
+    public OrderStatusBuilderImpl() { }
 
     public OrderStatusBuilderImpl(String orderStatusId) {
         this.orderStatusId = orderStatusId;
@@ -26,5 +24,13 @@ public class OrderStatusBuilderImpl implements OrderStatusBuilder {
     public OrderStatus build() {
         final OrderStatus orderStatus = new OrderStatus(orderStatusId, name);
         return orderStatus;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getOrderStatusId() {
+        return orderStatusId;
     }
 }

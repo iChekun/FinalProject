@@ -18,7 +18,6 @@ public class Basket implements Serializable {
     }
 
 
-
     public String getBasketId() {
         return basketId;
     }
@@ -47,5 +46,13 @@ public class Basket implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(basketId, userId);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "basketId='" + basketId + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
     }
 }

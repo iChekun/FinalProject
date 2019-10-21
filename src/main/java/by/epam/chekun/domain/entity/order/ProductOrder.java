@@ -10,6 +10,8 @@ public class ProductOrder implements Serializable {
     private Order order;
     private Product product;
 
+    public ProductOrder() {
+    }
 
     public ProductOrder(Order order, Product product) {
         this.order = order;
@@ -44,5 +46,13 @@ public class ProductOrder implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(order, product);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "order=" + order +
+                ", product=" + product +
+                '}';
     }
 }

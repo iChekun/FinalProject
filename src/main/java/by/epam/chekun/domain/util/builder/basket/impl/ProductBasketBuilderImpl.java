@@ -29,4 +29,13 @@ public class ProductBasketBuilderImpl implements ProductBasketBuilder {
         final ProductBasket productBasket = new ProductBasket(basket, product);
         return productBasket;
     }
+
+
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
 }

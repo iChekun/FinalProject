@@ -28,4 +28,13 @@ public class ProductOrderBuilderImpl implements ProductOrderBuilder {
         final ProductOrder productOrder = new ProductOrder(order, product);
         return productOrder;
     }
+
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
 }

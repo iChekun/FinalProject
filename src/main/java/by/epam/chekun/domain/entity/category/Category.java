@@ -66,4 +66,14 @@ public class Category implements Serializable {
     public int hashCode() {
         return Objects.hash(categoryId, name, description, imagePath);
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "categoryId='" + categoryId + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                '}';
+    }
 }

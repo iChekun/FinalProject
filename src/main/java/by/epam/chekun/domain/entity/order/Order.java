@@ -94,4 +94,17 @@ public class Order implements Serializable {
     public int hashCode() {
         return Objects.hash(orderId, user, paymentMethod, orderDate, cost, orderStatus);
     }
+
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "{" +
+                "orderId='" + orderId + '\'' +
+                ", user=" + user +
+                ", paymentMethod=" + paymentMethod +
+                ", orderDate=" + orderDate +
+                ", cost=" + cost +
+                ", orderStatus=" + orderStatus +
+                '}';
+    }
 }

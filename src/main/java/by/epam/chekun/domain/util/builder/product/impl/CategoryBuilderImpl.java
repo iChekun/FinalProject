@@ -41,4 +41,21 @@ public class CategoryBuilderImpl implements CategoryBuilder {
         final Category category = new Category(categoryId, name, description, imagePath);
         return category;
     }
+
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
 }

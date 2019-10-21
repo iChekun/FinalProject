@@ -66,4 +66,32 @@ public class ProductBuilderImpl implements ProductBuilder {
                 name, description, imagePath, cost);
         return product;
     }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public double getCost() {
+        return cost;
+    }
 }

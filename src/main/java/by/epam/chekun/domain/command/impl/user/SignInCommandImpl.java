@@ -22,14 +22,21 @@ public class SignInCommandImpl implements Command {
 
     private final HttpServletRequest request;
     private final HttpServletResponse response;
-    private final UserService userService = ServiceManager.getInstance().getUserService();
-    private final BasketService basketService = ServiceManager.getInstance().getBasketService();
+    private final UserService userService;
+    private final BasketService basketService;
 
     public SignInCommandImpl(final HttpServletRequest request, final HttpServletResponse response) {
-        this.request = request;
-        this.response = response;
+        this(ServiceManager.getInstance().getUserService(), ServiceManager.getInstance().getBasketService(),
+                request, response);
     }
 
+    public SignInCommandImpl(UserService userService, BasketService basketService,
+                             final HttpServletRequest request, final HttpServletResponse response) {
+        this.request = request;
+        this.response = response;
+        this.userService = userService;
+        this.basketService = basketService;
+    }
 
     @Override
     public String execute() throws CommandException {
@@ -47,9 +54,11 @@ public class SignInCommandImpl implements Command {
             ///
             basketService.createBasket(user.getUserId());
 
-            Basket basket = basketService.getBasket(user.getUserId());
+            final Basket basket = basketService.getBasket(user.getUserId());
 
-            session.setAttribute(BASKET_ID, basket.getBasketId());
+            final String basketId = basket.getBasketId();
+
+            session.setAttribute(BASKET_ID, basketId);
             session.setAttribute(ERROR_TO_JSP, "message.successful_login");
         } catch (BannedUserServiceException ex) {
             session.setAttribute(ERROR_TO_JSP, "message.user_is_banned");
