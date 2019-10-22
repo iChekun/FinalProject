@@ -28,14 +28,13 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    //    private final UserDAO userRepository = DAOManager.getInstance().getUserRepository();
     private final UserRepository userRepository = DAOManager.getInstance().getUserRepository();
     private final ContactsRepository contactsRepository = DAOManager.getInstance().getContactsRepository();
     private final PasswordHashKeeper keeper = UtilManager.getInstance().getPasswordHashKeeper();
     private final UserValidator validator = UtilManager.getInstance().getUserValidator();
 
     @Override
-    public User getById(final String userId) throws ServiceException {
+    public User getById(final String userId) throws UserServiceException {
         try {
             final User user = userRepository.getEntityById(userId);
             return user;
@@ -45,7 +44,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User signIn(final String login, final String password) throws ServiceException {
+    public User signIn(final String login, final String password) throws UserServiceException {
         if (!validator.validate(login, password)) {
             throw new InvalidUserInformationException("Information is not valid!");
         }
@@ -72,7 +71,7 @@ public class UserServiceImpl implements UserService {
                     final String email, final String phoneNumber,
                     final String country, final String city, final String street,
                     final int houseNumber, final int apartmentNumber)
-            throws ServiceException {
+            throws UserServiceException {
 
         if (!validator.validate(login, password, confirmedPassword,
                 name, surname, birthDate, email, phoneNumber
@@ -124,7 +123,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAll() throws ServiceException {
+    public List<User> getAll() throws UserServiceException {
         try {
             final List<User> users = userRepository.getAll();
             return users;
@@ -135,26 +134,26 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void changeBanStatus(final String userId) throws ServiceException {
+    public void changeBanStatus(final String userId) throws UserServiceException {
         try {
             userRepository.updateBanStatus(userId);
         } catch (DAOException e) {
-            throw new ServiceException(e);
+            throw new UserServiceException(e);
         }
     }
 
     @Override
-    public void changeUserStatus(final String userId) throws ServiceException {
+    public void changeUserStatus(final String userId) throws UserServiceException {
         try {
             userRepository.updateUserStatus(userId);
         } catch (DAOException e) {
-            throw new ServiceException(e);
+            throw new UserServiceException(e);
         }
     }
 
 
     @Override
-    public List<User> getAllUsersSorted(final String sortedBy, final String sortType) throws ServiceException {
+    public List<User> getAllUsersSorted(final String sortedBy, final String sortType) throws UserServiceException {
         try {
             final List<User> usersSortedList = userRepository.getAllUserSorted(sortedBy, sortType);
             return usersSortedList;
@@ -170,7 +169,7 @@ public class UserServiceImpl implements UserService {
                        final String name, final String surname, final Date birthDate,
                        final String contactsId, final String email, final String phoneNumber,
                        final String country, final String city, final String street,
-                       final int houseNumber, final int apartmentNumber) throws ServiceException {
+                       final int houseNumber, final int apartmentNumber) throws UserServiceException {
         if (!validator.validate(login,
                 name, surname, birthDate, email, phoneNumber, country, city, street, houseNumber, apartmentNumber)) {
             throw new InvalidUserInformationException("Can`t edit user! Info is not valid!");
@@ -204,21 +203,18 @@ public class UserServiceImpl implements UserService {
                     .withContacts(contacts)
                     .build();
             userRepository.update(user);
-//            userRepository.update(userId, userStatusId, banned, login, name,
-//                    surname, birthDate, contactsId, email, Long.valueOf(phoneNumber),
-//                    country, city, street, houseNumber, apartmentNumber);
         } catch (UsedLoginException e) {
             throw new InvalidLoginException(e);
         } catch (UsedEmailContactsException e) {
             throw new InvalidEmailException(e);
         } catch (DAOException e) {
-            throw new ServiceException(e);
+            throw new UserServiceException(e);
         }
     }
 
     @Override
     public void changePassword(String userId, String currentPassword,
-                               String newPassword, String confirmedPassword) throws ServiceException {
+                               String newPassword, String confirmedPassword) throws UserServiceException {
         if (!validator.validatePassword(currentPassword, newPassword, confirmedPassword)) {
             throw new InvalidUserInformationException("Info not valid!");
         }

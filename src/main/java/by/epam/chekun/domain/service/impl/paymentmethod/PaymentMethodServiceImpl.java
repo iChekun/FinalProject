@@ -15,7 +15,7 @@ import java.util.List;
 
 public class PaymentMethodServiceImpl implements PaymentMethodService {
 
-    private final PaymentMethodRepository paymentMethodRepostitory = DAOManager.getInstance().getPaymentMethodRepository();
+    private final PaymentMethodRepository paymentMethodRepository = DAOManager.getInstance().getPaymentMethodRepository();
 
     private final PaymentMethodValidator paymentMethodValidator = UtilManager.getInstance().getPaymentMethodValidator();
 
@@ -31,7 +31,7 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
                 .build();
 
         try {
-            paymentMethodRepostitory.add(paymentMethod);
+            paymentMethodRepository.add(paymentMethod);
         } catch (PaymentMethodDAOException e) {
             throw new PaymentMethodServiceException(e);
         }
@@ -40,7 +40,7 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
     @Override
     public List<PaymentMethod> getAll() throws PaymentMethodServiceException {
         try {
-            final List<PaymentMethod> paymentMethods = paymentMethodRepostitory.getAll();
+            final List<PaymentMethod> paymentMethods = paymentMethodRepository.getAll();
             return paymentMethods;
         } catch (PaymentMethodDAOException e) {
             throw new PaymentMethodServiceException(e);
@@ -50,7 +50,7 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
     @Override
     public void deletePaymentMethod(String paymentMethodId) throws PaymentMethodServiceException {
         try {
-            paymentMethodRepostitory.removeById(paymentMethodId);
+            paymentMethodRepository.removeById(paymentMethodId);
         } catch (PaymentMethodDAOException e) {
             throw new PaymentMethodServiceException(e);
         }

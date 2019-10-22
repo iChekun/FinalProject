@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Brand implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private String brandId;
     private String name;

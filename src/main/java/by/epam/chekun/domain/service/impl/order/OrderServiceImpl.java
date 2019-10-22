@@ -11,6 +11,7 @@ import by.epam.chekun.domain.entity.user.User;
 import by.epam.chekun.domain.service.BasketService;
 import by.epam.chekun.domain.service.OrderService;
 import by.epam.chekun.domain.service.exception.ServiceException;
+import by.epam.chekun.domain.service.exception.basket.BasketServiceException;
 import by.epam.chekun.domain.service.exception.order.OrderServiceException;
 import by.epam.chekun.domain.service.impl.basket.BasketServiceImpl;
 import by.epam.chekun.domain.util.builder.order.impl.OrderBuilderImpl;
@@ -23,45 +24,48 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static by.epam.chekun.domain.entity.user.UserStatus.ADMIN;
+import static by.epam.chekun.domain.entity.user.UserStatus.CUSTOMER;
+
 public class OrderServiceImpl implements OrderService {
 
 
     private final OrderRepository orderRepository = DAOManager.getInstance().getOrderRepository();
-    //    private final BasketService basketService = ServiceManager.getInstance().getBasketService();
     private final BasketService basketService = new BasketServiceImpl();
 
     @Override
-    public void add(String userId, String paymentMethodId, String basketId) throws ServiceException {
-
-        final Timestamp orderDate = getOrderTime();
-        final double cost = getOrderCost(userId);
-        //
-        final User user = new UserBuilderImpl(userId).build();
-        //
-        final PaymentMethod paymentMethod = new PaymentMethodBuilderImpl(paymentMethodId).build();
-        //
-        String openStatus = "1";
-        final OrderStatus orderStatus = new OrderStatusBuilderImpl(openStatus).build();
-        //
-        final Order order = new OrderBuilderImpl()
-                .withUser(user)
-                .withPaymentMethod(paymentMethod)
-                .withOrderStatus(orderStatus)
-                .withCost(cost)
-                .withOrderDate(orderDate)
-                .build();
-
+    public void add(String userId, String paymentMethodId, String basketId) throws OrderServiceException {
 
         try {
+
+            final Timestamp orderDate = getOrderTime();
+            final double cost = getOrderCost(userId);
+            //
+            final User user = new UserBuilderImpl(userId).build();
+            //
+            final PaymentMethod paymentMethod = new PaymentMethodBuilderImpl(paymentMethodId).build();
+            //
+            String openStatus = "1";
+            final OrderStatus orderStatus = new OrderStatusBuilderImpl(openStatus).build();
+            //
+            final Order order = new OrderBuilderImpl()
+                    .withUser(user)
+                    .withPaymentMethod(paymentMethod)
+                    .withOrderStatus(orderStatus)
+                    .withCost(cost)
+                    .withOrderDate(orderDate)
+                    .build();
+            //
+
             orderRepository.add(order);
             //
             basketService.clearBasket(basketId);
-        } catch (OrderDAOException e) {
+        } catch (OrderDAOException | BasketServiceException e) {
             throw new OrderServiceException(e);
         }
     }
 
-    private double getOrderCost(String userId) throws ServiceException {
+    private double getOrderCost(String userId) throws BasketServiceException {
         return basketService.getCostOfProductsInBasket(userId);
     }
 
@@ -74,7 +78,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public List<Order> getAllUserOrdersByUserId(String userId) throws ServiceException {
+    public List<Order> getAllUserOrdersByUserId(String userId) throws OrderServiceException {
         if (userId == null) {
             throw new OrderServiceException("User id is not valid!");
         }
@@ -89,7 +93,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<ProductOrder> getAllProductsFromOrder(String orderId) throws ServiceException {
+    public List<ProductOrder> getAllProductsFromOrder(String orderId) throws OrderServiceException {
         if (orderId == null) {
             throw new OrderServiceException("order id is not valid!");
         }
@@ -104,19 +108,21 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public void updateOrderStatus(String orderId, String currentOrderStatusId) throws ServiceException {
+    public void updateOrderStatus(String orderId, String currentOrderStatusId) throws OrderServiceException {
 
-        final String orderStatusId = currentOrderStatusId.equals("1") ? "2" : "1";
+
+        final int orderStatusId = currentOrderStatusId.equals(ADMIN.getUserStatusId()) ?
+                CUSTOMER.getUserStatusId() : ADMIN.getUserStatusId();
 
         try {
-            orderRepository.updateOrderStatus(orderId, orderStatusId);
+            orderRepository.updateOrderStatus(orderId, String.valueOf(orderStatusId));
         } catch (OrderDAOException e) {
             throw new OrderServiceException(e);
         }
     }
 
     @Override
-    public Order getOrderById(String orderId) throws ServiceException {
+    public Order getOrderById(String orderId) throws OrderServiceException {
         try {
             return orderRepository.getEntityById(orderId);
         } catch (OrderDAOException e) {

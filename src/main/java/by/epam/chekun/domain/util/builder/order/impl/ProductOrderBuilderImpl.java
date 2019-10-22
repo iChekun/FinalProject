@@ -25,7 +25,9 @@ public class ProductOrderBuilderImpl implements ProductOrderBuilder {
 
     @Override
     public ProductOrder build() {
-        final ProductOrder productOrder = new ProductOrder(order, product);
+        final ProductOrder productOrder = new ProductOrder();
+        productOrder.setProduct(product);
+        productOrder.setOrder(order);
         return productOrder;
     }
 

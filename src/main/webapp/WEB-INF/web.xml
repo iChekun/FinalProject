@@ -8,7 +8,7 @@
     <context-param>
         <param-name>db.url</param-name>
         <param-value>
-            jdbc:mysql://localhost/online_store?serverTimezone=Europe/Moscow&amp;useSSL=false&amp;generateSimpleParameterMetadata=true
+                jdbc:mysql://localhost/online_store?serverTimezone=Europe/Moscow&amp;useSSL=false&amp;generateSimpleParameterMetadata=true
         </param-value>
     </context-param>
     <context-param>

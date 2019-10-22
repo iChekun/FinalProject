@@ -123,9 +123,6 @@ public class ProductSqlRepository extends InitializerRepository implements Produ
     @Override
     public boolean updateProductBrand(String productId, String brandId) throws ProductDAOException {
         try {
-            System.out.println(brandId);
-            System.out.println(productId);
-
             jdbcTemplate.update(UPDATE_PRODUCT_BRAND, brandId, productId);
             return true;
         } catch (JdbcTemplateException e) {
@@ -143,7 +140,8 @@ public class ProductSqlRepository extends InitializerRepository implements Produ
 
     @Override
     public List<Product> getAllByBrand(String brandId) throws ProductDAOException {
-        return null;
+        final List<Product> products = _getAll(GET_ALL_WITH_BRAND, brandId);
+        return products;
     }
 
     @Override
@@ -160,6 +158,7 @@ public class ProductSqlRepository extends InitializerRepository implements Produ
                     argc);
             return products;
         } catch (JdbcTemplateException e) {
+            e.printStackTrace();
             throw new ProductDAOException(e);
         }
     }

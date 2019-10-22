@@ -2,7 +2,7 @@ package by.epam.chekun.dao.mapper.builder.impl;
 
 import by.epam.chekun.dao.mapper.builder.RowMapperBuilder;
 import by.epam.chekun.domain.entity.category.Category;
-import by.epam.chekun.domain.util.builder.product.impl.CategoryBuilderImpl;
+import by.epam.chekun.domain.util.builder.category.impl.CategoryBuilderImpl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Contacts implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private String contactsId;
     private String email;

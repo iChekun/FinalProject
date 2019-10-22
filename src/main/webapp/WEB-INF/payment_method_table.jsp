@@ -95,7 +95,7 @@
                         </fieldset>
                     </li>
                     <li>
-                        <a href="" class="overlayLink">
+                        <a href="" class="overlayLink" style="width:105%;">
                             <fmt:message key="label.payment_method.add_new_payment_method"/>
                         </a>
                     </li>

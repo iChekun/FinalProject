@@ -34,7 +34,6 @@ public class EditProductCommandImpl implements Command {
         final String categoryId = request.getParameter(CATEGORY_ID);
         final String brandId = request.getParameter(BRAND_ID);
 
-
         final String productId = request.getParameter(PRODUCT_ID);
         final String productName = request.getParameter(PRODUCT_NAME);
         final String productDescription = request.getParameter(PRODUCT_DESCRIPTION);

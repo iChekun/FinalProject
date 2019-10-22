@@ -46,7 +46,12 @@ public class AddressBuilderImpl implements AddressBuilder {
 
     @Override
     public Address build() {
-        Address address = new Address(country, city, street, houseNumber, apartmentNumber);
+        Address address = new Address();
+        address.setCountry(country);
+        address.setCity(city);
+        address.setStreet(street);
+        address.setHouseNumber(houseNumber);
+        address.setApartmentNumber(apartmentNumber);
         return address;
     }
 

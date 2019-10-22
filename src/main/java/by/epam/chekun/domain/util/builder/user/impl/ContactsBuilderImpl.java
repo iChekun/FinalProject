@@ -39,7 +39,11 @@ public class ContactsBuilderImpl implements ContactsBuilder {
 
     @Override
     public Contacts build() {
-        Contacts contacts = new Contacts(contactsId, address, email, phoneNumber);
+        Contacts contacts = new Contacts();
+        contacts.setContactsId(contactsId);
+        contacts.setAddress(address);
+        contacts.setEmail(email);
+        contacts.setPhoneNumber(phoneNumber);
         return contacts;
     }
 

@@ -82,20 +82,20 @@ final class ProductSqlUtil {
                     "   pc.categoryId = ? ";
 
     static final String GET_ALL_WITH_BRAND =
-            "  SELECT p.productId, p.name, p.description, p.imagePath, p.cost, " +
-                    "     b.brandId,   b.name, b.description ,  b.imagePath,  n" +
-                    "    c.categoryId, c.name, c.description, c." +
-                    "   from  " +
-                    "    productbrands pb " +
-                    "   INNER JOIN " +
-                    "   products p ON p.productId = pb.productId " +
-                    "    INNER JOIN " +
-                    "  inner join brands b on b.brandId = pb.brandId " +
-                    "    INNER JOIN  " +
-                    "    productсategories pc on pc.productId= p.productId " +
-                    "    categories c ON c.categoryId = pc.categoryId  " +
-                    "        WHERE " +
-                    "   pb.brandId = ? ";
+            " SELECT p.productId, p.name, p.description, p.imagePath, p.cost," +
+                    " b.brandId,   b.name, b.description ,  b.imagePath," +
+                    " c.categoryId, c.name, c.description, c.imagePath" +
+                    " from" +
+                    " productbrands pb" +
+                    " INNER JOIN" +
+                    " products p ON p.productId = pb.productId" +
+                    " INNER JOIN" +
+                    " productсategories pc on pc.productId= p.productId" +
+                    " INNER JOIN" +
+                    " categories c ON c.categoryId = pc.categoryId" +
+                    " inner join brands b on b.brandId = pb.brandId" +
+                    " WHERE" +
+                    " pb.brandId = ? ;";
     //////////////////////////////////////////////////////////////////////////
 
     static final String GET_ALL_WITH_BRAND_AND_WITH_CATEGORY =

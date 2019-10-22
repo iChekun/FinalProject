@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 public class Order implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private String orderId;
     private User user;

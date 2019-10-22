@@ -27,7 +27,7 @@ public class ContactsSqlRepository extends InitializerRepository implements Cont
             "SET email=?, phoneNumber=?, country=?, city=?, street =?, houseNumber=?," +
             "apartmentNumber=?  WHERE contactsId=?";
 
-    private static final String GET_CONTACTS_BY_ID = "";
+
 
     @Override
     public Contacts getEntityById(String id) throws ContactsDAOException {
@@ -43,7 +43,7 @@ public class ContactsSqlRepository extends InitializerRepository implements Cont
 
     @Override
     public boolean removeById(String id) {
-        return false;
+        throw new UnsupportedOperationException("can`t remove contacts by id!");
     }
 
     @Override
@@ -103,7 +103,7 @@ public class ContactsSqlRepository extends InitializerRepository implements Cont
 
     @Override
     public List<Contacts> getAll() throws ContactsDAOException {
-        return null;
+        throw new UnsupportedOperationException("Can`t get all contacts! Try to user UserRepository");
     }
 
     @Override

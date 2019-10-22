@@ -43,6 +43,8 @@ final class UserSqlUtil {
             "SELECT userId FROM users where login=?";
 
 
+    static final String REMOVE_USER_BY_ID = "DELETE FROM Users WHERE userId = ?";
+
     static final String UPDATE_BAN_STATUS = "UPDATE Users SET banned=? WHERE UserId=?";
 
     static final String UPDATE_USER_STATUS = "UPDATE users SET userStatusId=?  WHERE userId=? ";

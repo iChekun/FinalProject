@@ -83,8 +83,17 @@ public class UserBuilderImpl implements UserBuilder {
 
     @Override
     public User build() {
-        final User user = new User(userId, contacts,
-                login, password, name, surname, userStatus, birthDate, banned);
+        final User user = new User();
+
+        user.setUserId(userId);
+        user.setContacts(contacts);
+        user.setLogin(login);
+        user.setPassword(password);
+        user.setName(name);
+        user.setSurname(surname);
+        user.setUserStatus(userStatus);
+        user.setBirthDate(birthDate);
+        user.setBanned(banned);
         return user;
     }
 

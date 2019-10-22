@@ -30,15 +30,16 @@ public class OrderSqlRepository extends InitializerRepository implements OrderRe
 
     @Override
     public boolean removeById(String id) throws OrderDAOException {
-        return false;
+        try {
+            jdbcTemplate.update(REMOVE_ORDER_BY_ID, id);
+            return true;
+        } catch (JdbcTemplateException e) {
+            throw new OrderDAOException(e);
+        }
     }
 
     @Override
     public boolean add(Order order) throws OrderDAOException {
-        //1 получить id заказа
-        //2 добавить сам заказ
-        //3 перекинуть все продукты из корзины в заказ
-        //4 отчистить корзину уже в сервисе я думаю
         try {
             //
             final String orderId = getOrderId();
@@ -78,7 +79,7 @@ public class OrderSqlRepository extends InitializerRepository implements OrderRe
 
     @Override
     public boolean update(Order order) throws OrderDAOException {
-        return false;
+        throw new UnsupportedOperationException("Can`t update committed order!");
     }
 
     @Override

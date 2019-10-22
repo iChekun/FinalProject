@@ -133,11 +133,8 @@
 
                             </select>
                         </fieldset>
-                        ${currentBrandId}
                     </li>
-                    <%--                    <li>--%>
-                    <%--                        3. скролл по цене--%>
-                    <%--                    </li>--%>
+
 
                     <li>
                         <p style="margin-top: 25px;">

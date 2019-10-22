@@ -1,7 +1,7 @@
-package by.epam.chekun.domain.util.builder.product.impl;
+package by.epam.chekun.domain.util.builder.category.impl;
 
 import by.epam.chekun.domain.entity.category.Category;
-import by.epam.chekun.domain.util.builder.product.CategoryBuilder;
+import by.epam.chekun.domain.util.builder.category.CategoryBuilder;
 
 public class CategoryBuilderImpl implements CategoryBuilder {
     private String categoryId;

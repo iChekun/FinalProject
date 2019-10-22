@@ -20,7 +20,7 @@ public class BasketServiceImpl implements BasketService {
     private final BasketRepository basketRepository = DAOManager.getInstance().getBasketRepository();
 
     @Override
-    public void createBasket(String userId) throws ServiceException {
+    public void createBasket(String userId) throws BasketServiceException {
         try {
             final Basket basket = new BasketBuilderImpl()
                     .withUserId(userId)
@@ -34,7 +34,7 @@ public class BasketServiceImpl implements BasketService {
 
 
     @Override
-    public Basket getBasket(String userId) throws ServiceException {
+    public Basket getBasket(String userId) throws BasketServiceException {
         try {
             final Basket basket = basketRepository.getEntityById(userId);
             return basket;
@@ -44,7 +44,7 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public void addProductToBasket(String userId, String productId) throws ServiceException {
+    public void addProductToBasket(String userId, String productId) throws BasketServiceException {
 
         final Basket basket = new BasketBuilderImpl()
                 .withUserId(userId)
@@ -66,16 +66,16 @@ public class BasketServiceImpl implements BasketService {
 
 
     @Override
-    public void clearBasket(String basketId) throws ServiceException {
+    public void clearBasket(String basketId) throws BasketServiceException {
         try {
             basketRepository.clearBasket(basketId);
         } catch (BasketDAOException e) {
-            throw new ServiceException(e);
+            throw new BasketServiceException(e);
         }
     }
 
     @Override
-    public List<ProductBasket> getAllProductInBasket(String userId) throws ServiceException {
+    public List<ProductBasket> getAllProductInBasket(String userId) throws BasketServiceException {
 
         try {
             final List<ProductBasket> productBaskets = basketRepository.getAllProductInBasket(userId);
@@ -87,7 +87,7 @@ public class BasketServiceImpl implements BasketService {
 
 
     @Override
-    public void deleteProductFromBasket(String basketId, String productId) throws ServiceException {
+    public void deleteProductFromBasket(String basketId, String productId) throws BasketServiceException {
         try {
             final Basket basket = new BasketBuilderImpl(basketId).build();
             final Product product = new ProductBuilderImpl(productId).build();
@@ -103,7 +103,7 @@ public class BasketServiceImpl implements BasketService {
 
 
     @Override
-    public double getCostOfProductsInBasket(String userId) throws ServiceException {
+    public double getCostOfProductsInBasket(String userId) throws BasketServiceException {
         try {
             double cost = basketRepository.getCostOfProductsInBasket(userId);
             return cost;
@@ -113,7 +113,7 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public int getProductCountInBasket(String basketId) throws ServiceException {
+    public int getProductCountInBasket(String basketId) throws BasketServiceException {
         try {
             return basketRepository.getCountOfProductsInBasket(basketId);
         } catch (BasketDAOException e) {

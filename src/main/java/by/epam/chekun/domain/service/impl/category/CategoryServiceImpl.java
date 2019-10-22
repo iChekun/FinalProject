@@ -11,7 +11,7 @@ import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.exception.category.CategoryServiceException;
 import by.epam.chekun.domain.service.exception.category.InvalidCategoryInformationException;
 import by.epam.chekun.domain.service.exception.category.UsedCategoryNameServiceException;
-import by.epam.chekun.domain.util.builder.product.impl.CategoryBuilderImpl;
+import by.epam.chekun.domain.util.builder.category.impl.CategoryBuilderImpl;
 import by.epam.chekun.domain.util.manager.UtilManager;
 import by.epam.chekun.domain.util.validator.category.CategoryValidator;
 
@@ -26,7 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void add(String name,
-                    String description, String imagePath) throws ServiceException {
+                    String description, String imagePath) throws CategoryServiceException {
 
         if (!validator.validate(name, description)) {
             throw new InvalidCategoryInformationException("Invalid category info!");
@@ -49,7 +49,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
-    public List<Category> getAll() throws ServiceException {
+    public List<Category> getAll() throws CategoryServiceException {
         try {
             List<Category> categories = categoryRepository.getAll();
             return categories;
@@ -59,7 +59,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public void update(String categoryId, String name, String description, String imagePath) throws ServiceException {
+    public void update(String categoryId, String name, String description, String imagePath) throws CategoryServiceException {
         if (!validator.validate(name, description)) {
             throw new InvalidCategoryInformationException("Invalid category info!");
         }
@@ -78,7 +78,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
-    public void delete(String categoryId) throws ServiceException {
+    public void delete(String categoryId) throws CategoryServiceException {
         try {
             categoryRepository.removeById(categoryId);
         } catch (CategoryDAOException e) {
@@ -88,11 +88,11 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
-    public Category getById(String categoryId) throws ServiceException {
+    public Category getById(String categoryId) throws CategoryServiceException {
         try {
             return categoryRepository.getEntityById(categoryId);
         } catch (CategoryDAOException e) {
-            throw new ServiceException(e);
+            throw new CategoryServiceException(e);
         }
     }
 }

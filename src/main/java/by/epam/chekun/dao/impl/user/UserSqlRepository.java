@@ -29,8 +29,12 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
 
     @Override
     public boolean removeById(String id) throws UserDAOException {
-
-        return false;
+        try {
+            jdbcTemplate.update(REMOVE_USER_BY_ID, id);
+            return true;
+        } catch (JdbcTemplateException e) {
+            throw new UserDAOException(e);
+        }
     }
 
 

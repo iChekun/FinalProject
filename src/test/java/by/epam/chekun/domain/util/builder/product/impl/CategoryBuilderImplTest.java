@@ -1,6 +1,7 @@
 package by.epam.chekun.domain.util.builder.product.impl;
 
 import by.epam.chekun.domain.entity.category.Category;
+import by.epam.chekun.domain.util.builder.category.impl.CategoryBuilderImpl;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 

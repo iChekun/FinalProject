@@ -60,8 +60,13 @@ public class OrderBuilderImpl implements OrderBuilder {
 
     @Override
     public Order build() {
-        final Order order = new Order(orderId, user, paymentMethod, orderStatus,
-                orderDate, cost);
+        final Order order = new Order();
+        order.setOrderId(orderId);
+        order.setUser(user);
+        order.setPaymentMethod(paymentMethod);
+        order.setOrderStatus(orderStatus);
+        order.setOrderDate(orderDate);
+        order.setCost(cost);
         return order;
     }
 

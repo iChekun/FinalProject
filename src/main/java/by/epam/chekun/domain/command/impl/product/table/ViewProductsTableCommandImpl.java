@@ -10,6 +10,8 @@ import by.epam.chekun.domain.service.CategoryService;
 import by.epam.chekun.domain.service.ProductService;
 import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.manager.ServiceManager;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,23 +43,19 @@ public class ViewProductsTableCommandImpl implements Command {
         try {
             final List<Category> categories = categoryService.getAll();
             request.setAttribute(CATEGORY_LIST, categories);
-        } catch (ServiceException e) {
-        }
+        } catch (ServiceException ignore) { /*NOP*/}
 
         //2
         try {
             final List<Brand> brands = brandService.getAll();
             request.setAttribute(BRAND_LIST, brands);
-        } catch (ServiceException e) {
-        }
+        } catch (ServiceException ignore) { /*NOP*/}
 
         try {
             final List<Product> products = productService.getAll();
 
             request.setAttribute(PRODUCT_LIST, products);
-        } catch (ServiceException e) {
-//            throw new CommandException(e);
-        }
+        } catch (ServiceException ignore) { /*NOP*/}
 
         if (session.getAttribute(ERROR_TO_JSP_PRODUCT) != null) {
             String error = String.valueOf(session.getAttribute("errorMessageProduct"));

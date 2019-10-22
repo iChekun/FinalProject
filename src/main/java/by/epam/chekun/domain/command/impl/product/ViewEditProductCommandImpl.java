@@ -46,8 +46,6 @@ public class ViewEditProductCommandImpl implements Command {
             final List<Brand> brands = brandService.getAll();
             //3
 
-            System.out.println(product.getCategory().getCategoryId());
-
             request.setAttribute(CATEGORY_LIST, categories);
             request.setAttribute(BRAND_LIST, brands);
 

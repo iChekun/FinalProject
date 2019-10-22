@@ -25,7 +25,9 @@ public class BasketBuilderImpl implements BasketBuilder {
 
     @Override
     public Basket build() {
-        final Basket basket = new Basket(basketId, userId);
+        final Basket basket = new Basket();
+        basket.setBasketId(basketId);
+        basket.setUserId(userId);
         return basket;
     }
 

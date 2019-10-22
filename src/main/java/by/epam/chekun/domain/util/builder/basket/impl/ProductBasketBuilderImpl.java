@@ -26,7 +26,9 @@ public class ProductBasketBuilderImpl implements ProductBasketBuilder {
 
     @Override
     public ProductBasket build() {
-        final ProductBasket productBasket = new ProductBasket(basket, product);
+        final ProductBasket productBasket = new ProductBasket();
+        productBasket.setBasket(basket);
+        productBasket.setProduct(product);
         return productBasket;
     }
 

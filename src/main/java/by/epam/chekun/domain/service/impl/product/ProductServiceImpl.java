@@ -21,7 +21,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void add(String name, String description, String imagePath, String cost,
-                    String categoryId, String brandId) throws ServiceException {
+                    String categoryId, String brandId) throws ProductServiceException {
 
         if (!productValidator.validate(name, description, cost)) {
             throw new InvalidProductInformationException("Invalid product info");
@@ -47,7 +47,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public List<Product> getAll() throws ServiceException {
+    public List<Product> getAll() throws ProductServiceException {
         try {
             List<Product> products = productRepository.getAll();
             return products;
@@ -58,7 +58,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public void delete(String productId) throws ServiceException {
+    public void delete(String productId) throws ProductServiceException {
         try {
             productRepository.removeById(productId);
         } catch (ProductDAOException e) {
@@ -68,7 +68,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public List<Product> getAllByCategory(String categoryId) throws ServiceException {
+    public List<Product> getAllByCategory(String categoryId) throws ProductServiceException {
         try {
             List<Product> products = productRepository.getAllByCategory(categoryId);
             return products;
@@ -78,7 +78,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllByBrand(String brandId) throws ServiceException {
+    public List<Product> getAllByBrand(String brandId) throws ProductServiceException {
         try {
             List<Product> products = productRepository.getAllByBrand(brandId);
             return products;
@@ -88,7 +88,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllByCategoryAndBrand(String categoryId, String brandId) throws ServiceException {
+    public List<Product> getAllByCategoryAndBrand(String categoryId, String brandId) throws ProductServiceException {
         try {
             List<Product> products = productRepository.getAllByCategoryAndBrand(categoryId, brandId);
             return products;
@@ -99,11 +99,11 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public Product getById(String productId) throws ServiceException {
+    public Product getById(String productId) throws ProductServiceException {
         try {
             return productRepository.getEntityById(productId);
         } catch (ProductDAOException e) {
-            throw new ServiceException(e);
+            throw new ProductServiceException(e);
         }
     }
 
@@ -111,7 +111,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void update(String productId, String name, String description,
                        String imagePath, String cost,
-                       String categoryId, String brandId) throws ServiceException {
+                       String categoryId, String brandId) throws ProductServiceException {
         if (!productValidator.validate(name, description, cost)) {
             throw new InvalidProductInformationException("Invalid product info");
         }
@@ -142,7 +142,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public String getProductCategoryId(String productId) throws ServiceException {
+    public String getProductCategoryId(String productId) throws ProductServiceException {
         try {
             final Product product = productRepository.getEntityById(productId);
             return product.getCategory().getCategoryId();
@@ -152,7 +152,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public String getProductBrandId(String productId) throws ServiceException {
+    public String getProductBrandId(String productId) throws ProductServiceException {
         try {
             final Product product = productRepository.getEntityById(productId);
             return product.getBrand().getBrandId();

@@ -1,6 +1,7 @@
 package by.epam.chekun.domain.util.builder.product.impl;
 
 import by.epam.chekun.domain.entity.brand.Brand;
+import by.epam.chekun.domain.util.builder.brand.impl.BrandBuilderImpl;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 

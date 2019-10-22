@@ -62,8 +62,14 @@ public class ProductBuilderImpl implements ProductBuilder {
 
     @Override
     public Product build() {
-        final Product product = new Product(productId, category, brand,
-                name, description, imagePath, cost);
+        final Product product = new Product();
+        product.setProductId(productId);
+        product.setCategory(category);
+        product.setBrand(brand);
+        product.setName(name);
+        product.setDescription(description);
+        product.setImagePath(imagePath);
+        product.setCost(cost);
         return product;
     }
 

@@ -1,7 +1,7 @@
-package by.epam.chekun.domain.util.builder.product.impl;
+package by.epam.chekun.domain.util.builder.brand.impl;
 
 import by.epam.chekun.domain.entity.brand.Brand;
-import by.epam.chekun.domain.util.builder.product.BrandBuilder;
+import by.epam.chekun.domain.util.builder.brand.BrandBuilder;
 
 public class BrandBuilderImpl implements BrandBuilder {
 
@@ -39,7 +39,11 @@ public class BrandBuilderImpl implements BrandBuilder {
 
     @Override
     public Brand build() {
-        final Brand brand = new Brand(brandId, name, description, imagePath);
+        final Brand brand = new Brand();
+        brand.setBrandId(brandId);
+        brand.setName(name);
+        brand.setDescription(description);
+        brand.setImagePath(imagePath);
         return brand;
     }
 

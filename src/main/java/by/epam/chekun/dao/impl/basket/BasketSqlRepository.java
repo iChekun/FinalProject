@@ -41,20 +41,6 @@ public class BasketSqlRepository extends InitializerRepository implements Basket
         }
     }
 
-    @Override
-    public boolean removeById(String userI) throws BasketDAOException {
-        return false;
-    }
-
-    @Override
-    public boolean update(Basket basket) throws BasketDAOException {
-        return false;
-    }
-
-    @Override
-    public List<Basket> getAll() throws BasketDAOException {
-        return null;
-    }
 
     @Override
     public double getCostOfProductsInBasket(String userId) throws BasketDAOException {
@@ -138,4 +124,23 @@ public class BasketSqlRepository extends InitializerRepository implements Basket
             throw new BasketDAOException(e);
         }
     }
+
+
+
+
+    @Override
+    public boolean removeById(String userI) throws BasketDAOException {
+        throw new UnsupportedOperationException("can`t remove basket!");
+    }
+
+    @Override
+    public boolean update(Basket basket) throws BasketDAOException {
+        throw new UnsupportedOperationException("can`t update basket!");
+    }
+
+    @Override
+    public List<Basket> getAll() throws BasketDAOException {
+        throw new UnsupportedOperationException("can`t get all baskets!");
+    }
+
 }

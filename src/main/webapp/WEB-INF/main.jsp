@@ -28,11 +28,6 @@
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
 
-    <%--    <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>--%>
-    <%--    <script src="js/signIn.js"></script>--%>
-
-
-    <%--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">--%>
 </head>
 <body>
 
@@ -78,8 +73,6 @@
                         <a href="mainWindow?action=signUpWindow">
                             <fmt:message key="button.signUp"/>
                         </a>
-
-
                     </li>
                     <li>
 
@@ -101,13 +94,6 @@
     <div id="sidebar">
         <aside>
             <ul>
-                <%--                <li class="catalog_name_style">--%>
-                <%--                    <fieldset>--%>
-                <%--                        <img style="float: left;"--%>
-                <%--                             src="pictures/calatog.png" height="50" width="50" alt="catalog"/>--%>
-                <%--                        Каталог товаров--%>
-                <%--                    </fieldset>--%>
-                <%--                </li>--%>
                 <li class="Schedule_left_bar_menu_main">
                     <a href=""
                        style="margin-top: 160px;margin-left: 7%; height: 50px; text-align: center; padding: 5px 5px; "
@@ -140,13 +126,6 @@
     </div>
 
     <div id="content-wrap">
-
-        <%--        <form action="" method="post">--%>
-        <%--            <div class="search">--%>
-        <%--                <input type="search" placeholder="Поиск по каталогу">--%>
-        <%--                <input type="submit" value="">--%>
-        <%--            </div>--%>
-        <%--        </form>--%>
 
         <!-- корзина -->
         <c:if test="${sessionScope.userId != null && sessionScope.userStatusId != null}">
@@ -200,7 +179,7 @@
             <div class="sector_second_line_1">
                 <a href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=2">
                     <img src="pictures/product/animals/adversting_phones.jpg" height="200" width="300"
-                         alt="tv"/>
+                         alt="phones"/>
                 </a>
             </div>
 
@@ -216,7 +195,7 @@
             <div class="sector_second_line_3">
                 <a href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=">
                     <img src="pictures/product/animals/dog_food_adversting.jpg" height="200" width="200"
-                         alt="animal food"/>
+                         alt="animal_food"/>
                 </a>
             </div>
 

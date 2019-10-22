@@ -22,7 +22,9 @@ public class OrderStatusBuilderImpl implements OrderStatusBuilder {
 
     @Override
     public OrderStatus build() {
-        final OrderStatus orderStatus = new OrderStatus(orderStatusId, name);
+        final OrderStatus orderStatus = new OrderStatus();
+        orderStatus.setOrderStatusId(orderStatusId);
+        orderStatus.setName(name);
         return orderStatus;
     }
 

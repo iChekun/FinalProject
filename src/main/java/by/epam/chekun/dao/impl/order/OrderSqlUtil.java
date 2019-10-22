@@ -12,20 +12,21 @@ final class OrderSqlUtil {
     // cost посчитываем
 
     static final String GET_ORDER_BY_ID =
-             " select o.orderId,o.userId, o.paymentMethodId, pm.name, "+
-                     "o.orderStatusId, os.name, "+
-                     "o.cost, o.orderDate "+
-                     "from orders o  "+
-                     " INNER JOIN "+
-                     "    paymentmethods pm ON pm.paymentMethodId = o.paymentMethodId "+
-                     "    INNER JOIN  "+
-                     "    orderstatus os on os.orderStatusId = o.orderStatusId " +
-                     " where o.orderId = ? ";
+            " select o.orderId,o.userId, o.paymentMethodId, pm.name, " +
+                    "o.orderStatusId, os.name, " +
+                    "o.cost, o.orderDate " +
+                    "from orders o  " +
+                    " INNER JOIN " +
+                    "    paymentmethods pm ON pm.paymentMethodId = o.paymentMethodId " +
+                    "    INNER JOIN  " +
+                    "    orderstatus os on os.orderStatusId = o.orderStatusId " +
+                    " where o.orderId = ? ";
 
     static final String ADD_NEW_ORDER =
             "INSERT INTO orders(orderId,userId,paymentMethodId,orderStatusId,cost,orderDate)" +
                     " VALUES( ? , ? , ? , ? , ? , ?)";
 
+    static final String REMOVE_ORDER_BY_ID = "DELETE FROM Orders WHERE orderId=?";
 
     //////////////////////////////////////////////////////////
 

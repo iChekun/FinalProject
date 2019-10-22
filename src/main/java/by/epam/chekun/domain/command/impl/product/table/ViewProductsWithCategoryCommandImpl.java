@@ -49,7 +49,7 @@ public class ViewProductsWithCategoryCommandImpl implements Command {
             request.setAttribute(BRAND_LIST, brands);
             request.setAttribute(PRODUCT_LIST, products);
         } catch (ServiceException e) {
-
+            throw new CommandException(e);
         }
 
         return CUSTOMER_PRODUCT_PAGE;

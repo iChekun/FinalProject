@@ -25,7 +25,9 @@ public class PaymentMethodBuilderImpl implements PaymentMethodBuilder {
 
     @Override
     public PaymentMethod build() {
-        final PaymentMethod paymentMethod = new PaymentMethod(paymentMethodId, name);
+        final PaymentMethod paymentMethod = new PaymentMethod();
+        paymentMethod.setPaymentMethodId(paymentMethodId);
+        paymentMethod.setName(name);
         return paymentMethod;
     }
 

@@ -40,12 +40,18 @@ public class ViewProductsWithCategoryAndBrandCommandImpl implements Command {
         final String brandId = request.getParameter(BRAND_ID);
 
         try {
-            //2
+
             final List<Category> categories = categoryService.getAll();
             final List<Brand> brands = brandService.getAll();
-            //3
 
-            final List<Product> products = productService.getAllByCategoryAndBrand(categoryId, brandId);
+            List<Product> products = null;
+            if (categoryId != null && brandId != null) {
+                products = productService.getAllByCategoryAndBrand(categoryId, brandId);
+            } else if (brandId == null) {
+                products = productService.getAllByCategory(categoryId);
+            } else {
+                products = productService.getAllByBrand(brandId);
+            }
 
             request.setAttribute("products", products);
             request.setAttribute("currentBrandId", brandId);
@@ -55,11 +61,9 @@ public class ViewProductsWithCategoryAndBrandCommandImpl implements Command {
 
 
         } catch (ServiceException e) {
-            System.out.println(e.getMessage());
+            throw new CommandException(e);
         }
 
-
-        //      return new ViewCustomerProductTableCommandImpl(request, response).execute();
         return CUSTOMER_PRODUCT_PAGE;
     }
 }

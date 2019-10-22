@@ -1,4 +1,4 @@
-package by.epam.chekun.domain.util.builder.product;
+package by.epam.chekun.domain.util.builder.category;
 
 import by.epam.chekun.domain.entity.category.Category;
 
