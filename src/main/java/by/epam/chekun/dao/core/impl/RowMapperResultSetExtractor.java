@@ -14,12 +14,12 @@ import java.util.List;
  *
  * @param <T>
  */
-public class RowMapperResultSetExtractor<T> implements ResultSetExtractor<List<T>> {
+class RowMapperResultSetExtractor<T> implements ResultSetExtractor<List<T>> {
 
     private final RowMapper<T> rowMapper;
 
 
-    public RowMapperResultSetExtractor(RowMapper<T> rowMapper) {
+    RowMapperResultSetExtractor(RowMapper<T> rowMapper) {
         this.rowMapper = rowMapper;
     }
 

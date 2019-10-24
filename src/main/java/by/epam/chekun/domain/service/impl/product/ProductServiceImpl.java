@@ -49,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAll() throws ProductServiceException {
         try {
-            List<Product> products = productRepository.getAll();
+            final List<Product> products = productRepository.getAll();
             return products;
         } catch (ProductDAOException e) {
             throw new ProductServiceException(e);
@@ -70,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllByCategory(String categoryId) throws ProductServiceException {
         try {
-            List<Product> products = productRepository.getAllByCategory(categoryId);
+            final List<Product> products = productRepository.getAllByCategory(categoryId);
             return products;
         } catch (ProductDAOException e) {
             throw new ProductServiceException(e);
@@ -80,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllByBrand(String brandId) throws ProductServiceException {
         try {
-            List<Product> products = productRepository.getAllByBrand(brandId);
+            final List<Product> products = productRepository.getAllByBrand(brandId);
             return products;
         } catch (ProductDAOException e) {
             throw new ProductServiceException(e);
@@ -90,7 +90,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllByCategoryAndBrand(String categoryId, String brandId) throws ProductServiceException {
         try {
-            List<Product> products = productRepository.getAllByCategoryAndBrand(categoryId, brandId);
+            final List<Product> products = productRepository.getAllByCategoryAndBrand(categoryId, brandId);
             return products;
         } catch (ProductDAOException e) {
             throw new ProductServiceException(e);

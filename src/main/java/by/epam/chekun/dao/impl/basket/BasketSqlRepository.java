@@ -18,7 +18,6 @@ import static by.epam.chekun.dao.impl.basket.BasketSqlUtil.*;
 
 public class BasketSqlRepository extends InitializerRepository implements BasketRepository {
 
-
     @Override
     public boolean add(Basket basket) throws BasketDAOException {
         try {

@@ -12,7 +12,6 @@ public class OrderRowMapper implements RowMapper<Order> {
     //order
     private static final int ORDER_ID = 1;
     //
-    private static final int USER_ID = 2;
     //payment_method
     private static final int PAYMENT_METHOD_ID = 3;
     private static final int PAYMENT_METHOD_NAME = 4;

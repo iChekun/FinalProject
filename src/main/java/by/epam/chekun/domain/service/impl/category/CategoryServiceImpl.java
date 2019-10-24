@@ -19,9 +19,7 @@ import java.util.List;
 
 public class CategoryServiceImpl implements CategoryService {
 
-    //    private final CategoryDAO categoryDAO = DAOManager.getInstance().getCategoryDAO();
     private final CategoryRepository categoryRepository = DAOManager.getInstance().getCategoryRepository();
-
     private final CategoryValidator validator = UtilManager.getInstance().getCategoryValidator();
 
     @Override

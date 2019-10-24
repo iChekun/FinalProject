@@ -16,7 +16,7 @@ $(document).ready(function () {
     });
 
     $(document).keyup(function (e) {
-        if (e.keyCode == 27 && $(".overlay").css("display") != "none") {
+        if (e.keyCode == 27 && $(".overlay").css("display") !== "none") {
             event.preventDefault();
             $(".overlay").fadeToggle("fast");
         }

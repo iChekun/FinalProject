@@ -29,8 +29,9 @@ public class BasketRowMapperBuilder implements RowMapperBuilder<Basket> {
     }
 
     private Basket getBasket(String basketId, String userId) {
-        return new BasketBuilderImpl(basketId)
-                .withUserId(userId)
-                .build();
+        return
+                new BasketBuilderImpl(basketId)
+                        .withUserId(userId)
+                        .build();
     }
 }

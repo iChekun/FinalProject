@@ -41,7 +41,6 @@
     </div>
 
     <div class="container">
-
         <div class="new-select-style-locale">
             <form style="display: inline; margin-left: 60px;">
                 <div class="new-select-style-locale" style="margin-left: 340px; margin-top: -25px; ">
@@ -168,7 +167,7 @@
                     <td rowspan="2" class="form-group">
                         <label for="phone_number"><sup>*</sup>
                             <fmt:message key="table.message.user.phoneNumber"/>
-
+                            <fmt:message key="table.message.user.phoneNumber.pattern"/>
                         </label>
                         <input id="phone_number" pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$"
                                required type="tel" placeholder="phone number" name="phoneNumber">

@@ -35,12 +35,11 @@ public class ProductBasketRowMapper implements RowMapper<ProductBasket> {
     //
     private Basket basket;
 
+
     @Override
     public ProductBasket mapRow(ResultSet set) throws SQLException {
 
-        if (basket == null) {
-            basket = getBuiltBasket(set);
-        }
+        if (basket == null) { basket = getBuiltBasket(set); }
         //
         final Product product = getBuiltProduct(set);
         //
@@ -69,6 +68,7 @@ public class ProductBasketRowMapper implements RowMapper<ProductBasket> {
                         PRODUCT_IMAGE_PATH, PRODUCT_COST, BRAND_ID,
                         BRAND_NAME, BRAND_DESCRIPTION, BRAND_IMAGE_PATH,
                         CATEGORY_ID, CATEGORY_NAME, CATEGORY_DESCRIPTION,
-                        CATEGORY_IMAGE_PATH).getBuiltEntity(set);
+                        CATEGORY_IMAGE_PATH)
+                        .getBuiltEntity(set);
     }
 }

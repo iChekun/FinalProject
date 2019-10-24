@@ -10,6 +10,7 @@ import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
  * Util class for help parsing users data from JSP
  */
 public class GetUserParametersFromJsp {
+
     private final HttpServletRequest request;
 
     public GetUserParametersFromJsp(HttpServletRequest request) {
@@ -18,90 +19,73 @@ public class GetUserParametersFromJsp {
 
 
     public String getLogin() {
-        final String login = request.getParameter(USER_LOGIN);
-        return login;
+        return request.getParameter(USER_LOGIN);
     }
 
     public String getPassword() {
-        final String password = request.getParameter(USER_PASSWORD);
-        return password;
+        return request.getParameter(USER_PASSWORD);
     }
 
 
     public String getConfirmedPassword() {
-        final String confirmedPassword = request.getParameter(USER_CONFIRMED_PASSWORD);
-        return confirmedPassword;
+        return request.getParameter(USER_CONFIRMED_PASSWORD);
     }
 
     public String getName() {
-        final String name = request.getParameter(USER_NAME);
-        return name;
+        return request.getParameter(USER_NAME);
     }
 
     public String getSurname() {
-        final String surname = request.getParameter(USER_SURNAME);
-        return surname;
+        return request.getParameter(USER_SURNAME);
     }
 
     public Date getBirthDate() {
         final String birthDate = request.getParameter(USER_BIRTH_DATE);
-        final Date birthDateForm = Date.valueOf(birthDate);
-        return birthDateForm;
+        return Date.valueOf(birthDate);
     }
 
     public String getEmail() {
-        final String email = request.getParameter(USER_CONTACTS_EMAIL);
-        return email;
+        return request.getParameter(USER_CONTACTS_EMAIL);
     }
 
     public String getPhoneNumber() {
-        final String phoneNumber = (request.getParameter(USER_CONTACTS_PHONE_NUMBER));
-        return phoneNumber;
+        return (request.getParameter(USER_CONTACTS_PHONE_NUMBER));
     }
 
     public String getCountry() {
-        final String country = request.getParameter(USER_CONTACTS_ADDRESS_COUNTRY);
-        return country;
+        return request.getParameter(USER_CONTACTS_ADDRESS_COUNTRY);
     }
 
     public String getCity() {
-        final String city = request.getParameter(USER_CONTACTS_ADDRESS_CITY);
-        return city;
+        return request.getParameter(USER_CONTACTS_ADDRESS_CITY);
     }
 
     public String getStreet() {
-        final String street = request.getParameter(USER_CONTACTS_ADDRESS_STREET);
-        return street;
+        return request.getParameter(USER_CONTACTS_ADDRESS_STREET);
     }
 
     public int getHouseNumber() {
-        final int houseNumber = Integer.valueOf(request.getParameter(USER_CONTACTS_ADDRESS_HOUSE_NUMBER));
-        return houseNumber;
+        return Integer.valueOf(request.getParameter(USER_CONTACTS_ADDRESS_HOUSE_NUMBER));
     }
 
     public int getApartmentNumber() {
-        final int apartmentNumber = Integer.valueOf(request.getParameter(USER_CONTACTS_ADDRESS_USER_APARTMENT_NUMBER));
-        return apartmentNumber;
+        return Integer.valueOf(request.getParameter(USER_CONTACTS_ADDRESS_USER_APARTMENT_NUMBER));
     }
 
     public String getUserIdFromSession(final HttpSession session) {
-        final String userId = String.valueOf(session.getAttribute(USER_ID));
-        return userId;
+        return String.valueOf(session.getAttribute(USER_ID));
     }
 
     public int getUserStatusIdFromSession(final HttpSession session) {
-        final int userId = (int) (session.getAttribute(USER_STATUS_ID));
-        return userId;
+        return (int) (session.getAttribute(USER_STATUS_ID));
     }
 
 
     public String getUserContactsId() {
-        final String contactsId = String.valueOf(request.getParameter(USER_CONTACTS_ID));
-        return contactsId;
+        return String.valueOf(request.getParameter(USER_CONTACTS_ID));
     }
 
     public boolean getIsUserBanned() {
-        final boolean banned = Boolean.valueOf(request.getParameter(USER_BANNED_STATUS));
-        return banned;
+        return Boolean.valueOf(request.getParameter(USER_BANNED_STATUS));
     }
 }

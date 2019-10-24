@@ -74,34 +74,38 @@ public class ProductRowMapperBuilder implements RowMapperBuilder<Product> {
         final double productCost = set.getDouble(PRODUCT_COST);
 
         return getProduct(brand, category, productId,
-                                productName, productDescription, productImagePath, productCost);
+                productName, productDescription, productImagePath, productCost);
     }
 
-    private Product getProduct(Brand brand, Category category, String productId, String productName, String productDescription, String productImagePath, double productCost) {
-        return new ProductBuilderImpl(productId)
-                    .withName(productName)
-                    .withDescription(productDescription)
-                    .withImagePath(productImagePath)
-                    .withCost(productCost)
-                    .withCategory(category)
-                    .withBrand(brand)
-                    .build();
+    private Product getProduct(Brand brand, Category category, String productId, String productName,
+                               String productDescription, String productImagePath, double productCost) {
+        return
+                new ProductBuilderImpl(productId)
+                        .withName(productName)
+                        .withDescription(productDescription)
+                        .withImagePath(productImagePath)
+                        .withCost(productCost)
+                        .withCategory(category)
+                        .withBrand(brand)
+                        .build();
     }
 
     private Category getCategory(ResultSet set) throws SQLException {
-        return new CategoryRowMapperBuilder(
-                CATEGORY_ID, CATEGORY_NAME,
-                CATEGORY_DESCRIPTION, CATEGORY_IMAGE_PATH)
-                .getBuiltEntity(set);
+        return
+                new CategoryRowMapperBuilder(
+                        CATEGORY_ID, CATEGORY_NAME,
+                        CATEGORY_DESCRIPTION, CATEGORY_IMAGE_PATH)
+                        .getBuiltEntity(set);
 
     }
 
 
     private Brand getBrand(ResultSet set) throws SQLException {
-        return new BrandRowMapperBuilder(
-                BRAND_ID, BRAND_NAME,
-                BRAND_DESCRIPTION, BRAND_IMAGE_PATH
-        ).getBuiltEntity(set);
+        return
+                new BrandRowMapperBuilder(
+                        BRAND_ID, BRAND_NAME,
+                        BRAND_DESCRIPTION, BRAND_IMAGE_PATH)
+                        .getBuiltEntity(set);
     }
 
 }

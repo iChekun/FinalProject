@@ -19,6 +19,10 @@
         <param-name>db.password</param-name>
         <param-value>1111</param-value>
     </context-param>
+    <context-param>
+        <param-name>pool.size</param-name>
+        <param-value>15</param-value>
+    </context-param>
 
 
     <filter>

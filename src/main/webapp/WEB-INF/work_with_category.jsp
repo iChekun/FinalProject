@@ -78,6 +78,7 @@
         <strong style="margin-left: 10%;margin-bottom: 15%;font-size: 145%;text-decoration: underline;">
             <fmt:message key="title.category.work_with_category"/>
         </strong>
+        <br><br><br>
 
         <form enctype="multipart/form-data" method="post" action="mainWindow">
 
@@ -93,14 +94,13 @@
                 description</label>
             <input id="categoryDescription"
                    required type="text" placeholder="description"
-                   name="categoryDescription" value=${category.description}>
-
+                   name="categoryDescription" value="${category.description}">
 
             <label style="font-size: 100%; font-weight: bold;" for="categoryImagePath"><fmt:message
                     key="label.text.category_image_path"/></label>
             <input id="categoryImagePath"
                    type="text" placeholder="image"
-                   name="categoryImagePath" value=${category.imagePath}>
+                   name="categoryImagePath" value="${category.imagePath}">
 
             <div class="category_buttons">
 

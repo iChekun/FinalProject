@@ -153,12 +153,9 @@ public class ProductSqlRepository extends InitializerRepository implements Produ
 
     private List<Product> _getAll(final String sql, final Object... argc) throws ProductDAOException {
         try {
-            final List<Product> products = jdbcTemplate.query(sql,
-                    new ProductRowMapper(),
-                    argc);
+            final List<Product> products = jdbcTemplate.query(sql, new ProductRowMapper(), argc);
             return products;
         } catch (JdbcTemplateException e) {
-            e.printStackTrace();
             throw new ProductDAOException(e);
         }
     }

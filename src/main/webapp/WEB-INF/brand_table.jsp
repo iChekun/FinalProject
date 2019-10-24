@@ -92,12 +92,7 @@
                             <fmt:message key="label.action.add_new_brand"/>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
-                            Сортировкать<br>
-                            список
-                        </a>
-                    </li>
+
 
                 </ul>
             </aside>

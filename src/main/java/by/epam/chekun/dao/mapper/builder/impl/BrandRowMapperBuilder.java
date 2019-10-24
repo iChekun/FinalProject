@@ -38,10 +38,11 @@ public class BrandRowMapperBuilder implements RowMapperBuilder<Brand> {
     }
 
     private Brand getBrand(String brandId, String name, String description, String imagePath) {
-        return new BrandBuilderImpl(brandId)
-                .withName(name)
-                .withDescription(description)
-                .withImagePath(imagePath)
-                .build();
+        return
+                new BrandBuilderImpl(brandId)
+                        .withName(name)
+                        .withDescription(description)
+                        .withImagePath(imagePath)
+                        .build();
     }
 }

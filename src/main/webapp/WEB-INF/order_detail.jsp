@@ -44,6 +44,7 @@
         <div class="new-select-style-locale">
             <form style="display: inline; margin-left: 20px">
                 <div class="new-select-style-locale" style="margin-left: 340px; margin-top: -25px; ">
+                    <input type="hidden" name="orderId" value="${orderId}"/>
                     <input type="hidden" name="action" value="ViewOrderDetail"/>
                     <label for="locale"></label>
                     <select id="locale" name="locale" onchange="submit()">

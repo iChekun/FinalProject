@@ -18,6 +18,8 @@ import static by.epam.chekun.domain.configuration.JspFilePass.INDEX_PAGE;
 @WebFilter(urlPatterns = {"*"}, servletNames = {"mainWindow"})
 public class ControllerSecurityFilter implements Filter {
 
+    private final int INVALID_USER_STATUS_ID = -1;
+
     private List<String> adminActions;
     private List<String> customerActions;
     private List<String> guestActions;
@@ -48,12 +50,12 @@ public class ControllerSecurityFilter implements Filter {
 
         if (action != null) {
 
-            int userStatusId = 0;
+            int userStatusId = INVALID_USER_STATUS_ID;
             if (session.getAttribute(USER_STATUS_ID) != null) {
                 userStatusId = (int) (session.getAttribute(USER_STATUS_ID));
             }
 
-            if (userStatusId == 0 && guestActions.contains(action)
+            if (userStatusId == INVALID_USER_STATUS_ID && guestActions.contains(action)
                     || userStatusId == UserStatus.ADMIN.getUserStatusId() && adminActions.contains(action)
                     || userStatusId == UserStatus.CUSTOMER.getUserStatusId() && customerActions.contains(action)) {
                 request.setAttribute(ALLOWED, true);

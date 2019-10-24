@@ -63,7 +63,6 @@
 
         <nav>
             <ul class="header" style="margin-right: -23%; margin-top: 3%">
-
                 <li>
                     <a href="mainWindow?action=logout">
                         <fmt:message key="button.logout"/>
@@ -75,7 +74,6 @@
                         <fmt:message key="button.personal_cabinet"/>
                     </a>
                 </li>
-
             </ul>
         </nav>
     </div>
@@ -126,7 +124,9 @@
                                             <td>
                                                     ${order.orderDate}
                                             </td>
-                                            <td>${order.cost}</td>
+                                            <td>
+                                                    ${order.cost}
+                                            </td>
                                             <td>
                                                     ${order.paymentMethod.name}
                                             </td>

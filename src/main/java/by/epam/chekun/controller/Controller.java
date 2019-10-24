@@ -28,16 +28,6 @@ public class Controller extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(Controller.class);
 
 
-    // комментарции
-    // забыл пароль
-    // ссылки на мейн чтобы сразу отправлялся запрос по категории
-    // заполнить данными
-
-
-    //  1. заполнить базу данных данными
-    //  2. сделать прямые ссылки с запрсоом на категории:
-    //          * телефоны  * телевизоры      * корм для собак
-    //
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -47,14 +37,12 @@ public class Controller extends HttpServlet {
             final String action = req.getParameter(JspActionCommand.ACTION_TYPE);
             logger.info("DO_GET command name " + action);
 
-            final CommandFactory commandFactory = CommandFactoryImpl.getInstance();
-
             try {
+                final CommandFactory commandFactory = CommandFactoryImpl.getInstance();
                 final Command command = commandFactory.createCommand(action, req, resp);
                 final String path = command.execute();
 
                 req.getRequestDispatcher(path).forward(req, resp);
-
             } catch (CommandException e) {
                 logger.error(e);
                 resp.sendRedirect(JspFilePass.ERROR_PAGE);
@@ -74,14 +62,12 @@ public class Controller extends HttpServlet {
             final String action = req.getParameter(JspActionCommand.ACTION_TYPE);
             logger.info("DO POST command name  " + action);
 
-            final CommandFactory commandFactory = CommandFactoryImpl.getInstance();
-
             try {
+                final CommandFactory commandFactory = CommandFactoryImpl.getInstance();
                 final Command command = commandFactory.createCommand(action, req, resp);
                 final String path = command.execute();
 
                 resp.sendRedirect(path);
-
             } catch (CommandException e) {
                 logger.error(e);
                 resp.sendRedirect(JspFilePass.ERROR_PAGE);

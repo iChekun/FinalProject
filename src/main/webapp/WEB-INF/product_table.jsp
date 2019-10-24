@@ -106,12 +106,7 @@
                             <fmt:message key="label.action.product_table.add_new_product"/>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
-                            Сортировкать<br>
-                            список
-                        </a>
-                    </li>
+                 
 
                 </ul>
             </aside>

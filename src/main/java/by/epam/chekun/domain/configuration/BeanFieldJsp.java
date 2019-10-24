@@ -13,7 +13,8 @@ public final class BeanFieldJsp {
     public static final String ALLOWED = "allowed";
 
     public static final String SECURITY_MESSAGE = "message";
-    public static final String ERROR_TO_JSP = "errorMessage";
+    public static final String ERROR_MESSAGE_TO_JSP = "errorMessage";
+    public static final String ERROR_TO_EDIT_USER = "errorMessageEditUser";
     public static final String ERROR_TO_JSP_PASSWORD = "errorMessagePassword";
     public static final String ERROR_TO_JSP_BRAND = "errorMessageBrand";
     public static final String ERROR_TO_JSP_PRODUCT = "errorMessageProduct";
@@ -63,6 +64,7 @@ public final class BeanFieldJsp {
     public static final String PRODUCT_COST = "productCost";
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     //CATEGORY
+    public static final String CURRENT_CATEGORY_ID = "currentCategoryId";
     public static final String CATEGORY_OBJECT = "category";
     public static final String CATEGORY_LIST = "categories";
 
@@ -72,6 +74,7 @@ public final class BeanFieldJsp {
     public static final String CATEGORY_IMAGE_PATH = "categoryImagePath";
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     //BRAND
+    public static final String CURRENT_BRAND_ID = "currentBrandId";
     public static final String BRAND_OBJECT = "brand";
     public static final String BRAND_LIST = "brands";
 
@@ -82,7 +85,11 @@ public final class BeanFieldJsp {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     //BASKET
 
+
     public static final String BASKET_ID = "basketId";
+
+    public static final String PRODUCTS_BASKET = "productsInBasket";
+    public static final String PRODUCTS_COST = "productsCost";
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     //payment method
@@ -93,7 +100,9 @@ public final class BeanFieldJsp {
 
     public static final String PAYMENT_METHOD_NAME = "paymentMethodName";
     //ORDER
+    public static final String PRODUCTS_ORDER_ID = "productOrders";
     public static final String ORDER_ID = "orderId";
+    public static final String ORDERS_LIST = "orders";
     public static final String CURRENT_ORDER_STATUS_ID = "currentOrderStatusId";
 
 }

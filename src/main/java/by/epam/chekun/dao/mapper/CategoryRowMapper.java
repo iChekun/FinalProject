@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CategoryRowMapper implements RowMapper<Category> {
-    // elements position in table
+
     private static final int CATEGORY_ID = 1;
     private static final int CATEGORY_NAME = 2;
     private static final int CATEGORY_DESCRIPTION = 3;

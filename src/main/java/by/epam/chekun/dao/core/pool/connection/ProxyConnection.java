@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ProxyConnection implements AutoCloseable {
+
     private static final Logger logger = LogManager.getLogger(ProxyConnection.class);
     private ConnectionWrapper connectionWrapper;
 

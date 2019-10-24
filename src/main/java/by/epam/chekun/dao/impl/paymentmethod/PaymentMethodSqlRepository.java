@@ -48,8 +48,8 @@ public class PaymentMethodSqlRepository extends InitializerRepository implements
     @Override
     public boolean update(PaymentMethod paymentMethod) throws PaymentMethodDAOException {
         try {
-            jdbcTemplate.update(UPDATE_PAYMENT_METHOD, paymentMethod.getName()
-                    , paymentMethod.getPaymentMethodId());
+            jdbcTemplate.update(UPDATE_PAYMENT_METHOD, paymentMethod.getName(),
+                    paymentMethod.getPaymentMethodId());
             return true;
         } catch (JdbcTemplateException e) {
             throw new PaymentMethodDAOException(e);

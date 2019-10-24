@@ -70,11 +70,15 @@
 
 <div id="main-wrap">
     <div class="user_table_look" style="padding: 10% 5%">
-        <fmt:message key="title.brand_table.work_with_brand"/>
+        <strong>
+            <fmt:message key="title.product.work_with_product"/>
+        </strong>
+        <br><br><br>
         <form enctype="multipart/form-data" method="post" action="mainWindow">
 
-            <label for="category"> <fmt:message key="label.text.product_category"/></label>
-            <select id="category" name="categoryId">
+            <label for="category" style="text-decoration: underline; font-size: 17px;">
+                <fmt:message key="label.text.product_category"/>: </label>
+            <select id="category" name="categoryId"style="margin-left: 5px;">
                 <option disabled selected value> -- select an option --</option>
                 <c:forEach items="${categories}" var="category">
                     <option value="${category.categoryId}"
@@ -85,10 +89,11 @@
                 <option value><fmt:message key="label.select.none"/></option>
             </select>
 
-            <br>
+            <br><br>
 
-            <label for="brand"><fmt:message key="label.text.product_brand"/></label>
-            <select id="brand" name="brandId">
+            <label for="brand" style="text-decoration: underline; font-size: 17px;">
+                <fmt:message key="label.text.product_brand"/>: </label>
+            <select id="brand" name="brandId" style="margin-left: 33px;">
                 <option disabled selected value> -- select an option --</option>
                 <c:forEach items="${brands}" var="brand">
                     <option value="${brand.brandId}"
@@ -98,21 +103,25 @@
                 <option value><fmt:message key="label.select.none"/></option>
             </select>
 
-            <br>
-            <label for="productName"><fmt:message key="label.text.product_name"/></label>
+            <br><br>
+            <label for="productName" style="text-decoration: underline;">
+                <fmt:message key="label.text.product_name"/>: </label>
             <input id="productName" type="text" required name="productName" value="${product.name}"/>
 
-            <br>
-            <label for="productDescription"><fmt:message key="label.text.product_description"/></label>
-            <input id="productDescription" type="text" required name="productDescription"
-                   value="${product.description}"/>
+            <br><br>
+            <label for="productDescription" style="text-decoration: underline;">
+                <fmt:message key="label.text.product_description"/></label>
+            <input id="productDescription" type="text" required
+                   name="productDescription" value="${product.description}"/>
 
             <br>
-            <label for="productImagePath"><fmt:message key="label.text.product_image_path"/></label>
+            <label for="productImagePath" style="text-decoration: underline;">
+                <fmt:message key="label.text.product_image_path"/></label>
             <input id="productImagePath" type="text" name="productImagePath" value="${product.imagePath}"/>
             <br>
 
-            <label for="productCost"><fmt:message key="label.text.product_cost"/></label>
+            <label for="productCost" style="text-decoration: underline;">
+                <fmt:message key="label.text.product_cost"/></label>
             <input id="productCost" type="number" min="1" step="any" required name="productCost"
                    value="${product.cost}"/>
 
@@ -213,7 +222,7 @@
 
 
     <div class="end_page">
-        &copy 2019 Online store. All Rights Reserved | Design by&nbsp; <a href="">Ilya Chekun</a>
+        &copy 2019 Online store. All Rights Reserved | Design by&nbsp; <a>Ilya Chekun</a>
     </div>
 </div>
 </body>

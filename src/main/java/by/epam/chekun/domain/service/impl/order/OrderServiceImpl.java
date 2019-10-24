@@ -110,15 +110,19 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void updateOrderStatus(String orderId, String currentOrderStatusId) throws OrderServiceException {
 
-
-        final int orderStatusId = currentOrderStatusId.equals(ADMIN.getUserStatusId()) ?
-                CUSTOMER.getUserStatusId() : ADMIN.getUserStatusId();
-
+        final String orderStatusId = getOrderStatusId(currentOrderStatusId);
         try {
-            orderRepository.updateOrderStatus(orderId, String.valueOf(orderStatusId));
+            orderRepository.updateOrderStatus(orderId, orderStatusId);
         } catch (OrderDAOException e) {
             throw new OrderServiceException(e);
         }
+    }
+
+    private String getOrderStatusId(String currentOrderStatusId) {
+        final String open = "1";
+        final String close = "2";
+
+        return currentOrderStatusId.equals(open) ? close : open;
     }
 
     @Override

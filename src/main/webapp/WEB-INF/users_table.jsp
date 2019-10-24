@@ -27,7 +27,6 @@
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
 
-
 </head>
 <body>
 
@@ -91,14 +90,18 @@
                         <form action="mainWindow" method="get">
 
 
-                            <button type="submit" name="action" value="viewUsersTableSorted">
-                                view table sorted
+                            <button type="submit" name="action" value="viewUsersTableSorted"
+                                    style="float:left;height: 25px; width: 150px;">
+                                <fmt:message key="button.view_users_table_sorter"/>
                             </button>
 
 
+                            <br>
                             <label style="margin-top: 5%; float: left;">
-
-                                <select name="sortBy" style="background: greenyellow; color: black;">
+                                <label style="float: left;font-size: 17px;">
+                                    <fmt:message key="label.sort_filed"/>
+                                </label>
+                                <select name="sortBy" style=" float:left;color: black; width: 140px;">">
                                     <option value="bySurname" <c:if test="${sortBy == 'bySurname'}">selected</c:if>>
                                         <fmt:message key="userstable.sortTypeBySurname"/>
                                     </option>
@@ -112,9 +115,13 @@
                                 </select>
 
                             </label>
+                            <br>
 
                             <label style="float: left;margin-top: 5%;">
-                                <select name="sortType">
+                                <label style="float: left;font-size: 17px;">
+                                    <fmt:message key="label.sort_type"/>
+                                </label><br>
+                                <select name="sortType" style="width: 140px;">
                                     <option value="ASC"
                                             <c:if test="${sortType == 'ASC'}">selected</c:if>>
                                         ASC
@@ -239,15 +246,13 @@
 
                     <button type="submit" name="action" value="updateBanStatus">
                         <strong>
-                            <%--                            <fmt:message key=""/>--%>
-                            change ban status
+                            <fmt:message key="button.change_user__ban_status"/>
                         </strong>
                     </button>
 
                     <button type="submit" name="action" value="changeUserStatus">
                         <strong>
-                            <%--                            <fmt:message key="table.message.save"/>--%>
-                            change user status
+                            <fmt:message key="button.change_user_status"/>
                         </strong>
                     </button>
                 </div>

@@ -92,12 +92,6 @@
                             <fmt:message key="label.action.add_new_category"/>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
-                            Сортировкать<br>
-                            список
-                        </a>
-                    </li>
 
                 </ul>
             </aside>

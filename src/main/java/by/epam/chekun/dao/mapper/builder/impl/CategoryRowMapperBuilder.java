@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CategoryRowMapperBuilder implements RowMapperBuilder<Category> {
+
     private final int CATEGORY_ID;
     private final int CATEGORY_NAME;
     private final int CATEGORY_DESCRIPTION;
@@ -38,10 +39,11 @@ public class CategoryRowMapperBuilder implements RowMapperBuilder<Category> {
     }
 
     private Category getCategory(String categoryId, String name, String description, String imagePath) {
-        return new CategoryBuilderImpl(categoryId)
-                .withName(name)
-                .withDescription(description)
-                .withImagePath(imagePath)
-                .build();
+        return
+                new CategoryBuilderImpl(categoryId)
+                        .withName(name)
+                        .withDescription(description)
+                        .withImagePath(imagePath)
+                        .build();
     }
 }

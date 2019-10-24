@@ -29,21 +29,25 @@ import static by.epam.chekun.domain.configuration.JspFilePass.*;
         SLASH + ORDERS_HISTORY_PAGE,
         SLASH + ORDER_DETAIL_PAGE})
 public class PageRedirectSecurityFilter implements Filter {
+
     private static final String PATH_TO_CONTROLLER_WITH_ACTION = "/mainWindow?action=";
 
     public void init(FilterConfig fConfig) throws ServletException {
     }
 
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest,
+                         ServletResponse servletResponse,
+                         FilterChain filterChain) throws IOException, ServletException {
+
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
 
         if (session.getAttribute(USER_STATUS_ID) == null
-                && session.getAttribute(ERROR_TO_JSP) == null) {
+                && session.getAttribute(ERROR_MESSAGE_TO_JSP) == null) {
             response.sendRedirect(INDEX_PAGE);
         } else if (session.getAttribute(USER_STATUS_ID) != null
-                && session.getAttribute(ERROR_TO_JSP) == null) {
+                && session.getAttribute(ERROR_MESSAGE_TO_JSP) == null) {
 
             String redirectTo = request.getContextPath() +
                     PATH_TO_CONTROLLER_WITH_ACTION + session.getAttribute(REDIRECT_COMMAND);

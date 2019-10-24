@@ -312,7 +312,7 @@ INSERT INTO `online_store`.`contacts` (`contactsId`, `email`, `phoneNumber`, `co
 
 ---
 INSERT INTO `online_store`.`users` (`userId`, `contactsId`, `userStatusId`, `login`, `password`, `name`, `surname`, `birthDate`, `banned`) VALUES ('1', '1', '1', 'nykech', 'z7�Jj�R�X*', 'илья', 'чекун', '1999-09-17', '0');
-INSERT INTO `online_store`.`users` (`userId`, `contactsId`, `userStatusId`, `login`, `password`, `name`, `surname`, `birthDate`, `banned`) VALUES ('2', '2', '2', 'user1', '���F���w�'�y�', 'вася', 'петров', '1995-05-12', '0');
+INSERT INTO `online_store`.`users` (`userId`, `contactsId`, `userStatusId`, `login`, `password`, `name`, `surname`, `birthDate`, `banned`) VALUES ('2', '2', '2', 'user1', '���F���w��y�', 'вася', 'петров', '1995-05-12', '0');
 INSERT INTO `online_store`.`users` (`userId`, `contactsId`, `userStatusId`, `login`, `password`, `name`, `surname`, `birthDate`, `banned`) VALUES ('3', '3', '2', 'user2', '�}���@{�=���', 'никита', 'иванов', '1984-02-10', '0');
 
 

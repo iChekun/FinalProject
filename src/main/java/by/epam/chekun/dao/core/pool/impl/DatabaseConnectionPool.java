@@ -30,16 +30,21 @@ public class DatabaseConnectionPool implements ConnectionPool {
 
     private BlockingQueue<ProxyConnection> availableConnections;
     private BlockingQueue<ProxyConnection> usedConnections;
-    private static final int INITIAL_POOL_SIZE = 15;
+    private static final int DEFAULT_INITIAL_POOL_SIZE = 10;
 
-    public void init(final String driver, final String url, final String user, final String password) {
+    public void init(final String driver, final String url,
+                     final String user, final String password,
+                     final String poolSize) {
+
         try {
+            final int initialPoolSize = convertPoolSize(poolSize);
+            //
             Class.forName(driver);
 
-            availableConnections = new ArrayBlockingQueue<>(INITIAL_POOL_SIZE);
-            usedConnections = new ArrayBlockingQueue<>(INITIAL_POOL_SIZE);
+            availableConnections = new ArrayBlockingQueue<>(initialPoolSize);
+            usedConnections = new ArrayBlockingQueue<>(initialPoolSize);
 
-            for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
+            for (int i = 0; i < initialPoolSize; i++) {
                 Connection connection = createConnection(url, user, password);
                 ProxyConnection proxyConnection = new ProxyConnection(connection);
                 availableConnections.add(proxyConnection);
@@ -51,11 +56,19 @@ public class DatabaseConnectionPool implements ConnectionPool {
         }
     }
 
+    private int convertPoolSize(String poolSize) {
+        try {
+            return Integer.parseInt(poolSize);
+        } catch (NumberFormatException ex) {
+            logger.error("wrong pool size context param error!");
+            return DEFAULT_INITIAL_POOL_SIZE;
+        }
+    }
 
     private static Connection createConnection(final String url,
                                                final String user,
                                                final String password)
-                                               throws SQLException {
+            throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }
 

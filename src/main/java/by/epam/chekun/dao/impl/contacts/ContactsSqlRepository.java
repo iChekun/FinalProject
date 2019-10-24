@@ -14,20 +14,6 @@ import java.util.List;
 
 public class ContactsSqlRepository extends InitializerRepository implements ContactsRepository {
 
-    private static final String ADD_USER_CONTACTS = "INSERT INTO contacts " +
-            "(contactsId,email, phoneNumber, country, city, street, " +
-            "houseNumber, apartmentNumber) " +
-            "VALUES (UUID(), ?, ?, ?, ?,?, ?, ?)";
-
-    private static final String GET_USER_CONTACTS =
-            " SELECT contactsId, email, phoneNumber, country, city, street, " +
-                    "   houseNumber, apartmentNumber FROM contacts WHERE email= ?";
-
-    private static final String UPDATE_CONTACTS = "UPDATE Contacts " +
-            "SET email=?, phoneNumber=?, country=?, city=?, street =?, houseNumber=?," +
-            "apartmentNumber=?  WHERE contactsId=?";
-
-
 
     @Override
     public Contacts getEntityById(String id) throws ContactsDAOException {
@@ -115,4 +101,19 @@ public class ContactsSqlRepository extends InitializerRepository implements Cont
             throw new ContactsDAOException(e);
         }
     }
+
+
+    private static final String ADD_USER_CONTACTS = "INSERT INTO contacts " +
+            "(contactsId,email, phoneNumber, country, city, street, " +
+            "houseNumber, apartmentNumber) " +
+            "VALUES (UUID(), ?, ?, ?, ?,?, ?, ?)";
+
+    private static final String GET_USER_CONTACTS =
+            " SELECT contactsId, email, phoneNumber, country, city, street, " +
+                    "   houseNumber, apartmentNumber FROM contacts WHERE email= ?";
+
+    private static final String UPDATE_CONTACTS = "UPDATE Contacts " +
+            "SET email=?, phoneNumber=?, country=?, city=?, street =?, houseNumber=?," +
+            "apartmentNumber=?  WHERE contactsId=?";
+
 }

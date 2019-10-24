@@ -56,10 +56,8 @@
 
         <nav>
             <ul class="header" style="margin-right: -23%; margin-top: 3%">
-                <li>
                 <li><a href="mainWindow?action=viewBrandsTable">
                 <fmt:message key="label.view_brand_table"/></a>
-                </li>
                 </li>
             </ul>
         </nav>
@@ -73,6 +71,7 @@
         <strong style="margin-left: 10%;margin-bottom: 15%;font-size: 145%;text-decoration: underline;">
             <fmt:message key="title.brand.work_with_brand"/>
         </strong>
+        <br><br>
         <form enctype="multipart/form-data" method="post" action="mainWindow">
 
             <label style="font-size: 100%; font-weight: bold;" for="brandNameInput"><fmt:message key="label.text.brand_name"/></label>

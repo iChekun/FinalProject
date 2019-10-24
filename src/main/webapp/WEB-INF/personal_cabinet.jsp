@@ -233,7 +233,7 @@
                         <td rowspan="2" class="form-group">
                             <label for="phone_number"><sup>*</sup>
                                 <fmt:message key="table.message.user.phoneNumber"/>
-
+                                <fmt:message key="table.message.user.phoneNumber.pattern"/>
                             </label>
                             <input id="phone_number" pattern="^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$"
                                    required type="tel" placeholder="phone number" name="phoneNumber"
@@ -305,13 +305,6 @@
 
                 <div class="submit-button input-bottom">
 
-
-                    <c:if test="${errorMessage !=null}">
-                        <script>
-                            showAlertMessage("${errorMessage}");
-                        </script>
-                    </c:if>
-
                     <p>
                         <input type="hidden" name="contactsId" value="${user.contacts.contactsId}">
                         <button type="submit" name="action" value="editUser">
@@ -323,7 +316,11 @@
 
                 </div>
             </form>
-
+            <c:if test="${errorMessage !=null}">
+                <script>
+                    showAlertMessage("${errorMessage}");
+                </script>
+            </c:if>
             <c:remove var="errorMessage"/>
         </div>
     </div>

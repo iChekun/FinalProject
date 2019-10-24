@@ -76,7 +76,7 @@ public class CategorySqlRepository extends InitializerRepository implements Cate
     public List<Category> getAll() throws CategoryDAOException {
 
         try {
-            List<Category> categories = jdbcTemplate.query(GET_ALL_CATEGORIES, new CategoryRowMapper());
+            final List<Category> categories = jdbcTemplate.query(GET_ALL_CATEGORIES, new CategoryRowMapper());
             return categories;
         } catch (JdbcTemplateException e) {
             throw new CategoryDAOException(e);

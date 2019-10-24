@@ -32,8 +32,9 @@ public class PaymentMethodRowMapperBuilder implements RowMapperBuilder<PaymentMe
     }
 
     private PaymentMethod getPaymentMethod(String paymentMethodId, String paymentMethodName) {
-        return new PaymentMethodBuilderImpl(paymentMethodId)
-                .withName(paymentMethodName)
-                .build();
+        return
+                new PaymentMethodBuilderImpl(paymentMethodId)
+                        .withName(paymentMethodName)
+                        .build();
     }
 }

@@ -14,23 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProductOrderRowMapper implements RowMapper<ProductOrder> {
-
-//    //user
-//    private static final int USER_ID = 1;
-//    private static final int USER_STATUS_ID = 2;
-//    private static final int LOGIN = 3;
-//    private static final int NAME = 4;
-//    private static final int SURNAME = 5;
-//    private static final int BIRTH_DATE = 6;
-//    private static final int BANNED = 7;
-//    private static final int CONTACTS_ID = 8;
-//    private static final int EMAIL = 9;
-//    private static final int PHONE_NUMBER = 10;
-//    private static final int COUNTRY = 11;
-//    private static final int CITY = 12;
-//    private static final int STREET = 13;
-//    private static final int HOUSE_NUMBER = 14;
-//    private static final int APARTMENT_NUMBER = 15;
     //order
     private static final int ORDER_ID = 1;
     //payment_method
@@ -62,13 +45,16 @@ public class ProductOrderRowMapper implements RowMapper<ProductOrder> {
 
     private Order order;
 
-
+    /**
+     * In this method order will be equals for all products, because here
+     * we get products from order.
+     * By this way we make order object one time and after place in all
+     * productOrder reference on this object.
+     */
     @Override
     public ProductOrder mapRow(ResultSet set) throws SQLException {
         //
-        if (this.order == null) {
-            System.out.println("here");
-            this.order = getOrder(set); }
+        if (this.order == null) { this.order = getOrder(set); }
         //
         final Product product = getProduct(set);
         //
@@ -83,7 +69,7 @@ public class ProductOrderRowMapper implements RowMapper<ProductOrder> {
                         BRAND_NAME, BRAND_DESCRIPTION, BRAND_IMAGE_PATH,
                         CATEGORY_ID, CATEGORY_NAME, CATEGORY_DESCRIPTION,
                         CATEGORY_IMAGE_PATH)
-                          .getBuiltEntity(set);
+                        .getBuiltEntity(set);
     }
 
     private ProductOrder getProductOrder(Product product) {

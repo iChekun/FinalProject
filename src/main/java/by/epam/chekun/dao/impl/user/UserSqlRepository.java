@@ -93,9 +93,6 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
         try {
             User user = jdbcTemplate.queryForObject(GET_USER_BY_LOGIN_AND_PASS,
                     new UserRowMapper(), login, encodedPass);
-            if (user == null) {
-                throw new InvalidLoginOrPasswordException("wrong user data!");
-            }
             return user;
         } catch (JdbcTemplateException e) {
             throw new UserDAOException(e);
@@ -132,7 +129,7 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
     @Override
     public void updatePassword(String userId, String newEncodedPass) throws UserDAOException {
         try {
-            jdbcTemplate.update(UPDATE_USER_PASSWORD, newEncodedPass);
+            jdbcTemplate.update(UPDATE_USER_PASSWORD, newEncodedPass, userId);
         } catch (JdbcTemplateException e) {
             throw new UserDAOException(e);
         }
@@ -140,8 +137,8 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
 
     @Override
     public List<User> getAllUserSorted(String sortedBy, String sortType) throws UserDAOException {
-        String sql = getSortingSql(sortedBy, sortType);
-        List<User> users = _getAll(sql);
+        final String sql = getSortingSql(sortedBy, sortType);
+        final List<User> users = _getAll(sql);
         return users;
     }
 

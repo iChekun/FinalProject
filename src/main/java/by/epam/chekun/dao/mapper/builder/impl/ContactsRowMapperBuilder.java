@@ -49,19 +49,21 @@ public class ContactsRowMapperBuilder implements RowMapperBuilder<Contacts> {
     }
 
     private Contacts getContacts(ResultSet set, Address address) throws SQLException {
-        return new ContactsBuilderImpl(set.getString(CONTACTS_ID))
-                .withEmail(set.getString(EMAIL))
-                .withPhoneNumber(Long.valueOf(set.getString(PHONE_NUMBER)))
-                .withAddress(address)
-                .build();
+        return
+                new ContactsBuilderImpl(set.getString(CONTACTS_ID))
+                        .withEmail(set.getString(EMAIL))
+                        .withPhoneNumber(Long.valueOf(set.getString(PHONE_NUMBER)))
+                        .withAddress(address)
+                        .build();
     }
 
     private Address getAddress(ResultSet set) throws SQLException {
-        return new AddressBuilderImpl().withCountry(set.getString(COUNTRY))
-                .withCity(set.getString(CITY))
-                .withStreet(set.getString(STREET))
-                .withHouseNumber(set.getInt(HOUSE_NUMBER))
-                .withApartmentNumber(set.getInt(APARTMENT_NUMBER))
-                .build();
+        return
+                new AddressBuilderImpl().withCountry(set.getString(COUNTRY))
+                        .withCity(set.getString(CITY))
+                        .withStreet(set.getString(STREET))
+                        .withHouseNumber(set.getInt(HOUSE_NUMBER))
+                        .withApartmentNumber(set.getInt(APARTMENT_NUMBER))
+                        .build();
     }
 }
