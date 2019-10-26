@@ -18,4 +18,6 @@ public interface OrderService {
     void updateOrderStatus(String orderId, String currentOrderStatusId) throws OrderServiceException;
 
     Order getOrderById(String orderId) throws OrderServiceException;
+
+    void invalidateOrder(String orderId) throws OrderServiceException;
 }

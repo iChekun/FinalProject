@@ -61,11 +61,11 @@ public class SignInCommand implements Command {
             final String basketId = basket.getBasketId();
 
             session.setAttribute(BASKET_ID, basketId);
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.successful_login");
+            session.setAttribute(MESSAGE_TO_JSP, "message.successful_login");
         } catch (BannedUserServiceException ex) {
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.user_is_banned");
+            session.setAttribute(MESSAGE_TO_JSP, "message.user_is_banned");
         } catch (InvalidUserInformationException ex) {
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.invalid_sign_parameters");
+            session.setAttribute(MESSAGE_TO_JSP, "message.invalid_sign_parameters");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

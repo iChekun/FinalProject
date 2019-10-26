@@ -5,7 +5,6 @@ $(document).ready(function () {
 
     });
 
-
     $(".overlayLink").click(function (event) {
         event.preventDefault();
         $(".overlay").fadeToggle("fast");

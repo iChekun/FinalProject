@@ -13,7 +13,7 @@ import static by.epam.chekun.domain.configuration.JspFilePass.*;
 
 
 @WebFilter(urlPatterns = {
-        SLASH + MAIN_PAGE,
+//        SLASH + MAIN_PAGE,
         SLASH + USERS_TABLE_PAGE,
         SLASH + SIGN_UP_PAGE,
         SLASH + USER_PERSONAL_CABINET_PAGE,
@@ -44,16 +44,17 @@ public class PageRedirectSecurityFilter implements Filter {
         HttpSession session = request.getSession();
 
         if (session.getAttribute(USER_STATUS_ID) == null
-                && session.getAttribute(ERROR_MESSAGE_TO_JSP) == null) {
+                && session.getAttribute(MESSAGE_TO_JSP) == null) {
             response.sendRedirect(INDEX_PAGE);
         } else if (session.getAttribute(USER_STATUS_ID) != null
-                && session.getAttribute(ERROR_MESSAGE_TO_JSP) == null) {
+                && session.getAttribute(MESSAGE_TO_JSP) == null) {
 
             String redirectTo = request.getContextPath() +
                     PATH_TO_CONTROLLER_WITH_ACTION + session.getAttribute(REDIRECT_COMMAND);
             response.sendRedirect(redirectTo);
         }
-        filterChain.doFilter(servletRequest, servletResponse);
+
+
     }
 
     public void destroy() {

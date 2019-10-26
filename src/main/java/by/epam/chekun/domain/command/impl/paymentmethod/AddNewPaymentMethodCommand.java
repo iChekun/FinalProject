@@ -35,7 +35,7 @@ public class AddNewPaymentMethodCommand implements Command {
         try {
             paymentMethodService.addNewPaymentMethod(paymentMethodName);
         } catch (InvalidPaymentMethodInformationException e) {
-            session.setAttribute(ERROR_TO_JSP_PAYMENT_METHOD, "message.invalid_payment_method_info");
+            session.setAttribute(MESSAGE_TO_JSP_PAYMENT_METHOD, "message.invalid_payment_method_info");
         } catch (PaymentMethodServiceException e) {
             throw new CommandException(e);
         }

@@ -36,7 +36,7 @@
     <link rel="icon" href="pictures/logotip.jpg" type="image/x-icon">
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
-
+    <script src="js/alert.js"></script>
 </head>
 <body>
 
@@ -141,13 +141,17 @@
                         </td>
                     </tr>
                 </table>
-
                 <div class="table_line"></div>
             </div>
         </form>
     </div>
 </div>
-
+<c:if test="${errorMessage !=null}">
+    <script>
+        showAlertMessage("<fmt:message key="${errorMessage}"/>");
+    </script>
+</c:if>
+<c:remove var="errorMessage"/>
 
 <hr>
 <div id="footer">

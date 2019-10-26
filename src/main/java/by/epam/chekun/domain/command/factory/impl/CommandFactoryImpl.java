@@ -9,10 +9,7 @@ import by.epam.chekun.domain.command.impl.basket.DeleteProductFromBasketCommand;
 import by.epam.chekun.domain.command.impl.basket.ViewUserBasketCommand;
 import by.epam.chekun.domain.command.impl.brand.*;
 import by.epam.chekun.domain.command.impl.category.*;
-import by.epam.chekun.domain.command.impl.order.AddNewOrderCommand;
-import by.epam.chekun.domain.command.impl.order.ChangeOrderStatusCommand;
-import by.epam.chekun.domain.command.impl.order.ViewOrderDetailCommand;
-import by.epam.chekun.domain.command.impl.order.ViewOrdersHistoryCommand;
+import by.epam.chekun.domain.command.impl.order.*;
 import by.epam.chekun.domain.command.impl.paymentmethod.AddNewPaymentMethodCommand;
 import by.epam.chekun.domain.command.impl.paymentmethod.DeletePaymentMethodCommand;
 import by.epam.chekun.domain.command.impl.paymentmethod.ViewPaymentMethodTableCommand;
@@ -45,7 +42,7 @@ public class CommandFactoryImpl implements CommandFactory {
     public Command createCommand(final String action,
                                  final HttpServletRequest request,
                                  final HttpServletResponse response)
-                                 throws CommandException {
+            throws CommandException {
 
         switch (action) {
             case VIEW_SIGN_UP_WINDOW_COMMAND:
@@ -146,6 +143,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ViewOrderDetailCommand(request, response);
             case CHANGE_ORDER_STATUS_COMMAND:
                 return new ChangeOrderStatusCommand(request, response);
+            case INVALIDATE_ORDER_COMMAND:
+                return new InvalidateOrderCommand(request, response);
             ///////////////////////////////////////////////////////////////////////////
 
             case VIEW_CUSTOMER_PRODUCT_TABLE_COMMAND:

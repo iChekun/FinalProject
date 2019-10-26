@@ -11,6 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>
         <fmt:message key="title.personaCabinet"/>
     </title>
@@ -24,15 +25,15 @@
     <link rel="stylesheet" href="css/logo_style.css" type="text/css"/>
     <link rel="stylesheet" href="css/user_table_look.css" type="text/css"/>
 
-    <link rel="icon" href="pictures/logotip.jpg" type="image/x-icon">
-    <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
+    <link rel="icon" href="pictures/icon_logo.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="pictures/icon_logo.jpg" type="image/jpg">
 
 
     <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet'
           type='text/css'>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>
-    <script src="js/signIn.js"></script>
+    <script src="js/popUpWindow.js"></script>
     <script src="js/alert.js"></script>
 </head>
 <body>

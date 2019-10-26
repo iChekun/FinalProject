@@ -38,13 +38,12 @@ public class ChangePasswordUserCommand implements Command {
 
         try {
             service.changePassword(userId, currentPassword, newPassword, confirmedPassword);
-            session.setAttribute(ERROR_TO_JSP_PASSWORD, "message.password_changed");
+            session.setAttribute(MESSAGE_TO_JSP_PASSWORD, "message.password_changed");
         } catch (InvalidUserInformationException e) {
-            session.setAttribute(ERROR_TO_JSP_PASSWORD, "message.password_dont_math");
+            session.setAttribute(MESSAGE_TO_JSP_PASSWORD, "message.invalid_password");
         } catch (InvalidPasswordException e) {
-            session.setAttribute(ERROR_TO_JSP_PASSWORD, "message.invalid_password");
+            session.setAttribute(MESSAGE_TO_JSP_PASSWORD, "message.password_dont_math");
         } catch (ServiceException e) {
-            e.printStackTrace();
             throw new CommandException();
         }
 

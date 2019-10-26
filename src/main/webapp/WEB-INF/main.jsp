@@ -9,6 +9,7 @@
 <c:import url="WEB-INF/forms/sign_in.jsp"/>
 <html>
 <head>
+
     <meta charset="UTF-8">
     <title><fmt:message key="title.main"/></title>
 
@@ -23,9 +24,6 @@
     <link rel="stylesheet" href="css/main_left_bar.css" type="text/css"/>
     <link rel="stylesheet" href="css/slider_main.css" type="text/css"/>
     <link rel="stylesheet" href="css/running_text_main.css" type="text/css"/>
-
-    <link rel="icon" href="pictures/logotip.jpg" type="image/x-icon">
-    <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
 
 </head>

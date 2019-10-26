@@ -93,7 +93,10 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
         try {
             User user = jdbcTemplate.queryForObject(GET_USER_BY_LOGIN_AND_PASS,
                     new UserRowMapper(), login, encodedPass);
-            return user;
+            if (user != null) {
+                return user;
+            }
+            throw new InvalidLoginOrPasswordException();
         } catch (JdbcTemplateException e) {
             throw new UserDAOException(e);
         }

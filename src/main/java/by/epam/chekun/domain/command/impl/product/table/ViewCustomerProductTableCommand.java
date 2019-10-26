@@ -35,6 +35,7 @@ public class ViewCustomerProductTableCommand implements Command {
 
     @Override
     public String execute() throws CommandException {
+        final HttpSession session = request.getSession();
         try {
             //1
             final List<Product> products = productService.getAll();

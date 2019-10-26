@@ -78,7 +78,11 @@
         <div class="table_line">
 
         </div>
-
+        <div style="margin: 15px 15px; text-decoration: underline; font-size: 19px;">
+            <strong>
+                <fmt:message key="order.history.detail"/>
+            </strong>
+        </div>
         <form action="mainWindow" method="post">
             <div class="start_table">
                 <table class="table_outer">
@@ -137,9 +141,17 @@
 
                 <div class="table_line"></div>
                 <br>
-                <c:if test="${sessionScope.userStatusId == 1}">
-                    <div class="category_buttons">
-                        <p style="margin-left: 5%;margin-top: -3.4%;">
+
+
+                <div class="category_buttons">
+                    <input type="hidden" name="orderId" value="${orderId}">
+                    <button type="submit" name="action" value="invalidateOrder">
+                        <strong>
+                          Отменить заказ
+                        </strong>
+                    </button>
+                    <c:if test="${sessionScope.userStatusId == 1}">
+                        <p style="margin-left: 15%;margin-top: -5%;">
                             <input type="hidden" name="orderId" value="${orderId}">
                             <input type="hidden" name="currentOrderStatusId" value="${currentOrderStatusId}">
                             <button type="submit" name="action" value="changeOrderStatus">
@@ -148,8 +160,8 @@
                                 </strong>
                             </button>
                         </p>
-                    </div>
-                </c:if>
+                    </c:if>
+                </div>
             </div>
         </form>
     </div>

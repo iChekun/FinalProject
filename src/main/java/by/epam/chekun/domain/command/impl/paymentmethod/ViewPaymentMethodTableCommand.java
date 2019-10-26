@@ -2,6 +2,7 @@ package by.epam.chekun.domain.command.impl.paymentmethod;
 
 import by.epam.chekun.domain.command.Command;
 import by.epam.chekun.domain.command.exception.CommandException;
+import by.epam.chekun.domain.command.impl.util.CheckMessage;
 import by.epam.chekun.domain.entity.order.PaymentMethod;
 import by.epam.chekun.domain.service.PaymentMethodService;
 import by.epam.chekun.domain.service.exception.paymentmethod.PaymentMethodServiceException;
@@ -32,12 +33,7 @@ public class ViewPaymentMethodTableCommand implements Command {
         try {
             final List<PaymentMethod> paymentMethods = paymentMethodService.getAll();
             request.setAttribute(PAYMENT_METHODS_LIST, paymentMethods);
-
-            if (session.getAttribute(ERROR_TO_JSP_PAYMENT_METHOD) != null) {
-                String error = String.valueOf(session.getAttribute(ERROR_TO_JSP_PAYMENT_METHOD));
-                request.setAttribute(ERROR_MESSAGE_TO_JSP, error);
-                session.removeAttribute(ERROR_TO_JSP_PAYMENT_METHOD);
-            }
+            CheckMessage.checkMessageToJsp(session,request,MESSAGE_TO_JSP_PAYMENT_METHOD);
         } catch (PaymentMethodServiceException e) {
             throw new CommandException(e);
         }

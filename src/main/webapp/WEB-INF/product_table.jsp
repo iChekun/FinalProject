@@ -38,8 +38,6 @@
     <link rel="icon" href="pictures/logotip.jpg" type="image/x-icon">
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
-
-
     <script src="js/alert.js"></script>
 
 </head>

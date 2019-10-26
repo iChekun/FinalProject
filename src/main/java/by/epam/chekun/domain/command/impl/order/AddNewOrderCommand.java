@@ -42,12 +42,12 @@ public class AddNewOrderCommand implements Command {
                 orderService.add(userId, paymentMethodId, basketId);
 
 
-                session.setAttribute(ERROR_MESSAGE_TO_JSP, "order.message.sessusful");
+                session.setAttribute(MESSAGE_TO_USER_BASKET, "order.message.sessusful");
             } else {
-                session.setAttribute(ERROR_MESSAGE_TO_JSP, "order.message.buy_something");
+                session.setAttribute(MESSAGE_TO_USER_BASKET, "order.message.buy_something");
             }
         } catch (ServiceException e) {
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "order.message.bad");
+            session.setAttribute(MESSAGE_TO_USER_BASKET, "order.message.mistake_buy");
         }
 
         session.setAttribute(REDIRECT_COMMAND, VIEW_USER_BASKET_COMMAND);

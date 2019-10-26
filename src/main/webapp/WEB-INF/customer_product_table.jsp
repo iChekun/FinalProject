@@ -31,10 +31,8 @@
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
 
-    <script src="js/change_text.js"></script>
 
     <script src="js/alert.js"></script>
-
 
 </head>
 <body>
@@ -113,7 +111,7 @@
                                             ${category.name}
                                     </option>
                                 </c:forEach>
-                                <option value><fmt:message key="label.select.none"/></option>
+                                <option value=""><fmt:message key="label.select.none"/></option>
                             </select>
                         </fieldset>
                     </li>

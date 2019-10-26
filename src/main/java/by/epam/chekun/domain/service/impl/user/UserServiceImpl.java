@@ -53,10 +53,6 @@ public class UserServiceImpl implements UserService {
         try {
             final User user = userRepository.getByLoginAndPass(login, encodedPass);
 
-            if (user == null) {
-                throw new InvalidLoginOrPasswordException("wrong user data!");
-            }
-
             if (user.getBanned()) {
                 throw new BannedUserServiceException("User is banned!");
             }
@@ -231,6 +227,7 @@ public class UserServiceImpl implements UserService {
             final String encodedNewPassword = keeper.generateHash(login, newPassword);
             //
             userRepository.getByLoginAndPass(login, encodedCurrentPassword);
+            //
             userRepository.updatePassword(userId, encodedNewPassword);
             //
         } catch (InvalidLoginOrPasswordException ex) {

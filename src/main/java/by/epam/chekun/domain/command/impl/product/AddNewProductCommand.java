@@ -42,7 +42,7 @@ public class AddNewProductCommand implements Command {
             service.add(productName, productDescription, productImagePath, productCost,
                     categoryId, brandId);
         } catch (InvalidProductInformationException e) {
-            session.setAttribute(ERROR_TO_JSP_PRODUCT, "message.invalid_product_info");
+            session.setAttribute(MESSAGE_TO_JSP_PRODUCT, "message.invalid_product_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

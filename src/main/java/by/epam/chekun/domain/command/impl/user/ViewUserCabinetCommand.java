@@ -2,6 +2,7 @@ package by.epam.chekun.domain.command.impl.user;
 
 import by.epam.chekun.domain.command.Command;
 import by.epam.chekun.domain.command.exception.CommandException;
+import by.epam.chekun.domain.command.impl.util.CheckMessage;
 import by.epam.chekun.domain.entity.user.User;
 import by.epam.chekun.domain.service.UserService;
 import by.epam.chekun.domain.service.exception.ServiceException;
@@ -40,7 +41,9 @@ public class ViewUserCabinetCommand implements Command {
             request.setAttribute(USER_STATUS_ID, user.getUserStatus().getUserStatusId());
             request.setAttribute(USER_BIRTH_DATE, user.getBirthDateStringFormat());
 
-            checkDialogMessage(session);
+
+            CheckMessage.checkMessageToJsp(session, request,
+                    MESSAGE_TO_JSP_PASSWORD, MESSAGE_TO_EDIT_USER);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
@@ -49,20 +52,4 @@ public class ViewUserCabinetCommand implements Command {
 
     }
 
-    private void checkDialogMessage(HttpSession session) {
-        //check was any messages to user or not
-        // if yes took message from session and put it with rename
-
-        if (session.getAttribute(ERROR_TO_JSP_PASSWORD) != null) {
-            String error = String.valueOf(session.getAttribute(ERROR_TO_JSP_PASSWORD));
-            request.setAttribute(ERROR_MESSAGE_TO_JSP, error);
-            session.removeAttribute(ERROR_TO_JSP_PASSWORD);
-        }
-
-        if (session.getAttribute(ERROR_TO_EDIT_USER) != null) {
-            String error = String.valueOf(session.getAttribute(ERROR_TO_EDIT_USER));
-            request.setAttribute(ERROR_MESSAGE_TO_JSP, error);
-            session.removeAttribute(ERROR_TO_EDIT_USER);
-        }
-    }
 }

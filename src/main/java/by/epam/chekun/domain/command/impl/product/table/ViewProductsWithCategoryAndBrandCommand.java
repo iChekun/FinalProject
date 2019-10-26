@@ -40,6 +40,7 @@ public class ViewProductsWithCategoryAndBrandCommand implements Command {
         final String categoryId = request.getParameter(CATEGORY_ID);
         final String brandId = request.getParameter(BRAND_ID);
 
+
         try {
 
             final List<Category> categories = categoryService.getAll();
@@ -62,13 +63,15 @@ public class ViewProductsWithCategoryAndBrandCommand implements Command {
 
     private List<Product> getProducts(String categoryId, String brandId) throws ProductServiceException {
         List<Product> products;
-        if (categoryId != null && brandId != null) {
-            products = productService.getAllByCategoryAndBrand(categoryId, brandId);
-        } else if (brandId == null) {
+
+        if (brandId == null || brandId.equals("")) {
             products = productService.getAllByCategory(categoryId);
-        } else {
+        } else if (categoryId == null || categoryId.equals("")) {
             products = productService.getAllByBrand(brandId);
+        } else {
+            products = productService.getAllByCategoryAndBrand(categoryId, brandId);
         }
         return products;
     }
+
 }

@@ -54,10 +54,10 @@ public class ViewProductsTableCommand implements Command {
             request.setAttribute(PRODUCT_LIST, products);
         } catch (ServiceException ignore) { /*NOP*/}
 
-        if (session.getAttribute(ERROR_TO_JSP_PRODUCT) != null) {
+        if (session.getAttribute(MESSAGE_TO_JSP_PRODUCT) != null) {
             String error = String.valueOf(session.getAttribute("errorMessageProduct"));
-            request.setAttribute(ERROR_MESSAGE_TO_JSP, error);
-            session.removeAttribute(ERROR_TO_JSP_PRODUCT);
+            request.setAttribute(MESSAGE_TO_JSP, error);
+            session.removeAttribute(MESSAGE_TO_JSP_PRODUCT);
         }
         return PRODUCT_TABLE_PAGE;
     }

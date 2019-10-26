@@ -15,9 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
 
-import static by.epam.chekun.domain.configuration.BeanFieldJsp.ERROR_MESSAGE_TO_JSP;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.MESSAGE_TO_JSP;
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.REDIRECT_COMMAND;
-import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_MAIN_PAGE_COMMAND;
 import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_SIGN_UP_WINDOW_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.SIGN_UP_PAGE;
 
@@ -58,14 +57,14 @@ public class SignUpCommand implements Command {
                     email, phoneNumber,
                     country, city, street, houseNumber, apartmentNumber);
 
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.successful_registration");
-            session.setAttribute(REDIRECT_COMMAND, VIEW_MAIN_PAGE_COMMAND);
+
+            session.setAttribute(MESSAGE_TO_JSP, "message.successful_registration");
         } catch (InvalidLoginException ex) {
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.invalid_username");
+            session.setAttribute(MESSAGE_TO_JSP, "message.invalid_username");
         } catch (InvalidEmailException ex) {
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.invalid_email");
+            session.setAttribute(MESSAGE_TO_JSP, "message.invalid_email");
         } catch (InvalidUserInformationException ex) {
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.invalid_info");
+            session.setAttribute(MESSAGE_TO_JSP, "message.invalid_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

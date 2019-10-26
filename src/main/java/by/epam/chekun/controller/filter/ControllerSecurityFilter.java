@@ -18,7 +18,7 @@ import static by.epam.chekun.domain.configuration.JspFilePass.INDEX_PAGE;
 @WebFilter(urlPatterns = {"*"}, servletNames = {"mainWindow"})
 public class ControllerSecurityFilter implements Filter {
 
-    private final int INVALID_USER_STATUS_ID = -1;
+    private static final int INVALID_USER_STATUS_ID = -1;
 
     private List<String> adminActions;
     private List<String> customerActions;
@@ -107,6 +107,7 @@ public class ControllerSecurityFilter implements Filter {
         customerActions.add(ADD_NEW_ORDER_COMMAND);
         customerActions.add(VIEW_ORDERS_HISTORY_COMMAND);
         customerActions.add(VIEW_ORDER_DETAIL_COMMAND);
+        customerActions.add(INVALIDATE_ORDER_COMMAND);
     }
 
     private void addAdminActions() {
@@ -151,6 +152,7 @@ public class ControllerSecurityFilter implements Filter {
         adminActions.add(VIEW_ORDERS_HISTORY_COMMAND);
         adminActions.add(VIEW_ORDER_DETAIL_COMMAND);
         adminActions.add(CHANGE_ORDER_STATUS_COMMAND);
+        adminActions.add(INVALIDATE_ORDER_COMMAND);
     }
 
 

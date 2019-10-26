@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
 import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_BRANDS_TABLE_COMMAND;
-import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_EDIT_BRAND_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.BRAND_TABLE_PAGE;
 
 public class EditBrandCommand implements Command {
@@ -40,14 +39,14 @@ public class EditBrandCommand implements Command {
 
         try {
             brandService.update(brandId, brandName, brandDescription, brandImagePath);
-            session.setAttribute(REDIRECT_COMMAND, VIEW_BRANDS_TABLE_COMMAND);
+
         } catch (InvalidBrandInformationException e) {
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.brand_invalid_info");
-            session.setAttribute(REDIRECT_COMMAND, VIEW_EDIT_BRAND_COMMAND);
+            session.setAttribute(MESSAGE_TO_JSP_BRAND, "message.brand_invalid_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
 
+        session.setAttribute(REDIRECT_COMMAND, VIEW_BRANDS_TABLE_COMMAND);
         return BRAND_TABLE_PAGE;
     }
 }

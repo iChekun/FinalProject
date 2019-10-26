@@ -2,6 +2,7 @@ package by.epam.chekun.domain.command.impl.product;
 
 import by.epam.chekun.domain.command.Command;
 import by.epam.chekun.domain.command.exception.CommandException;
+import by.epam.chekun.domain.command.impl.util.CheckMessage;
 import by.epam.chekun.domain.entity.brand.Brand;
 import by.epam.chekun.domain.entity.category.Category;
 import by.epam.chekun.domain.entity.product.Product;
@@ -13,6 +14,7 @@ import by.epam.chekun.domain.service.manager.ServiceManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
@@ -34,7 +36,6 @@ public class ViewEditProductCommand implements Command {
 
     @Override
     public String execute() throws CommandException {
-
         final String productId = request.getParameter(PRODUCT_FOR_ACTION);
 
         try {

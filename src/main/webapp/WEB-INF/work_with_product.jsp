@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="css/logo_style.css" type="text/css"/>
     <link rel="stylesheet" href="css/user_table_look.css" type="text/css"/>
 
-    <link rel="icon" href="pictures/logotip.jpg" type="image/x-icon">
+    <link rel="icon" href="pictures/logo.png" type="image/x-icon">
     <link rel="shortcut icon" href="pictures/logotip.jpg" type="image/x-icon">
 
     <link href='http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400,300,600' rel='stylesheet'

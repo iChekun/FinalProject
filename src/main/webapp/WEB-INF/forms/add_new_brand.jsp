@@ -19,7 +19,7 @@
           type='text/css'>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="css/promtWindow.css" type="text/css"/>
-    <script src="js/signIn.js"></script>
+    <script src="js/popUpWindow.js"></script>
 </head>
 <body>
 

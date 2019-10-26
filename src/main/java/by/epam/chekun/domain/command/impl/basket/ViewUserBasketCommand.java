@@ -2,6 +2,7 @@ package by.epam.chekun.domain.command.impl.basket;
 
 import by.epam.chekun.domain.command.Command;
 import by.epam.chekun.domain.command.exception.CommandException;
+import by.epam.chekun.domain.command.impl.util.CheckMessage;
 import by.epam.chekun.domain.entity.basket.ProductBasket;
 import by.epam.chekun.domain.entity.order.PaymentMethod;
 import by.epam.chekun.domain.service.BasketService;
@@ -44,6 +45,8 @@ public class ViewUserBasketCommand implements Command {
             request.setAttribute(PRODUCTS_BASKET, productBasket);
             request.setAttribute(PRODUCTS_COST, productsCost);
             request.setAttribute(PAYMENT_METHODS_LIST, paymentMethods);
+
+            CheckMessage.checkMessageToJsp(session, request, MESSAGE_TO_USER_BASKET);
 
         } catch (ServiceException e) {
             throw new CommandException(e);

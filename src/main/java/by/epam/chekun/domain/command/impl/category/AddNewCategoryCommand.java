@@ -38,7 +38,7 @@ public class AddNewCategoryCommand implements Command {
             categoryService.add(categoryName, categoryDescription, categoryImagePath);
 
         } catch (InvalidCategoryInformationException e) {
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.category_invalid_info");
+            session.setAttribute(MESSAGE_TO_JSP_CATEGORY, "message.category_invalid_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }

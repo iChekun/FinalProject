@@ -66,13 +66,13 @@ public class EditUserCommand implements Command {
             request.setAttribute(USER_OBJECT, user);
             request.setAttribute(USER_STATUS_ID, user.getUserStatus().getUserStatusId());
 
-           session.setAttribute(ERROR_TO_EDIT_USER, "message.data_changed");
+           session.setAttribute(MESSAGE_TO_EDIT_USER, "message.data_changed");
         } catch (InvalidLoginException ex) {
-            session.setAttribute(ERROR_TO_EDIT_USER, "message.invalid_username");
+            session.setAttribute(MESSAGE_TO_EDIT_USER, "message.invalid_username");
         } catch (InvalidEmailException ex) {
-            session.setAttribute(ERROR_TO_EDIT_USER, "message.invalid_email");
+            session.setAttribute(MESSAGE_TO_EDIT_USER, "message.invalid_email");
         } catch (ServiceException e) {
-            session.setAttribute(ERROR_TO_EDIT_USER, "message.data.invalid_info");
+            session.setAttribute(MESSAGE_TO_EDIT_USER, "message.data.invalid_info");
         }
 
         session.setAttribute(REDIRECT_COMMAND, VIEW_USER_CABINET_COMMAND);

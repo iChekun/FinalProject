@@ -31,7 +31,6 @@ public class ViewEditBrandCommand implements Command {
     public String execute() throws CommandException {
 
         final String brandId = request.getParameter(BRAND_FOR_ACTION);
-
         try {
             final Brand brand = brandService.getById(brandId);
             request.setAttribute(BRAND_OBJECT, brand);

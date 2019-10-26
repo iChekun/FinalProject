@@ -24,6 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.CLOSE_ORDER_STATUS_ID;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.OPEN_ORDER_STATUS_ID;
 import static by.epam.chekun.domain.entity.user.UserStatus.ADMIN;
 import static by.epam.chekun.domain.entity.user.UserStatus.CUSTOMER;
 
@@ -119,16 +121,24 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private String getOrderStatusId(String currentOrderStatusId) {
-        final String open = "1";
-        final String close = "2";
-
-        return currentOrderStatusId.equals(open) ? close : open;
+        return currentOrderStatusId.equals(OPEN_ORDER_STATUS_ID) ?
+                CLOSE_ORDER_STATUS_ID : OPEN_ORDER_STATUS_ID;
     }
 
     @Override
     public Order getOrderById(String orderId) throws OrderServiceException {
         try {
             return orderRepository.getEntityById(orderId);
+        } catch (OrderDAOException e) {
+            throw new OrderServiceException(e);
+        }
+    }
+
+
+    @Override
+    public void invalidateOrder(String orderId) throws OrderServiceException {
+        try {
+            orderRepository.removeById(orderId);
         } catch (OrderDAOException e) {
             throw new OrderServiceException(e);
         }

@@ -44,14 +44,15 @@ public class EditProductCommand implements Command {
         try {
             productService.update(productId, productName, productDescription,
                     productImagePath, productCost, categoryId, brandId);
-            session.setAttribute(REDIRECT_COMMAND, VIEW_PRODUCTS_TABLE_COMMAND);
+
         } catch (InvalidProductInformationException ex) {
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.invalid_product_info");
-            session.setAttribute(REDIRECT_COMMAND, VIEW_EDIT_PRODUCT_COMMAND);
+            session.setAttribute(MESSAGE_TO_JSP_PRODUCT, "message.invalid_product_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
 
+
+        session.setAttribute(REDIRECT_COMMAND, VIEW_PRODUCTS_TABLE_COMMAND);
         return PRODUCT_TABLE_PAGE;
     }
 }

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
 import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_CATEGORIES_TABLE_COMMAND;
-import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_EDIT_CATEGORY_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.WORK_WITH_CATEGORY_PAGE;
 
 public class EditCategoryCommand implements Command {
@@ -38,14 +37,13 @@ public class EditCategoryCommand implements Command {
 
         try {
             categoryService.update(categoryId, categoryName, categoryDescription, categoryImagePath);
-            session.setAttribute(REDIRECT_COMMAND, VIEW_CATEGORIES_TABLE_COMMAND);
         } catch (InvalidCategoryInformationException ex) {
-            session.setAttribute(ERROR_MESSAGE_TO_JSP, "message.category_invalid_info");
-            session.setAttribute(REDIRECT_COMMAND, VIEW_EDIT_CATEGORY_COMMAND);
+            session.setAttribute(MESSAGE_TO_JSP_CATEGORY, "message.category_invalid_info");
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
 
+        session.setAttribute(REDIRECT_COMMAND, VIEW_CATEGORIES_TABLE_COMMAND);
         return WORK_WITH_CATEGORY_PAGE;
 
     }

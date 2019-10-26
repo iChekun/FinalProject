@@ -2,30 +2,27 @@ package by.epam.chekun.domain.command.impl.order;
 
 import by.epam.chekun.domain.command.Command;
 import by.epam.chekun.domain.command.exception.CommandException;
-import by.epam.chekun.domain.command.impl.util.CheckMessage;
 import by.epam.chekun.domain.entity.order.Order;
-import by.epam.chekun.domain.entity.user.User;
 import by.epam.chekun.domain.service.OrderService;
-import by.epam.chekun.domain.service.UserService;
-import by.epam.chekun.domain.service.exception.ServiceException;
+import by.epam.chekun.domain.service.exception.order.OrderServiceException;
 import by.epam.chekun.domain.service.manager.ServiceManager;
 
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.List;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
+import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_ORDERS_HISTORY_COMMAND;
 import static by.epam.chekun.domain.configuration.JspFilePass.ORDERS_HISTORY_PAGE;
 
-public class ViewOrdersHistoryCommand implements Command {
+public class InvalidateOrderCommand implements Command {
 
     private HttpServletRequest request;
     private HttpServletResponse response;
     private OrderService orderService = ServiceManager.getInstance().getOrderService();
-    private UserService userService = ServiceManager.getInstance().getUserService();
 
-    public ViewOrdersHistoryCommand(HttpServletRequest request, HttpServletResponse response) {
+
+    public InvalidateOrderCommand(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;
         this.response = response;
     }
@@ -35,19 +32,20 @@ public class ViewOrdersHistoryCommand implements Command {
     public String execute() throws CommandException {
 
         final HttpSession session = request.getSession();
-        final String userId = String.valueOf(session.getAttribute(USER_ID));
-
+        final String orderId = request.getParameter(ORDER_ID);
         try {
-            final List<Order> orders = orderService.getAllUserOrdersByUserId(userId);
-            final User user = userService.getById(userId);
-            request.setAttribute(USER_OBJECT, user);
-            request.setAttribute(ORDERS_LIST, orders);
-
-            CheckMessage.checkMessageToJsp(session,request,MESSAGE_TO_ORDERS_HISTORY);
-        } catch (ServiceException e) {
+            final Order order = orderService.getOrderById(orderId);
+            if (order.getOrderStatus().getOrderStatusId().equals(OPEN_ORDER_STATUS_ID)) {
+                orderService.invalidateOrder(orderId);
+                session.setAttribute(MESSAGE_TO_ORDERS_HISTORY, "message.order_invalidate");
+            } else {
+                session.setAttribute(MESSAGE_TO_ORDERS_HISTORY, "message.order.cant_close_closed_order");
+            }
+        } catch (OrderServiceException e) {
             throw new CommandException(e);
         }
 
+        session.setAttribute(REDIRECT_COMMAND, VIEW_ORDERS_HISTORY_COMMAND);
         return ORDERS_HISTORY_PAGE;
     }
 }

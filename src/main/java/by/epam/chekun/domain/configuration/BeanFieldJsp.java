@@ -13,12 +13,15 @@ public final class BeanFieldJsp {
     public static final String ALLOWED = "allowed";
 
     public static final String SECURITY_MESSAGE = "message";
-    public static final String ERROR_MESSAGE_TO_JSP = "errorMessage";
-    public static final String ERROR_TO_EDIT_USER = "errorMessageEditUser";
-    public static final String ERROR_TO_JSP_PASSWORD = "errorMessagePassword";
-    public static final String ERROR_TO_JSP_BRAND = "errorMessageBrand";
-    public static final String ERROR_TO_JSP_PRODUCT = "errorMessageProduct";
-    public static final String ERROR_TO_JSP_PAYMENT_METHOD = "errorMessagePaymentMethod";
+    public static final String MESSAGE_TO_JSP = "errorMessage";
+    public static final String MESSAGE_TO_USER_BASKET = "errorToUserBasket";
+    public static final String MESSAGE_TO_ORDERS_HISTORY = "errorOrdersHistory";
+    public static final String MESSAGE_TO_EDIT_USER = "errorMessageEditUser";
+    public static final String MESSAGE_TO_JSP_PASSWORD = "errorMessagePassword";
+    public static final String MESSAGE_TO_JSP_BRAND = "errorMessageBrand";
+    public static final String MESSAGE_TO_JSP_CATEGORY = "errorMessageCategory";
+    public static final String MESSAGE_TO_JSP_PRODUCT = "errorMessageProduct";
+    public static final String MESSAGE_TO_JSP_PAYMENT_METHOD = "errorMessagePaymentMethod";
     public static final String REDIRECT_COMMAND = "redirectToCommand";
 
 
@@ -104,5 +107,7 @@ public final class BeanFieldJsp {
     public static final String ORDER_ID = "orderId";
     public static final String ORDERS_LIST = "orders";
     public static final String CURRENT_ORDER_STATUS_ID = "currentOrderStatusId";
+    public static final String OPEN_ORDER_STATUS_ID = "1";
+    public static final String CLOSE_ORDER_STATUS_ID = "2";
 
 }
