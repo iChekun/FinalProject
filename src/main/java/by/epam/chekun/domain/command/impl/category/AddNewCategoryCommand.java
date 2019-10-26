@@ -5,6 +5,7 @@ import by.epam.chekun.domain.command.exception.CommandException;
 import by.epam.chekun.domain.service.CategoryService;
 import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.exception.category.InvalidCategoryInformationException;
+import by.epam.chekun.domain.service.exception.category.UsedCategoryNameServiceException;
 import by.epam.chekun.domain.service.manager.ServiceManager;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +38,8 @@ public class AddNewCategoryCommand implements Command {
         try {
             categoryService.add(categoryName, categoryDescription, categoryImagePath);
 
+        } catch (UsedCategoryNameServiceException ex) {
+            session.setAttribute(MESSAGE_TO_JSP_CATEGORY, "message.dublicate_category_name");
         } catch (InvalidCategoryInformationException e) {
             session.setAttribute(MESSAGE_TO_JSP_CATEGORY, "message.category_invalid_info");
         } catch (ServiceException e) {

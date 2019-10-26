@@ -5,6 +5,7 @@ import by.epam.chekun.domain.command.exception.CommandException;
 import by.epam.chekun.domain.service.BrandService;
 import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.exception.brand.InvalidBrandInformationException;
+import by.epam.chekun.domain.service.exception.brand.UsedBrandNameServiceException;
 import by.epam.chekun.domain.service.manager.ServiceManager;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,6 +36,8 @@ public class AddNewBrandCommand implements Command {
 
         try {
             brandService.add(brandName, brandDescription, brandImagePath);
+        } catch (UsedBrandNameServiceException ex) {
+            session.setAttribute(MESSAGE_TO_JSP_BRAND, "message.used_brand_name");
         } catch (InvalidBrandInformationException e) {
             session.setAttribute(MESSAGE_TO_JSP_BRAND, "message.brand_invalid_info");
         } catch (ServiceException e) {
