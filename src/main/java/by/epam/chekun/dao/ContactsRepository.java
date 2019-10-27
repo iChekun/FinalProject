@@ -1,6 +1,7 @@
 package by.epam.chekun.dao;
 
 import by.epam.chekun.dao.exception.user.contacts.ContactsDAOException;
+import by.epam.chekun.dao.initializer.CrudRepository;
 import by.epam.chekun.domain.entity.user.Contacts;
 
 public interface ContactsRepository extends CrudRepository<Contacts> {

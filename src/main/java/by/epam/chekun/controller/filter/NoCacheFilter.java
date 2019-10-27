@@ -9,7 +9,8 @@ import java.io.IOException;
 public class NoCacheFilter implements Filter {
 
     @Override
-    public void init(FilterConfig filterConfig) {}
+    public void init(FilterConfig filterConfig) {
+    }
 
     @Override
     public void doFilter(ServletRequest servletRequest,
@@ -24,5 +25,6 @@ public class NoCacheFilter implements Filter {
     }
 
     @Override
-    public void destroy() {}
+    public void destroy() {
+    }
 }

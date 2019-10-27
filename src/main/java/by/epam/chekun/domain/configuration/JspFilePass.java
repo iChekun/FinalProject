@@ -8,6 +8,8 @@ public final class JspFilePass {
     }
     //////////////////////////////////////////////
 
+    public static final String NEXT_PAGE = "nextPage";
+
     public static final String SLASH = "/";
 
     public static final String INDEX_PAGE = "index";

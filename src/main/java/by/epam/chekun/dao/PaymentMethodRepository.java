@@ -1,7 +1,7 @@
 package by.epam.chekun.dao;
 
-import by.epam.chekun.dao.exception.DAOException;
 import by.epam.chekun.dao.exception.paymentmethod.PaymentMethodDAOException;
+import by.epam.chekun.dao.initializer.CrudRepository;
 import by.epam.chekun.domain.entity.order.PaymentMethod;
 
 import java.util.List;

@@ -7,7 +7,6 @@ import by.epam.chekun.dao.exception.category.UsedCategoryNameException;
 import by.epam.chekun.dao.manager.DAOManager;
 import by.epam.chekun.domain.entity.category.Category;
 import by.epam.chekun.domain.service.CategoryService;
-import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.exception.category.CategoryServiceException;
 import by.epam.chekun.domain.service.exception.category.InvalidCategoryInformationException;
 import by.epam.chekun.domain.service.exception.category.UsedCategoryNameServiceException;
@@ -49,8 +48,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<Category> getAll() throws CategoryServiceException {
         try {
-            List<Category> categories = categoryRepository.getAll();
-            return categories;
+            return categoryRepository.getAll();
         } catch (DAOException e) {
             throw new CategoryServiceException(e);
         }

@@ -32,16 +32,17 @@ public class PageRedirectSecurityFilter implements Filter {
 
     private static final String PATH_TO_CONTROLLER_WITH_ACTION = "/mainWindow?action=";
 
-    public void init(FilterConfig fConfig) throws ServletException {
+    public void init(FilterConfig fConfig) {
     }
 
     public void doFilter(ServletRequest servletRequest,
                          ServletResponse servletResponse,
-                         FilterChain filterChain) throws IOException, ServletException {
+                         FilterChain filterChain) throws IOException {
 
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-        HttpSession session = request.getSession();
+        final HttpServletRequest request = (HttpServletRequest) servletRequest;
+        final HttpServletResponse response = (HttpServletResponse) servletResponse;
+        final HttpSession session = request.getSession();
+
 
         if (session.getAttribute(USER_STATUS_ID) == null
                 && session.getAttribute(MESSAGE_TO_JSP) == null) {
@@ -49,7 +50,7 @@ public class PageRedirectSecurityFilter implements Filter {
         } else if (session.getAttribute(USER_STATUS_ID) != null
                 && session.getAttribute(MESSAGE_TO_JSP) == null) {
 
-            String redirectTo = request.getContextPath() +
+            final String redirectTo = request.getContextPath() +
                     PATH_TO_CONTROLLER_WITH_ACTION + session.getAttribute(REDIRECT_COMMAND);
             response.sendRedirect(redirectTo);
         }

@@ -16,7 +16,7 @@
 <body>
 <div class="wrap">
     <div class="logo">
-        <img src="pictures/404.png" alt=""/>
+        <img src="pictures/error_page/404.png" alt=""/>
         <p>
             <a href="mainWindow?action=main">
                 Go back to main page
@@ -25,7 +25,7 @@
     </div>
 </div>
 <div class="footer">
-    &copy 2019 404 White. All Rights Reserved | Design by&nbsp; <a href="http://w3layouts.com">chekun</a>
+    &copy 2019 404 White. All Rights Reserved | Design by&nbsp; <a>chekun</a>
 </div>
 
 </body>

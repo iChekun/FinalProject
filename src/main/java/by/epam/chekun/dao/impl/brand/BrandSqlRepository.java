@@ -1,11 +1,10 @@
 package by.epam.chekun.dao.impl.brand;
 
 import by.epam.chekun.dao.BrandRepository;
-import by.epam.chekun.dao.InitializerRepository;
 import by.epam.chekun.dao.core.exception.JdbcTemplateException;
 import by.epam.chekun.dao.exception.brand.BrandDAOException;
 import by.epam.chekun.dao.exception.brand.UsedBrandNameDAOException;
-
+import by.epam.chekun.dao.initializer.InitializerRepository;
 import by.epam.chekun.dao.mapper.BrandRowMapper;
 import by.epam.chekun.domain.entity.brand.Brand;
 
@@ -19,9 +18,8 @@ public class BrandSqlRepository extends InitializerRepository implements BrandRe
     @Override
     public Brand getEntityById(String id) throws BrandDAOException {
         try {
-            final Brand Brand = jdbcTemplate.queryForObject(GET_BRAND_BY_ID,
+            return jdbcTemplate.queryForObject(GET_BRAND_BY_ID,
                     new BrandRowMapper(), id);
-            return Brand;
         } catch (JdbcTemplateException e) {
             throw new BrandDAOException(e);
         }
@@ -76,8 +74,7 @@ public class BrandSqlRepository extends InitializerRepository implements BrandRe
     public List<Brand> getAll() throws BrandDAOException {
 
         try {
-            final List<Brand> brands = jdbcTemplate.query(GET_ALL_BRANDS, new BrandRowMapper());
-            return brands;
+            return jdbcTemplate.query(GET_ALL_BRANDS, new BrandRowMapper());
         } catch (JdbcTemplateException e) {
             throw new BrandDAOException(e);
         }
@@ -85,7 +82,6 @@ public class BrandSqlRepository extends InitializerRepository implements BrandRe
 
 
     private boolean isBrandNameUsed(String name) throws JdbcTemplateException {
-        boolean result = jdbcTemplate.queryForObject(GET_BRAND_ID_BY_NAME, name);
-        return result;
+        return jdbcTemplate.queryForObject(GET_BRAND_ID_BY_NAME, name);
     }
 }

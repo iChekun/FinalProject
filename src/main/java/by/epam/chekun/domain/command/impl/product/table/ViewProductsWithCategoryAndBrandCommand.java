@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
-import static by.epam.chekun.domain.configuration.JspFilePass.CUSTOMER_PRODUCT_PAGE;
+import static by.epam.chekun.domain.configuration.JspFilePass.NEXT_PAGE;
 
 public class ViewProductsWithCategoryAndBrandCommand implements Command {
 
@@ -39,7 +39,7 @@ public class ViewProductsWithCategoryAndBrandCommand implements Command {
 
         final String categoryId = request.getParameter(CATEGORY_ID);
         final String brandId = request.getParameter(BRAND_ID);
-
+        final String nextPage = request.getParameter(NEXT_PAGE);
 
         try {
 
@@ -58,19 +58,35 @@ public class ViewProductsWithCategoryAndBrandCommand implements Command {
             throw new CommandException(e);
         }
 
-        return CUSTOMER_PRODUCT_PAGE;
+        return nextPage;
     }
 
-    private List<Product> getProducts(String categoryId, String brandId) throws ProductServiceException {
-        List<Product> products;
 
-        if (brandId == null || brandId.equals("")) {
-            products = productService.getAllByCategory(categoryId);
-        } else if (categoryId == null || categoryId.equals("")) {
-            products = productService.getAllByBrand(brandId);
-        } else {
-            products = productService.getAllByCategoryAndBrand(categoryId, brandId);
+    /**
+     * Method check ids from table and returns correct list.
+     */
+    private List<Product> getProducts(String categoryId,
+                                      String brandId) throws ProductServiceException {
+
+        List<Product> products = null;
+
+        if (categoryId != null && categoryId.equals("")) {
+            categoryId = null;
         }
+        if (brandId != null && brandId.equals("")) {
+            brandId = null;
+        }
+
+        if (brandId == null && categoryId == null) {
+            products = productService.getAll();
+        } else if (brandId != null && categoryId != null) {
+            products = productService.getAllByCategoryAndBrand(categoryId, brandId);
+        } else if (brandId == null) {
+            products = productService.getAllByCategory(categoryId);
+        } else {
+            products = productService.getAllByBrand(brandId);
+        }
+
         return products;
     }
 

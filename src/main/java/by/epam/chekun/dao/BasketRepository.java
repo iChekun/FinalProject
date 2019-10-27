@@ -1,6 +1,7 @@
 package by.epam.chekun.dao;
 
 import by.epam.chekun.dao.exception.basket.BasketDAOException;
+import by.epam.chekun.dao.initializer.CrudRepository;
 import by.epam.chekun.domain.entity.basket.Basket;
 import by.epam.chekun.domain.entity.basket.ProductBasket;
 

@@ -20,26 +20,36 @@
     </properties>
 
     <dependencies>
+
+        <!-- testing frameworks -->
+        <!-- jUnit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
-
+        <!--  -->
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>
             <version>1.6.4</version>
             <scope>test</scope>
         </dependency>
-
+        <!--  -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
+        <!-- testNG -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.0.0-beta3</version>
+        </dependency>
+        <!-- ends testing frameworks  -->
 
         <!--Log4j 2-->
         <dependency>
@@ -52,13 +62,6 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.4.1</version>
-        </dependency>
-
-        <!-- testNG -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.0.0-beta3</version>
         </dependency>
 
         <!-- servlet API-->
@@ -104,7 +107,7 @@
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>2.2</version>
                     <configuration>
-                        <port>8082</port>
+                        <port>8085</port>
                         <path>/online_store</path>
                     </configuration>
                 </plugin>

@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="css/slider_main.css" type="text/css"/>
     <link rel="stylesheet" href="css/running_text_main.css" type="text/css"/>
 
-
 </head>
 <body>
 
@@ -100,7 +99,7 @@
                     </a>
                     <ul>
                         <c:forEach items="${categories}" var="category">
-                            <li style="margin-left: 5%;">
+                            <li style="margin:-5px 7px 7px 7px;">
                                 <a
                                         href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=${category.categoryId}">
                                         ${category.name}
@@ -125,7 +124,7 @@
 
     <div id="content-wrap">
 
-        <!-- корзина -->
+
         <c:if test="${sessionScope.userId != null && sessionScope.userStatusId != null}">
             <div class="basket">
                 <a href="mainWindow?action=viewUserBasket">
@@ -176,7 +175,7 @@
 
             <div class="sector_second_line_1">
                 <a href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=2">
-                    <img src="pictures/product/animals/adversting_phones.jpg" height="200" width="300"
+                    <img src="pictures/product/main_adversting/adversting_phones.jpg" height="200" width="300"
                          alt="phones"/>
                 </a>
             </div>
@@ -184,15 +183,15 @@
 
             <div class="sector_second_line_2">
                 <a href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=1">
-                    <img src="pictures/product/animals/adversing_tv.jpg" height="200" width="300"
+                    <img src="pictures/product/main_adversting/adversing_tv.jpg" height="200" width="300"
                          alt="tv"/>
                 </a>
             </div>
 
 
             <div class="sector_second_line_3">
-                <a href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=">
-                    <img src="pictures/product/animals/dog_food_adversting.jpg" height="200" width="200"
+                <a href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=d7eec6be-f8d1-11e9-8e3e-6045cbb55050">
+                    <img src="pictures/product/main_adversting/dog_food_adversting.jpg" height="200" width="200"
                          alt="animal_food"/>
                 </a>
             </div>
@@ -225,15 +224,15 @@
                     <br>
                     <fmt:message key="footer.order_processing"/>
                     <br><br>
-                    <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
+                    <img src="pictures/footer_pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
 
                     <br>
 
-                    <img src="pictures/mts.png" alt="телефон" width="40" height="40">
+                    <img src="pictures/footer_pictures/mts.png" alt="телефон" width="40" height="40">
                     <a>8029-313-60-52 </a>
                     <br>
-                    <img src="pictures/viber.jpg" alt="телефон" width="40" height="40">
+                    <img src="pictures/footer_pictures/viber.jpg" alt="телефон" width="40" height="40">
                     <a>8029-313-60-52 </a>
                 </div>
             </td>
@@ -267,7 +266,7 @@
                     <br><br>
                     <fmt:message key="footer.store_info.about_storage"/>
                     <br><br>
-                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <img src="pictures/footer_pictures/sklad.jpg" alt="sklad" width="250" height="130">
                     <br><br><br>
                     <fmt:message key="footer.store_info.with_goodluck"/>
                 </div>
@@ -277,7 +276,7 @@
 
 
     <div class="end_page">
-        &copy 2019 Online store. All Rights Reserved | Design by&nbsp; <a href="">Ilya Chekun</a>
+        &copy 2019 Online store. All Rights Reserved | Design by&nbsp; <a>Ilya Chekun</a>
     </div>
 </div>
 </body>

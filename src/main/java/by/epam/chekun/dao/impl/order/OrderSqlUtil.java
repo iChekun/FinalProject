@@ -6,11 +6,6 @@ final class OrderSqlUtil {
 
     //////////////////////////////////////////////////////////
 
-    // мы с  параметра получим
-    // ид юзера ид выбранного способа оплаты и статус заказа установится сам в опен
-    //далее админ сам сможет изменить статус заказа
-    // cost посчитываем
-
     static final String GET_ORDER_BY_ID =
             " select o.orderId,o.userId, o.paymentMethodId, pm.name, " +
                     "o.orderStatusId, os.name, " +

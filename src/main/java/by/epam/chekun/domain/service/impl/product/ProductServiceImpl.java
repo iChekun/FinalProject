@@ -5,7 +5,6 @@ import by.epam.chekun.dao.exception.product.ProductDAOException;
 import by.epam.chekun.dao.manager.DAOManager;
 import by.epam.chekun.domain.entity.product.Product;
 import by.epam.chekun.domain.service.ProductService;
-import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.exception.product.InvalidProductInformationException;
 import by.epam.chekun.domain.service.exception.product.ProductServiceException;
 import by.epam.chekun.domain.util.builder.product.impl.ProductBuilderImpl;
@@ -49,8 +48,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAll() throws ProductServiceException {
         try {
-            final List<Product> products = productRepository.getAll();
-            return products;
+            return productRepository.getAll();
         } catch (ProductDAOException e) {
             throw new ProductServiceException(e);
         }
@@ -70,8 +68,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllByCategory(String categoryId) throws ProductServiceException {
         try {
-            final List<Product> products = productRepository.getAllByCategory(categoryId);
-            return products;
+            return productRepository.getAllByCategory(categoryId);
         } catch (ProductDAOException e) {
             throw new ProductServiceException(e);
         }
@@ -80,8 +77,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllByBrand(String brandId) throws ProductServiceException {
         try {
-            final List<Product> products = productRepository.getAllByBrand(brandId);
-            return products;
+            return productRepository.getAllByBrand(brandId);
         } catch (ProductDAOException e) {
             throw new ProductServiceException(e);
         }
@@ -90,8 +86,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllByCategoryAndBrand(String categoryId, String brandId) throws ProductServiceException {
         try {
-            final List<Product> products = productRepository.getAllByCategoryAndBrand(categoryId, brandId);
-            return products;
+            return productRepository.getAllByCategoryAndBrand(categoryId, brandId);
         } catch (ProductDAOException e) {
             throw new ProductServiceException(e);
         }

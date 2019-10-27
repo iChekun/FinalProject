@@ -13,7 +13,6 @@ import by.epam.chekun.domain.entity.user.Contacts;
 import by.epam.chekun.domain.entity.user.User;
 import by.epam.chekun.domain.entity.user.UserStatus;
 import by.epam.chekun.domain.service.UserService;
-import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.exception.user.*;
 import by.epam.chekun.domain.util.builder.user.impl.AddressBuilderImpl;
 import by.epam.chekun.domain.util.builder.user.impl.ContactsBuilderImpl;
@@ -36,8 +35,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(final String userId) throws UserServiceException {
         try {
-            final User user = userRepository.getEntityById(userId);
-            return user;
+            return userRepository.getEntityById(userId);
         } catch (DAOException ex) {
             throw new UserServiceException(ex);
         }
@@ -125,8 +123,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAll() throws UserServiceException {
         try {
-            final List<User> users = userRepository.getAll();
-            return users;
+            return userRepository.getAll();
         } catch (DAOException e) {
             throw new UserServiceException(e);
         }
@@ -155,8 +152,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAllUsersSorted(final String sortedBy, final String sortType) throws UserServiceException {
         try {
-            final List<User> usersSortedList = userRepository.getAllUserSorted(sortedBy, sortType);
-            return usersSortedList;
+            return userRepository.getAllUserSorted(sortedBy, sortType);
         } catch (DAOException e) {
             throw new UserServiceException(e);
         }

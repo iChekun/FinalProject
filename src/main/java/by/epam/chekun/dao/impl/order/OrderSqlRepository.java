@@ -1,10 +1,10 @@
 package by.epam.chekun.dao.impl.order;
 
-import by.epam.chekun.dao.InitializerRepository;
 import by.epam.chekun.dao.OrderRepository;
 import by.epam.chekun.dao.core.RowMapper;
 import by.epam.chekun.dao.core.exception.JdbcTemplateException;
 import by.epam.chekun.dao.exception.order.OrderDAOException;
+import by.epam.chekun.dao.initializer.InitializerRepository;
 import by.epam.chekun.dao.mapper.OrderRowMapper;
 import by.epam.chekun.dao.mapper.ProductOrderRowMapper;
 import by.epam.chekun.domain.entity.order.Order;
@@ -85,9 +85,8 @@ public class OrderSqlRepository extends InitializerRepository implements OrderRe
     @Override
     public List<Order> getAll() throws OrderDAOException {
         try {
-            final List<Order> orders = jdbcTemplate.query(GET_ALL_ORDERS,
+            return jdbcTemplate.query(GET_ALL_ORDERS,
                     new OrderRowMapper());
-            return orders;
         } catch (JdbcTemplateException e) {
             throw new OrderDAOException(e);
         }
@@ -97,9 +96,8 @@ public class OrderSqlRepository extends InitializerRepository implements OrderRe
     @Override
     public List<Order> getAllOrdersByUserId(String userId) throws OrderDAOException {
         try {
-            final List<Order> orders = jdbcTemplate.query(GET_ALL_ORDERS_BY_USER_ID,
+            return jdbcTemplate.query(GET_ALL_ORDERS_BY_USER_ID,
                     new OrderRowMapper(), userId);
-            return orders;
         } catch (JdbcTemplateException e) {
             throw new OrderDAOException(e);
         }
@@ -108,9 +106,8 @@ public class OrderSqlRepository extends InitializerRepository implements OrderRe
     @Override
     public List<ProductOrder> getAllProductsFromOrder(String orderId) throws OrderDAOException {
         try {
-            final List<ProductOrder> productOrders = jdbcTemplate.query(GET_ALL_PRODUCT_FROM_ORDER,
+            return jdbcTemplate.query(GET_ALL_PRODUCT_FROM_ORDER,
                     new ProductOrderRowMapper(), orderId);
-            return productOrders;
         } catch (JdbcTemplateException e) {
             throw new OrderDAOException(e);
         }

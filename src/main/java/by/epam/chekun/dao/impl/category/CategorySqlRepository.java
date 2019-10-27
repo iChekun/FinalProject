@@ -1,11 +1,10 @@
 package by.epam.chekun.dao.impl.category;
 
 import by.epam.chekun.dao.CategoryRepository;
-import by.epam.chekun.dao.InitializerRepository;
 import by.epam.chekun.dao.core.exception.JdbcTemplateException;
 import by.epam.chekun.dao.exception.category.CategoryDAOException;
 import by.epam.chekun.dao.exception.category.UsedCategoryNameException;
-
+import by.epam.chekun.dao.initializer.InitializerRepository;
 import by.epam.chekun.dao.mapper.CategoryRowMapper;
 import by.epam.chekun.domain.entity.category.Category;
 
@@ -19,9 +18,8 @@ public class CategorySqlRepository extends InitializerRepository implements Cate
     @Override
     public Category getEntityById(String id) throws CategoryDAOException {
         try {
-            final Category category = jdbcTemplate.queryForObject(GET_CATEGORY_BY_ID,
+            return jdbcTemplate.queryForObject(GET_CATEGORY_BY_ID,
                     new CategoryRowMapper(), id);
-            return category;
         } catch (JdbcTemplateException e) {
             throw new CategoryDAOException(e);
         }
@@ -76,8 +74,7 @@ public class CategorySqlRepository extends InitializerRepository implements Cate
     public List<Category> getAll() throws CategoryDAOException {
 
         try {
-            final List<Category> categories = jdbcTemplate.query(GET_ALL_CATEGORIES, new CategoryRowMapper());
-            return categories;
+            return jdbcTemplate.query(GET_ALL_CATEGORIES, new CategoryRowMapper());
         } catch (JdbcTemplateException e) {
             throw new CategoryDAOException(e);
         }
@@ -85,7 +82,6 @@ public class CategorySqlRepository extends InitializerRepository implements Cate
 
 
     private boolean isCategoryNameUsed(String name) throws JdbcTemplateException {
-        boolean result = jdbcTemplate.queryForObject(GET_CATEGORY_ID_BY_NAME, name);
-        return result;
+        return jdbcTemplate.queryForObject(GET_CATEGORY_ID_BY_NAME, name);
     }
 }

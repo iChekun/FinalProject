@@ -1,6 +1,7 @@
 package by.epam.chekun.dao;
 
 import by.epam.chekun.dao.exception.category.CategoryDAOException;
+import by.epam.chekun.dao.initializer.CrudRepository;
 import by.epam.chekun.domain.entity.category.Category;
 
 import java.util.List;

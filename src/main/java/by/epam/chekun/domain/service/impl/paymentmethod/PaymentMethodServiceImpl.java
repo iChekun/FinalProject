@@ -40,8 +40,7 @@ public class PaymentMethodServiceImpl implements PaymentMethodService {
     @Override
     public List<PaymentMethod> getAll() throws PaymentMethodServiceException {
         try {
-            final List<PaymentMethod> paymentMethods = paymentMethodRepository.getAll();
-            return paymentMethods;
+            return paymentMethodRepository.getAll();
         } catch (PaymentMethodDAOException e) {
             throw new PaymentMethodServiceException(e);
         }

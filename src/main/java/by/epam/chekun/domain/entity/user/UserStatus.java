@@ -3,7 +3,8 @@ package by.epam.chekun.domain.entity.user;
 public enum UserStatus {
 
     ADMIN(1),
-    CUSTOMER(2);
+    CUSTOMER(2),
+    GUEST(3);
 
 
     private static final long serialVersionUID = 1L;

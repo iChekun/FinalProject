@@ -2,7 +2,7 @@ package by.epam.chekun.dao;
 
 import by.epam.chekun.dao.exception.DAOException;
 import by.epam.chekun.dao.exception.user.UserDAOException;
-import by.epam.chekun.domain.entity.product.Product;
+import by.epam.chekun.dao.initializer.CrudRepository;
 import by.epam.chekun.domain.entity.user.User;
 
 import java.util.List;

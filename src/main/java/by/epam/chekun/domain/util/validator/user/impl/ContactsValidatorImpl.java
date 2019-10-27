@@ -14,7 +14,8 @@ public class ContactsValidatorImpl implements ContactsValidator {
 
     @Override
     public boolean validate(String email, String phoneNumber,
-                            String country, String city, String street, int houseNumber, int apartmentNumber) {
+                            String country, String city, String street,
+                            int houseNumber, int apartmentNumber) {
         return email.matches(EMAIL_FORMAT_REGEX)
                 && phoneNumber.matches(PHONE_NUMBER_REGEX)
                 && addressValidator.validate(country, city, street, houseNumber, apartmentNumber);

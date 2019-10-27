@@ -1,11 +1,10 @@
 package by.epam.chekun.dao.impl.product;
 
-import by.epam.chekun.dao.InitializerRepository;
 import by.epam.chekun.dao.ProductRepository;
 import by.epam.chekun.dao.core.exception.JdbcTemplateException;
 import by.epam.chekun.dao.exception.product.ProductCategoryDAOException;
 import by.epam.chekun.dao.exception.product.ProductDAOException;
-
+import by.epam.chekun.dao.initializer.InitializerRepository;
 import by.epam.chekun.dao.mapper.ProductRowMapper;
 import by.epam.chekun.domain.entity.product.Product;
 
@@ -19,8 +18,7 @@ public class ProductSqlRepository extends InitializerRepository implements Produ
     @Override
     public Product getEntityById(String id) throws ProductDAOException {
         try {
-            final Product product = jdbcTemplate.queryForObject(GET_PRODUCT_BY_ID, new ProductRowMapper(), id);
-            return product;
+            return jdbcTemplate.queryForObject(GET_PRODUCT_BY_ID, new ProductRowMapper(), id);
         } catch (JdbcTemplateException e) {
             throw new ProductDAOException(e);
         }
@@ -68,14 +66,12 @@ public class ProductSqlRepository extends InitializerRepository implements Produ
 
     @Override
     public List<Product> getAll() throws ProductDAOException {
-        final List<Product> products = _getAll(GET_ALL_PRODUCTS);
-        return products;
+        return doGetAll(GET_ALL_PRODUCTS);
     }
 
     @Override
     public List<Product> getAllGroupByName() throws ProductDAOException {
-        final List<Product> products = _getAll(GET_ALL_GROUP_BY_NAME);
-        return products;
+        return doGetAll(GET_ALL_GROUP_BY_NAME);
     }
 
     ///////////////////////////////////////////
@@ -134,27 +130,23 @@ public class ProductSqlRepository extends InitializerRepository implements Produ
     ///////////////////////////////////////////
     @Override
     public List<Product> getAllByCategory(String categoryId) throws ProductDAOException {
-        final List<Product> products = _getAll(GET_ALL_WITH_CATEGORY, categoryId);
-        return products;
+        return doGetAll(GET_ALL_WITH_CATEGORY, categoryId);
     }
 
     @Override
     public List<Product> getAllByBrand(String brandId) throws ProductDAOException {
-        final List<Product> products = _getAll(GET_ALL_WITH_BRAND, brandId);
-        return products;
+        return doGetAll(GET_ALL_WITH_BRAND, brandId);
     }
 
     @Override
     public List<Product> getAllByCategoryAndBrand(String categoryId, String brandId) throws ProductDAOException {
-        final List<Product> products = _getAll(GET_ALL_WITH_BRAND_AND_WITH_CATEGORY, categoryId, brandId);
-        return products;
+        return doGetAll(GET_ALL_WITH_BRAND_AND_WITH_CATEGORY, categoryId, brandId);
     }
 
 
-    private List<Product> _getAll(final String sql, final Object... argc) throws ProductDAOException {
+    private List<Product> doGetAll(final String sql, final Object... argc) throws ProductDAOException {
         try {
-            final List<Product> products = jdbcTemplate.query(sql, new ProductRowMapper(), argc);
-            return products;
+            return jdbcTemplate.query(sql, new ProductRowMapper(), argc);
         } catch (JdbcTemplateException e) {
             throw new ProductDAOException(e);
         }

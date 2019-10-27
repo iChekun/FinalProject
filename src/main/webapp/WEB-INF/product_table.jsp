@@ -90,26 +90,75 @@
 
 <div id="main-wrap">
 
-    <div id="sidebar">
-        <div class="left_bar_menu_cabinet_style">
-            <aside>
-                <ul>
-                    <li>
-                        <fieldset>
-                            <fmt:message key="table.message.title.menu"/>
-                        </fieldset>
-                    </li>
-                    <li>
-                        <a href="" class="overlayLink">
-                            <fmt:message key="label.action.product_table.add_new_product"/>
-                        </a>
-                    </li>
-                 
+    <form action="mainWindow" method="get">
+        <div id="sidebar">
+            <div class="left_bar_menu_cabinet_style">
+                <aside>
+                    <ul>
+                        <li>
+                            <fieldset>
+                                <fmt:message key="table.message.title.menu"/>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <a href="" class="overlayLink">
+                                <fmt:message key="label.action.product_table.add_new_product"/>
+                            </a>
+                        </li>
 
-                </ul>
-            </aside>
+                        <li>
+                            <fieldset style="padding: 7px;margin-left: 0px;">
+                                <label for="category"> <fmt:message key="label.text.product_category"/></label>
+                                <br><br>
+                                <select id="category" name="categoryId">
+                                    <option disabled selected value> -- select an option --</option>
+                                    <c:forEach items="${categories}" var="category">
+                                        <option value="${category.categoryId}"
+                                                <c:if test="${category.categoryId == currentCategoryId}">selected</c:if>>
+                                                ${category.name}
+                                        </option>
+                                    </c:forEach>
+                                    <option value=""><fmt:message key="label.select.none"/></option>
+                                </select>
+                            </fieldset>
+                        </li>
+                        <li style="margin-top:10px; margin-left: -25px;">
+                            <fieldset style="padding: 7px;">
+                                <label for="brand"><fmt:message key="label.text.product_brand"/></label>
+                                <br><br>
+                                <select id="brand" name="brandId">
+                                    <option disabled selected value> -- select an option --</option>
+                                    <c:forEach items="${brands}" var="brand">
+                                        <option value="${brand.brandId}"
+                                                <c:if test="${brand.brandId == currentBrandId}">selected</c:if>>
+                                                ${brand.name}</option>
+                                    </c:forEach>
+
+                                    <option value><fmt:message key="label.select.none"/></option>
+
+                                </select>
+                            </fieldset>
+                        </li>
+
+
+                        <li>
+                            <p style="margin-top: 0px;margin-left: -25px;">
+                                <input type="hidden" name="nextPage" value="product_table">
+                                <button type="submit" name="action"
+                                        style="height: 30px;padding: 2px; margin: 5px; text-aling:center;"
+                                        value="viewCustomerProductTableWithBrandAndCategory">
+                                    <strong>
+                                        <fmt:message key="button.mesage.show"/>
+                                    </strong>
+                                </button>
+                            </p>
+
+                        </li>
+                    </ul>
+                </aside>
+            </div>
         </div>
-    </div>
+    </form>
     <div id="content-wrap">
 
         <div class="user_table_look">
@@ -202,15 +251,15 @@
                     <br>
                     <fmt:message key="footer.order_processing"/>
                     <br><br>
-                    <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
+                    <img src="pictures/footer_pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
 
                     <br>
 
-                    <img src="pictures/mts.png" alt="телефон" width="40" height="40">
+                    <img src="pictures/footer_pictures/mts.png" alt="телефон" width="40" height="40">
                     <a>8029-313-60-52 </a>
                     <br>
-                    <img src="pictures/viber.jpg" alt="телефон" width="40" height="40">
+                    <img src="pictures/footer_pictures/viber.jpg" alt="телефон" width="40" height="40">
                     <a>8029-313-60-52 </a>
                 </div>
             </td>
@@ -244,7 +293,7 @@
                     <br><br>
                     <fmt:message key="footer.store_info.about_storage"/>
                     <br><br>
-                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <img src="pictures/footer_pictures/sklad.jpg" alt="sklad" width="250" height="130">
                     <br><br><br>
                     <fmt:message key="footer.store_info.with_goodluck"/>
                 </div>
@@ -254,7 +303,7 @@
 
 
     <div class="end_page">
-        &copy 2019 Online store. All Rights Reserved | Design by&nbsp; <a href="">Ilya Chekun</a>
+        &copy 2019 Online store. All Rights Reserved | Design by&nbsp; <a>Ilya Chekun</a>
     </div>
 </div>
 

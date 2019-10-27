@@ -43,14 +43,6 @@ final class ProductSqlUtil {
                     "        LEFT  JOIN " +
                     "    categories c ON c.categoryId = pc.categoryId";
 
-    static final String GET_PRODUCT_ID_BY_PRODUCT_INFO =
-            " SELECT p.productId, p.name, p.description, p.imagePath, p.cost " +
-                    " FROM Products p " +
-                    " WHERE name=?" +
-                    " AND description=?" +
-                    " AND imagePath=?" +
-                    " AND cost=?";
-
 
     static final String DELETE_PRODUCT_BY_ID =
             " DELETE FROM products  WHERE productId = ? ";
@@ -142,8 +134,6 @@ final class ProductSqlUtil {
             " insert ignore into productсategories(productId, categoryId)" +
                     " select p.productId, null from products p " +
                     " where p.name = ? ";
-
-
 
 
     static final String UPDATE_PRODUCT_CATEGORY =

@@ -1,7 +1,5 @@
 package by.epam.chekun.controller.filter;
 
-import by.epam.chekun.domain.entity.user.UserStatus;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -13,19 +11,18 @@ import java.util.List;
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
 import static by.epam.chekun.domain.configuration.JspActionCommand.*;
 import static by.epam.chekun.domain.configuration.JspFilePass.INDEX_PAGE;
+import static by.epam.chekun.domain.entity.user.UserStatus.*;
 
 
 @WebFilter(urlPatterns = {"*"}, servletNames = {"mainWindow"})
 public class ControllerSecurityFilter implements Filter {
-
-    private static final int INVALID_USER_STATUS_ID = -1;
 
     private List<String> adminActions;
     private List<String> customerActions;
     private List<String> guestActions;
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         //
         guestActions = new ArrayList<>();
         customerActions = new ArrayList<>();
@@ -41,23 +38,25 @@ public class ControllerSecurityFilter implements Filter {
 
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest,
+                         ServletResponse servletResponse,
+                         FilterChain filterChain) throws IOException, ServletException {
 
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpSession session = request.getSession();
+        final HttpServletRequest request = (HttpServletRequest) servletRequest;
+        final HttpSession session = request.getSession();
         final String action = request.getParameter(ACTION_TYPE);
-
 
         if (action != null) {
 
-            int userStatusId = INVALID_USER_STATUS_ID;
+            int userStatusId = GUEST.getUserStatusId();
+
             if (session.getAttribute(USER_STATUS_ID) != null) {
                 userStatusId = (int) (session.getAttribute(USER_STATUS_ID));
             }
 
-            if (userStatusId == INVALID_USER_STATUS_ID && guestActions.contains(action)
-                    || userStatusId == UserStatus.ADMIN.getUserStatusId() && adminActions.contains(action)
-                    || userStatusId == UserStatus.CUSTOMER.getUserStatusId() && customerActions.contains(action)) {
+            if (userStatusId == GUEST.getUserStatusId() && guestActions.contains(action)
+                    || userStatusId == ADMIN.getUserStatusId() && adminActions.contains(action)
+                    || userStatusId == CUSTOMER.getUserStatusId() && customerActions.contains(action)) {
                 request.setAttribute(ALLOWED, true);
             } else {
                 request.setAttribute(ALLOWED, false);

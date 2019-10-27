@@ -6,7 +6,6 @@ import by.epam.chekun.dao.exception.brand.UsedBrandNameDAOException;
 import by.epam.chekun.dao.manager.DAOManager;
 import by.epam.chekun.domain.entity.brand.Brand;
 import by.epam.chekun.domain.service.BrandService;
-import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.exception.brand.BrandServiceException;
 import by.epam.chekun.domain.service.exception.brand.InvalidBrandInformationException;
 import by.epam.chekun.domain.service.exception.brand.UsedBrandNameServiceException;
@@ -45,8 +44,7 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public List<Brand> getAll() throws BrandServiceException {
         try {
-            final List<Brand> brands = brandRepository.getAll();
-            return brands;
+            return brandRepository.getAll();
         } catch (BrandDAOException e) {
             throw new BrandServiceException(e);
         }
@@ -77,8 +75,7 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public Brand getById(String brandId) throws BrandServiceException {
         try {
-            final Brand brand = brandRepository.getEntityById(brandId);
-            return brand;
+            return brandRepository.getEntityById(brandId);
         } catch (BrandDAOException e) {
             throw new BrandServiceException(e);
         }

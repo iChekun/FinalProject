@@ -1,6 +1,7 @@
 package by.epam.chekun.dao;
 
 import by.epam.chekun.dao.exception.order.OrderDAOException;
+import by.epam.chekun.dao.initializer.CrudRepository;
 import by.epam.chekun.domain.entity.order.Order;
 import by.epam.chekun.domain.entity.order.ProductOrder;
 

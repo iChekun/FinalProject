@@ -1,4 +1,4 @@
-package by.epam.chekun.dao;
+package by.epam.chekun.dao.initializer;
 
 import by.epam.chekun.dao.exception.DAOException;
 import by.epam.chekun.dao.exception.user.UserDAOException;

@@ -3,6 +3,7 @@ package by.epam.chekun.domain.command.impl;
 import by.epam.chekun.domain.command.Command;
 import by.epam.chekun.domain.command.exception.CommandException;
 import by.epam.chekun.domain.entity.category.Category;
+import by.epam.chekun.domain.entity.user.UserStatus;
 import by.epam.chekun.domain.service.CategoryService;
 import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.manager.ServiceManager;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.CATEGORY_LIST;
+import static by.epam.chekun.domain.configuration.BeanFieldJsp.USER_STATUS_ID;
 import static by.epam.chekun.domain.configuration.JspFilePass.MAIN_PAGE;
 
 public class GetMainPageCommandImpl implements Command {
@@ -30,11 +32,19 @@ public class GetMainPageCommandImpl implements Command {
     public String execute() throws CommandException {
         try {
             final HttpSession session = request.getSession();
+            checkVisitorStatus(session);
+            //
             final List<Category> categories = categoryService.getAll();
             session.setAttribute(CATEGORY_LIST, categories);
         } catch (ServiceException e) {
             throw new CommandException(e);
         }
         return MAIN_PAGE;
+    }
+
+    private void checkVisitorStatus(HttpSession session) {
+        if (session.getAttribute(USER_STATUS_ID) == null) {
+            session.setAttribute(USER_STATUS_ID, UserStatus.GUEST.getUserStatusId());
+        }
     }
 }

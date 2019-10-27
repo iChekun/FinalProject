@@ -1,10 +1,10 @@
 package by.epam.chekun.dao.impl.basket;
 
 import by.epam.chekun.dao.BasketRepository;
-import by.epam.chekun.dao.InitializerRepository;
 import by.epam.chekun.dao.core.RowMapper;
 import by.epam.chekun.dao.core.exception.JdbcTemplateException;
 import by.epam.chekun.dao.exception.basket.BasketDAOException;
+import by.epam.chekun.dao.initializer.InitializerRepository;
 import by.epam.chekun.dao.mapper.BasketRowMapper;
 import by.epam.chekun.dao.mapper.ProductBasketRowMapper;
 import by.epam.chekun.domain.entity.basket.Basket;
@@ -32,9 +32,8 @@ public class BasketSqlRepository extends InitializerRepository implements Basket
     @Override
     public Basket getEntityById(String userId) throws BasketDAOException {
         try {
-            final Basket basket = jdbcTemplate.queryForObject(GET_BASKET_BY_USER_ID,
+            return jdbcTemplate.queryForObject(GET_BASKET_BY_USER_ID,
                     new BasketRowMapper(), userId);
-            return basket;
         } catch (JdbcTemplateException e) {
             throw new BasketDAOException(e);
         }
@@ -44,16 +43,14 @@ public class BasketSqlRepository extends InitializerRepository implements Basket
     @Override
     public double getCostOfProductsInBasket(String userId) throws BasketDAOException {
         try {
-            final double cost =
-                    jdbcTemplate.queryForObject(GET_COST_OF_PRODUCTS_IN_BASKET,
-                            new RowMapper<Double>() {
-                                @Override
-                                public Double mapRow(ResultSet set) throws SQLException {
-                                    return set.getDouble(1);
-                                }
-                            },
-                            userId);
-            return cost;
+            return jdbcTemplate.queryForObject(GET_COST_OF_PRODUCTS_IN_BASKET,
+                    new RowMapper<Double>() {
+                        @Override
+                        public Double mapRow(ResultSet set) throws SQLException {
+                            return set.getDouble(1);
+                        }
+                    },
+                    userId);
         } catch (JdbcTemplateException e) {
             throw new BasketDAOException(e);
         }
@@ -98,9 +95,8 @@ public class BasketSqlRepository extends InitializerRepository implements Basket
     @Override
     public List<ProductBasket> getAllProductInBasket(String userId) throws BasketDAOException {
         try {
-            final List<ProductBasket> productBaskets = jdbcTemplate.query(GET_ALL_PRODUCTS_IN_BASKET,
+            return jdbcTemplate.query(GET_ALL_PRODUCTS_IN_BASKET,
                     new ProductBasketRowMapper(), userId);
-            return productBaskets;
         } catch (JdbcTemplateException e) {
             throw new BasketDAOException(e);
         }
@@ -110,7 +106,7 @@ public class BasketSqlRepository extends InitializerRepository implements Basket
     @Override
     public int getCountOfProductsInBasket(String basketId) throws BasketDAOException {
         try {
-            final int count = jdbcTemplate.queryForObject(GET_COUNT_OF_PRODUCTS_IN_USER_BASKET
+            return jdbcTemplate.queryForObject(GET_COUNT_OF_PRODUCTS_IN_USER_BASKET
                     , new RowMapper<Integer>() {
 
                         @Override
@@ -118,13 +114,10 @@ public class BasketSqlRepository extends InitializerRepository implements Basket
                             return set.getInt(1);
                         }
                     }, basketId);
-            return count;
         } catch (JdbcTemplateException e) {
             throw new BasketDAOException(e);
         }
     }
-
-
 
 
     @Override

@@ -1,11 +1,11 @@
 package by.epam.chekun.dao.impl.user;
 
-import by.epam.chekun.dao.InitializerRepository;
 import by.epam.chekun.dao.UserRepository;
 import by.epam.chekun.dao.core.exception.JdbcTemplateException;
 import by.epam.chekun.dao.exception.user.InvalidLoginOrPasswordException;
 import by.epam.chekun.dao.exception.user.UsedLoginException;
 import by.epam.chekun.dao.exception.user.UserDAOException;
+import by.epam.chekun.dao.initializer.InitializerRepository;
 import by.epam.chekun.dao.mapper.UserRowMapper;
 import by.epam.chekun.domain.entity.user.User;
 import by.epam.chekun.domain.entity.user.UserStatus;
@@ -20,8 +20,7 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
     @Override
     public User getEntityById(String id) throws UserDAOException {
         try {
-            User user = jdbcTemplate.queryForObject(GET_USER_BY_ID, new UserRowMapper(), id);
-            return user;
+            return jdbcTemplate.queryForObject(GET_USER_BY_ID, new UserRowMapper(), id);
         } catch (JdbcTemplateException e) {
             throw new UserDAOException(e);
         }
@@ -82,24 +81,23 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
 
 
     @Override
-    public List getAll() throws UserDAOException {
-        List<User> users = _getAll(GET_ALL_USERS);
-        return users;
+    public List<User> getAll() throws UserDAOException {
+        return doGetAll(GET_ALL_USERS);
     }
 
 
     @Override
     public User getByLoginAndPass(String login, String encodedPass) throws UserDAOException {
         try {
-            User user = jdbcTemplate.queryForObject(GET_USER_BY_LOGIN_AND_PASS,
+            final User user = jdbcTemplate.queryForObject(GET_USER_BY_LOGIN_AND_PASS,
                     new UserRowMapper(), login, encodedPass);
             if (user != null) {
                 return user;
             }
-            throw new InvalidLoginOrPasswordException();
         } catch (JdbcTemplateException e) {
             throw new UserDAOException(e);
         }
+        throw new InvalidLoginOrPasswordException("Invalid login or password!");
     }
 
     @Override
@@ -141,8 +139,7 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
     @Override
     public List<User> getAllUserSorted(String sortedBy, String sortType) throws UserDAOException {
         final String sql = getSortingSql(sortedBy, sortType);
-        final List<User> users = _getAll(sql);
-        return users;
+        return doGetAll(sql);
     }
 
     private String getSortingSql(String sortBy, String sortType) throws UserDAOException {
@@ -167,10 +164,9 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
     }
 
 
-    private List<User> _getAll(final String sql) throws UserDAOException {
+    private List<User> doGetAll(final String sql) throws UserDAOException {
         try {
-            List<User> users = jdbcTemplate.query(sql, new UserRowMapper());
-            return users;
+            return jdbcTemplate.query(sql, new UserRowMapper());
         } catch (JdbcTemplateException e) {
             throw new UserDAOException(e);
         }
@@ -179,8 +175,7 @@ public class UserSqlRepository extends InitializerRepository implements UserRepo
     @Override
     public boolean isLoginUser(String login) throws UserDAOException {
         try {
-            boolean res = jdbcTemplate.queryForObject(GET_USER_BY_LOGIN, login);
-            return res;
+            return jdbcTemplate.queryForObject(GET_USER_BY_LOGIN, login);
         } catch (JdbcTemplateException e) {
             throw new UserDAOException(e);
         }

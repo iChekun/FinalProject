@@ -1,9 +1,9 @@
 package by.epam.chekun.dao.impl.paymentmethod;
 
-import by.epam.chekun.dao.InitializerRepository;
 import by.epam.chekun.dao.PaymentMethodRepository;
 import by.epam.chekun.dao.core.exception.JdbcTemplateException;
 import by.epam.chekun.dao.exception.paymentmethod.PaymentMethodDAOException;
+import by.epam.chekun.dao.initializer.InitializerRepository;
 import by.epam.chekun.dao.mapper.PaymentMethodRowMapper;
 import by.epam.chekun.domain.entity.order.PaymentMethod;
 
@@ -16,9 +16,8 @@ public class PaymentMethodSqlRepository extends InitializerRepository implements
     @Override
     public PaymentMethod getEntityById(String id) throws PaymentMethodDAOException {
         try {
-            final PaymentMethod paymentMethod = jdbcTemplate.queryForObject(GET_PAYMENT_METHOD_BY_ID,
+            return jdbcTemplate.queryForObject(GET_PAYMENT_METHOD_BY_ID,
                     new PaymentMethodRowMapper(), id);
-            return paymentMethod;
         } catch (JdbcTemplateException e) {
             throw new PaymentMethodDAOException(e);
         }
@@ -59,9 +58,8 @@ public class PaymentMethodSqlRepository extends InitializerRepository implements
     @Override
     public List<PaymentMethod> getAll() throws PaymentMethodDAOException {
         try {
-            final List<PaymentMethod> paymentMethods = jdbcTemplate.query(GET_ALL_PAYMENTS_METHOD,
+            return jdbcTemplate.query(GET_ALL_PAYMENTS_METHOD,
                     new PaymentMethodRowMapper());
-            return paymentMethods;
         } catch (JdbcTemplateException e) {
             throw new PaymentMethodDAOException(e);
         }

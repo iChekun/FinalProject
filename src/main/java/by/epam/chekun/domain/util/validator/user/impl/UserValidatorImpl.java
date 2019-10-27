@@ -46,7 +46,8 @@ public class UserValidatorImpl implements UserValidator {
     @Override
     public boolean validate(String login, String name, String surname,
                             Date birthDate, String email, String phoneNumber,
-                            String country, String city, String street, int houseNumber, int apartmentNumber) {
+                            String country, String city, String street,
+                            int houseNumber, int apartmentNumber) {
         return login.matches(LOGIN_FORMAT_REGEX)
                 && name.matches(NAME_FORMAT_REGEX)
                 && surname.matches(NAME_FORMAT_REGEX)
@@ -55,7 +56,9 @@ public class UserValidatorImpl implements UserValidator {
     }
 
     @Override
-    public boolean validatePassword(String currentPassword, String newPassword, String confirmedPassword) {
+    public boolean validatePassword(String currentPassword,
+                                    String newPassword,
+                                    String confirmedPassword) {
         return newPassword.equals(confirmedPassword)
                 && currentPassword.matches(PASSWORD_FORMAT_REGEX)
                 && newPassword.matches(PASSWORD_FORMAT_REGEX)

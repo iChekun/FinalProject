@@ -26,6 +26,6 @@
     height: 30px; /* Высота кнопки */
     border: none; /* Убираем рамку */
     float: right;
-    background: url(../pictures/search.png) no-repeat 50% 50%; /* Параметры фона */
+    background: url(../pictures/main_page_adversting/search.png) no-repeat 50% 50%; /* Параметры фона */
     /*background: #4195fc;*/
 }

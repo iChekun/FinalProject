@@ -8,7 +8,8 @@ public class AddressValidatorImpl implements AddressValidator {
 
 
     @Override
-    public boolean validate(String country, String city, String street, int houseNumber, int apartmentNumber) {
+    public boolean validate(String country, String city, String street,
+                            int houseNumber, int apartmentNumber) {
         return country.matches(LINE_FORMAT_REGEX)
                 && city.matches(LINE_FORMAT_REGEX)
                 && street.matches(LINE_FORMAT_REGEX)

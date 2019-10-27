@@ -14,6 +14,7 @@ public final class BeanFieldJsp {
 
     public static final String SECURITY_MESSAGE = "message";
     public static final String MESSAGE_TO_JSP = "errorMessage";
+    public static final String MESSAGE_TO_SIGN_UP = "errorMessageSingUp";
     public static final String MESSAGE_TO_USER_BASKET = "errorToUserBasket";
     public static final String MESSAGE_TO_ORDERS_HISTORY = "errorOrdersHistory";
     public static final String MESSAGE_TO_EDIT_USER = "errorMessageEditUser";
@@ -65,6 +66,8 @@ public final class BeanFieldJsp {
     public static final String PRODUCT_DESCRIPTION = "productDescription";
     public static final String PRODUCT_IMAGE_PATH = "productImagePath";
     public static final String PRODUCT_COST = "productCost";
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     //CATEGORY
     public static final String CURRENT_CATEGORY_ID = "currentCategoryId";

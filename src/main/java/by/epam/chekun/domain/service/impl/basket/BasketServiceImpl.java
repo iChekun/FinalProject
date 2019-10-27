@@ -7,7 +7,6 @@ import by.epam.chekun.domain.entity.basket.Basket;
 import by.epam.chekun.domain.entity.basket.ProductBasket;
 import by.epam.chekun.domain.entity.product.Product;
 import by.epam.chekun.domain.service.BasketService;
-import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.exception.basket.BasketServiceException;
 import by.epam.chekun.domain.util.builder.basket.impl.BasketBuilderImpl;
 import by.epam.chekun.domain.util.builder.basket.impl.ProductBasketBuilderImpl;
@@ -36,8 +35,7 @@ public class BasketServiceImpl implements BasketService {
     @Override
     public Basket getBasket(String userId) throws BasketServiceException {
         try {
-            final Basket basket = basketRepository.getEntityById(userId);
-            return basket;
+            return basketRepository.getEntityById(userId);
         } catch (BasketDAOException e) {
             throw new BasketServiceException(e);
         }
@@ -78,8 +76,7 @@ public class BasketServiceImpl implements BasketService {
     public List<ProductBasket> getAllProductInBasket(String userId) throws BasketServiceException {
 
         try {
-            final List<ProductBasket> productBaskets = basketRepository.getAllProductInBasket(userId);
-            return productBaskets;
+            return basketRepository.getAllProductInBasket(userId);
         } catch (BasketDAOException e) {
             throw new BasketServiceException(e);
         }
@@ -105,8 +102,7 @@ public class BasketServiceImpl implements BasketService {
     @Override
     public double getCostOfProductsInBasket(String userId) throws BasketServiceException {
         try {
-            double cost = basketRepository.getCostOfProductsInBasket(userId);
-            return cost;
+            return basketRepository.getCostOfProductsInBasket(userId);
         } catch (BasketDAOException e) {
             throw new BasketServiceException(e);
         }

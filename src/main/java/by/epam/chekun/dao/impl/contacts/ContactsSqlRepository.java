@@ -5,8 +5,7 @@ import by.epam.chekun.dao.core.exception.JdbcTemplateException;
 import by.epam.chekun.dao.exception.DAOException;
 import by.epam.chekun.dao.exception.user.contacts.ContactsDAOException;
 import by.epam.chekun.dao.exception.user.contacts.UsedEmailContactsException;
-import by.epam.chekun.dao.InitializerRepository;
-
+import by.epam.chekun.dao.initializer.InitializerRepository;
 import by.epam.chekun.dao.mapper.ContactsRowMapper;
 import by.epam.chekun.domain.entity.user.Contacts;
 
@@ -19,9 +18,8 @@ public class ContactsSqlRepository extends InitializerRepository implements Cont
     public Contacts getEntityById(String id) throws ContactsDAOException {
 
         try {
-            final Contacts contacts = jdbcTemplate.queryForObject(GET_USER_CONTACTS,
+            return jdbcTemplate.queryForObject(GET_USER_CONTACTS,
                     new ContactsRowMapper(), id);
-            return contacts;
         } catch (JdbcTemplateException e) {
             throw new ContactsDAOException(e);
         }
@@ -35,9 +33,8 @@ public class ContactsSqlRepository extends InitializerRepository implements Cont
     @Override
     public Contacts getContactsByEmail(String email) throws ContactsDAOException {
         try {
-            Contacts contacts = jdbcTemplate.queryForObject(GET_USER_CONTACTS,
+            return jdbcTemplate.queryForObject(GET_USER_CONTACTS,
                     new ContactsRowMapper(), email);
-            return contacts;
         } catch (JdbcTemplateException e) {
             throw new ContactsDAOException(e);
         }
@@ -95,8 +92,7 @@ public class ContactsSqlRepository extends InitializerRepository implements Cont
     @Override
     public boolean isEmailUsed(String email) throws ContactsDAOException {
         try {
-            boolean res = jdbcTemplate.queryForObject(GET_USER_CONTACTS, email);
-            return res;
+            return jdbcTemplate.queryForObject(GET_USER_CONTACTS, email);
         } catch (JdbcTemplateException e) {
             throw new ContactsDAOException(e);
         }

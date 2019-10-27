@@ -11,12 +11,12 @@ import java.sql.Timestamp;
  *
  * @see PreparedStatementSetter
  */
-public class ArgumentPreparedStatementSetter implements PreparedStatementSetter {
+class ArgumentPreparedStatementSetter implements PreparedStatementSetter {
 
     private final Object[] argc;
 
 
-    public ArgumentPreparedStatementSetter(Object[] argc) {
+    ArgumentPreparedStatementSetter(Object[] argc) {
         this.argc = argc;
     }
 
@@ -30,8 +30,9 @@ public class ArgumentPreparedStatementSetter implements PreparedStatementSetter 
     public void setValues(PreparedStatement ps) throws SQLException {
         if (this.argc != null) {
             for (int i = 0; i < this.argc.length; i++) {
-                Object arg = this.argc[i];
-                this.doSetValue(ps, i + 1, arg);
+                final Object arg = this.argc[i];
+                final int parameterPosition = i + 1;
+                this.doSetValue(ps, parameterPosition, arg);
             }
         }
     }
@@ -65,7 +66,8 @@ public class ArgumentPreparedStatementSetter implements PreparedStatementSetter 
      * According with this using this function, that using statement metadata and
      * set null in parameter with correct type.
      */
-    private int getColumnSqlDataType(PreparedStatement ps, int parameterPosition) throws SQLException {
+    private int getColumnSqlDataType(PreparedStatement ps,
+                                     int parameterPosition) throws SQLException {
         return ps.getParameterMetaData().getParameterType(parameterPosition);
     }
 

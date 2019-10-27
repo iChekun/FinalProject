@@ -10,7 +10,6 @@ import by.epam.chekun.domain.entity.order.ProductOrder;
 import by.epam.chekun.domain.entity.user.User;
 import by.epam.chekun.domain.service.BasketService;
 import by.epam.chekun.domain.service.OrderService;
-import by.epam.chekun.domain.service.exception.ServiceException;
 import by.epam.chekun.domain.service.exception.basket.BasketServiceException;
 import by.epam.chekun.domain.service.exception.order.OrderServiceException;
 import by.epam.chekun.domain.service.impl.basket.BasketServiceImpl;
@@ -26,8 +25,6 @@ import java.util.List;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.CLOSE_ORDER_STATUS_ID;
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.OPEN_ORDER_STATUS_ID;
-import static by.epam.chekun.domain.entity.user.UserStatus.ADMIN;
-import static by.epam.chekun.domain.entity.user.UserStatus.CUSTOMER;
 
 public class OrderServiceImpl implements OrderService {
 
@@ -45,10 +42,13 @@ public class OrderServiceImpl implements OrderService {
             //
             final User user = new UserBuilderImpl(userId).build();
             //
-            final PaymentMethod paymentMethod = new PaymentMethodBuilderImpl(paymentMethodId).build();
+            final PaymentMethod paymentMethod =
+                    new PaymentMethodBuilderImpl(paymentMethodId)
+                            .build();
             //
-            String openStatus = "1";
-            final OrderStatus orderStatus = new OrderStatusBuilderImpl(openStatus).build();
+            final OrderStatus orderStatus =
+                    new OrderStatusBuilderImpl(OPEN_ORDER_STATUS_ID)
+                            .build();
             //
             final Order order = new OrderBuilderImpl()
                     .withUser(user)
@@ -86,8 +86,7 @@ public class OrderServiceImpl implements OrderService {
         }
 
         try {
-            List<Order> orders = orderRepository.getAllOrdersByUserId(userId);
-            return orders;
+            return orderRepository.getAllOrdersByUserId(userId);
         } catch (OrderDAOException e) {
             throw new OrderServiceException(e);
         }
@@ -101,8 +100,7 @@ public class OrderServiceImpl implements OrderService {
         }
 
         try {
-            List<ProductOrder> productsFromOrder = orderRepository.getAllProductsFromOrder(orderId);
-            return productsFromOrder;
+            return orderRepository.getAllProductsFromOrder(orderId);
         } catch (OrderDAOException e) {
             throw new OrderServiceException(e);
         }

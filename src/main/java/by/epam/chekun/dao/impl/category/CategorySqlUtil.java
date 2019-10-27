@@ -6,7 +6,7 @@ final class CategorySqlUtil {
     /// sql query
     static final String ADD_NEW_CATEGORY =
             "INSERT INTO categories (categoryId, name, description, imagePath) " +
-            " VALUES (UUID(), ?, ?,?)";
+                    " VALUES (UUID(), ?, ?,?)";
 
     static final String GET_CATEGORY_ID_BY_NAME = "SELECT categoryId from categories WHERE name=?";
 

@@ -170,15 +170,15 @@
                     <br>
                     <fmt:message key="footer.order_processing"/>
                     <br><br>
-                    <img src="pictures/velcom.jpg" alt="телефон" width="40" height="40">
+                    <img src="pictures/footer_pictures/velcom.jpg" alt="телефон" width="40" height="40">
                     <a class="contacts_info_a_position">+375-29-313-60-52 </a>
 
                     <br>
 
-                    <img src="pictures/mts.png" alt="телефон" width="40" height="40">
+                    <img src="pictures/footer_pictures/mts.png" alt="телефон" width="40" height="40">
                     <a>8029-313-60-52 </a>
                     <br>
-                    <img src="pictures/viber.jpg" alt="телефон" width="40" height="40">
+                    <img src="pictures/footer_pictures/viber.jpg" alt="телефон" width="40" height="40">
                     <a>8029-313-60-52 </a>
                 </div>
             </td>
@@ -212,7 +212,7 @@
                     <br><br>
                     <fmt:message key="footer.store_info.about_storage"/>
                     <br><br>
-                    <img src="pictures/sklad.jpg" alt="sklad" width="250" height="130">
+                    <img src="pictures/footer_pictures/sklad.jpg" alt="sklad" width="250" height="130">
                     <br><br><br>
                     <fmt:message key="footer.store_info.with_goodluck"/>
                 </div>
@@ -225,5 +225,6 @@
         &copy 2019 Online store. All Rights Reserved | Design by&nbsp; <a>Ilya Chekun</a>
     </div>
 </div>
+
 </body>
 </html>
