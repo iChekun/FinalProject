@@ -8,7 +8,7 @@
     <context-param>
         <param-name>db.url</param-name>
         <param-value>
-                jdbc:mysql://localhost/online_store?serverTimezone=Europe/Moscow&amp;useSSL=false&amp;generateSimpleParameterMetadata=true
+            jdbc:mysql://localhost/online_store?serverTimezone=Europe/Moscow&amp;useSSL=false&amp;generateSimpleParameterMetadata=true
         </param-value>
     </context-param>
     <context-param>
@@ -38,7 +38,12 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-
+    <jsp-config>
+        <taglib>
+            <taglib-uri>customtags</taglib-uri>
+            <taglib-location>/WEB-INF/tld/custom.tld</taglib-location>
+        </taglib>
+    </jsp-config>
 
 
     <session-config>
@@ -53,7 +58,6 @@
     <error-page>
         <location>/WEB-INF/error_page.jsp</location>
     </error-page>
-
 
 
     <servlet>

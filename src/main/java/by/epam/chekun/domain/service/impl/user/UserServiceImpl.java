@@ -27,10 +27,26 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository = DAOManager.getInstance().getUserRepository();
-    private final ContactsRepository contactsRepository = DAOManager.getInstance().getContactsRepository();
-    private final PasswordHashKeeper keeper = UtilManager.getInstance().getPasswordHashKeeper();
-    private final UserValidator validator = UtilManager.getInstance().getUserValidator();
+    private UserRepository userRepository = DAOManager.getInstance().getUserRepository();
+    private ContactsRepository contactsRepository = DAOManager.getInstance().getContactsRepository();
+    private PasswordHashKeeper keeper = UtilManager.getInstance().getPasswordHashKeeper();
+    private UserValidator validator = UtilManager.getInstance().getUserValidator();
+
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void setContactsRepository(ContactsRepository contactsRepository) {
+        this.contactsRepository = contactsRepository;
+    }
+
+    public void setKeeper(PasswordHashKeeper keeper) {
+        this.keeper = keeper;
+    }
+
+    public void setValidator(UserValidator validator) {
+        this.validator = validator;
+    }
 
     @Override
     public User getById(final String userId) throws UserServiceException {

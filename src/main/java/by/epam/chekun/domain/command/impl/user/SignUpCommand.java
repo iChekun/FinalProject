@@ -23,13 +23,17 @@ import static by.epam.chekun.domain.configuration.JspFilePass.SIGN_UP_PAGE;
 public class SignUpCommand implements Command {
     private final HttpServletRequest request;
     private final HttpServletResponse response;
-    private final UserService userService = ServiceManager.getInstance().getUserService();
+    private UserService userService = ServiceManager.getInstance().getUserService();
 
     public SignUpCommand(final HttpServletRequest request, final HttpServletResponse response) {
         this.request = request;
         this.response = response;
     }
 
+    public SignUpCommand(final HttpServletRequest request, final HttpServletResponse response, UserService userService) {
+        this(request, response);
+        this.userService = userService;
+    }
 
     @Override
     public String execute() throws CommandException {

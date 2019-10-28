@@ -1,12 +1,14 @@
 <%@ page contentType="text/html;charset=windows-1251;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ctg" uri="customtags" %>
 <c:set var="locale"
        value="${not empty param.locale ? param.locale : not empty locale ? locale : pageContext.request.locale}"
        scope="session"/>
 <fmt:setLocale value="${locale}"/>
 <fmt:setBundle basename="text"/>
 <c:import url="WEB-INF/forms/sign_in.jsp"/>
+
 <html>
 <head>
 
@@ -90,16 +92,20 @@
 
     <div id="sidebar">
         <aside>
+            <hr/>
+            <fmt:message key="message.currentDate"/>
+            <ctg:date/>
+            <hr/>
             <ul>
                 <li class="Schedule_left_bar_menu_main">
                     <a href=""
-                       style="margin-top: 160px;margin-left: 7%; height: 50px; text-align: center; padding: 5px 5px; "
+                       style="margin-top: 90px;margin-left: 7%; height: 50px; text-align: center; padding: 5px 5px; "
                        onclick="return false">
                         <br> <fmt:message key="label.main.categories"/>
                     </a>
                     <ul>
                         <c:forEach items="${categories}" var="category">
-                            <li style="margin:-5px 7px 7px 7px;">
+                            <li style="margin: -5px 15px 7px 7px;">
                                 <a
                                         href="mainWindow?action=ViewCustomerProductTableWithCategory&categoryId=${category.categoryId}">
                                         ${category.name}
