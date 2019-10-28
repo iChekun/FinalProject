@@ -7,12 +7,12 @@ import by.epam.chekun.domain.service.OrderService;
 import by.epam.chekun.domain.service.exception.order.OrderServiceException;
 import by.epam.chekun.domain.service.manager.ServiceManager;
 
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import static by.epam.chekun.domain.configuration.BeanFieldJsp.*;
-import static by.epam.chekun.domain.configuration.JspActionCommand.VIEW_ORDERS_HISTORY_COMMAND;
+import static by.epam.chekun.domain.configuration.JspFilePass.NEXT_PAGE;
 import static by.epam.chekun.domain.configuration.JspFilePass.ORDERS_HISTORY_PAGE;
 
 public class InvalidateOrderCommand implements Command {
@@ -33,6 +33,8 @@ public class InvalidateOrderCommand implements Command {
 
         final HttpSession session = request.getSession();
         final String orderId = request.getParameter(ORDER_ID);
+
+        final String nextPage = request.getParameter(NEXT_PAGE);
         try {
             final Order order = orderService.getOrderById(orderId);
             if (order.getOrderStatus().getOrderStatusId().equals(OPEN_ORDER_STATUS_ID)) {
@@ -45,7 +47,7 @@ public class InvalidateOrderCommand implements Command {
             throw new CommandException(e);
         }
 
-        session.setAttribute(REDIRECT_COMMAND, VIEW_ORDERS_HISTORY_COMMAND);
+        session.setAttribute(REDIRECT_COMMAND, nextPage);
         return ORDERS_HISTORY_PAGE;
     }
 }

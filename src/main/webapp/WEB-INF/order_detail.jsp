@@ -44,8 +44,9 @@
         <div class="new-select-style-locale">
             <form style="display: inline; margin-left: 20px">
                 <div class="new-select-style-locale" style="margin-left: 340px; margin-top: -25px; ">
-                    <input type="hidden" name="orderId" value="${orderId}"/>
+                    <input type="hidden" name="orderId" value="${order.orderId}"/>
                     <input type="hidden" name="action" value="ViewOrderDetail"/>
+
                     <label for="locale"></label>
                     <select id="locale" name="locale" onchange="submit()">
                         <option value="en_EN" ${locale == 'en_EN' ? 'selected' : ''}>English</option>
@@ -58,11 +59,21 @@
         <nav>
             <ul class="header" style="margin-right: -23%; margin-top: 3%">
 
-                <li>
-                    <a href="mainWindow?action=viewOrdersHistory">
-                        <fmt:message key="label.view_buy_history"/>
-                    </a>
-                </li>
+                <c:if test="${actionTypeAllOrders == null}">
+                    <li>
+                        <a href="mainWindow?action=viewOrdersHistory">
+                            <fmt:message key="label.view_buy_history"/>
+                        </a>
+                    </li>
+                </c:if>
+                <c:if test="${actionTypeAllOrders !=null}">
+                    <li>
+                        <a href="mainWindow?action=viewAllOrders">
+                            <fmt:message key="label.view__all_buy_history"/>
+                        </a>
+                    </li>
+                </c:if>
+
 
             </ul>
         </nav>
@@ -91,6 +102,9 @@
                             <div style="height:472px; overflow:auto; width: 100%;">
                                 <table class="table_inner">
                                     <tr>
+                                        <th><fmt:message key="table.message.user.name"/></th>
+                                        <th><fmt:message key="table.message.user.surname"/></th>
+                                        <th><fmt:message key="table.message.user.phoneNumber"/></th>
                                         <th><fmt:message key="label.buy_date"/></th>
                                         <th><fmt:message key="label.cost"/></th>
                                         <th><fmt:message key="label.payment_type"/></th>
@@ -105,6 +119,16 @@
                                     </tr>
                                     <c:forEach items="${productOrders}" var="productOrder">
                                         <tr>
+                                            <td>
+                                                    ${order.user.name}
+                                            </td>
+                                            <td>
+                                                    ${order.user.surname}
+                                            </td>
+                                            <td>
+                                                    ${order.user.contacts.phoneNumber}
+                                            </td>
+
                                             <td>
                                                     ${productOrder.order.orderDate}
                                             </td>
@@ -142,17 +166,17 @@
                 <div class="table_line"></div>
                 <br>
 
-
+                <input type="hidden" name="nextPage" value="${nextPage}">
+                <input type="hidden" name="orderId" value="${order.orderId}">
                 <div class="category_buttons">
-                    <input type="hidden" name="orderId" value="${orderId}">
+
                     <button type="submit" name="action" value="invalidateOrder">
                         <strong>
-                          Отменить заказ
+                            <fmt:message key="label.invalidate_order"/>
                         </strong>
                     </button>
                     <c:if test="${sessionScope.userStatusId == 1}">
                         <p style="margin-left: 15%;margin-top: -5%;">
-                            <input type="hidden" name="orderId" value="${orderId}">
                             <input type="hidden" name="currentOrderStatusId" value="${currentOrderStatusId}">
                             <button type="submit" name="action" value="changeOrderStatus">
                                 <strong>

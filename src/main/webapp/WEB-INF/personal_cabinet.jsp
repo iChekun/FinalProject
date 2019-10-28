@@ -124,6 +124,12 @@
                                 <fmt:message key="personalCabinet.ref.workWithUsers"/>
                             </a>
                         </li>
+
+                        <li>
+                            <a href="mainWindow?action=viewAllOrders">
+                                <fmt:message key="label.view__all_buy_history"/>
+                            </a>
+                        </li>
                     </c:if>
 
                     <li>
@@ -152,12 +158,12 @@
 
         <div class="user_table_look">
             <div class="table_line">
-                <caption>
-                    <div style="font-size: 20px; font-weight: bold; text-decoration: underline;">
-                        <fmt:message key="personalCabinet.message.hello"/>
-                        ${user.name}!
-                    </div>
-                </caption>
+                    <caption>
+                        <div style="font-size: 20px; font-weight: bold; text-decoration: underline;">
+                            <fmt:message key="personalCabinet.message.hello"/>
+                                ${user.name}!
+                        </div>
+                    </caption>
             </div>
 
 

@@ -51,7 +51,15 @@
         <div class="new-select-style-locale">
             <form style="display: inline; margin-left: 20px">
                 <div class="new-select-style-locale" style="margin-left: 340px; margin-top: -25px; ">
-                    <input type="hidden" name="action" value="viewOrdersHistory"/>
+                    <c:if test="${user.userId == null}">
+                        <input type="hidden" name="action"
+                               value="viewAllOrders">
+                    </c:if>
+
+                    <c:if test="${user.userId != null}">
+                        <input type="hidden" name="action"
+                               value="viewOrdersHistory">
+                    </c:if>
                     <label for="locale"></label>
                     <select id="locale" name="locale" onchange="submit()">
                         <option value="en_EN" ${locale == 'en_EN' ? 'selected' : ''}>English</option>
@@ -86,7 +94,12 @@
 
     <div class="user_table_look">
         <div class="table_line">
-            <caption>${user.name}, <fmt:message key="label.its_your_buy_history"/></caption>
+            <c:if test="${user.userId != null}">
+                <caption>${user.name}, <fmt:message key="label.its_your_buy_history"/></caption>
+            </c:if>
+            <c:if test="${user.userId == null}">
+                <fmt:message key="label.all_buy_history"/>
+            </c:if>
         </div>
 
         <form action="mainWindow" method="get">
@@ -99,6 +112,9 @@
                                     <tr>
                                         <th width="2%">№</th>
                                         <th width="9%"><fmt:message key="label.view_more"/></th>
+                                        <th><fmt:message key="table.message.user.name"/></th>
+                                        <th><fmt:message key="table.message.user.surname"/></th>
+                                        <th><fmt:message key="table.message.user.phoneNumber"/></th>
                                         <th><fmt:message key="label.buy_date"/></th>
                                         <th><fmt:message key="label.cost"/></th>
                                         <th><fmt:message key="label.payment_type"/></th>
@@ -109,6 +125,15 @@
                                             <th>${count.count}</th>
                                             <td width="10px">
 
+                                                <c:if test="${user.userId == null}">
+                                                    <input type="hidden" name="nextPage"
+                                                           value="viewAllOrders">
+                                                </c:if>
+
+                                                <c:if test="${user.userId != null}">
+                                                    <input type="hidden" name="nextPage"
+                                                           value="viewOrdersHistory">
+                                                </c:if>
                                                 <input type="hidden" name="action"
                                                        value="ViewOrderDetail">
 
@@ -121,6 +146,16 @@
                                                 </button>
 
                                             </td>
+                                            <td>
+                                                    ${order.user.name}
+                                            </td>
+                                            <td>
+                                                    ${order.user.surname}
+                                            </td>
+                                            <td>
+                                                    ${order.user.contacts.phoneNumber}
+                                            </td>
+
                                             <td>
                                                     ${order.orderDate}
                                             </td>

@@ -87,6 +87,6 @@ public final class JspActionCommand {
     public static final String VIEW_ORDER_DETAIL_COMMAND = "ViewOrderDetail";
     public static final String CHANGE_ORDER_STATUS_COMMAND = "changeOrderStatus";
     public static final String INVALIDATE_ORDER_COMMAND = "invalidateOrder";
-
+    public static final String VIEW_ALL_ORDERS_COMMAND = "viewAllOrders";
 
 }

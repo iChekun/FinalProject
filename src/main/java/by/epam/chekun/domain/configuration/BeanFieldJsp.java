@@ -108,9 +108,11 @@ public final class BeanFieldJsp {
     //ORDER
     public static final String PRODUCTS_ORDER_ID = "productOrders";
     public static final String ORDER_ID = "orderId";
+    public static final String ORDER_OBJECT = "order";
     public static final String ORDERS_LIST = "orders";
     public static final String CURRENT_ORDER_STATUS_ID = "currentOrderStatusId";
     public static final String OPEN_ORDER_STATUS_ID = "1";
     public static final String CLOSE_ORDER_STATUS_ID = "2";
+    public static final String ACTION_TYPE_VIEW_ALL_ORDERS = "actionTypeAllOrders";
 
 }

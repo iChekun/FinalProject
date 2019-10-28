@@ -4,14 +4,12 @@ import by.epam.chekun.dao.ContactsRepository;
 import by.epam.chekun.dao.UserRepository;
 import by.epam.chekun.dao.exception.DAOException;
 import by.epam.chekun.dao.exception.user.UserDAOException;
-import by.epam.chekun.domain.entity.user.Contacts;
 import by.epam.chekun.domain.entity.user.User;
 import by.epam.chekun.domain.service.exception.user.BannedUserServiceException;
 import by.epam.chekun.domain.service.exception.user.UserServiceException;
 import by.epam.chekun.domain.util.hasher.PasswordHashKeeper;
 import by.epam.chekun.domain.util.validator.user.UserValidator;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import static org.mockito.Matchers.anyString;
@@ -95,47 +93,5 @@ public class UserServiceImplTest {
         assertEquals(result, user);
     }
 
-    @Ignore
-    @Test
-    public void testAdd() throws DAOException {
-        when(validator.validate(anyString(), anyString(), anyString(),
-                anyString(), anyString(), anyObject(),
-                anyString(), anyString(),
-                anyString(), anyString(), anyString(),
-                anyInt(), anyInt())).thenReturn(true);
-        Contacts contacts = mock(Contacts.class);
 
-        when(contactsRepository.add(contacts)).thenReturn(true);
-        doReturn(contacts).when(contactsRepository.getContactsByEmail(anyString()));
-        doReturn(anyString()).when(keeper.generateHash(anyString(), anyString()));
-        User user = mock(User.class);
-
-        when(userRepository.add(user));
-
-    }
-
-    @Test
-    public void testGetAll() {
-    }
-
-    @Test
-    public void testChangeBanStatus() {
-    }
-
-    @Test
-    public void testChangeUserStatus() {
-    }
-
-    @Test
-    public void testGetAllUsersSorted() {
-    }
-
-    @Test
-    public void testUpdate() {
-    }
-
-    @Test
-    public void testChangePassword() {
-
-    }
 }

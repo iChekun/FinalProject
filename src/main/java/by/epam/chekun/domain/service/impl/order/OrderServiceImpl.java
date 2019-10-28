@@ -141,5 +141,14 @@ public class OrderServiceImpl implements OrderService {
             throw new OrderServiceException(e);
         }
     }
+
+    @Override
+    public List<Order> getAllOrders() throws OrderServiceException {
+        try {
+            return orderRepository.getAll();
+        } catch (OrderDAOException e) {
+            throw new OrderServiceException(e);
+        }
+    }
 }
 

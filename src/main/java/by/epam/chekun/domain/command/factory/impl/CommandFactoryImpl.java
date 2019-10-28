@@ -13,7 +13,10 @@ import by.epam.chekun.domain.command.impl.order.*;
 import by.epam.chekun.domain.command.impl.paymentmethod.AddNewPaymentMethodCommand;
 import by.epam.chekun.domain.command.impl.paymentmethod.DeletePaymentMethodCommand;
 import by.epam.chekun.domain.command.impl.paymentmethod.ViewPaymentMethodTableCommand;
-import by.epam.chekun.domain.command.impl.product.*;
+import by.epam.chekun.domain.command.impl.product.AddNewProductCommand;
+import by.epam.chekun.domain.command.impl.product.DeleteProductCommand;
+import by.epam.chekun.domain.command.impl.product.EditProductCommand;
+import by.epam.chekun.domain.command.impl.product.ViewEditProductCommand;
 import by.epam.chekun.domain.command.impl.product.table.ViewCustomerProductTableCommand;
 import by.epam.chekun.domain.command.impl.product.table.ViewProductsTableCommand;
 import by.epam.chekun.domain.command.impl.product.table.ViewProductsWithCategoryAndBrandCommand;
@@ -145,6 +148,8 @@ public class CommandFactoryImpl implements CommandFactory {
                 return new ChangeOrderStatusCommand(request, response);
             case INVALIDATE_ORDER_COMMAND:
                 return new InvalidateOrderCommand(request, response);
+            case VIEW_ALL_ORDERS_COMMAND:
+                return new ViewAllOrdersHistoryCommand(request, response);
             ///////////////////////////////////////////////////////////////////////////
 
             case VIEW_CUSTOMER_PRODUCT_TABLE_COMMAND:

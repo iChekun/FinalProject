@@ -107,6 +107,7 @@ public class ControllerSecurityFilter implements Filter {
         customerActions.add(VIEW_ORDERS_HISTORY_COMMAND);
         customerActions.add(VIEW_ORDER_DETAIL_COMMAND);
         customerActions.add(INVALIDATE_ORDER_COMMAND);
+        customerActions.add(EDIT_USER_COMMAND);
     }
 
     private void addAdminActions() {
@@ -152,6 +153,7 @@ public class ControllerSecurityFilter implements Filter {
         adminActions.add(VIEW_ORDER_DETAIL_COMMAND);
         adminActions.add(CHANGE_ORDER_STATUS_COMMAND);
         adminActions.add(INVALIDATE_ORDER_COMMAND);
+        adminActions.add(VIEW_ALL_ORDERS_COMMAND);
     }
 
 
