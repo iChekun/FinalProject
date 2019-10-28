@@ -22,7 +22,6 @@ import static by.epam.chekun.domain.configuration.BeanFieldJsp.REDIRECT_COMMAND;
 
 
 @WebServlet("/mainWindow")
-@MultipartConfig
 public class Controller extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(Controller.class);
